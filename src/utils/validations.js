@@ -1,3 +1,24 @@
+// A fixed list of the 18 standard activities.
+export const DEFAULT_ACTIVITIES = [
+    "Preparation And Assistance with Required Corporate Actions",
+    "Completion Of Requirement and Application Process",
+    "Customized, State-Specific Policies and Procedures",
+    "Client Admission Packet",
+    "Website, Domain, And Email Setup",
+    "Marketing And Advertising Materials",
+    "Operational Training",
+    "Compliance And Regulatory Support",
+    "Marketing And Client Acquisition Strategies",
+    "Accreditation Support",
+    "Quality Assurance Programs",
+    "Certificate Of Needs Development",
+    "Medicaid Provider Enrollment",
+    "MCO Enrollment & Credentialing",
+    "Medicare Enrollment & Certification",
+    "Other Insurance Payers",
+    "Private Pay & Referral Network",
+    "Accreditation Support Services (ACHC, Chap, Joint Commission)"
+];
 
 const STATES = [
     'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
@@ -14,24 +35,86 @@ const PROJECT_TYPES = [
 const ASSIGNED_CONSULTANTS = ['Michael Tarr', 'Sheikh Konneh', 'Varlee Massalay', 'Amara Kamara'];
 const SUPERVISING_CONSULTANTS = ['Amara Kamara', 'Michelle Gottlieb'];
 const STATUS_OPTIONS = [
-  'Preparatory Stage with Consultant', 'Under State Review', 'Completed',
-  'Waiting on Client', 'Submitted to State', 'Varlee Massalay'
+  'Active',
+  'Preparatory Stage with Consultant',
+  'Waiting on Client',
+  'Submitted to State',
+  'Under State Review',
+  'Provisional Aproval',
+  'Completed'
 ];
 const YES_NO_OPTIONS = ['Yes', 'No'];
 function isValidEmail(email) {
     return /.+@.+\..+/.test(email);
 }
 
+export const FORM_FIELD_TYPES = [
+    "Single line text",
+    "Date",
+    "Email",
+    "Phone number",
+    "Number"
+];
+
 export const dropdownFields = {
-  'States': STATES,
-  'Project Type': PROJECT_TYPES,
-  'Assigned Consultant': ASSIGNED_CONSULTANTS,
-  'Supervising Consultant': SUPERVISING_CONSULTANTS,
-  'Status': STATUS_OPTIONS,
-  'Submitted (Y/N)': YES_NO_OPTIONS
+    "Assigned Consultant": [
+      "Michael Tarr",
+      "Sheikh Konneh",
+      "Varlee Massalay",
+      "Amara Kamara"
+    ],
+    "Supervising Consultant": [
+      "Amara Kamara",
+      "Michelle Gottlieb"
+    ],
+    "States": [
+    "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
+    "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY",
+    "LA", "ME", "MD", "MA", "MI", "MN", "MS",
+    "MO", "MT", "NE", "NV", "NH", "NJ", "NM",
+    "NY", "NC", "ND", "OH", "OK", "OR", "PA",
+    "RI", "SC", "SD", "TN", "TX", "UT", "VT",
+    "VA", "WA", "WV", "WI", "WY"
+    ],
+    "Project Type": [
+        "Licensing & Medicaid",
+        "Licensing Only",
+        "Technical (Other)",
+        "Market Research",
+        "Medicaid Enrollment Only",
+        "Policy & Procedure Manual",
+        "PA",
+        "Home Health"
+    ],
+    "Status": [
+      "Active",
+      "Preparatory Stage with Consultant",
+      "Waiting on Client",
+      "Submitted to State",
+      "Under State Review",
+      "Provisional Aproval",
+      "Completed"
+    ],
+    "Submitted (Y/N)": [
+        "Yes",
+        "No"
+    ],
+    "Action_type": [
+        "Attach Files",
+        "Complete Form",
+        "Complete Checklist",
+        "Require Approval"
+    ],
+    "field_type": [
+        "Single line text",
+        "Date",
+        "Email",
+        "Phone number",
+        "Number"
+    ]
 };
 
-export const validateRow = (fields, isNew = false) => {
+export const validateRow = (fields) => {
     const rowErrors = {};
 
     if (!fields['Project Name']) rowErrors['Project Name'] = 'Required';
@@ -53,3 +136,23 @@ export const validateRow = (fields, isNew = false) => {
 
     return rowErrors;
   };
+
+export const safeNewDate = (dateValue) => {
+    if (!dateValue) return null;
+
+    let d;
+    // If it's a string in YYYY-MM-DD format, add time to avoid timezone issues.
+    if (typeof dateValue === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
+        d = new Date(dateValue + 'T00:00:00');
+    } else {
+        // For other formats (ISO strings, timestamps, Date objects), create date directly.
+        d = new Date(dateValue);
+    }
+
+    // Final check for validity
+    if (isNaN(d.getTime())) {
+        return null;
+    }
+
+    return d;
+};

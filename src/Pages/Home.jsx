@@ -1,342 +1,125 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import Nav from '../components/Nav';
-import '../Pages/All.css';
-import { GET_LIST_AirtableData, UPDATE_MULTIPLE_RECORDS, CREATE_RECORDS, GET_RECORD_AirtableData, UPDATE_RECORD_AirtableData } from '../utils/AirtableAPI';
-import Card from '../components/Card';
-import {dropdownFields, validateRow } from '../utils/validations';
+import Nav from '../components/layout/Nav';
+import Card from '../components/cards/ProjectCard';
+import { useAuth } from '../utils/AuthContext';
 
+const API_URL = 'http://localhost:3001/api';
 
-async function globalProjectCounter() {
-  try {
-    const records = await GET_RECORD_AirtableData('counter');
-    return records;
-  } catch (e) {
-    console.error('Failed to load:', e);
-    return null; // Return null or handle the error appropriately
-  }
-}
+const Home = () => {
+    const [incompleteActions, setIncompleteActions] = useState([]);
+    const [actionsLoading, setActionsLoading] = useState(true);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [isCardVisible, setIsCardVisible] = useState(false);
 
-async function generateProjectID(state, projectType, startDate) {
-  console.log("Generating Project ID, state:", state, "projectType:", projectType, "startDate:", startDate);
-  if (!state || !projectType || !startDate) return '';
-  const serviceType = projectType.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
-  const formattedDate = new Date(startDate).toISOString().slice(2, 10).replace(/-/g, '').slice(0, 6);
-  
-  const counter_obj = await globalProjectCounter();
-  console.log("Counter object:", counter_obj);
-  if (!counter_obj) return ''; // Handle the case where fetching the counter fails
+    const { currentUser } = useAuth();
 
-  const counter = counter_obj.fields['Counter'];
-  await UPDATE_RECORD_AirtableData({
-    fields: {
-      'Counter': counter + 1,
-    },
-    id: counter_obj.id,
-    tableName: "counter"
-  });
-  return `${state}${serviceType}-${formattedDate}P${counter + 1}`;
-}
-
-
-
-function Home() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedRecords, setEditedRecords] = useState({});
-  const [newRows, setNewRows] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isCardVisible, setIsCardVisible] = useState(false);
-  const [errors, setErrors] = useState({});
-
-  const columnHeaders = React.useMemo(() => {
-    const set = new Set();
-    data.forEach(r => Object.keys(r.fields).forEach(k => set.add(k)));
-    const columns = Array.from(set);
-
-    // Remove unwanted columns
-    const filteredColumns = columns.filter(column => 
-      column !== 'Pending Action (Client, Consulting or State)' &&
-      column !== 'Notes' &&
-      column !== 'Estimated Completion' &&
-      column !== 'Actions' &&
-      column !== 'Documents'
-    );
-
-    // Reorder columns to have 'Full Cost', 'Paid', 'Balance' next to each other
-    const reorderedColumns = [
-      ...filteredColumns.filter(column => column !== 'Full Cost' && column !== 'Paid' && column !== 'Balance'),
-      'Full Cost',
-      'Paid',
-      'Balance'
-    ];
-
-    return reorderedColumns;
-  }, [data]);
-
-  const loadData = useCallback(async () => {
-    setLoading(true);
-    try {
-      const records = await GET_LIST_AirtableData();
-      setData(records);
-    } catch (e) {
-      console.error('Failed to load:', e);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-    setEditedRecords({});
-    setNewRows([]);
-    setErrors({});
-  };
-
-
-
-  const handleUpdateClick = async () => {
-    const updates = Object.values(editedRecords).map(record => ({
-      id: record.id,
-      fields: {
-        ...record.fields,
-        Balance: (Number(record.fields['Full Cost']) || 0) - (Number(record.fields['Paid']) || 0)
-      }
-    }));
-
-    const inserts = [];
-    const newErrors = {};
-
-    for (let row of newRows) {
-      const errs = validateRow(row.fields, true);
-      if (Object.keys(errs).length > 0) {
-        newErrors[row.id] = errs;
-        continue;
-      }
-      
-      if (!row.fields['Project ID']) {
-        console.log("Generating Project ID");
-        row.fields['Project ID'] = await generateProjectID(row.fields['States'], row.fields['Project Type'], row.fields['Start Date']);
-      }
-      console.log('Project ID:', row.fields['Project ID']);
-      
-      row.fields['Balance'] = (Number(row.fields['Full Cost']) || 0) - (Number(row.fields['Paid']) || 0);
-      inserts.push({ fields: row.fields });
-      console.log(inserts);
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    try {
-      if (updates.length) await UPDATE_MULTIPLE_RECORDS(updates);
-      if (inserts.length) await CREATE_RECORDS(inserts);
-      await loadData();
-    } catch (e) {
-      console.error('Update failed:', e);
-    } finally {
-      setIsEditing(false);
-      setEditedRecords({});
-      setNewRows([]);
-      setErrors({});
-    //   setIsCardVisible(false);
-    }
-  };
-
-  const handleAddRow = () => {
-    const empty = {};
-    columnHeaders.forEach(k => empty[k] = '');
-    setNewRows(p => [...p, { id: `new-${Date.now()}`, fields: empty }]);
-  };
-
-  const handleCellChange = (id, key, value) => {
-    const original = data.find(r => r.id === id);
-    if (!original || key === 'Project ID') return;
-    setEditedRecords(prev => ({
-      ...prev,
-      [id]: {
-        id,
-        fields: {
-          ...prev[id]?.fields,
-          [key]: typeof original.fields[key] === 'number' ? Number(value) : value
+    const fetchIncompleteActions = useCallback(async () => {
+        setActionsLoading(true);
+        try {
+            const response = await fetch(`${API_URL}/actions/incomplete`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch actions');
+            }
+            const data = await response.json();
+            setIncompleteActions(data);
+        } catch (error) {
+            console.error("Error fetching incomplete actions:", error);
+        } finally {
+            setActionsLoading(false);
         }
-      }
-    }));
-  };
+    }, []);
 
-  const handleNewRowChange = (id, key, value) => {
-    setNewRows(prev => prev.map(row => row.id === id ? {
-      ...row,
-      fields: { ...row.fields, [key]: value }
-    } : row));
-  };
+    useEffect(() => {
+        if (currentUser) {
+            fetchIncompleteActions();
+        }
+    }, [fetchIncompleteActions, currentUser]);
 
-  const handleProjectClick = (record) => {
-    if (!isEditing) {
-      setSelectedProject(record);
-      setIsCardVisible(true);
-    }
-  };
+    const handleActionClick = async (action) => {
+        const projectRecordId = action.fields['Project ID']?.[0];
+        if (!projectRecordId) {
+            console.error("Project Record ID is missing for this action");
+            alert("Could not open project: Project link is missing.");
+            return;
+        }
+        try {
+            const response = await fetch(`${API_URL}/records/projects/${projectRecordId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch project details');
+            }
+            const projectData = await response.json();
+            setSelectedProject(projectData);
+            setIsCardVisible(true);
+        } catch (error) {
+            console.error("Error fetching project:", error);
+            alert("Error fetching project details. Please try again.");
+        }
+    };
 
-  if (loading) {
+    const handleCardClose = () => {
+        setIsCardVisible(false);
+        setSelectedProject(null);
+        fetchIncompleteActions();
+    };
+
+    const currentDate = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-xl font-semibold text-gray-700">Loading...</div>
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <Nav />
-      <div className="p-6 flex justify-end mb-4 space-x-2">
-        {!isEditing && (
-          <button
-            onClick={handleEditClick}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            Edit
-          </button>
-        )}
-        {isEditing && (
-          <>
-            <button
-              onClick={handleAddRow}
-              className="px-4 py-2 bg-purple-600 text-white rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            >
-              + Add
-            </button>
-            <button
-              onClick={handleUpdateClick}
-              className="px-4 py-2 bg-green-600 text-white rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              Update
-            </button>
-          </>
-        )}
-      </div>
-
-      <div className="p-6 pt-0 overflow-x-auto max-h-[80vh]">
-        <table className="min-w-full table-auto border-collapse">
-          <thead className="bg-gray-800 sticky top-0 z-10">
-            <tr>
-              {columnHeaders.map((header, index) => (
-                <th
-                  key={index}
-                  className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider whitespace-nowrap"
-                >
-                  {header}
-                </th>
-              ))}
-              {isEditing && newRows.length > 0 && (
-                <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider whitespace-nowrap">Actions</th>
-              )}
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-
-            {/* New rows */}
-            {isEditing && newRows.map((row) => (
-              <tr key={row.id} className="bg-yellow-50 hover:bg-yellow-100">
-                {columnHeaders.map((header) => (
-                  <td key={header} className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                    {(header === 'Project ID' || header === 'Balance') ? (
-                      <span>{row.fields[header]}</span>
-                    ) : dropdownFields[header] ? (
-                      <select
-                        value={row.fields[header] || ''}
-                        onChange={(e) => handleNewRowChange(row.id, header, e.target.value)}
-                        className="w-full p-1 border border-yellow-400 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                      >
-                        <option value="">-- Select --</option>
-                        {dropdownFields[header].map(option => (
-                          <option key={option} value={option}>{option}</option>
-                        ))}
-                      </select>
-                    ) : (
-                      <input
-                        type="text"
-                        value={row.fields[header] || ''}
-                        onChange={(e) => handleNewRowChange(row.id, header, e.target.value)}
-                        className="w-full p-1 border border-yellow-400 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                      />
-                    )}
-                    {errors[row.id]?.[header] && (
-                      <p className="text-red-500 text-xs mt-1">{errors[row.id][header]}</p>
-                    )}
-                  </td>
-                ))}
-                <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-700">
-                  <button
-                    onClick={() => setNewRows(prev => prev.filter(r => r.id !== row.id))}
-                    className="text-red-600 text-xs hover:underline"
-                  >
-                    Cancel
-                  </button>
-                </td>
-              </tr>
-            ))}
-
-            {/* Existing rows */}
-            {data.map((record) => (
-              <tr
-                key={record.id}
-                className="hover:bg-gray-50 cursor-pointer"
-                onClick={() => handleProjectClick(record)}
-              >
-                {columnHeaders.map((header) => {
-                  const currentValue = record.fields[header];
-                  const editedValue = editedRecords[record.id]?.fields?.[header];
-                  const displayValue = editedValue !== undefined ? editedValue : currentValue;
-
-                  return (
-                    <td key={header} className="px-3 py-3 whitespace-nowrap text-sm text-gray-700">
-                      {isEditing ? (
-                        (header === 'Project ID' || header === 'Balance') ? (
-                          <span>{displayValue}</span>
-                        ) : dropdownFields[header] ? (
-                          <select
-                            value={displayValue ?? ''}
-                            onChange={(e) => handleCellChange(record.id, header, e.target.value)}
-                            className="w-full p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          >
-                            <option value="">-- Select --</option>
-                            {dropdownFields[header].map(option => (
-                              <option key={option} value={option}>{option}</option>
-                            ))}
-                          </select>
+        <>
+            <Nav />
+            <main className="bg-slate-50 min-h-screen">
+                <div className="container mx-auto p-4 sm:p-6 lg:p-8">
+                    <header className="mb-8">
+                        <h1 className="text-3xl font-bold text-slate-800">
+                            Hello, {currentUser?.displayName || currentUser?.email?.split('@')[0] || 'User'}
+                        </h1>
+                        <h2 className="text-xl font-semibold text-slate-700">{currentDate}</h2>
+                        <p className="mt-1 text-sm text-slate-600">Here are your outstanding actions that require attention.</p>
+                    </header>
+                    
+                    <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
+                        <div className="p-5 border-b border-slate-200">
+                            <h2 className="text-lg font-semibold text-slate-700">⚡️ Incomplete Actions</h2>
+                        </div>
+                        {actionsLoading ? (
+                            <p className="text-center p-8 text-slate-500">Loading actions...</p>
+                        ) : incompleteActions.length > 0 ? (
+                            <ul className="divide-y divide-slate-200">
+                                {incompleteActions.map(action => (
+                                    <li key={action.id} className="p-5 hover:bg-slate-50 transition-colors cursor-pointer" onClick={() => handleActionClick(action)}>
+                                        <div className="flex items-start gap-4">
+                                            <div className="flex-1">
+                                                <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
+                                                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                    <span>Project: <span className="font-semibold text-slate-600">{action.fields.ProjectName} ({action.fields.ProjectCustomID})</span></span>
+                                                    <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
                         ) : (
-                          <input
-                            type={typeof currentValue === 'number' ? 'number' : 'text'}
-                            value={displayValue ?? ''}
-                            onChange={(e) => handleCellChange(record.id, header, e.target.value)}
-                            className="min-w-[20ch] px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
-                        )
-                      ) : (
-                        typeof currentValue === 'boolean'
-                          ? (displayValue ? 'Yes' : 'No')
-                          : (displayValue ?? '-')
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                            <p className="text-center p-8 text-slate-500">No incomplete actions. Great job!</p>
+                        )}
+                    </div>
+                </div>
+            </main>
+            
+            {isCardVisible && selectedProject && (
+                <Card
+                    data={selectedProject}
+                    onClose={handleCardClose}
+                    onProjectUpdate={() => {}}
+                />
+            )}
+        </>
+    );
+};
 
-      {!isEditing && isCardVisible && <Card data={selectedProject} onClose={() => setIsCardVisible(false)} />}
-    </>
-  );
-}
-
-export default Home;
+export default Home; 
