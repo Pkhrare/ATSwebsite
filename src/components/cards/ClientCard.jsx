@@ -2,16 +2,10 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation, useParams, Link } from 'react-router-dom';
 import RichTextEditor from '../richText/RichTextEditor';
 import TaskCard from './TaskCard';
-
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+import ApiCaller from '../apiCall/ApiCaller';
 
 const apiFetch = async (endpoint, options = {}) => {
-    const response = await fetch(`${API_URL}${endpoint}`, {
-        ...options,
-        headers: { 'Content-Type': 'application/json', ...options.headers },
-    });
-    if (!response.ok) throw new Error((await response.json()).error || 'API request failed');
-    return response.json();
+        return await ApiCaller(endpoint, options);
 };
 
 const toLexical = (text) => {

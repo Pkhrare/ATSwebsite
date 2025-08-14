@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CreateNewForm from './CreateNewForm';
+import ApiCaller from '../../apiCall/ApiCaller';
 
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
 
 const AttachTaskformsForm = ({ onClose, onFormAttach }) => {
     const [forms, setForms] = useState([]);
@@ -13,11 +13,7 @@ const AttachTaskformsForm = ({ onClose, onFormAttach }) => {
     useEffect(() => {
         const fetchForms = async () => {
             try {
-                const response = await fetch(`${API_URL}/all/task_forms`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch forms');
-                }
-                const data = await response.json();
+                const data = await ApiCaller('/all/task_forms');
                 setForms(data);
             } catch (error) {
                 setError(error.message);

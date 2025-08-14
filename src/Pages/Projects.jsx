@@ -7,23 +7,13 @@ import { dropdownFields, safeNewDate } from '../utils/validations';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
+import ApiCaller from '../components/apiCall/ApiCaller';
 
-const API_URL = 'http://localhost:3000/api';
 
 // Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-  });
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || 'API request failed');
-  }
-  return response.json();
+  const response = await ApiCaller(endpoint, options);
+  return response;
 };
 
 

@@ -1,21 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
-
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+import ApiCaller from '../apiCall/ApiCaller';
 
 // Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-  });
+  const response = await ApiCaller(endpoint, options);
   if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || 'API request failed');
+    throw new Error(response.error || 'API request failed');
   }
-  return response.json();
+  return response;
 };
 
 const CloseIcon = () => (

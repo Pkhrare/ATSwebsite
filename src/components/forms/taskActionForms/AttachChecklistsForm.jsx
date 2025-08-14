@@ -1,20 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { v4 as uuidv4 } from 'uuid';
-
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+import ApiCaller from '../../apiCall/ApiCaller';
 
 const apiFetch = async (endpoint, options = {}) => {
-    const headers = { ...options.headers };
-    if (!(options.body instanceof FormData)) {
-        headers['Content-Type'] = 'application/json';
-    }
-    const response = await fetch(`${API_URL}${endpoint}`, { ...options, headers });
-    if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || 'API request failed');
-    }
-    return response.json();
+    return await ApiCaller(endpoint, options);
 };
 
 function AttachChecklistsForm({ taskId, onClose, onChecklistSaved, initialChecklistItems = [] }) {

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-
+import ApiCaller from '../components/apiCall/ApiCaller';
 const Logo = () => (
     <svg className="w-20 h-20 text-slate-700 mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
     </svg>
 );
 
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+
 
 export default function ClientLogin() {
     const [projectName, setProjectName] = useState('');
@@ -26,10 +26,9 @@ export default function ClientLogin() {
         setError('');
 
         try {
-            const response = await fetch(`${API_URL}/authenticate/${encodeURIComponent(projectName)}/${encodeURIComponent(projectId)}`);
-            const data = await response.json();
+            const data = await ApiCaller(`/authenticate/${encodeURIComponent(projectName)}/${encodeURIComponent(projectId)}`);
 
-            if (!response.ok || data.records.length === 0) {
+            if (data.records.length === 0) {
                 throw new Error('Invalid Project Name or Project ID.');
             }
             

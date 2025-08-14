@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+import ApiCaller from '../../apiCall/ApiCaller';
 
 const AttachFilesForm = ({ taskId, onClose, onAttachmentsAdded }) => {
     const [descriptions, setDescriptions] = useState(['']);
@@ -38,8 +37,6 @@ const AttachFilesForm = ({ taskId, onClose, onAttachmentsAdded }) => {
         }
 
         try {
-            // This is where we'll implement a batch creation logic later if needed.
-            // For now, we create them one by one.
             const recordsToCreate = validDescriptions.map(desc => ({
                 fields: {
                     task_id: [taskId],
@@ -47,25 +44,15 @@ const AttachFilesForm = ({ taskId, onClose, onAttachmentsAdded }) => {
                 },
             }));
 
-            const requestBody = {
-                recordsToCreate,
-                tableName: 'task_attachments',
-            };
-
-            const response = await fetch(`${API_URL}/records`, {
+            const newAttachments = await ApiCaller('/records', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBody),
+                body: JSON.stringify({
+                    recordsToCreate,
+                    tableName: 'task_attachments',
+                }),
             });
-
-            if (!response.ok) {
-                throw new Error('Failed to add attachments.');
-            }
-
-            const newAttachments = await response.json();
             
             if (onAttachmentsAdded) {
-                // The response from a batch create is { records: [...] }
                 onAttachmentsAdded(newAttachments.records);
             }
             onClose();

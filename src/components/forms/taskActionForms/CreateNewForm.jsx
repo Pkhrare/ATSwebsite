@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FORM_FIELD_TYPES } from '../../../utils/validations';
-
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+import ApiCaller from '../../apiCall/ApiCaller';
 
 const CreateNewForm = ({ onClose, onFormCreated }) => {
     const [formData, setFormData] = useState({
@@ -65,9 +64,8 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
                 tableName: 'task_forms'
             };
 
-            const formResponse = await fetch(`${API_URL}/records`, {
+            const formResponse = await ApiCaller('/records', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formRequestBody),
             });
 
@@ -93,9 +91,8 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
                 tableName: 'task_forms_fields'
             };
 
-            const fieldsResponse = await fetch(`${API_URL}/records`, {
+            const fieldsResponse = await ApiCaller('/records', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(fieldsRequestBody),
             });
 
@@ -108,9 +105,8 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
             const fieldIds = fieldsResult.records.map(record => record.id);
 
             // Step 3: Update the form with the field IDs
-            await fetch(`${API_URL}/records/task_forms/${newFormId}`, {
+            await ApiCaller(`/records/task_forms/${newFormId}`, {
                 method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     fields: {
                         task_forms_fields: fieldIds
@@ -119,7 +115,7 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
             });
 
             // Step 4: Fetch the complete form with fields
-            const completeFormResponse = await fetch(`${API_URL}/records/task_forms/${newFormId}`);
+            const completeFormResponse = await ApiCaller(`/records/task_forms/${newFormId}`);
             const completeForm = await completeFormResponse.json();
 
             if (onFormCreated) {

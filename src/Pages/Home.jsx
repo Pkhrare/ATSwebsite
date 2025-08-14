@@ -2,8 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import Nav from '../components/layout/Nav';
 import Card from '../components/cards/ProjectCard';
 import { useAuth } from '../utils/AuthContext';
-
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+import ApiCaller from '../components/apiCall/ApiCaller';
 
 const Home = () => {
     const [incompleteActions, setIncompleteActions] = useState([]);
@@ -16,11 +15,7 @@ const Home = () => {
     const fetchIncompleteActions = useCallback(async () => {
         setActionsLoading(true);
         try {
-            const response = await fetch(`${API_URL}/actions/incomplete`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch actions');
-            }
-            const data = await response.json();
+            const data = await ApiCaller('/actions/incomplete');
             setIncompleteActions(data);
         } catch (error) {
             console.error("Error fetching incomplete actions:", error);
@@ -43,11 +38,7 @@ const Home = () => {
             return;
         }
         try {
-            const response = await fetch(`${API_URL}/records/projects/${projectRecordId}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch project details');
-            }
-            const projectData = await response.json();
+            const projectData = await ApiCaller(`/records/projects/${projectRecordId}`);
             setSelectedProject(projectData);
             setIsCardVisible(true);
         } catch (error) {

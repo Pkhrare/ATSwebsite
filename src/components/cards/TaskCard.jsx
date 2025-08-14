@@ -9,33 +9,13 @@ import AttachChecklistsForm from '../forms/taskActionForms/AttachChecklistsForm'
 import AttachTaskformsForm from '../forms/taskActionForms/AttachTaskformsForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import ApiCaller from '../apiCall/ApiCaller';
 
-const API_URL = 'http://localhost:3000/api';
 
 const apiFetch = async (endpoint, options = {}) => {
-    const headers = { ...options.headers };
-
-    // If the body is FormData, let the browser set the Content-Type
-    // otherwise, default to application/json
-    if (!(options.body instanceof FormData)) {
-        headers['Content-Type'] = 'application/json';
-    }
-
-    const response = await fetch(`${API_URL}${endpoint}`, {
-        ...options,
-        headers,
-    });
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'API request failed');
-    }
-
-    const contentType = response.headers.get("content-type");
-    if (contentType && contentType.indexOf("application/json") !== -1) {
-        return response.json();
-    }
-    return response.text();
+    return await ApiCaller(endpoint, options);
 };
+
 
 const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView = false }) => {
     const [isLoading, setIsLoading] = useState(false);

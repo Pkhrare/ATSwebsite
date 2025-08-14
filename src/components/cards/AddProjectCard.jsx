@@ -3,12 +3,17 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { dropdownFields, validateRow, safeNewDate } from '../../utils/validations';
 import { format } from 'date-fns';
+import ApiCaller from '../apiCall/ApiCaller';
 
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+const apiFetch = async (endpoint, options = {}) => {
+    return await ApiCaller(endpoint, options);
+};
 
 async function globalProjectCounter() {
     try {
-        const records = await fetch(`${API_URL}/records/counter/dummy`).then(res => res.json());
+        const records = await apiFetch(`/records/counter/dummy`, {
+            method: 'GET',
+        });
         return records;
     } catch (e) {
         console.error('Failed to load counter:', e);
@@ -25,9 +30,8 @@ async function generateProjectID(state, projectType, startDate) {
     if (!counter_obj) return '';
 
     const counter = counter_obj.fields['Counter'];
-    await fetch(`${API_URL}/records/counter/dummy`, {
+    await apiFetch(`/records/counter/dummy`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fields: { 'Counter': counter + 1 } }),
     });
 
@@ -67,9 +71,8 @@ const AddProjectCard = ({ onClose, onProjectAdded }) => {
                 }
             };
             
-            const response = await fetch(`${API_URL}/records`, {
+            const response = await apiFetch(`/records`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ recordsToCreate: [recordToCreate], tableName: 'projects' })
             });
 

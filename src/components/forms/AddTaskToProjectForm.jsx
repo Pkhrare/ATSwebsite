@@ -6,8 +6,9 @@ import AttachChecklistsForm from './taskActionForms/AttachChecklistsForm';
 import { Draggable, Droppable, DragDropContext } from '@hello-pangea/dnd';
 import AttachTaskformsForm from './taskActionForms/AttachTaskformsForm';
 import { v4 as uuidv4 } from 'uuid';
+import ApiCaller from '../apiCall/ApiCaller';
 
-const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
+
 
 const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, assigneeOptions }) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -107,9 +108,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 tableName: 'tasks'
             };
             
-            const taskResponse = await fetch(`${API_URL}/records`, {
+            const taskResponse = await ApiCaller('/records', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(taskRequestBody),
             });
             
@@ -136,9 +136,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                     tableName: 'task_attachments',
                 };
 
-                const attachmentsResponse = await fetch(`${API_URL}/records`, {
+                const attachmentsResponse = await ApiCaller('/records', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(attachmentsRequestBody),
                 });
 
@@ -168,9 +167,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                     tableName: 'task_checklists'
                 };
 
-                const checklistResponse = await fetch(`${API_URL}/records`, {
+                const checklistResponse = await ApiCaller('/records', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(checklistRequestBody)
                 });
 
@@ -185,9 +183,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 const submissionId = uuidv4();
                 
                 // Fetch form fields using their IDs from the attachedForm object
-                const formFieldsResponse = await fetch(`${API_URL}/records/by-ids`, {
+                const formFieldsResponse = await ApiCaller('/records/by-ids', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
                         recordIds: attachedForm.fields.task_forms_fields, 
                         tableName: 'task_forms_fields' 
@@ -207,9 +204,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                         }
                     }));
     
-                    const submissionResult = await fetch(`${API_URL}/records`, {
+                    const submissionResult = await ApiCaller('/records', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             recordsToCreate,
                             tableName: 'task_forms_submissions'
@@ -219,9 +215,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
     
                     // Link submissions back to the task
                     if (newSubmissions && newSubmissions.length > 0) {
-                        await fetch(`${API_URL}/records/tasks/${newTaskId}`, {
+                        await ApiCaller(`/records/tasks/${newTaskId}`, {
                             method: 'PATCH',
-                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
                                 fields: {
                                     task_forms_submissions: newSubmissions.map(s => s.id)
@@ -233,8 +228,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
             }
             
             // Re-fetch the task to get the updated record with submissions
-            const finalTaskResponse = await fetch(`${API_URL}/records/tasks/${newTaskId}`);
-            const finalTask = await finalTaskResponse.json();
+            const finalTaskResponse = await ApiCaller(`/records/tasks/${newTaskId}`);
+            const finalTask = await finalTaskResponse;
 
             if (onTaskAdded) {
                 onTaskAdded(finalTask);
