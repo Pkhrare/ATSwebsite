@@ -3,7 +3,7 @@ import { useLocation, useParams, Link } from 'react-router-dom';
 import RichTextEditor from '../richText/RichTextEditor';
 import TaskCard from './TaskCard';
 
-const API_URL = 'https://ats-backend-805977745256.us-central1.run.app';
+const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
 
 const apiFetch = async (endpoint, options = {}) => {
     const response = await fetch(`${API_URL}${endpoint}`, {

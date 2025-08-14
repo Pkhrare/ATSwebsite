@@ -7,7 +7,7 @@ import { Draggable, Droppable, DragDropContext } from '@hello-pangea/dnd';
 import AttachTaskformsForm from './taskActionForms/AttachTaskformsForm';
 import { v4 as uuidv4 } from 'uuid';
 
-const API_URL = 'https://ats-backend-805977745256.us-central1.run.app';
+const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
 
 const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, assigneeOptions }) => {
     const [isLoading, setIsLoading] = useState(false);

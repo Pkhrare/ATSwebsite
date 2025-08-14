@@ -3,7 +3,7 @@ import Nav from '../components/layout/Nav';
 import Card from '../components/cards/ProjectCard';
 import { useAuth } from '../utils/AuthContext';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'hhttps://ats-backend-805977745256.us-central1.run.app/api';
 
 const Home = () => {
     const [incompleteActions, setIncompleteActions] = useState([]);
