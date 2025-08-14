@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { dropdownFields, validateRow, safeNewDate } from '../../utils/validations';
 import { format } from 'date-fns';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'https://ats-backend-805977745256.us-central1.run.app';
 
 async function globalProjectCounter() {
     try {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'https://ats-backend-805977745256.us-central1.run.app';
 
 // Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {

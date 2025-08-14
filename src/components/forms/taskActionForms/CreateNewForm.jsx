@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FORM_FIELD_TYPES } from '../../../utils/validations';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'https://ats-backend-805977745256.us-central1.run.app';
 
 const CreateNewForm = ({ onClose, onFormCreated }) => {
     const [formData, setFormData] = useState({
