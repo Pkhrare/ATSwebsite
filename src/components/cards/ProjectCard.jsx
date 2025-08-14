@@ -9,7 +9,7 @@ import { dropdownFields, DEFAULT_ACTIVITIES, safeNewDate } from '../../utils/val
 import { useAuth } from '../../utils/AuthContext';
 
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'http://localhost:3000/api';
 
 
 // Helper function to fetch from the backend API

@@ -3,7 +3,7 @@ import Nav from '../components/layout/Nav';
 import Card from '../components/cards/ProjectCard';
 import { useAuth } from '../utils/AuthContext';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'http://localhost:3000/api';
 
 const Home = () => {
     const [incompleteActions, setIncompleteActions] = useState([]);
