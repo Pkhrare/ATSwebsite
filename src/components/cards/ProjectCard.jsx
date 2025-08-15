@@ -118,7 +118,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         if (!projectData.fields['Project ID']) return;
         setIsLoadingTasks(true);
         try {
-            const taskRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/tasks`);
+            const taskRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/tasks`);
             console.log('taskRecords', taskRecords);
             if (!Array.isArray(taskRecords?.records)) {
                 console.warn("Expected an array of task records but got:", taskRecords?.records);
@@ -148,9 +148,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             if (!projectData.fields['Project ID']) return;
             setIsLoadingActions(true);
             try {
-                const actionRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/actions`, {
-                    method: 'GET',
-                });
+                const actionRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/actions`);
                 if (!Array.isArray(actionRecords?.records) && !Array.isArray(actionRecords)) {
                     console.warn("Unexpected actions API shape:", actionRecords);
                 }
