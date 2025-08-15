@@ -148,7 +148,9 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             if (!projectData.fields['Project ID']) return;
             setIsLoadingActions(true);
             try {
-                const actionRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/actions`);
+                const actionRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/actions`, {
+                    method: 'GET',
+                });
                 if (!Array.isArray(actionRecords?.records) && !Array.isArray(actionRecords)) {
                     console.warn("Unexpected actions API shape:", actionRecords);
                 }
