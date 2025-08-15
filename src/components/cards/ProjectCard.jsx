@@ -13,7 +13,7 @@ import ApiCaller from '../apiCall/ApiCaller';
 // Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {
     const response = await ApiCaller(endpoint,
-        ...options
+        options
 
     );
 
@@ -134,7 +134,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
     useEffect(() => {
         fetchTasksForProject();
-    }, fetchTasksForProject);
+    }, [fetchTasksForProject]);
 
 
     useEffect(() => {
