@@ -134,7 +134,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
     useEffect(() => {
         fetchTasksForProject();
-    }, [fetchTasksForProject]);
+    }, fetchTasksForProject);
 
 
     useEffect(() => {
