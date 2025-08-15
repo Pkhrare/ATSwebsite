@@ -114,10 +114,12 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
 
     const fetchTasksForProject = useCallback(async () => {
+        console.log('fetching tasks for project');
         if (!projectData.fields['Project ID']) return;
         setIsLoadingTasks(true);
         try {
             const taskRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/tasks`);
+            console.log('taskRecords', taskRecords);
             setTasks(taskRecords.records || []);
         } catch (error) {
             console.error("Failed to fetch tasks for project:", error);
