@@ -49,7 +49,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
 
     useEffect(() => {
         // Socket.IO connection
-        socketRef.current = io("http://localhost:3001");
+        socketRef.current = io("https://ats-backend-805977745256.us-central1.run.app");
 
         socketRef.current.on('connect', () => {
             console.log('Connected to socket server');
@@ -85,7 +85,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
     const fetchChatMessages = useCallback(async () => {
         if (!task?.id) return;
         try {
-            const { records } = await apiFetch(`/records/filter/${task.fields.id}/task_chat`);
+            const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_chat`);
             console.log('Chat messages:', records);
             const sortedMessages = records.sort((a, b) => new Date(a.createdTime) - new Date(b.createdTime));
             setMessages(sortedMessages);
@@ -102,7 +102,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
         }
         try {
             console.log('Fetching form submissions for task:', task.id);
-            const { records } = await apiFetch(`/records/filter/${task.fields.id}/task_forms_submissions`);
+            const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_forms_submissions`);
             console.log('Form submissions:', records);
             setFormSubmissions(records);
             setInitialFormSubmissions(JSON.parse(JSON.stringify(records))); // Deep copy for change detection
@@ -119,7 +119,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
             return;
         }
         try {
-            const { records } = await apiFetch(`/records/filter/${task.fields.id}/task_checklists`);
+            const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_checklists`);
             const sortedRecords = records.sort((a, b) => a.fields.order_number - b.fields.order_number);
             const items = sortedRecords.map(r => ({ ...r.fields, id: r.id }));
             setChecklistItems(items);
@@ -211,7 +211,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
         setIsAttachmentsLoading(true);
         try {
             // apiFetch returns the parsed JSON directly
-            const data = await apiFetch(`/records/filter/${taskId}/task_attachments`);
+            const data = await ApiCaller(`/records/filter/${taskId}/task_attachments`);
             setAttachments(data.records || []);
         } catch (error) {
             console.error(error);
@@ -266,7 +266,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
             : `/upload/task_attachments/${attachment.id}/Attachments`;
 
         try {
-            await apiFetch(endpoint, {
+            await ApiCaller(endpoint, {
                 method: 'POST',
                 body: formData,
             });
@@ -309,7 +309,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
             }));
 
             if (checklistUpdates.length > 0) {
-                await apiFetch('/records', {
+                await ApiCaller('/records', {
                     method: 'PATCH',
                     body: JSON.stringify({
                         recordsToUpdate: checklistUpdates,
@@ -330,7 +330,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
             }, {});
 
             // apiFetch returns the parsed JSON directly
-            const updatedTask = await apiFetch(`/records/tasks/${task.id}`, {
+            const updatedTask = await ApiCaller(`/records/tasks/${task.id}`, {
                 method: 'PATCH',
                 body: JSON.stringify({ fields: updatableFields }),
             });
@@ -363,7 +363,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
 
 
             if (submissionUpdates.length > 0) {
-                await apiFetch('/records', {
+                await ApiCaller('/records', {
                     method: 'PATCH',
                     body: JSON.stringify({
                         recordsToUpdate: submissionUpdates,

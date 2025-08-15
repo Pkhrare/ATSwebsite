@@ -119,7 +119,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         setIsLoadingTasks(true);
         try {
             const taskRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/tasks`);
-            console.log('taskRecords', taskRecords);
+            console.log('taskRecords1 ', taskRecords);
             if (!Array.isArray(taskRecords?.records)) {
                 console.warn("Expected an array of task records but got:", taskRecords?.records);
             }
@@ -176,7 +176,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         setIsLoadingActivities(true);
         setChangedActivities({ toCreate: new Map(), toUpdate: new Map() });
         try {
-            const activityRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/activities`);
+            const activityRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/activities`);
             const fetchedActivities = Array.isArray(activityRecords?.records)
                 ? activityRecords.records
                 : Array.isArray(activityRecords)
