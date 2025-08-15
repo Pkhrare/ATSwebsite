@@ -12,11 +12,11 @@ import ApiCaller from '../apiCall/ApiCaller';
 
 // Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {
-    const response = await ApiCaller(endpoint, 
+    const response = await ApiCaller(endpoint,
         ...options
-    
+
     );
-   
+
 
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.indexOf("application/json") !== -1) {
@@ -120,7 +120,10 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         try {
             const taskRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/tasks`);
             console.log('taskRecords', taskRecords);
-            setTasks(taskRecords.records || []);
+            if (!Array.isArray(taskRecords?.records)) {
+                console.warn("Expected an array of task records but got:", taskRecords?.records);
+            }
+            setTasks(Array.isArray(taskRecords?.records) ? taskRecords.records : []);
         } catch (error) {
             console.error("Failed to fetch tasks for project:", error);
             setTasks([]);
@@ -146,7 +149,18 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             setIsLoadingActions(true);
             try {
                 const actionRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/actions`);
-                setActions(actionRecords.records || actionRecords);
+                if (!Array.isArray(actionRecords?.records) && !Array.isArray(actionRecords)) {
+                    console.warn("Unexpected actions API shape:", actionRecords);
+                }
+
+                setActions(
+                    Array.isArray(actionRecords?.records)
+                        ? actionRecords.records
+                        : Array.isArray(actionRecords)
+                            ? actionRecords
+                            : []
+                );
+
             } catch (error) {
                 console.error("Failed to fetch actions:", error);
                 setActions([]);
@@ -163,7 +177,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         setChangedActivities({ toCreate: new Map(), toUpdate: new Map() });
         try {
             const activityRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/activities`);
-            const fetchedActivities = activityRecords.records || [];
+            const fetchedActivities = Array.isArray(activityRecords?.records)
+                ? activityRecords.records
+                : Array.isArray(activityRecords)
+                    ? activityRecords
+                    : [];
 
             const fetchedActivitiesMap = new Map();
             fetchedActivities.forEach(act => {
