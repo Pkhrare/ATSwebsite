@@ -10,6 +10,13 @@ export default async function ApiCaller(endpoint, options = {}) {
             ...options.headers
         },
     });
-    if (!response.ok) throw new Error((await response.json()).error || 'API request failed');
-    return response.json();
+
+    if (!response.ok) {
+        const errorBody = await response.json().catch(() => ({}));
+        throw new Error(errorBody.error || 'API request failed');
+    }
+
+    const data = await response.json();
+    console.log(`API Response from ${endpoint}:`, data);
+    return data;
 }
