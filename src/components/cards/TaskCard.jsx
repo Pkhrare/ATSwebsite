@@ -513,7 +513,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                 <RichTextEditor
                                     key={task.id}
                                     isEditable={isEditingDescription && !isClientView}
-                                    initialContent={toLexical(task.fields.description)}
+                                    initialContent={descriptionRef.current}
                                     onChange={handleDescriptionChange}
                                 />
                             </div>
