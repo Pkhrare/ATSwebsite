@@ -6,9 +6,7 @@ import { format } from 'date-fns';
 import ApiCaller from '../apiCall/ApiCaller';   
 
 
-const apiFetch = async (endpoint, options = {}) => {
-    return await ApiCaller(endpoint, options);
-};
+
 
 async function globalProjectCounter() {
     try {
@@ -72,15 +70,10 @@ const AddProjectCard = ({ onClose, onProjectAdded }) => {
                 }
             };
             
-            const response = await ApiCaller(`/records`, {
+            await ApiCaller(`/records`, {
                 method: 'POST',
                 body: JSON.stringify({ recordsToCreate: [recordToCreate], tableName: 'projects' })
             });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.error || 'Failed to create project');
-            }
 
             onProjectAdded();
             onClose();
