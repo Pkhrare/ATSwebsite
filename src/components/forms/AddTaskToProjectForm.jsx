@@ -108,17 +108,11 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 tableName: 'tasks'
             };
             
-            const taskResponse = await ApiCaller('/records', {
+            const taskResult = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify(taskRequestBody),
             });
             
-            if (!taskResponse.ok) {
-                const errorData = await taskResponse.json().catch(() => ({}));
-                throw new Error(`Failed to create task: ${taskResponse.statusText} (${JSON.stringify(errorData)})`);
-            }
-            
-            const taskResult = await taskResponse.json();
             const newTaskId = taskResult.records[0].id;
 
             // Step 2: Create attachments if any descriptions are provided
@@ -135,17 +129,14 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                     recordsToCreate: attachmentsToCreate,
                     tableName: 'task_attachments',
                 };
-
-                const attachmentsResponse = await ApiCaller('/records', {
-                    method: 'POST',
-                    body: JSON.stringify(attachmentsRequestBody),
-                });
-
-                if (!attachmentsResponse.ok) {
-                    // If attachments fail, we don't block the whole process.
-                    // We can log this and maybe notify the user that attachments failed.
-                    console.error("Task created, but failed to add attachments.");
-                    // We can set a non-blocking error message.
+                
+                try {
+                    await ApiCaller('/records', {
+                        method: 'POST',
+                        body: JSON.stringify(attachmentsRequestBody),
+                    });
+                } catch (attachmentError) {
+                    console.error("Task created, but failed to add attachments:", attachmentError);
                     setError("Task created, but attachments failed. You can add them later via 'Edit Task'.");
                 }
             }
@@ -167,13 +158,13 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                     tableName: 'task_checklists'
                 };
 
-                const checklistResponse = await ApiCaller('/records', {
-                    method: 'POST',
-                    body: JSON.stringify(checklistRequestBody)
-                });
-
-                if (!checklistResponse.ok) {
-                    console.error("Task created, but failed to add checklist items.");
+                try {
+                    await ApiCaller('/records', {
+                        method: 'POST',
+                        body: JSON.stringify(checklistRequestBody)
+                    });
+                } catch (checklistError) {
+                    console.error("Task created, but failed to add checklist items:", checklistError);
                     setError("Task created, but checklist items failed. You can add them later via 'Edit Task'.");
                 }
             }
@@ -191,7 +182,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                     }),
                 });
 
-                const { records: formFields } = await formFieldsResponse.json();
+                const formFields = formFieldsResponse.records;
                 
                 if (formFields && formFields.length > 0) {
                     const recordsToCreate = formFields.map(field => ({
@@ -211,7 +202,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                             tableName: 'task_forms_submissions'
                         })
                     });
-                    const { records: newSubmissions } = await submissionResult.json();
+                    const newSubmissions = submissionResult.records;
     
                     // Link submissions back to the task
                     if (newSubmissions && newSubmissions.length > 0) {
@@ -228,8 +219,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
             }
             
             // Re-fetch the task to get the updated record with submissions
-            const finalTaskResponse = await ApiCaller(`/records/tasks/${newTaskId}`);
-            const finalTask = await finalTaskResponse;
+            const finalTask = await ApiCaller(`/records/tasks/${newTaskId}`);
 
             if (onTaskAdded) {
                 onTaskAdded(finalTask);
@@ -274,7 +264,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                                 <RichTextEditor 
                                     isEditable={true} 
-                                    initialContent={null} 
+                                    initialContent='{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
                                     onChange={(state) => descriptionRef.current = state} 
                                 />
                             </div>
