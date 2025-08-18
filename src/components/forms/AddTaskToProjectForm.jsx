@@ -172,7 +172,9 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
             }
 
             // Step 4: Create empty form submission if a form is attached
+            console.log("attachedForm", attachedForm);
             if (attachedForm) {
+                console.log("attachedForm", attachedForm);
                 const submissionId = uuidv4();
                 
                 const fieldIds = attachedForm.fields.task_forms_fields;
