@@ -185,7 +185,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                     const formFieldsResponse = await ApiCaller('/records/by-ids', {
                         method: 'POST',
                         body: JSON.stringify({ 
-                            recordIds: [fieldIds], 
+                            recordIds: fieldIds, 
                             tableName: 'task_forms_fields' 
                         }),
                     });
