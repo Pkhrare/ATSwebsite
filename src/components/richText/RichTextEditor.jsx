@@ -27,6 +27,34 @@ import {CodeNode} from '@lexical/code';
 import {HashtagNode} from '@lexical/hashtag';
 import {AutoLinkNode, LinkNode} from '@lexical/link';
 
+// New component to handle link clicks in read-only mode.
+function ClickableLinkPlugin({ isEditable }) {
+    const [editor] = useLexicalComposerContext();
+    useEffect(() => {
+        if (isEditable) {
+            return;
+        }
+
+        const onClick = (event) => {
+            const target = event.target;
+            if (target instanceof HTMLAnchorElement) {
+                event.preventDefault();
+                window.open(target.href, '_blank', 'noopener noreferrer');
+            }
+        };
+
+        const rootElement = editor.getRootElement();
+        if (rootElement) {
+            rootElement.addEventListener('click', onClick);
+            return () => {
+                rootElement.removeEventListener('click', onClick);
+            };
+        }
+    }, [editor, isEditable]);
+
+    return null;
+}
+
 // --- Toolbar Plugin ---
 function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -233,6 +261,7 @@ function RichTextEditor({ isEditable, initialContent, onChange }) {
                 <HashtagPlugin />
                 <AutoLinkPlugin matchers={MATCHERS} />
                 <LinkPlugin />
+                <ClickableLinkPlugin isEditable={isEditable} />
                 <SetEditablePlugin isEditable={isEditable} />
                 <OnChangePlugin onChange={onChange} />
                 <InitialContentPlugin initialContent={initialContent} />
