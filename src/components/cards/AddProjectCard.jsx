@@ -3,7 +3,8 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { dropdownFields, validateRow, safeNewDate } from '../../utils/validations';
 import { format } from 'date-fns';
-import ApiCaller from '../apiCall/ApiCaller';
+import { ApiCaller } from '../apiCall/ApiCaller';   
+
 
 const apiFetch = async (endpoint, options = {}) => {
     return await ApiCaller(endpoint, options);
@@ -11,7 +12,7 @@ const apiFetch = async (endpoint, options = {}) => {
 
 async function globalProjectCounter() {
     try {
-        const records = await apiFetch(`/records/counter/dummy`, {
+        const records = await ApiCaller(`/records/counter/dummy`, {
             method: 'GET',
         });
         return records;
@@ -30,7 +31,7 @@ async function generateProjectID(state, projectType, startDate) {
     if (!counter_obj) return '';
 
     const counter = counter_obj.fields['Counter'];
-    await apiFetch(`/records/counter/dummy`, {
+    await ApiCaller(`/records/counter/dummy`, {
         method: 'PATCH',
         body: JSON.stringify({ fields: { 'Counter': counter + 1 } }),
     });
@@ -71,7 +72,7 @@ const AddProjectCard = ({ onClose, onProjectAdded }) => {
                 }
             };
             
-            const response = await apiFetch(`/records`, {
+            const response = await ApiCaller(`/records`, {
                 method: 'POST',
                 body: JSON.stringify({ recordsToCreate: [recordToCreate], tableName: 'projects' })
             });
