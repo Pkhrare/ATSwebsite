@@ -2,13 +2,17 @@ const API_URL = 'https://ats-backend-805977745256.us-central1.run.app/api';
 
 export default async function ApiCaller(endpoint, options = {}) {
     const token = process.env.BEARER_TOKEN;
+    const headers = {
+        "Authorization": `Bearer ${token}`,
+        ...options.headers
+    };
+
+    if (!(options.body instanceof FormData)) {
+        headers['Content-Type'] = 'application/json';
+    }
     const response = await fetch(`${API_URL}${endpoint}`, {
         ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            "Authorization": `Bearer ${token}`,
-            ...options.headers
-        },
+        headers
     });
 
     if (!response.ok) {

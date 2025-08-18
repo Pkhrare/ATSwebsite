@@ -12,17 +12,8 @@ import ApiCaller from '../apiCall/ApiCaller';
 
 // Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {
-    const response = await ApiCaller(endpoint,
-        options
-
-    );
-
-
-    const contentType = response.headers.get("content-type");
-    if (contentType && contentType.indexOf("application/json") !== -1) {
-        return response.json();
-    }
-    return response.text();
+    // Directly return the promise from ApiCaller, which resolves to the JSON data
+    return ApiCaller(endpoint, options);
 };
 
 
