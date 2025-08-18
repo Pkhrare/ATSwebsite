@@ -14,6 +14,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const descriptionRef = useRef(null);
+    const [initialDescription] = useState('{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}');
     const [attachmentDescriptions, setAttachmentDescriptions] = useState(['']);
     const [showAttachmentsSection, setShowAttachmentsSection] = useState(false);
     const [isChecklistFormOpen, setChecklistFormOpen] = useState(false);
@@ -174,47 +175,52 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
             if (attachedForm) {
                 const submissionId = uuidv4();
                 
-                // Fetch form fields using their IDs from the attachedForm object
-                const formFieldsResponse = await ApiCaller('/records/by-ids', {
-                    method: 'POST',
-                    body: JSON.stringify({ 
-                        recordIds: [attachedForm.fields.task_forms_fields], 
-                        tableName: 'task_forms_fields' 
-                    }),
-                });
+                const fieldIds = attachedForm.fields.task_forms_fields;
 
-                const formFields = formFieldsResponse.records;
-                
-                if (formFields && formFields.length > 0) {
-                    const recordsToCreate = formFields.map(field => ({
-                        fields: {
-                            submission_id: submissionId,
-                            form: [attachedForm.id],
-                            field: [field.id],
-                            task_id: [newTaskId],
-                            value: '--EMPTY--', // Placeholder value
-                        }
-                    }));
-    
-                    const submissionResult = await ApiCaller('/records', {
+                // Ensure we have a valid array of field IDs before proceeding
+                if (Array.isArray(fieldIds) && fieldIds.length > 0) {
+                    // Fetch form fields using their IDs from the attachedForm object
+                    const formFieldsResponse = await ApiCaller('/records/by-ids', {
                         method: 'POST',
-                        body: JSON.stringify({
-                            recordsToCreate,
-                            tableName: 'task_forms_submissions'
-                        })
+                        body: JSON.stringify({ 
+                            recordIds: [fieldIds], 
+                            tableName: 'task_forms_fields' 
+                        }),
                     });
-                    const newSubmissions = submissionResult.records;
-    
-                    // Link submissions back to the task
-                    if (newSubmissions && newSubmissions.length > 0) {
-                        await ApiCaller(`/records/tasks/${newTaskId}`, {
-                            method: 'PATCH',
+
+                    const formFields = formFieldsResponse.records;
+                    
+                    if (formFields && formFields.length > 0) {
+                        const recordsToCreate = formFields.map(field => ({
+                            fields: {
+                                submission_id: submissionId,
+                                form: [attachedForm.id],
+                                field: [field.id],
+                                task_id: [newTaskId],
+                                value: '--EMPTY--', // Placeholder value
+                            }
+                        }));
+        
+                        const submissionResult = await ApiCaller('/records', {
+                            method: 'POST',
                             body: JSON.stringify({
-                                fields: {
-                                    task_forms_submissions: newSubmissions.map(s => s.id)
-                                }
+                                recordsToCreate,
+                                tableName: 'task_forms_submissions'
                             })
                         });
+                        const newSubmissions = submissionResult.records;
+        
+                        // Link submissions back to the task
+                        if (newSubmissions && newSubmissions.length > 0) {
+                            await ApiCaller(`/records/tasks/${newTaskId}`, {
+                                method: 'PATCH',
+                                body: JSON.stringify({
+                                    fields: {
+                                        task_forms_submissions: newSubmissions.map(s => s.id)
+                                    }
+                                })
+                            });
+                        }
                     }
                 }
             }
@@ -265,7 +271,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                                 <RichTextEditor 
                                     isEditable={true} 
-                                    initialContent='{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+                                    initialContent={initialDescription}
                                     onChange={(state) => descriptionRef.current = state} 
                                 />
                             </div>
