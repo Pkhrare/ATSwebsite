@@ -94,26 +94,28 @@ function ToolbarPlugin() {
   }, [editor, updateToolbar]);
 
   const insertLink = useCallback(() => {
-      if (!isLink) {
-          editor.read(() => {
-              const selection = $getSelection();
-              if ($isRangeSelection(selection)) {
-                  const selectedText = selection.getTextContent();
-                  if (!selectedText || selectedText.trim() === '') {
-                      alert('Please select some text first, then click the Link button to make it clickable.');
-                      return;
-                  }
-                  const url = prompt('Enter the URL:');
-                  if (url) {
-                      editor.dispatchCommand(TOGGLE_LINK_COMMAND, url);
-                  }
-              } else {
-                  alert('Please select some text first, then click the Link button to make it clickable.');
-              }
-          });
-      } else {
-          editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
-      }
+    if (isLink) {
+        editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+        return;
+    }
+
+    let isTextSelected = false;
+    editor.getEditorState().read(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection) && selection.getTextContent().trim() !== '') {
+            isTextSelected = true;
+        }
+    });
+
+    if (!isTextSelected) {
+        alert('Please select some text first, then click the Link button to make it clickable.');
+        return;
+    }
+
+    const url = prompt('Enter the URL:');
+    if (url) {
+        editor.dispatchCommand(TOGGLE_LINK_COMMAND, url);
+    }
   }, [editor, isLink]);
 
   return (
