@@ -3,11 +3,7 @@ import ApiCaller from '../apiCall/ApiCaller';
 
 // Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {
-  const response = await ApiCaller(endpoint, options);
-  if (!response.ok) {
-    throw new Error(response.error || 'API request failed');
-  }
-  return response;
+  return ApiCaller(endpoint, options);
 };
 
 const CloseIcon = () => (
