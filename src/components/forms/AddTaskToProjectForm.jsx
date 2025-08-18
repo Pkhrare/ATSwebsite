@@ -93,10 +93,11 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
         
         try {
             // Step 1: Create the task
+            const descriptionState = descriptionRef.current || '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
             const taskData = { 
                 ...formData, 
                 progress_bar: 0,
-                description: fromLexical(descriptionRef.current),
+                description: fromLexical(descriptionState),
             };
 
             if (taskData.project_id) {
@@ -129,7 +130,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                     recordsToCreate: attachmentsToCreate,
                     tableName: 'task_attachments',
                 };
-                
+
                 try {
                     await ApiCaller('/records', {
                         method: 'POST',
