@@ -31,25 +31,33 @@ import {AutoLinkNode, LinkNode} from '@lexical/link';
 function ClickableLinkPlugin({ isEditable }) {
     const [editor] = useLexicalComposerContext();
     useEffect(() => {
-        if (isEditable) {
-            return;
-        }
+        const rootElement = editor.getRootElement();
+        if (!rootElement) return;
 
-        const onClick = (event) => {
-            const target = event.target;
-            if (target instanceof HTMLAnchorElement) {
-                event.preventDefault();
-                window.open(target.href, '_blank', 'noopener noreferrer');
-            }
+        // Apply styles and handle clicks
+        const applyLinkBehavior = () => {
+            const links = rootElement.querySelectorAll('a');
+            links.forEach(link => {
+                link.classList.add('text-blue-600', 'underline', 'cursor-pointer');
+                if (!isEditable) {
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                }
+            });
         };
 
-        const rootElement = editor.getRootElement();
-        if (rootElement) {
-            rootElement.addEventListener('click', onClick);
-            return () => {
-                rootElement.removeEventListener('click', onClick);
-            };
-        }
+        // Initial application
+        applyLinkBehavior();
+
+        // Re-apply on updates
+        const unregister = editor.registerUpdateListener(() => {
+            applyLinkBehavior();
+        });
+
+        return () => {
+            unregister();
+        };
+
     }, [editor, isEditable]);
 
     return null;
