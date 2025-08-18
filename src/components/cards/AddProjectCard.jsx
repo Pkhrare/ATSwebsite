@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { dropdownFields, validateRow, safeNewDate } from '../../utils/validations';
 import { format } from 'date-fns';
-import { ApiCaller } from '../apiCall/ApiCaller';   
+import ApiCaller from '../apiCall/ApiCaller';   
 
 
 const apiFetch = async (endpoint, options = {}) => {
