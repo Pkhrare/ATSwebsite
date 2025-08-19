@@ -156,3 +156,12 @@ export const safeNewDate = (dateValue) => {
 
     return d;
 };
+
+export const fromLexical = (lexicalJSON) => {
+  try {
+      const parsed = JSON.parse(lexicalJSON);
+      return parsed.root.children.map(p => p.children.map(c => c.text).join('')).join('\n');
+  } catch (e) {
+      return lexicalJSON;
+  }
+};

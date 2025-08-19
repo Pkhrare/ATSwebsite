@@ -8,6 +8,9 @@ import { parse, format, isValid } from 'date-fns';
 import { dropdownFields, DEFAULT_ACTIVITIES, safeNewDate } from '../../utils/validations';
 import { useAuth } from '../../utils/AuthContext';
 import ApiCaller from '../apiCall/ApiCaller';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { toLexical, fromLexical } from '../../utils/lexicalUtils';
+import RichTextEditor from '../richText/RichTextEditor';
 
 
 // Helper function to fetch from the backend API
@@ -114,7 +117,10 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             if (!Array.isArray(taskRecords?.records)) {
                 console.warn("Expected an array of task records but got:", taskRecords?.records);
             }
-            setTasks(Array.isArray(taskRecords?.records) ? taskRecords.records : []);
+            const fetchedTasks = Array.isArray(taskRecords?.records) ? taskRecords.records : [];
+            // Sort tasks by the 'order' field. Tasks without an order will be at the end.
+            const sortedTasks = fetchedTasks.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
+            setTasks(sortedTasks);
         } catch (error) {
             console.error("Failed to fetch tasks for project:", error);
             setTasks([]);
@@ -538,6 +544,43 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
+    const handleDragEnd = async (result) => {
+        const { destination, source } = result;
+        if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) {
+            return;
+        }
+
+        const newTasks = Array.from(tasks);
+        const [reorderedItem] = newTasks.splice(source.index, 1);
+        newTasks.splice(destination.index, 0, reorderedItem);
+
+        // Update state immediately for a responsive UI
+        setTasks(newTasks);
+
+        // Prepare and send the updates to the backend
+        const recordsToUpdate = newTasks.map((task, index) => ({
+            id: task.id,
+            fields: {
+                order: index // Update the order field based on the new position
+            }
+        }));
+
+        try {
+            await apiFetch('/records', {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    recordsToUpdate,
+                    tableName: 'tasks'
+                })
+            });
+        } catch (error) {
+            console.error("Failed to save task order:", error);
+            alert("Failed to save the new task order. Please refresh the page.");
+            // If the API call fails, revert the state to the original order
+            setTasks(tasks);
+        }
+    };
+
     const handleCollaboratorAdded = (newCollaborator) => {
         const updatedProjectData = {
             ...projectData,
@@ -754,50 +797,67 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             {isLoadingTasks ? (
                                 <p className="text-slate-500">Loading tasks...</p>
                             ) : tasks.length > 0 ? (
-                                <ul className="divide-y divide-slate-200">
-                                    {tasks.map(task => (
-                                        <li key={task.id} onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }} className="p-4 hover:bg-slate-50 cursor-pointer">
-                                            <div className="flex items-start gap-4">
-                                                <div className="relative w-12 h-12 flex-shrink-0">
-                                                    <svg className="w-full h-full" viewBox="0 0 36 36">
-                                                        <circle cx="18" cy="18" r="16" fill="none" className="stroke-slate-100" strokeWidth="3" />
-                                                        <circle cx="18" cy="18" r="16" fill="none" className="stroke-blue-500" strokeWidth="3" strokeDasharray="100" strokeDashoffset={100 - ((task.fields.progress_bar || 0) * 100)} strokeLinecap="round" transform="rotate(-90 18 18)" />
-                                                        <text x="50%" y="50%" dy=".3em" textAnchor="middle" className="text-xs font-medium fill-slate-700">{Math.round((task.fields.progress_bar || 0) * 100)}%</text>
-                                                    </svg>
-                                                </div>
-                                                <div className="flex-1">
-                                                    <div className="flex justify-between items-start mb-2">
-                                                        <h4 className="text-sm font-medium text-slate-800">{task.fields.task_title}</h4>
-                                                        <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(task.fields.task_status)}`}>{task.fields.task_status}</span>
-                                                    </div>
-                                                    <div className="flex gap-4 text-xs text-slate-500 mb-2">
-                                                        <span><span className="font-medium">Start:</span> {formatDate(task.fields.start_date)}</span>
-                                                        <span><span className="font-medium">Due:</span> {formatDate(task.fields.due_date)}</span>
-                                                    </div>
-                                                    {task.fields.checklist && (
-                                                        <div className="mt-2">
-                                                            <ul className="space-y-1">
-                                                                {parseChecklist(task.fields.checklist).map((item, index) => (
-                                                                    <li key={index} className="flex items-center text-xs text-slate-600">
-                                                                        <svg className="w-3 h-3 mr-1.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                                                        {item}
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    )}
-                                                    {task.fields.tags && (
-                                                        <div className="mt-2 flex flex-wrap gap-1">
-                                                            {task.fields.tags.split(',').map((tag, index) => (
-                                                                <span key={index} className="px-2 py-0.5 bg-slate-100 text-slate-700 text-xs rounded-full">{tag.trim()}</span>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
+                                <DragDropContext onDragEnd={handleDragEnd}>
+                                    <Droppable droppableId="tasks">
+                                        {(provided) => (
+                                            <ul className="divide-y divide-slate-200" {...provided.droppableProps} ref={provided.innerRef}>
+                                                {tasks.map((task, index) => (
+                                                    <Draggable key={task.id} draggableId={task.id} index={index}>
+                                                        {(provided) => (
+                                                            <li
+                                                                ref={provided.innerRef}
+                                                                {...provided.draggableProps}
+                                                                {...provided.dragHandleProps}
+                                                                onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                                className="p-4 hover:bg-slate-50 cursor-pointer bg-white"
+                                                            >
+                                                                <div className="flex items-start gap-4">
+                                                                    <div className="relative w-12 h-12 flex-shrink-0">
+                                                                        <svg className="w-full h-full" viewBox="0 0 36 36">
+                                                                            <circle cx="18" cy="18" r="16" fill="none" className="stroke-slate-100" strokeWidth="3" />
+                                                                            <circle cx="18" cy="18" r="16" fill="none" className="stroke-blue-500" strokeWidth="3" strokeDasharray="100" strokeDashoffset={100 - ((task.fields.progress_bar || 0) * 100)} strokeLinecap="round" transform="rotate(-90 18 18)" />
+                                                                            <text x="50%" y="50%" dy=".3em" textAnchor="middle" className="text-xs font-medium fill-slate-700">{Math.round((task.fields.progress_bar || 0) * 100)}%</text>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div className="flex-1">
+                                                                        <div className="flex justify-between items-start mb-2">
+                                                                            <h4 className="text-sm font-medium text-slate-800">{task.fields.task_title}</h4>
+                                                                            <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(task.fields.task_status)}`}>{task.fields.task_status}</span>
+                                                                        </div>
+                                                                        <div className="flex gap-4 text-xs text-slate-500 mb-2">
+                                                                            <span><span className="font-medium">Start:</span> {formatDate(task.fields.start_date)}</span>
+                                                                            <span><span className="font-medium">Due:</span> {formatDate(task.fields.due_date)}</span>
+                                                                        </div>
+                                                                        {task.fields.checklist && (
+                                                                            <div className="mt-2">
+                                                                                <ul className="space-y-1">
+                                                                                    {parseChecklist(task.fields.checklist).map((item, index) => (
+                                                                                        <li key={index} className="flex items-center text-xs text-slate-600">
+                                                                                            <svg className="w-3 h-3 mr-1.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                                                                            {item}
+                                                                                        </li>
+                                                                                    ))}
+                                                                                </ul>
+                                                                            </div>
+                                                                        )}
+                                                                        {task.fields.tags && (
+                                                                            <div className="mt-2 flex flex-wrap gap-1">
+                                                                                {task.fields.tags.split(',').map((tag, index) => (
+                                                                                    <span key={index} className="px-2 py-0.5 bg-slate-100 text-slate-700 text-xs rounded-full">{tag.trim()}</span>
+                                                                                ))}
+                                                                            </div>
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        )}
+                                                    </Draggable>
+                                                ))}
+                                                {provided.placeholder}
+                                            </ul>
+                                        )}
+                                    </Droppable>
+                                </DragDropContext>
                             ) : (
                                 <p className="text-slate-500">No tasks for this project yet.</p>
                             )}
