@@ -42,10 +42,11 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
         switch (name) {
             case 'task_title':
                 return value.trim() ? '' : 'Task title is required';
-            // case 'due_date':
-
-                // if (new Date(value) < new Date(formData.start_date)) return 'Due date must be after start date';
-                // return '';
+            case 'due_date':
+                if (value){
+                    if (new Date(value) < new Date(formData.start_date)) return 'Due date must be after start date';
+                }
+                return '';
             default:
                 return '';
         }
