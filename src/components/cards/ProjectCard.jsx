@@ -881,6 +881,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                             <option value="Not started">Not started</option>
                                                             <option value="In progress">In progress</option>
                                                             <option value="Finalized">Finalized</option>
+                                                            <option value="Not Applicable">Not Applicable</option>
                                                         </select>
                                                     ) : (
                                                         <StatusBadge status={activity.fields.status} />

@@ -279,6 +279,31 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
         }
     };
 
+    const handleDeleteTask = async () => {
+        // Step 1: Confirm the user's intent to delete.
+        if (!window.confirm('Are you sure you want to delete this task? This action cannot be undone.')) {
+            return;
+        }
+
+        try {
+            // Step 2: Call the correct endpoint with the record ID in the body.
+            await ApiCaller(`/records/tasks`, {
+                method: 'DELETE',
+                body: JSON.stringify({
+                    recordIds: [task.id] // The backend expects an array of IDs.
+                })
+            });
+
+            // Step 3: Handle success *only* if the API call succeeds.
+            // alert('Task deleted successfully!'); // Using alert since the component will close.
+            onTaskUpdate(); // This will re-fetch the task list and close the card.
+
+        } catch (err) {
+            setError(err.message || 'Failed to delete task');
+            alert(`Error: ${err.message || 'Failed to delete task'}`); // Inform the user of the failure.
+        }
+    };
+
     const handleChecklistItemChange = (itemId, completed) => {
         setChecklistItems(prev =>
             prev.map(item => (item.id === itemId ? { ...item, completed } : item))
@@ -669,9 +694,21 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Tags</label>
                                     <input type="text" value={editedTask.tags || ''} onChange={(e) => handleInputChange('tags', e.target.value)} className="w-full px-3 py-2 border rounded-md text-black text-sm" placeholder="Tag1,Tag2,..." />
                                 </div>
-                                <div className="mt-6 pt-6 border-t flex justify-end">
-                                    <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-3 hover:bg-gray-300 font-medium">Cancel</button>
-                                    <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-300 font-medium" disabled={isLoading}>{isLoading ? 'Updating...' : 'Update Task'}</button>
+                                <div className="mt-6 pt-6 border-t flex justify-between items-center">
+                                    {/* Destructive action on the left */}
+                                    <button 
+                                        type="button" 
+                                        onClick={handleDeleteTask} // You would need to create this function
+                                        className="px-4 py-2 bg-red-600 text-white font-medium text-sm rounded-lg hover:bg-red-700"
+                                    >
+                                        Delete Task
+                                    </button>
+
+                                    {/* Primary actions on the right */}
+                                    <div>
+                                        <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-3 hover:bg-gray-300 font-medium">Cancel</button>
+                                        <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-300 font-medium" disabled={isLoading}>{isLoading ? 'Updating...' : 'Update Task'}</button>
+                                    </div>
                                 </div>
                             </div>
 
