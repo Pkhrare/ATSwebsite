@@ -43,7 +43,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
             case 'task_title':
                 return value.trim() ? '' : 'Task title is required';
             case 'due_date':
-                if (!value) return 'Due date is required';
+                            
                 if (new Date(value) < new Date(formData.start_date)) return 'Due date must be after start date';
                 return '';
             default:
@@ -360,8 +360,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Due Date*</label>
-                                <input type="date" value={formData.due_date} onChange={(e) => handleInputChange('due_date', e.target.value)} className={`w-full px-3 py-2 border ${formErrors.due_date ? 'border-red-500' : 'border-gray-300'} rounded-md text-black`} min={formData.start_date} required />
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+                                <input type="date" value={formData.due_date} onChange={(e) => handleInputChange('due_date', e.target.value)} className={`w-full px-3 py-2 border ${formErrors.due_date ? 'border-red-500' : 'border-gray-300'} rounded-md text-black`} min={formData.start_date}   />
                                 {formErrors.due_date && <p className="mt-1 text-sm text-red-600">{formErrors.due_date}</p>}
                             </div>
 
