@@ -1003,6 +1003,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         dateFormat="MM-dd-yyyy"
                                         className="w-full p-2 border border-slate-300 rounded-md text-sm text-slate-500"
                                         placeholderText="Estimated completion date"
+                                        withPortal
                                     />
                                     <div className="flex justify-end gap-2">
                                         <button onClick={() => setIsAddingAction(false)} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-3 py-1.5 rounded-md">Cancel</button>
