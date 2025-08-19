@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { dropdownFields } from '../../utils/validations';
+import { dropdownFields, safeNewDate } from '../../utils/validations';
 import RichTextEditor from '../richText/RichTextEditor';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import AttachChecklistsForm from './taskActionForms/AttachChecklistsForm';
@@ -7,6 +7,9 @@ import { Draggable, Droppable, DragDropContext } from '@hello-pangea/dnd';
 import AttachTaskformsForm from './taskActionForms/AttachTaskformsForm';
 import { v4 as uuidv4 } from 'uuid';
 import ApiCaller from '../apiCall/ApiCaller';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from 'date-fns';
 
 
 
@@ -367,7 +370,14 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
-                                <input type="date" value={formData.due_date} onChange={(e) => handleInputChange('due_date', e.target.value)} className={`w-full px-3 py-2 border ${formErrors.due_date ? 'border-red-500' : 'border-gray-300'} rounded-md text-black`} min={formData.start_date}   />
+                                <DatePicker
+                                    selected={safeNewDate(formData.due_date)}
+                                    onChange={(date) => handleInputChange('due_date', date ? format(date, 'yyyy-MM-dd') : '')}
+                                    dateFormat="yyyy-MM-dd"
+                                    minDate={safeNewDate(formData.start_date)}
+                                    className={`w-full px-3 py-2 border ${formErrors.due_date ? 'border-red-500' : 'border-gray-300'} rounded-md text-black`}
+                                    placeholderText="Select a due date"
+                                />
                                 {formErrors.due_date && <p className="mt-1 text-sm text-red-600">{formErrors.due_date}</p>}
                             </div>
 

@@ -685,13 +685,13 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                             <div className="flex justify-between items-center mb-2">
                                 <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
-                                {!isEditingNotes && (
+                                {userRole !== 'client' && !isEditingNotes && (
                                     <button onClick={() => setIsEditingNotes(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
                                         <EditIcon />
                                     </button>
                                 )}
                             </div>
-                            {isEditingNotes ? (
+                            {isEditingNotes && userRole !== 'client' ? (
                                 <div className="space-y-3">
                                     <textarea
                                         value={notesContent}
@@ -997,7 +997,13 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             {isAddingAction && (
                                 <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4 space-y-3">
                                     <input type="text" placeholder="Action description..." value={newAction.description} onChange={(e) => handleNewActionInputChange('description', e.target.value)} className="w-full bg-white p-1 border border-slate-300 rounded-md text-sm text-slate-800" />
-                                    <input type="date" placeholder="Estimated completion date" value={newAction.estCompletion} onChange={(e) => handleNewActionInputChange('estCompletion', e.target.value)} className="w-full p-2 border border-slate-300 rounded-md text-sm text-slate-500" />
+                                    <DatePicker
+                                        selected={safeNewDate(newAction.estCompletion)}
+                                        onChange={(date) => handleNewActionInputChange('estCompletion', date ? format(date, 'yyyy-MM-dd') : '')}
+                                        dateFormat="MM-dd-yyyy"
+                                        className="w-full p-2 border border-slate-300 rounded-md text-sm text-slate-500"
+                                        placeholderText="Estimated completion date"
+                                    />
                                     <div className="flex justify-end gap-2">
                                         <button onClick={() => setIsAddingAction(false)} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-3 py-1.5 rounded-md">Cancel</button>
                                         <button onClick={handleSaveNewAction} className="text-sm text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-md">Save</button>
