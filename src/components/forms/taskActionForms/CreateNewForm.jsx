@@ -64,17 +64,10 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
                 tableName: 'task_forms'
             };
 
-            const formResponse = await ApiCaller('/records', {
+            const formResult = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify(formRequestBody),
             });
-
-            if (!formResponse.ok) {
-                const errorData = await formResponse.json().catch(() => ({}));
-                throw new Error(`Failed to create form: ${errorData.error || formResponse.statusText}`);
-            }
-
-            const formResult = await formResponse.json();
             const newFormId = formResult.records[0].id;
 
             // Step 2: Create the form fields
@@ -91,17 +84,10 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
                 tableName: 'task_forms_fields'
             };
 
-            const fieldsResponse = await ApiCaller('/records', {
+            const fieldsResult = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify(fieldsRequestBody),
             });
-
-            if (!fieldsResponse.ok) {
-                const errorData = await fieldsResponse.json().catch(() => ({}));
-                throw new Error(`Failed to create form fields: ${errorData.error || fieldsResponse.statusText}`);
-            }
-
-            const fieldsResult = await fieldsResponse.json();
             const fieldIds = fieldsResult.records.map(record => record.id);
 
             // Step 3: Update the form with the field IDs
@@ -115,8 +101,7 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
             });
 
             // Step 4: Fetch the complete form with fields
-            const completeFormResponse = await ApiCaller(`/records/task_forms/${newFormId}`);
-            const completeForm = await completeFormResponse.json();
+            const completeForm = await ApiCaller(`/records/task_forms/${newFormId}`);
 
             if (onFormCreated) {
                 onFormCreated(completeForm);
