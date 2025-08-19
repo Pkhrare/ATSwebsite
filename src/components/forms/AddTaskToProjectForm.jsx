@@ -102,6 +102,11 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 description: fromLexical(descriptionState),
             };
 
+            // If due_date is empty, remove it to avoid sending an invalid value to the API.
+            if (!taskData.due_date) {
+                delete taskData.due_date;
+            }
+
             if (taskData.project_id) {
                 taskData.project_id = [taskData.project_id];
             }
