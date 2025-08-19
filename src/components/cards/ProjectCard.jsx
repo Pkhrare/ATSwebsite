@@ -685,13 +685,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                             <div className="flex justify-between items-center mb-2">
                                 <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
-                                {userRole !== 'client' && !isEditingNotes && (
-                                    <button onClick={() => setIsEditingNotes(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
-                                        <EditIcon />
-                                    </button>
-                                )}
                             </div>
-                            {isEditingNotes && userRole !== 'client' ? (
+                            {isEditingNotes ? (
                                 <div className="space-y-3">
                                     <textarea
                                         value={notesContent}

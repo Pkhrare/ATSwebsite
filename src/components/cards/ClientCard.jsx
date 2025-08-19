@@ -221,20 +221,10 @@ export default function ClientCard() {
                             <section className="bg-white p-6 rounded-lg shadow-md">
                                 <div className="flex justify-between items-center mb-2">
                                     <h2 className="text-xl font-semibold text-slate-700 text-black">Project Notes</h2>
-                                    <button onClick={() => setIsEditingNotes(!isEditingNotes)} className="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-2 text-black">
-                                        <EditIcon /> {isEditingNotes ? 'Cancel' : 'Edit'}
-                                    </button>
                                 </div>
-                                {isEditingNotes ? (
-                                    <>
-                                        <RichTextEditor key={projectData.id} isEditable={true} initialContent={notesRef.current} onChange={(state) => notesRef.current = state} />
-                                        <button onClick={handleSaveNotes} className="mt-4 px-4 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700">Save Notes</button>
-                                    </>
-                                ) : (
-                                    <div className="bg-slate-50 p-4 rounded border whitespace-pre-wrap text-sm text-black">
-                                        {fromLexical(notesRef.current) || 'No notes yet.'}
-                                    </div>
-                                )}
+                                <div className="bg-slate-50 p-4 rounded border whitespace-pre-wrap text-sm text-black">
+                                    {fromLexical(notesRef.current) || 'No notes yet.'}
+                                </div>
                             </section>
 
                             <section className="bg-white p-6 rounded-lg shadow-md">
