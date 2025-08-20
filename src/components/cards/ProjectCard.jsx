@@ -108,42 +108,50 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
 
     const fetchTasksForProject = useCallback(async () => {
-        if (!projectData.fields['Project ID']) return;
+        if (!projectData?.id) return;
         setIsLoadingTasks(true);
         try {
-            const apiResponse = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/tasks`);
-            const allTasks = Array.isArray(apiResponse?.records) ? apiResponse.records : [];
+            // Step 1: Fetch all groups and all tasks for the project in parallel, using the project's record ID for both.
+            const [groupsResponse, tasksResponse] = await Promise.all([
+                ApiCaller(`/records/filter/${projectData.id}/task_groups`),
+                ApiCaller(`/records/filter/${projectData.id}/tasks`)
+            ]);
 
+            const allGroups = Array.isArray(groupsResponse?.records) ? groupsResponse.records : [];
+            const allTasks = Array.isArray(tasksResponse?.records) ? tasksResponse.records : [];
+
+            // Step 2: Initialize the groupsMap with ALL groups, ensuring empty ones are included.
             const groupsMap = new Map();
+            allGroups.forEach(group => {
+                groupsMap.set(group.id, {
+                    id: group.id,
+                    name: group.fields.group_name || 'Unnamed Group',
+                    order: group.fields.group_order || 0,
+                    tasks: [] // Start with an empty tasks array for every group.
+                });
+            });
+
             const ungrouped = [];
 
-            // Process all tasks into groups or the ungrouped list
+            // Step 3: Process all tasks and place them into the correct group or the ungrouped list.
             allTasks.forEach(task => {
                 const groupId = task.fields.task_groups?.[0];
-                if (groupId) {
-                    if (!groupsMap.has(groupId)) {
-                        groupsMap.set(groupId, {
-                            id: groupId,
-                            name: task.fields.group_name?.[0] || 'Unnamed Group',
-                            order: task.fields.group_order?.[0] || 0,
-                            tasks: []
-                        });
-                    }
+                if (groupId && groupsMap.has(groupId)) {
                     groupsMap.get(groupId).tasks.push(task);
                 } else {
                     ungrouped.push(task);
                 }
             });
 
-            // Convert map to array and sort groups
+            // Step 4: Convert map to array and sort groups by their order.
             const sortedGroups = Array.from(groupsMap.values()).sort((a, b) => a.order - b.order);
 
-            // Sort tasks within each group
+            // Step 5: Sort tasks within each group by their individual order.
             sortedGroups.forEach(group => {
                 group.tasks.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
             });
 
-            // Sort ungrouped tasks
+            // Step 6: Sort the remaining ungrouped tasks.
             const sortedUngrouped = ungrouped.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
 
             setTaskData({ groups: sortedGroups, ungroupedTasks: sortedUngrouped });
@@ -714,9 +722,10 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                     recordsToCreate: [{
                         fields: {
                             group_name: groupName,
-                            groupID: generatedGroupId, // Use the new generated ID
+                            groupID: generatedGroupId, // The user-provided ID
                             group_order: newGroupOrder,
-
+                            projectID: [projectData.id], // Corrected field name
+                            Tasks: [] // Initialize the linked Tasks field as empty
                         }
                     }],
                     tableName: 'task_groups'
