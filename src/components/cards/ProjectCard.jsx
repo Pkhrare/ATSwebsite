@@ -113,8 +113,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         try {
             // Step 1: Fetch all groups and all tasks for the project in parallel, using the project's record ID for both.
             const [groupsResponse, tasksResponse] = await Promise.all([
-                ApiCaller(`/records/filter/${projectData.id}/task_groups`),
-                ApiCaller(`/records/filter/${projectData.id}/tasks`)
+                ApiCaller(`/records/filter/${projectData.fields['Project ID']}/task_groups`),
+                ApiCaller(`/records/filter/${projectData.fields['Project ID']}/tasks`)
             ]);
 
             const allGroups = Array.isArray(groupsResponse?.records) ? groupsResponse.records : [];
