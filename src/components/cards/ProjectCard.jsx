@@ -101,29 +101,56 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [isEditingStatus, setIsEditingStatus] = useState(false);
 
     // Task-related states
-    const [tasks, setTasks] = useState([]);
+    const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
     const [isLoadingTasks, setIsLoadingTasks] = useState(true);
     const [selectedTask, setSelectedTask] = useState(null);
     const [isTaskCardVisible, setIsTaskCardVisible] = useState(false);
     const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
 
     const fetchTasksForProject = useCallback(async () => {
-        console.log('fetching tasks for project');
         if (!projectData.fields['Project ID']) return;
         setIsLoadingTasks(true);
         try {
-            const taskRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/tasks`);
-            console.log('taskRecords1 ', taskRecords);
-            if (!Array.isArray(taskRecords?.records)) {
-                console.warn("Expected an array of task records but got:", taskRecords?.records);
-            }
-            const fetchedTasks = Array.isArray(taskRecords?.records) ? taskRecords.records : [];
-            // Sort tasks by the 'order' field. Tasks without an order will be at the end.
-            const sortedTasks = fetchedTasks.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
-            setTasks(sortedTasks);
+            const apiResponse = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/tasks`);
+            const allTasks = Array.isArray(apiResponse?.records) ? apiResponse.records : [];
+
+            const groupsMap = new Map();
+            const ungrouped = [];
+
+            // Process all tasks into groups or the ungrouped list
+            allTasks.forEach(task => {
+                const groupId = task.fields.task_groups?.[0];
+                if (groupId) {
+                    if (!groupsMap.has(groupId)) {
+                        groupsMap.set(groupId, {
+                            id: groupId,
+                            name: task.fields.group_name?.[0] || 'Unnamed Group',
+                            order: task.fields.group_order?.[0] || 0,
+                            tasks: []
+                        });
+                    }
+                    groupsMap.get(groupId).tasks.push(task);
+                } else {
+                    ungrouped.push(task);
+                }
+            });
+
+            // Convert map to array and sort groups
+            const sortedGroups = Array.from(groupsMap.values()).sort((a, b) => a.order - b.order);
+
+            // Sort tasks within each group
+            sortedGroups.forEach(group => {
+                group.tasks.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
+            });
+
+            // Sort ungrouped tasks
+            const sortedUngrouped = ungrouped.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
+
+            setTaskData({ groups: sortedGroups, ungroupedTasks: sortedUngrouped });
+
         } catch (error) {
-            console.error("Failed to fetch tasks for project:", error);
-            setTasks([]);
+            console.error("Failed to fetch and process tasks:", error);
+            setTaskData({ groups: [], ungroupedTasks: [] });
         } finally {
             setIsLoadingTasks(false);
         }
@@ -545,39 +572,108 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     };
 
     const handleDragEnd = async (result) => {
-        const { destination, source } = result;
-        if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) {
+        const { destination, source, draggableId, type } = result;
+    
+        if (!destination) return;
+    
+        if (destination.droppableId === source.droppableId && destination.index === source.index) {
             return;
         }
-
-        const newTasks = Array.from(tasks);
-        const [reorderedItem] = newTasks.splice(source.index, 1);
-        newTasks.splice(destination.index, 0, reorderedItem);
-
-        // Update state immediately for a responsive UI
-        setTasks(newTasks);
-
-        // Prepare and send the updates to the backend
-        const recordsToUpdate = newTasks.map((task, index) => ({
-            id: task.id,
-            fields: {
-                order: index // Update the order field based on the new position
+    
+        const startGroups = Array.from(taskData.groups);
+        const startUngrouped = Array.from(taskData.ungroupedTasks);
+        let recordsToUpdate = [];
+    
+        if (type === 'GROUP') {
+            const [reorderedGroup] = startGroups.splice(source.index, 1);
+            startGroups.splice(destination.index, 0, reorderedGroup);
+    
+            setTaskData({ ...taskData, groups: startGroups });
+    
+            const groupUpdates = startGroups.map((group, index) => ({
+                id: group.id,
+                fields: { group_order: index }
+            }));
+    
+            try {
+                await apiFetch('/records', {
+                    method: 'PATCH',
+                    body: JSON.stringify({ recordsToUpdate: groupUpdates, tableName: 'task_groups' })
+                });
+            } catch (error) {
+                console.error("Failed to update group order:", error);
+                // Revert state on failure
+                setTaskData(taskData);
             }
-        }));
-
-        try {
-            await apiFetch('/records', {
-                method: 'PATCH',
-                body: JSON.stringify({
-                    recordsToUpdate,
-                    tableName: 'tasks'
-                })
+            return;
+        }
+    
+        if (type === 'TASK') {
+            let movedTask;
+            let sourceList;
+            let destList;
+            let isMovingToGroup = destination.droppableId !== 'ungrouped-tasks';
+            let isMovingFromGroup = source.droppableId !== 'ungrouped-tasks';
+    
+            // Find and remove task from source
+            if (isMovingFromGroup) {
+                const sourceGroup = startGroups.find(g => g.id === source.droppableId);
+                sourceList = sourceGroup.tasks;
+                [movedTask] = sourceList.splice(source.index, 1);
+            } else {
+                sourceList = startUngrouped;
+                [movedTask] = sourceList.splice(source.index, 1);
+            }
+    
+            // Add task to destination
+            if (isMovingToGroup) {
+                const destGroup = startGroups.find(g => g.id === destination.droppableId);
+                destList = destGroup.tasks;
+                destList.splice(destination.index, 0, movedTask);
+                movedTask.fields.task_groups = [destGroup.id];
+            } else {
+                destList = startUngrouped;
+                destList.splice(destination.index, 0, movedTask);
+                delete movedTask.fields.task_groups;
+                delete movedTask.fields.group_name;
+                delete movedTask.fields.group_order;
+            }
+    
+            setTaskData({ groups: startGroups, ungroupedTasks: startUngrouped });
+    
+            // Prepare records for API update
+            recordsToUpdate.push({
+                id: movedTask.id,
+                fields: { 'task_groups': isMovingToGroup ? [destination.droppableId] : [] }
             });
-        } catch (error) {
-            console.error("Failed to save task order:", error);
-            alert("Failed to save the new task order. Please refresh the page.");
-            // If the API call fails, revert the state to the original order
-            setTasks(tasks);
+    
+            // Update orders in destination list
+            destList.forEach((task, index) => {
+                if (task.fields.order !== index) {
+                    recordsToUpdate.push({ id: task.id, fields: { order: index } });
+                }
+            });
+    
+            // Update orders in source list if it was a different list
+            if (source.droppableId !== destination.droppableId) {
+                sourceList.forEach((task, index) => {
+                    if (task.fields.order !== index) {
+                        recordsToUpdate.push({ id: task.id, fields: { order: index } });
+                    }
+                });
+            }
+    
+            try {
+                if (recordsToUpdate.length > 0) {
+                    await apiFetch('/records', {
+                        method: 'PATCH',
+                        body: JSON.stringify({ recordsToUpdate, tableName: 'tasks' })
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to update task order/group:", error);
+                fetchTasksForProject(); // Revert by re-fetching
+            }
         }
     };
 
@@ -592,6 +688,36 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         setProjectData(updatedProjectData);
         if (onProjectUpdate) {
             onProjectUpdate(updatedProjectData);
+        }
+    };
+
+    const handleAddNewGroup = async () => {
+        const groupName = prompt("Enter the name for the new task group:");
+        if (!groupName || !groupName.trim()) {
+            return;
+        }
+
+        const newGroupOrder = taskData.groups.length;
+
+        try {
+            const newGroup = await apiFetch('/records', {
+                method: 'POST',
+                body: JSON.stringify({
+                    recordsToCreate: [{
+                        fields: {
+                            group_name: groupName,
+                            group_order: newGroupOrder,
+                            Project: [projectData.id] // Link to the current project
+                        }
+                    }],
+                    tableName: 'task_groups'
+                })
+            });
+            // Re-fetch everything to get the new empty group in the list
+            fetchTasksForProject();
+        } catch (error) {
+            console.error("Failed to create new group:", error);
+            alert("An error occurred while creating the group.");
         }
     };
 
@@ -790,76 +916,93 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
-                                <button onClick={() => setIsAddTaskFormVisible(true)} className="flex items-center gap-2 px-3 py-1 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
-                                    <AddIcon /> Add Task
-                                </button>
+                                <div className="flex items-center gap-2">
+                                    <button onClick={handleAddNewGroup} className="flex items-center gap-2 px-3 py-1 bg-slate-200 text-slate-800 rounded-md text-sm hover:bg-slate-300">
+                                        <AddIcon /> Add Group
+                                    </button>
+                                    <button onClick={() => setIsAddTaskFormVisible(true)} className="flex items-center gap-2 px-3 py-1 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
+                                        <AddIcon /> Add Task
+                                    </button>
+                                </div>
                             </div>
                             {isLoadingTasks ? (
                                 <p className="text-slate-500">Loading tasks...</p>
-                            ) : tasks.length > 0 ? (
+                            ) : (
                                 <DragDropContext onDragEnd={handleDragEnd}>
-                                    <Droppable droppableId="tasks">
+                                    <Droppable droppableId="all-groups" type="GROUP">
                                         {(provided) => (
-                                            <ul className="divide-y divide-slate-200" {...provided.droppableProps} ref={provided.innerRef}>
-                                                {tasks.map((task, index) => (
-                                                    <Draggable key={task.id} draggableId={task.id} index={index}>
+                                            <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
+                                                {taskData.groups.map((group, index) => (
+                                                    <Draggable key={group.id} draggableId={group.id} index={index}>
                                                         {(provided) => (
-                                                            <li
-                                                                ref={provided.innerRef}
-                                                                {...provided.draggableProps}
-                                                                {...provided.dragHandleProps}
-                                                                onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                                className="p-4 hover:bg-slate-50 cursor-pointer bg-white"
-                                                            >
-                                                                <div className="flex items-start gap-4">
-                                                                    <div className="relative w-12 h-12 flex-shrink-0">
-                                                                        <svg className="w-full h-full" viewBox="0 0 36 36">
-                                                                            <circle cx="18" cy="18" r="16" fill="none" className="stroke-slate-100" strokeWidth="3" />
-                                                                            <circle cx="18" cy="18" r="16" fill="none" className="stroke-blue-500" strokeWidth="3" strokeDasharray="100" strokeDashoffset={100 - ((task.fields.progress_bar || 0) * 100)} strokeLinecap="round" transform="rotate(-90 18 18)" />
-                                                                            <text x="50%" y="50%" dy=".3em" textAnchor="middle" className="text-xs font-medium fill-slate-700">{Math.round((task.fields.progress_bar || 0) * 100)}%</text>
-                                                                        </svg>
+                                                            <div ref={provided.innerRef} {...provided.draggableProps}>
+                                                                <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
+                                                                    <div {...provided.dragHandleProps} className="flex justify-between items-center p-2 cursor-grab">
+                                                                        <h4 className="font-bold text-slate-700">{group.name}</h4>
+                                                                        {/* Placeholder for future actions like 'Add Task to Group' */}
                                                                     </div>
-                                                                    <div className="flex-1">
-                                                                        <div className="flex justify-between items-start mb-2">
-                                                                            <h4 className="text-sm font-medium text-slate-800">{task.fields.task_title}</h4>
-                                                                            <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(task.fields.task_status)}`}>{task.fields.task_status}</span>
-                                                                        </div>
-                                                                        <div className="flex gap-4 text-xs text-slate-500 mb-2">
-                                                                            <span><span className="font-medium">Start:</span> {formatDate(task.fields.start_date)}</span>
-                                                                            <span><span className="font-medium">Due:</span> {formatDate(task.fields.due_date)}</span>
-                                                                        </div>
-                                                                        {task.fields.checklist && (
-                                                                            <div className="mt-2">
-                                                                                <ul className="space-y-1">
-                                                                                    {parseChecklist(task.fields.checklist).map((item, index) => (
-                                                                                        <li key={index} className="flex items-center text-xs text-slate-600">
-                                                                                            <svg className="w-3 h-3 mr-1.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                                                                            {item}
-                                                                                        </li>
-                                                                                    ))}
-                                                                                </ul>
-                                                                            </div>
-                                                                        )}
-                                                                        {task.fields.tags && (
-                                                                            <div className="mt-2 flex flex-wrap gap-1">
-                                                                                {task.fields.tags.split(',').map((tag, index) => (
-                                                                                    <span key={index} className="px-2 py-0.5 bg-slate-100 text-slate-700 text-xs rounded-full">{tag.trim()}</span>
+                                                                    <Droppable droppableId={group.id} type="TASK">
+                                                                        {(provided) => (
+                                                                            <ul className="space-y-2 p-2 min-h-[50px]" {...provided.droppableProps} ref={provided.innerRef}>
+                                                                                {group.tasks.map((task, index) => (
+                                                                                    <Draggable key={task.id} draggableId={task.id} index={index}>
+                                                                                        {(provided) => (
+                                                                                            <li
+                                                                                                ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
+                                                                                                onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                                                                className="p-3 bg-white rounded-md shadow-sm border border-slate-200"
+                                                                                            >
+                                                                                                <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
+                                                                                                <div className="flex justify-between items-center mt-2">
+                                                                                                    <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(task.fields.task_status)}`}>{task.fields.task_status}</span>
+                                                                                                    <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        )}
+                                                                                    </Draggable>
                                                                                 ))}
-                                                                            </div>
+                                                                                {provided.placeholder}
+                                                                            </ul>
                                                                         )}
-                                                                    </div>
+                                                                    </Droppable>
                                                                 </div>
-                                                            </li>
+                                                            </div>
                                                         )}
                                                     </Draggable>
                                                 ))}
                                                 {provided.placeholder}
-                                            </ul>
+                                            </div>
                                         )}
                                     </Droppable>
+
+                                    <div className="mt-4">
+                                        <h4 className="font-bold text-slate-700 mb-2 p-2">Ungrouped Tasks</h4>
+                                        <Droppable droppableId="ungrouped-tasks" type="TASK">
+                                            {(provided) => (
+                                                <ul className="space-y-2 p-2 min-h-[50px] bg-slate-50 rounded-lg border" {...provided.droppableProps} ref={provided.innerRef}>
+                                                    {taskData.ungroupedTasks.map((task, index) => (
+                                                        <Draggable key={task.id} draggableId={task.id} index={index}>
+                                                            {(provided) => (
+                                                                <li
+                                                                    ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
+                                                                    onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                                    className="p-3 bg-white rounded-md shadow-sm border border-slate-200"
+                                                                >
+                                                                    <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
+                                                                    <div className="flex justify-between items-center mt-2">
+                                                                        <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(task.fields.task_status)}`}>{task.fields.task_status}</span>
+                                                                        <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                                    </div>
+                                                                </li>
+                                                            )}
+                                                        </Draggable>
+                                                    ))}
+                                                    {provided.placeholder}
+                                                </ul>
+                                            )}
+                                        </Droppable>
+                                    </div>
                                 </DragDropContext>
-                            ) : (
-                                <p className="text-slate-500">No tasks for this project yet.</p>
                             )}
                         </section>
 
