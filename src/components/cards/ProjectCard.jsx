@@ -694,27 +694,37 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const handleAddNewGroup = async () => {
         const groupName = prompt("Enter the name for the new task group:");
         if (!groupName || !groupName.trim()) {
-            return;
+            return; // User cancelled or entered an empty name
         }
+
+        // --- ID Generation Logic ---
+        // 1. Get the project's unique ID.
+        const projectId = projectData.fields['Project ID'];
+        // 2. Create a short, uppercase code from the group name (e.g., "Phase One" -> "PO").
+        const groupCode = groupName.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase();
+        // 3. Combine them for a unique and readable ID.
+        const generatedGroupId = `${projectId}-${groupCode}-${taskData.groups.length}`;
 
         const newGroupOrder = taskData.groups.length;
 
         try {
-            const newGroup = await apiFetch('/records', {
+            await apiFetch('/records', {
                 method: 'POST',
                 body: JSON.stringify({
                     recordsToCreate: [{
                         fields: {
                             group_name: groupName,
+                            groupID: generatedGroupId, // Use the new generated ID
                             group_order: newGroupOrder,
-                            Project: [projectData.id] // Link to the current project
+
                         }
                     }],
                     tableName: 'task_groups'
                 })
             });
-            // Re-fetch everything to get the new empty group in the list
+            
             fetchTasksForProject();
+
         } catch (error) {
             console.error("Failed to create new group:", error);
             alert("An error occurred while creating the group.");
