@@ -13,7 +13,7 @@ import { format } from 'date-fns';
 
 
 
-const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, assigneeOptions }) => {
+const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, assigneeOptions, nextTaskOrder }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const descriptionRef = useRef(null);
@@ -24,7 +24,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
     const [isTaskformsFormOpen, setTaskformsFormOpen] = useState(false);
     const [checklistItems, setChecklistItems] = useState([]);
     const [attachedForm, setAttachedForm] = useState(null);
-    
+    console.log("nextTaskOrder", nextTaskOrder);
     const today = new Date().toISOString().split('T')[0];
     
     const [formData, setFormData] = useState({
@@ -103,6 +103,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 ...formData, 
                 progress_bar: 0,
                 description: fromLexical(descriptionState),
+                order: nextTaskOrder,
             };
 
             // If due_date is empty, remove it to avoid sending an invalid value to the API.
