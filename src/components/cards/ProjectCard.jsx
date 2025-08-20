@@ -1278,7 +1278,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                     onClose={() => setIsAddTaskFormVisible(false)}
                     onTaskAdded={() => { fetchTasksForProject(); setIsAddTaskFormVisible(false); }}
                     assigneeOptions={assigneeOptions}
-                    nextTaskOrder={tasks.length}
+                    nextTaskOrder={taskData.ungroupedTasks.length}
                 />
             )}
 
