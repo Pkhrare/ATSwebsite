@@ -193,7 +193,13 @@ function Projects() {
         <div className="container mx-auto p-4 sm:p-6 lg:p-8">
           <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-slate-800">Projects Dashboard</h1>
+              <div className="flex items-center space-x-4 text-2xl font-bold">
+                  <h1 className="text-slate-800">Projects Dashboard</h1>
+                  <span className="text-slate-400">/</span>
+                  <Link to="/templates" className="text-slate-500 hover:text-slate-900 transition-colors">
+                      Projects Template
+                  </Link>
+              </div>
               <p className="mt-1 text-sm text-slate-600">View, edit, and manage all client projects.</p>
             </div>
             <div className="flex items-center space-x-2 mt-4 sm:mt-0">
