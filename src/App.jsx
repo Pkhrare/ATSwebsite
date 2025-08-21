@@ -11,6 +11,7 @@ import ClientLogin from './Pages/ClientLogin';
 import ClientCard from './components/cards/ClientCard';
 import ProtectedRoute from './utils/ProtectedRoute';
 import { useAuth } from './utils/AuthContext';
+import Templates from './Pages/Templates';
 
 function App() {
   const { currentUser } = useAuth();
@@ -37,6 +38,11 @@ function App() {
         <Route path='/projects' element={
           <ProtectedRoute>
             <Projects />
+          </ProtectedRoute>
+        } />
+        <Route path='/templates' element={
+          <ProtectedRoute>
+            <Templates />
           </ProtectedRoute>
         } />
         
