@@ -9,12 +9,20 @@ const Templates = () => {
             <main className="p-8">
                 <header className="mb-8">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex items-center space-x-4 text-2xl font-bold text-slate-500">
-                            <Link to="/projects" className="hover:text-slate-900 transition-colors">Projects Dashboard</Link>
-                            <span className="text-slate-400">/</span>
-                            <h1 className="text-2xl font-bold text-slate-800">Projects Template</h1>
+                        {/* Tab Navigation */}
+                        <div className="border-b border-slate-200">
+                            <nav className="-mb-px flex space-x-6" aria-label="Tabs">
+                                <Link to="/projects" className="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-slate-500 hover:border-slate-300 hover:text-slate-700">
+                                    Projects Dashboard
+                                </Link>
+                                <Link to="/templates" className="shrink-0 border-b-2 border-blue-600 px-1 pb-4 text-sm font-medium text-blue-600">
+                                    Projects Template
+                                </Link>
+                            </nav>
                         </div>
-                        <p className="mt-2 text-sm text-slate-600">Create, view, and manage all project templates.</p>
+                        <div className="mt-4">
+                            <p className="mt-2 text-sm text-slate-600">Create, view, and manage all project templates.</p>
+                        </div>
                     </div>
                 </header>
                 <div className="max-w-7xl mx-auto">

@@ -191,16 +191,20 @@ function Projects() {
       <Nav />
       <main className="bg-slate-50 min-h-screen">
         <div className="container mx-auto p-4 sm:p-6 lg:p-8">
-          <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8">
-            <div>
-              <div className="flex items-center space-x-4 text-2xl font-bold">
-                  <h1 className="text-slate-800">Projects Dashboard</h1>
-                  <span className="text-slate-400">/</span>
-                  <Link to="/templates" className="text-slate-500 hover:text-slate-900 transition-colors">
-                      Projects Template
-                  </Link>
-              </div>
-              <p className="mt-1 text-sm text-slate-600">View, edit, and manage all client projects.</p>
+          <header className="mb-8">
+            {/* Tab Navigation */}
+            <div className="border-b border-slate-200">
+                <nav className="-mb-px flex space-x-6" aria-label="Tabs">
+                    <Link to="/projects" className="shrink-0 border-b-2 border-blue-600 px-1 pb-4 text-sm font-medium text-blue-600">
+                        Projects Dashboard
+                    </Link>
+                    <Link to="/templates" className="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-slate-500 hover:border-slate-300 hover:text-slate-700">
+                        Projects Template
+                    </Link>
+                </nav>
+            </div>
+            <div className="mt-4">
+                <p className="mt-1 text-sm text-slate-600">View, edit, and manage all client projects.</p>
             </div>
             <div className="flex items-center space-x-2 mt-4 sm:mt-0">
               {!isEditing && (
