@@ -189,6 +189,16 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 
                 const fieldIds = attachedForm.fields.task_forms_fields;
 
+                // Defensive check: ensure the form and its fields exist before proceeding.
+                if (!attachedForm || !Array.isArray(fieldIds) || fieldIds.length === 0) {
+                    // It's better to clean up the created task than to leave an orphaned one.
+                    await ApiCaller(`/records/tasks/${newTaskId}`, {
+                        method: 'DELETE',
+                        body: JSON.stringify({ recordIds: [newTaskId] })
+                    });
+                    throw new Error("The selected form has no fields linked to it in the backend and cannot be attached. Please select another form or update the form configuration.");
+                }
+
                 // Ensure we have a valid array of field IDs before proceeding
                 if (Array.isArray(fieldIds) && fieldIds.length > 0) {
                     // Fetch form fields using their IDs from the attachedForm object

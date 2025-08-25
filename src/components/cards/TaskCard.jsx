@@ -10,6 +10,7 @@ import AttachTaskformsForm from '../forms/taskActionForms/AttachTaskformsForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import ApiCaller from '../apiCall/ApiCaller';
+import { v4 as uuidv4 } from 'uuid'; // Import uuidv4
 
 
 const apiFetch = async (endpoint, options = {}) => {
@@ -44,6 +45,8 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
     const chatContainerRef = useRef(null);
     // --- Add this ref for the modal content ---
     const modalContentRef = useRef(null);
+    const [refetchCounter, setRefetchCounter] = useState(0);
+    const forceRefetch = useCallback(() => setRefetchCounter(c => c + 1), []);
 
     const readOnlyFields = ["id", "project_id", "start_date", "Project Name (from project_id)", "Project ID (from Project ID)"];
 
@@ -82,70 +85,81 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
         }
     }, [messages]);
 
-    const fetchChatMessages = useCallback(async () => {
-        if (!task?.id) return;
-        try {
-            const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_chat`);
-            console.log('Chat messages:', records);
-            const sortedMessages = records.sort((a, b) => new Date(a.createdTime) - new Date(b.createdTime));
-            setMessages(sortedMessages);
-        } catch (err) {
-            setError('Failed to load chat history.');
-        }
-    }, [task?.id]);
-
-    const fetchSubmissions = useCallback(async () => {
-        if (!task || !task.id) {
-            console.log('No task or task.id');
-            setIsFormSubmissionsLoading(false);
-            return;
-        }
-        try {
-            console.log('Fetching form submissions for task:', task.id);
-            const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_forms_submissions`);
-            console.log('Form submissions:', records);
-            setFormSubmissions(records);
-            setInitialFormSubmissions(JSON.parse(JSON.stringify(records))); // Deep copy for change detection
-        } catch (err) {
-            setError('Failed to load form submissions.');
-        } finally {
-            setIsFormSubmissionsLoading(false);
-        }
-    }, [task]);
-
-    const fetchChecklists = useCallback(async () => {
-        if (!task?.fields?.id) {
-            setIsChecklistLoading(false);
-            return;
-        }
-        try {
-            const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_checklists`);
-            const sortedRecords = records.sort((a, b) => a.fields.order_number - b.fields.order_number);
-            const items = sortedRecords.map(r => ({ ...r.fields, id: r.id }));
-            setChecklistItems(items);
-            setInitialChecklistItems(JSON.parse(JSON.stringify(items))); // Deep copy
-        } catch (err) {
-            setError('Failed to load checklists.');
-        } finally {
-            setIsChecklistLoading(false);
-        }
-    }, [task]);
-
     useEffect(() => {
+        const fetchChatMessages = async () => {
+            if (!task?.id) return;
+            try {
+                // Use the custom field ID for filtering, not the record ID
+                const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_chat`);
+                const sortedMessages = records.sort((a, b) => new Date(a.createdTime) - new Date(b.createdTime));
+                setMessages(sortedMessages);
+            } catch (err) {
+                setError('Failed to load chat history.');
+            }
+        };
+
+        const fetchAttachments = async () => {
+            if (!task?.id) return;
+            setIsAttachmentsLoading(true);
+            try {
+                // Use the custom field ID for filtering
+                const data = await ApiCaller(`/records/filter/${task.fields.id}/task_attachments`);
+                setAttachments(data.records || []);
+            } catch (error) {
+                console.error(error);
+                setError('Could not load attachments.');
+            } finally {
+                setIsAttachmentsLoading(false);
+            }
+        };
+
+        const fetchSubmissions = async () => {
+            if (!task?.id) {
+                setIsFormSubmissionsLoading(false);
+                return;
+            }
+            try {
+                // Use the custom field ID for filtering
+                const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_forms_submissions`);
+                setFormSubmissions(records);
+                setInitialFormSubmissions(JSON.parse(JSON.stringify(records)));
+            } catch (err) {
+                setError('Failed to load form submissions.');
+            } finally {
+                setIsFormSubmissionsLoading(false);
+            }
+        };
+
+        const fetchChecklists = async () => {
+            if (!task?.id) {
+                setIsChecklistLoading(false);
+                return;
+            }
+            setIsChecklistLoading(true);
+            try {
+                // Use the custom field ID for filtering
+                const { records } = await ApiCaller(`/records/filter/${task.fields.id}/task_checklists`);
+                const sortedRecords = records.sort((a, b) => a.fields.order_number - b.fields.order_number);
+                const items = sortedRecords.map(r => ({ ...r.fields, id: r.id }));
+                setChecklistItems(items);
+                setInitialChecklistItems(JSON.parse(JSON.stringify(items)));
+            } catch (err) {
+                setError('Failed to load checklists.');
+            } finally {
+                setIsChecklistLoading(false);
+            }
+        };
+
         if (task) {
             setEditedTask(task.fields);
             descriptionRef.current = toLexical(task.fields.description);
-            // Only fetch attachments if the task has linked attachment records
-            if (task.fields.task_attachments && task.fields.task_attachments.length > 0) {
-                fetchAttachments(task.fields.id);
-            } else {
-                setAttachments([]); // Ensure attachments are cleared if there are none.
-            }
+            fetchAttachments();
             fetchChecklists();
             fetchSubmissions();
             fetchChatMessages();
         }
-    }, [task, fetchChecklists, fetchSubmissions, fetchChatMessages]);
+    }, [task?.id, refetchCounter]);
+
 
     // --- Implement the click outside logic ---
     useEffect(() => {
@@ -207,20 +221,6 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
         descriptionRef.current = newDescriptionState;
     };
 
-    const fetchAttachments = async (taskId) => {
-        setIsAttachmentsLoading(true);
-        try {
-            // apiFetch returns the parsed JSON directly
-            const data = await ApiCaller(`/records/filter/${taskId}/task_attachments`);
-            setAttachments(data.records || []);
-        } catch (error) {
-            console.error(error);
-            setError('Could not load attachments.');
-        } finally {
-            setIsAttachmentsLoading(false);
-        }
-    };
-
     const handleAttachmentsAdded = (newAttachments) => {
         setAttachments(prev => [...prev, ...newAttachments]);
         // After adding, we don't need to re-fetch, just update the UI state
@@ -271,7 +271,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                 body: formData,
             });
 
-            await fetchAttachments(task.fields.id);
+            forceRefetch();
         } catch (err) {
             setError(err.message);
         } finally {
@@ -310,6 +310,79 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
         );
     };
 
+    const handleFormAttached = async (form) => {
+        if (!form || !task || !task.id) return;
+        
+        const fieldIds = form.fields.task_forms_fields;
+        if (!Array.isArray(fieldIds) || fieldIds.length === 0) {
+            setError("This form has no fields linked to it and cannot be attached. Please update the form configuration.");
+            return;
+        }
+
+        setIsLoading(true);
+        setError(null);
+        
+        try {
+            // Step 1: Fetch the full field records to get their details.
+            const formFieldsResponse = await ApiCaller('/records/by-ids', {
+                method: 'POST',
+                body: JSON.stringify({ 
+                    recordIds: fieldIds, 
+                    tableName: 'task_forms_fields' 
+                }),
+            });
+            const formFields = formFieldsResponse.records;
+
+            if (!formFields || formFields.length === 0) {
+                throw new Error("Could not fetch the details for the form fields.");
+            }
+
+            // Step 2: Create a unique submission ID for this batch.
+            const submissionId = uuidv4();
+
+            // Step 3: Create a submission record for each field in the form.
+            const recordsToCreate = formFields.map(field => ({
+                fields: {
+                    submission_id: submissionId,
+                    form: [form.id],
+                    field: [field.id], // Correct field name is 'field'
+                    task_id: [task.id], // Correct field name is 'task_id'
+                    value: '--EMPTY--',
+                }
+            }));
+
+            const submissionResult = await ApiCaller('/records', {
+                method: 'POST',
+                body: JSON.stringify({
+                    recordsToCreate,
+                    tableName: 'task_forms_submissions'
+                })
+            });
+            const newSubmissions = submissionResult.records;
+
+            // Step 4: Link the new submissions back to the parent task.
+            if (newSubmissions && newSubmissions.length > 0) {
+                await ApiCaller(`/records/tasks/${task.id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        fields: {
+                            task_forms_submissions: newSubmissions.map(s => s.id)
+                        }
+                    })
+                });
+            }
+
+            // Step 5: Refresh the UI.
+            forceRefetch();
+
+        } catch (error) {
+            console.error("Failed to create form submissions:", error);
+            setError("Failed to attach the form. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     const handleFormSubmissionChange = (submissionId, value) => {
         setFormSubmissions(prev =>
             prev.map(submission =>
@@ -343,23 +416,6 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                 });
             }
 
-            const fieldsToUpdate = { ...editedTask };
-            fieldsToUpdate.description = descriptionRef.current;
-            delete fieldsToUpdate.task_attachments;
-
-            const updatableFields = Object.keys(fieldsToUpdate).reduce((acc, key) => {
-                if (!readOnlyFields.includes(key)) {
-                    acc[key] = fieldsToUpdate[key];
-                }
-                return acc;
-            }, {});
-
-            // apiFetch returns the parsed JSON directly
-            const updatedTask = await ApiCaller(`/records/tasks/${task.id}`, {
-                method: 'PATCH',
-                body: JSON.stringify({ fields: updatableFields }),
-            });
-
             // Update form submissions
             const submissionUpdates = formSubmissions.map(submission => ({
                 id: submission.id,
@@ -385,6 +441,24 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                     sub.fields.submission = nextStatus;
                 });
             }
+
+            // Whitelist approach: only construct an object with fields that are meant to be editable.
+            // This prevents sending back read-only fields like lookups or formulas which can cause API errors.
+            const updatableFields = {
+                'assigned_to': editedTask.assigned_to,
+                'task_status': editedTask.task_status,
+                'due_date': editedTask.due_date,
+                'Action_type': editedTask.Action_type,
+                'description': descriptionRef.current,
+                'progress_bar': editedTask.progress_bar,
+                'tags': editedTask.tags,
+            };
+
+            // apiFetch returns the parsed JSON directly
+            const updatedTask = await ApiCaller(`/records/tasks/${task.id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({ fields: updatableFields }),
+            });
 
 
             if (submissionUpdates.length > 0) {
@@ -503,7 +577,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
                                         <DatePicker
                                             selected={safeNewDate(editedTask.due_date)}
-                                            onChange={(date) => handleInputChange('due_date', date ? format(date, 'yyyy-MM-dd') : '')}
+                                            onChange={(date) => handleInputChange('due_date', date ? format(date, 'yyyy-MM-dd') : null)}
                                             dateFormat="yyyy-MM-dd"
                                             className={`w-full px-3 py-2 border rounded-md text-black text-sm ${isClientView ? 'bg-gray-100' : ''}`}
                                             placeholderText="Pick a date"
@@ -776,12 +850,13 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                 <AttachChecklistsForm
                     taskId={task.id}
                     onClose={() => setAttachChecklistsFormOpen(false)}
-                    onChecklistSaved={fetchChecklists}
+                    onChecklistSaved={forceRefetch}
                 />
             )}
             {isAttachTaskformsFormOpen && (
                 <AttachTaskformsForm
                     onClose={() => setAttachTaskformsFormOpen(false)}
+                    onFormAttach={handleFormAttached}
                 />
             )}
         </div>

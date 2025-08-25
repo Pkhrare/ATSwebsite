@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import TaskCard from './TaskCard';
 import AddTaskToProjectForm from '../forms/AddTaskToProjectForm';
 import AddCollaboratorForm from '../forms/AddCollaboratorForm';
@@ -105,7 +105,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [activeEditingDate, setActiveEditingDate] = useState(null); // New state for the date picker
     const [isUpdatingActivities, setIsUpdatingActivities] = useState(false);
     const [isEditingNotes, setIsEditingNotes] = useState(false);
-    const [notesContent, setNotesContent] = useState('');
+    const notesEditorRef = useRef(null);
     const [isEditingDetails, setIsEditingDetails] = useState(false);
     const [editedDetails, setEditedDetails] = useState({});
     const [isAddCollaboratorVisible, setIsAddCollaboratorVisible] = useState(false);
@@ -182,7 +182,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
     useEffect(() => {
         setProjectData(data);
-        setNotesContent(data.fields.Notes || '');
+        notesEditorRef.current = toLexical(data.fields.Notes || '');
         setEditedDetails(data.fields);
     }, [data]);
 
@@ -439,10 +439,10 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const handleSaveNotes = async () => {
         const updates = {
             id: projectData.id,
-            fields: { 'Notes': notesContent }
+            fields: { 'Notes': notesEditorRef.current }
         };
         try {
-            const updatedRecord = await apiFetch('/records', {
+            await apiFetch('/records', {
                 method: 'PATCH',
                 body: JSON.stringify({ recordsToUpdate: [updates], tableName: 'projects' })
             });
@@ -451,7 +451,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                 ...projectData,
                 fields: {
                     ...projectData.fields,
-                    Notes: notesContent
+                    Notes: notesEditorRef.current
                 }
             };
             setProjectData(newProjectData);
@@ -861,23 +861,29 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                             <div className="flex justify-between items-center mb-2">
                                 <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
+                                {userRole !== 'client' && !isEditingNotes && (
+                                    <button onClick={() => setIsEditingNotes(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                                        <EditIcon />
+                                    </button>
+                                )}
                             </div>
-                            {isEditingNotes ? (
+                            {isEditingNotes && userRole !== 'client' ? (
                                 <div className="space-y-3">
-                                    <textarea
-                                        value={notesContent}
-                                        onChange={(e) => setNotesContent(e.target.value)}
-                                        className="w-full h-48 p-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm text-slate-800"
-                                        placeholder="Enter project notes here..."
-                                    ></textarea>
+                                    <RichTextEditor
+                                        isEditable={true}
+                                        initialContent={notesEditorRef.current}
+                                        onChange={(editorState) => {
+                                            notesEditorRef.current = editorState;
+                                        }}
+                                    />
                                     <div className="flex justify-end gap-2">
-                                        <button onClick={() => { setIsEditingNotes(false); setNotesContent(projectData.fields.Notes || ''); }} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md">Cancel</button>
+                                        <button onClick={() => { setIsEditingNotes(false); notesEditorRef.current = toLexical(projectData.fields.Notes || ''); }} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md">Cancel</button>
                                         <button onClick={handleSaveNotes} className="text-sm text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-md">Save Notes</button>
                                     </div>
                                 </div>
                             ) : (
                                 <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 text-sm text-slate-700 whitespace-pre-wrap max-h-48 overflow-y-auto">
-                                    {projectData.fields['Notes'] || 'No notes available.'}
+                                    {fromLexical(projectData.fields['Notes']) || 'No notes available.'}
                                 </div>
                             )}
                         </section>

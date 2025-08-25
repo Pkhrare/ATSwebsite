@@ -14,10 +14,6 @@ function AttachChecklistsForm({ taskId, onClose, onChecklistSaved, initialCheckl
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        setItems(initialChecklistItems.map((item, index) => ({...item, order_number: index + 1})));
-    }, [initialChecklistItems]);
-
     const fetchChecklists = useCallback(async () => {
         if (!taskId) return;
         setIsLoading(true);
@@ -33,11 +29,14 @@ function AttachChecklistsForm({ taskId, onClose, onChecklistSaved, initialCheckl
         }
     }, [taskId]);
 
+    // This combined effect handles both use cases without conflict.
     useEffect(() => {
         if (taskId) {
+            // If we have a taskId, we are editing an existing task. Fetch its data.
             fetchChecklists();
         } else {
-            setItems(initialChecklistItems);
+            // Otherwise, we are creating a new task. Use the items passed from the parent.
+            setItems(initialChecklistItems.map((item, index) => ({...item, order_number: index + 1})));
         }
     }, [taskId, fetchChecklists, initialChecklistItems]);
 

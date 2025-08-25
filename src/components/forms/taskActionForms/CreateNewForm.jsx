@@ -71,14 +71,20 @@ const CreateNewForm = ({ onClose, onFormCreated }) => {
             const newFormId = formResult.records[0].id;
 
             // Step 2: Create the form fields
-            const fieldsToCreate = fields.map((field, index) => ({
-                fields: {
-                    task_form: [newFormId],
-                    field_label: field.field_label,
-                    field_type: field.field_type
-                }
-            }));
-
+            // const formNameShort = formData.form_name.substring(0, 5).toUpperCase().replace(/\s/g, '');
+            const fieldsToCreate = fields.map((field, index) => {
+                // const fieldLabelShort = field.field_label.substring(0, 5).toUpperCase().replace(/\s/g, '');
+                // const generatedFieldId = `${formNameShort}-${fieldLabelShort}-${index}`;
+                return {
+                    fields: {
+                        task_form: [newFormId],
+                        field_label: field.field_label,
+                        field_type: field.field_type,
+                            // field_ID: generatedFieldId // Add the generated ID
+                    }
+                };
+            });
+            console.log(fieldsToCreate);
             const fieldsRequestBody = {
                 recordsToCreate: fieldsToCreate,
                 tableName: 'task_forms_fields'

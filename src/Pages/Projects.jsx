@@ -190,8 +190,8 @@ function Projects() {
     <div className="min-h-screen bg-slate-50">
       <Nav />
       <main className="p-8">
-        <header className="mb-8">
-          <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto">
+          <header className="mb-6">
             {/* Tab Navigation */}
             <div className="border-b border-slate-200">
               <nav className="-mb-px flex space-x-6" aria-label="Tabs">
@@ -206,10 +206,8 @@ function Projects() {
             <div className="mt-4">
               <p className="mt-2 text-sm text-slate-600">View, edit, and manage all client projects.</p>
             </div>
-          </div>
-        </header>
+          </header>
 
-        <div className="max-w-7xl mx-auto">
           <div className="flex justify-end items-center mb-6">
             <div className="flex items-center space-x-2">
               {!isEditing && (
