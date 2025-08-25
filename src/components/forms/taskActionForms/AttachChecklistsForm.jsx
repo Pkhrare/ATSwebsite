@@ -29,16 +29,20 @@ function AttachChecklistsForm({ taskId, onClose, onChecklistSaved, initialCheckl
         }
     }, [taskId]);
 
-    // This combined effect handles both use cases without conflict.
+    // Effect for existing tasks that have a taskId. It fetches data from the API.
     useEffect(() => {
         if (taskId) {
-            // If we have a taskId, we are editing an existing task. Fetch its data.
             fetchChecklists();
-        } else {
-            // Otherwise, we are creating a new task. Use the items passed from the parent.
+        }
+    }, [taskId, fetchChecklists]);
+
+    // Effect for new tasks that DON'T have a taskId. It initializes items from props.
+    useEffect(() => {
+        if (!taskId) {
+            // We're creating a new task, so we use the items passed from the parent form.
             setItems(initialChecklistItems.map((item, index) => ({...item, order_number: index + 1})));
         }
-    }, [taskId, fetchChecklists, initialChecklistItems]);
+    }, [initialChecklistItems, taskId]); // This effect now only runs for new tasks, solving the loop.
 
     const handleOnDragEnd = (result) => {
         if (!result.destination) return;

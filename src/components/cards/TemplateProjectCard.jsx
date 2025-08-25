@@ -1,16 +1,47 @@
-import React, { useState, useCallback, useMemo, useRef } from 'react';
+import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import TemplateTaskCard from './TemplateTaskCard'; // Will be created in the next step
 import AddTaskToProjectForm from '../forms/AddTaskToProjectForm';
 import AddCollaboratorForm from '../forms/AddCollaboratorForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
-import { dropdownFields, DEFAULT_ACTIVITIES, safeNewDate } from '../../utils/validations';
+import { dropdownFields, validateRow, DEFAULT_ACTIVITIES, safeNewDate } from '../../utils/validations';
 import { useAuth } from '../../utils/AuthContext';
 import ApiCaller from '../apiCall/ApiCaller';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import RichTextEditor from '../richText/RichTextEditor';
+
+// --- Helper Functions for Project ID Generation (from AddProjectCard) ---
+async function globalProjectCounter() {
+    try {
+        const records = await ApiCaller(`/records/counter/dummy`, {
+            method: 'GET',
+        });
+        return records;
+    } catch (e) {
+        console.error('Failed to load counter:', e);
+        return null;
+    }
+}
+
+async function generateProjectID(state, projectType, startDate) {
+    if (!state || !projectType || !startDate) return '';
+    const serviceType = projectType.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    const formattedDate = new Date(startDate).toISOString().slice(2, 10).replace(/-/g, '').slice(0, 6);
+
+    const counter_obj = await globalProjectCounter();
+    if (!counter_obj) return '';
+
+    const counter = counter_obj.fields['Counter'];
+    await ApiCaller(`/records/counter/dummy`, {
+        method: 'PATCH',
+        body: JSON.stringify({ fields: { 'Counter': counter + 1 } }),
+    });
+
+    return `${state}${serviceType}-${formattedDate}P${counter + 1}`;
+}
+
 
 // --- SVG Icons (Copied from ProjectCard.jsx) ---
 const BackIcon = () => (
@@ -71,11 +102,55 @@ export default function TemplateProjectCard({ template, onClose }) {
     const [isEditingDetails, setIsEditingDetails] = useState(false);
     const [isEditingNotes, setIsEditingNotes] = useState(false);
     const notesEditorRef = useRef(toLexical(projectData.Notes || ''));
+    const [errors, setErrors] = useState({});
     
     // Simplified states as many sections are not needed for a template
     const [selectedTask, setSelectedTask] = useState(null);
     const [isTaskCardVisible, setIsTaskCardVisible] = useState(false);
     const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
+
+    useEffect(() => {
+        const fetchAndAttachForms = async () => {
+            // Find all tasks that need a form pre-attached
+            const tasksWithForms = template.tasks.filter(t => t.fields.preAttachedFormName);
+            if (tasksWithForms.length === 0) return;
+
+            try {
+                // Fetch all available forms from the backend
+                const allForms = await ApiCaller('/all/task_forms');
+                if (!allForms || !Array.isArray(allForms)) {
+                    console.warn("Could not fetch forms for pre-attachment.");
+                    return;
+                }
+
+                // Create a map for quick lookup
+                const formsMap = new Map(allForms.map(form => [form.fields.form_name, form]));
+
+                // Create a new taskData object with the forms attached
+                const newTaskData = JSON.parse(JSON.stringify(taskData));
+                
+                const updateTasksInGroup = (tasks) => {
+                    tasks.forEach(task => {
+                        if (task.fields.preAttachedFormName && formsMap.has(task.fields.preAttachedFormName)) {
+                            task.fields.attachedForm = formsMap.get(task.fields.preAttachedFormName);
+                        }
+                    });
+                };
+
+                // Update both grouped and ungrouped tasks
+                newTaskData.groups.forEach(group => updateTasksInGroup(group.tasks));
+                updateTasksInGroup(newTaskData.ungroupedTasks);
+
+                // Update the state with the enriched task data
+                setTaskData(newTaskData);
+
+            } catch (error) {
+                console.error("Error pre-attaching forms to template tasks:", error);
+            }
+        };
+
+        fetchAndAttachForms();
+    }, [template]); // Run only when the template prop changes
 
     const assigneeOptions = useMemo(() => {
         const options = new Set();
@@ -87,9 +162,34 @@ export default function TemplateProjectCard({ template, onClose }) {
     // This function will be responsible for creating the project on the backend
     const handleCreateProject = async () => {
         setIsCreatingProject(true);
+        setErrors({});
+
+        // Step 1: Validate required fields before doing anything else.
+        const validationErrors = validateRow(projectData, true);
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            setIsEditingDetails(true); // Open the details section to show the errors
+            alert('Please fill in all required project details before creating the project.');
+            setIsCreatingProject(false);
+            return;
+        }
+
         try {
-            // Step 1: Create the main project record.
-            const projectToCreate = { ...projectData, Notes: notesEditorRef.current };
+            // Step 2: Generate Project ID and calculate Balance
+            const projectID = await generateProjectID(projectData['States'], projectData['Project Type'], projectData['Start Date']);
+            if (!projectID) {
+                throw new Error("Failed to generate a Project ID. Please check required fields like State, Project Type, and Start Date.");
+            }
+            const balance = (Number(projectData['Full Cost']) || 0) - (Number(projectData['Paid']) || 0);
+
+            // Step 3: Create the main project record.
+            const projectToCreate = { 
+                ...projectData, 
+                'Project ID': projectID,
+                'Balance': balance,
+                Notes: notesEditorRef.current 
+            };
+
             const createProjectResponse = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -100,8 +200,25 @@ export default function TemplateProjectCard({ template, onClose }) {
 
             const newProjectRecord = createProjectResponse.records[0];
             const newProjectId = newProjectRecord.id;
+            const newProjectIdentifier = newProjectRecord.fields['Project ID']; // Get the human-readable ID
 
-            // Step 2: Create the task groups, linking them to the new project.
+            // Step 4: Create a collaborator for the client.
+            const newClientCollaboratorName = projectData['Project Name'];
+            await ApiCaller('/records', {
+                method: 'POST',
+                body: JSON.stringify({
+                    recordsToCreate: [{
+                        fields: {
+                            collaborator_name: newClientCollaboratorName,
+                            collaborator_email: projectData['Client Email'],
+                            Projects: [newProjectId]
+                        }
+                    }],
+                    tableName: 'collaborators'
+                })
+            });
+
+            // Step 5: Create the task groups, linking them to the new project.
             const groupsToCreate = taskData.groups.map(group => ({
                 fields: {
                     group_name: group.name,
@@ -124,7 +241,7 @@ export default function TemplateProjectCard({ template, onClose }) {
                 tempGroupToNewIdMap.set(tempGroup.id, newGroupRecords[index].id);
             });
 
-            // Step 3: Create all tasks, along with their associated sub-items.
+            // Step 6: Create all tasks, along with their associated sub-items.
             const allTasksFromTemplate = [
                 ...taskData.groups.flatMap(group => 
                     group.tasks.map(task => ({ ...task, finalGroupId: tempGroupToNewIdMap.get(task.groupId) }))
@@ -133,18 +250,45 @@ export default function TemplateProjectCard({ template, onClose }) {
             ];
 
             // A single batch create for all tasks
-            const tasksToCreatePayload = allTasksFromTemplate.map(task => ({
-                fields: {
-                    ...task.fields,
-                    // Remove local-only fields before sending to API
-                    checklistItems: undefined,
-                    attachedForm: undefined,
-                    attachments: undefined,
-                    // Link to new records
-                    'Project ID': [newProjectId],
-                    'task_groups': task.finalGroupId ? [task.finalGroupId] : []
+            const tasksToCreatePayload = allTasksFromTemplate.map((task, index) => {
+                // Whitelist approach to build a clean payload, preventing read-only fields from being sent.
+                
+                // --- Dynamic Assignee Logic ---
+                let finalAssignee = task.fields.assigned_to; // Default
+                const assigneePlaceholder = task.fields.assigned_to;
+                if (assigneePlaceholder === 'Client') {
+                    finalAssignee = newClientCollaboratorName;
+                } else if (assigneePlaceholder === 'Consultant') {
+                    finalAssignee = projectData['Assigned Consultant'];
+                } else if (assigneePlaceholder === 'Supervising Consultant') {
+                    finalAssignee = projectData['Supervising Consultant'];
                 }
-            }));
+
+                const fieldsToCreate = {
+                    'id': `${newProjectIdentifier}-T${index + 1}`, // Generate a unique, human-readable ID
+                    'project_id': [newProjectId], // Use the correct field name 'project_id'
+                    'task_title': task.fields.task_title,
+                    'task_status': task.fields.task_status || 'Not Started',
+                    'order': task.fields.order,
+                    'task_groups': task.finalGroupId ? [task.finalGroupId] : [],
+                    'assigned_to': finalAssignee, // Use the dynamically determined assignee
+                    'due_date': task.fields.due_date,
+                    'start_date': task.fields.start_date,
+                    'progress_bar': task.fields.progress_bar || 0,
+                    'Action_type': task.fields.Action_type,
+                    'description': task.fields.description,
+                    'tags': task.fields.tags
+                };
+            
+                // Remove any undefined fields to keep the payload clean
+                Object.keys(fieldsToCreate).forEach(key => {
+                    if (fieldsToCreate[key] === undefined) {
+                        delete fieldsToCreate[key];
+                    }
+                });
+            
+                return { fields: fieldsToCreate };
+            });
 
             if (tasksToCreatePayload.length === 0) {
                 alert('Project created successfully! (No tasks to add)');
@@ -161,7 +305,7 @@ export default function TemplateProjectCard({ template, onClose }) {
             });
             const newTaskRecords = createTasksResponse.records;
 
-            // Step 4: Now that tasks are created, create all their sub-items in batch.
+            // Step 7: Now that tasks are created, create all their sub-items in batch.
             const checklistsToCreate = [];
             const attachmentsToCreate = [];
             const formSubmissionsToCreate = [];
@@ -201,9 +345,9 @@ export default function TemplateProjectCard({ template, onClose }) {
                         formFields.forEach(fieldId => {
                             formSubmissionsToCreate.push({
                                 fields: {
-                                    task_id: [newTaskId], // Changed 'task' to 'task_id'
+                                    task_id: [newTaskId], 
                                     form: [templateTask.fields.attachedForm.id],
-                                    Notes: [fieldId], // Linking to the 'task_forms_fields' record
+                                    field: [fieldId], // Corrected field name for linking to the field
                                     value: '--EMPTY--',
                                     submission: 'Incomplete'
                                 }
@@ -398,7 +542,110 @@ export default function TemplateProjectCard({ template, onClose }) {
                                         <span className="text-slate-800 ml-2">{projectData['Assigned Consultant']}</span>
                                     )}
                                 </div>
-                                {/* Other fields... */}
+                                
+                                {/* --- ADDED FIELDS FOR PROJECT CREATION --- */}
+                                <div>
+                                    <span className="font-medium text-slate-500">Start Date*:</span>
+                                    {isEditingDetails ? (
+                                        <>
+                                            <DatePicker
+                                                selected={safeNewDate(projectData['Start Date'])}
+                                                onChange={(date) => handleDetailChange('Start Date', date ? format(date, 'yyyy-MM-dd') : '')}
+                                                dateFormat="yyyy-MM-dd"
+                                                className="w-full mt-1 p-2 border rounded-md text-black"
+                                                placeholderText="Pick a date"
+                                            />
+                                            {errors['Start Date'] && <p className="text-red-500 text-xs mt-1">{errors['Start Date']}</p>}
+                                        </>
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Start Date'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">State*:</span>
+                                    {isEditingDetails ? (
+                                        <>
+                                            <select value={projectData['States'] || ''} onChange={(e) => handleDetailChange('States', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                                <option value="">-- Select --</option>
+                                                {dropdownFields['States'].map(s => <option key={s} value={s}>{s}</option>)}
+                                            </select>
+                                            {errors['States'] && <p className="text-red-500 text-xs mt-1">{errors['States']}</p>}
+                                        </>
+                                    ) : (
+                                         <span className="text-slate-800 ml-2">{projectData['States'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Project Type*:</span>
+                                    {isEditingDetails ? (
+                                        <>
+                                            <select value={projectData['Project Type'] || ''} onChange={(e) => handleDetailChange('Project Type', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                                 <option value="">-- Select --</option>
+                                                {dropdownFields['Project Type'].map(t => <option key={t} value={t}>{t}</option>)}
+                                            </select>
+                                            {errors['Project Type'] && <p className="text-red-500 text-xs mt-1">{errors['Project Type']}</p>}
+                                        </>
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Project Type'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Supervising Consultant:</span>
+                                    {isEditingDetails ? (
+                                        <select value={projectData['Supervising Consultant'] || ''} onChange={(e) => handleDetailChange('Supervising Consultant', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                            <option value="">-- Select --</option>
+                                            {dropdownFields['Supervising Consultant'].map(c => <option key={c} value={c}>{c}</option>)}
+                                        </select>
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Supervising Consultant'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Status:</span>
+                                    {isEditingDetails ? (
+                                        <select value={projectData['Status'] || ''} onChange={(e) => handleDetailChange('Status', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                             <option value="">-- Select --</option>
+                                            {dropdownFields['Status'].map(s => <option key={s} value={s}>{s}</option>)}
+                                        </select>
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Status'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                 <div>
+                                    <span className="font-medium text-slate-500">Submitted (Y/N):</span>
+                                    {isEditingDetails ? (
+                                        <select value={projectData['Submitted (Y/N)'] || ''} onChange={(e) => handleDetailChange('Submitted (Y/N)', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                             <option value="">-- Select --</option>
+                                            {dropdownFields['Submitted (Y/N)'].map(s => <option key={s} value={s}>{s}</option>)}
+                                        </select>
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Submitted (Y/N)'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Full Cost:</span>
+                                    {isEditingDetails ? (
+                                        <input type="number" value={projectData['Full Cost'] || ''} onChange={(e) => handleDetailChange('Full Cost', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black" />
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Full Cost'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Paid:</span>
+                                    {isEditingDetails ? (
+                                        <input type="number" value={projectData['Paid'] || ''} onChange={(e) => handleDetailChange('Paid', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black" />
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Paid'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div className="md:col-span-2">
+                                    <span className="font-medium text-slate-500">IRS Identifier (ID/EIN):</span>
+                                    {isEditingDetails ? (
+                                        <input type="text" value={projectData['IRS Identifier (ID/EIN)'] || ''} onChange={(e) => handleDetailChange('IRS Identifier (ID/EIN)', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black" />
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['IRS Identifier (ID/EIN)'] || 'Not Set'}</span>
+                                    )}
+                                </div>
                             </div>
                         </section>
 

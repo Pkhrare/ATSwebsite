@@ -40,7 +40,7 @@ const STATUS_OPTIONS = [
   'Waiting on Client',
   'Submitted to State',
   'Under State Review',
-  'Provisional Aproval',
+  'Provisional Approval',
   'Completed'
 ];
 const YES_NO_OPTIONS = ['Yes', 'No'];
@@ -61,7 +61,8 @@ export const dropdownFields = {
       "Michael Tarr",
       "Sheikh Konneh",
       "Varlee Massalay",
-      "Amara Kamara"
+      "Amara Kamara",
+      "Fatu Kaba"
     ],
     "Supervising Consultant": [
       "Amara Kamara",
@@ -92,7 +93,7 @@ export const dropdownFields = {
       "Waiting on Client",
       "Submitted to State",
       "Under State Review",
-      "Provisional Aproval",
+      "Provisional Approval",
       "Completed"
     ],
     "Submitted (Y/N)": [
