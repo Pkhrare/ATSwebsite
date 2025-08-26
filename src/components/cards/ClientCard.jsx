@@ -1,299 +1,644 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useLocation, useParams, Link } from 'react-router-dom';
-import RichTextEditor from '../richText/RichTextEditor';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import TaskCard from './TaskCard';
+import AddTaskToProjectForm from '../forms/AddTaskToProjectForm';
+import AddCollaboratorForm from '../forms/AddCollaboratorForm';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { parse, format, isValid } from 'date-fns';
+import { dropdownFields, DEFAULT_ACTIVITIES, safeNewDate } from '../../utils/validations';
+import { useAuth } from '../../utils/AuthContext';
 import ApiCaller from '../apiCall/ApiCaller';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { toLexical, fromLexical } from '../../utils/lexicalUtils';
+import RichTextEditor from '../richText/RichTextEditor';
 
+
+// Helper function to fetch from the backend API
 const apiFetch = async (endpoint, options = {}) => {
-        return await ApiCaller(endpoint, options);
+    // Directly return the promise from ApiCaller, which resolves to the JSON data
+    return ApiCaller(endpoint, options);
 };
 
-const toLexical = (text) => {
-    if (!text) return null;
-    try {
-        JSON.parse(text);
-        return text;
-    } catch (e) {
-        return JSON.stringify({
-            root: { children: [{ type: 'paragraph', children: [{ type: 'text', text }] }] }
-        });
-    }
-};
 
-const fromLexical = (lexicalJSON) => {
-    try {
-        const parsed = JSON.parse(lexicalJSON);
-        return parsed.root.children.map(p => p.children.map(c => c.text).join('')).join('\n');
-    } catch (e) {
-        return lexicalJSON;
-    }
-};
+// --- SVG Icons ---
+const BackIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+    </svg>
+);
 
 const EditIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
-);
-const DocumentIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-slate-500"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
-);
-const UploadIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+    </svg>
 );
 
+const ClipboardIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a2.25 2.25 0 01-2.25 2.25h-1.5a2.25 2.25 0 01-2.25-2.25v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+    </svg>
+);
+
+const DocumentIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-slate-500">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+    </svg>
+);
+
+const AddIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+    </svg>
+);
+
+const CloseIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+);
+
+const UploadIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+    </svg>
+);
+
+const CalendarIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-slate-500">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18" />
+    </svg>
+);
+
+const CollaboratorIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-slate-500">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.5-2.226A3 3 0 0118 15.75M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+    </svg>
+);
+
+const CompletedIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+    </svg>
+);
+
+const IncompleteIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+    </svg>
+);
+
+// --- Main Card Component ---
 export default function ClientCard() {
-    const { state } = useLocation();
     const { projectId } = useParams();
-    const [projectData, setProjectData] = useState(state?.project || null);
-    const [isLoading, setIsLoading] = useState(!state?.project);
+    const isClientView = true;
+
+    const [projectData, setProjectData] = useState(null);
+    const [pageIsLoading, setPageIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const [isEditingDetails, setIsEditingDetails] = useState(false);
-    const [editedDetails, setEditedDetails] = useState({});
-    const [isEditingNotes, setIsEditingNotes] = useState(false);
-    const notesRef = useRef(null);
+    const [actions, setActions] = useState([]);
+    const [isLoadingActions, setIsLoadingActions] = useState(true);
+    const [selectedDocument, setSelectedDocument] = useState(null);
     const [isUploading, setIsUploading] = useState(false);
-    const [tasks, setTasks] = useState([]);
+    const [activities, setActivities] = useState([]);
+    const [isLoadingActivities, setIsLoadingActivities] = useState(true);
+    const notesEditorRef = useRef(null);
+
+    // Task-related states
+    const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
     const [isLoadingTasks, setIsLoadingTasks] = useState(true);
     const [selectedTask, setSelectedTask] = useState(null);
     const [isTaskCardVisible, setIsTaskCardVisible] = useState(false);
 
     useEffect(() => {
         const fetchProject = async () => {
+            if (!projectId) return;
+            setPageIsLoading(true);
             try {
                 const data = await apiFetch(`/records/projects/${projectId}`);
                 setProjectData(data);
-                setEditedDetails(data.fields);
-                notesRef.current = toLexical(data.fields.Notes);
+                notesEditorRef.current = toLexical(data.fields.Notes || '');
             } catch (err) {
                 setError('Failed to load project data.');
+                console.error(err);
             } finally {
-                setIsLoading(false);
+                setPageIsLoading(false);
             }
         };
-
-        if (!projectData) {
-            fetchProject();
-        } else {
-            setEditedDetails(projectData.fields);
-            notesRef.current = toLexical(projectData.fields.Notes);
-        }
-    }, [projectId, projectData]);
+        fetchProject();
+    }, [projectId]);
 
     const fetchTasksForProject = useCallback(async () => {
-        if (!projectData?.fields['Project ID']) return;
+        if (!projectData?.id) return;
         setIsLoadingTasks(true);
         try {
-            const taskRecords = await apiFetch(`/records/filter/${projectData.fields['Project ID']}/tasks`);
-            setTasks(taskRecords.records || []);
+            const [groupsResponse, tasksResponse] = await Promise.all([
+                ApiCaller(`/records/filter/${projectData.fields['Project ID']}/task_groups`),
+                ApiCaller(`/records/filter/${projectData.fields['Project ID']}/tasks`)
+            ]);
+
+            const allGroups = Array.isArray(groupsResponse?.records) ? groupsResponse.records : [];
+            const allTasks = Array.isArray(tasksResponse?.records) ? tasksResponse.records : [];
+
+            const groupsMap = new Map();
+            allGroups.forEach(group => {
+                groupsMap.set(group.id, {
+                    id: group.id,
+                    name: group.fields.group_name || 'Unnamed Group',
+                    order: group.fields.group_order || 0,
+                    tasks: []
+                });
+            });
+
+            const ungrouped = [];
+            allTasks.forEach(task => {
+                const groupId = task.fields.task_groups?.[0];
+                if (groupId && groupsMap.has(groupId)) {
+                    groupsMap.get(groupId).tasks.push(task);
+                } else {
+                    ungrouped.push(task);
+                }
+            });
+
+            const sortedGroups = Array.from(groupsMap.values()).sort((a, b) => a.order - b.order);
+            sortedGroups.forEach(group => {
+                group.tasks.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
+            });
+            const sortedUngrouped = ungrouped.sort((a, b) => (a.fields.order || 0) - (b.fields.order || 0));
+
+            setTaskData({ groups: sortedGroups, ungroupedTasks: sortedUngrouped });
+
         } catch (error) {
-            console.error("Failed to fetch tasks for project:", error);
+            console.error("Failed to fetch and process tasks:", error);
+            setTaskData({ groups: [], ungroupedTasks: [] });
         } finally {
             setIsLoadingTasks(false);
         }
     }, [projectData]);
 
-    useEffect(() => {
-        if(projectData) fetchTasksForProject();
-    }, [projectData, fetchTasksForProject]);
-
-    const handleDetailChange = (field, value) => {
-        setEditedDetails(prev => ({ ...prev, [field]: value }));
-    };
-
-    const handleSaveDetails = async () => {
-        const fieldsToUpdate = {
-            'Client Email': editedDetails['Client Email'],
-            'IRS Identifier (ID/EIN)': editedDetails['IRS Identifier (ID/EIN)'],
-        };
+    const fetchActions = useCallback(async () => {
+        if (!projectData?.fields['Project ID']) return;
+        setIsLoadingActions(true);
         try {
-            await apiFetch(`/records/projects/${projectData.id}`, {
-                method: 'PATCH',
-                body: JSON.stringify({ fields: fieldsToUpdate }),
-            });
-            setProjectData(prev => ({ ...prev, fields: { ...prev.fields, ...fieldsToUpdate }}));
-            setIsEditingDetails(false);
-        } catch (err) {
-            alert('Failed to save details.');
-        }
-    };
-
-    const handleSaveNotes = async () => {
-        try {
-            const notesToSave = fromLexical(notesRef.current);
-            await apiFetch(`/records/projects/${projectData.id}`, {
-                method: 'PATCH',
-                body: JSON.stringify({ fields: { 'Notes': notesToSave } }),
-            });
-            setProjectData(prev => ({ ...prev, fields: { ...prev.fields, Notes: notesToSave } }));
-            setIsEditingNotes(false);
+            const actionRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/actions`);
+            setActions(actionRecords?.records ?? []);
         } catch (error) {
-            alert("There was an error saving the notes.");
+            console.error("Failed to fetch actions:", error);
+            setActions([]);
+        } finally {
+            setIsLoadingActions(false);
         }
-    };
+    }, [projectData]);
+
+    const fetchAndProcessActivities = useCallback(async () => {
+        if (!projectData?.fields['Project ID']) return;
+        setIsLoadingActivities(true);
+        try {
+            const activityRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/activities`);
+            const fetchedActivities = activityRecords?.records ?? [];
+
+            const fetchedActivitiesMap = new Map();
+            fetchedActivities.forEach(act => {
+                const apiName = act.fields.name?.trim();
+                if (apiName) {
+                    fetchedActivitiesMap.set(apiName, act);
+                }
+            });
+
+            const finalActivities = DEFAULT_ACTIVITIES.map((name, index) => {
+                const existingActivity = fetchedActivitiesMap.get(name);
+                return existingActivity || {
+                    id: `default-${index}`,
+                    fields: { name, dueDate: 'Not set', status: 'Not started', completed: false }
+                };
+            });
+            setActivities(finalActivities);
+
+        } catch (error) {
+            console.error("Failed to fetch or process activities:", error);
+            const defaultList = DEFAULT_ACTIVITIES.map((name, index) => ({
+                id: `default-error-${index}`,
+                fields: { name, dueDate: 'Not set', status: 'Not started', completed: false }
+            }));
+            setActivities(defaultList);
+        } finally {
+            setIsLoadingActivities(false);
+        }
+    }, [projectData]);
+
+    useEffect(() => {
+        if (projectData) {
+            fetchTasksForProject();
+            fetchActions();
+            fetchAndProcessActivities();
+        }
+    }, [projectData, fetchTasksForProject, fetchActions, fetchAndProcessActivities]);
+
 
     const handleFileUpload = async (event) => {
         const file = event.target.files[0];
         if (!file) return;
+
         setIsUploading(true);
         const formData = new FormData();
         formData.append('file', file);
+
         try {
-            const updatedDocuments = await apiFetch(`/upload/projects/${projectData.id}`, {
-                method: 'POST', body: formData, headers: {},
+            const updatedDocuments = await apiFetch(`/upload/projects/${projectData.id}/Documents`, {
+                method: 'POST',
+                body: formData,
             });
-            setProjectData(prev => ({...prev, fields: { ...prev.fields, Documents: updatedDocuments }}));
+
+            const updatedProjectData = {
+                ...projectData,
+                fields: { ...projectData.fields, Documents: updatedDocuments }
+            };
+            setProjectData(updatedProjectData);
+
         } catch (error) {
-            alert('File upload failed.');
+            console.error('File upload failed:', error);
+            alert('File upload failed. Please try again.');
         } finally {
             setIsUploading(false);
         }
     };
-    
-    const formatBytes = (bytes, decimals = 2) => {
-        if (!+bytes) return '0 Bytes';
-        const k = 1024;
-        const dm = decimals < 0 ? 0 : decimals;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+
+
+    const StatusBadge = ({ status }) => {
+        const baseStyle = "px-2.5 py-0.5 text-xs font-medium rounded-full inline-block";
+        let colorStyle = "bg-slate-100 text-slate-700";
+        if (status) {
+            switch (status.toLowerCase()) {
+                case 'completed':
+                case 'finalized':
+                    colorStyle = "bg-emerald-100 text-emerald-800"; break;
+                case 'in progress': colorStyle = "bg-amber-100 text-amber-800"; break;
+                case 'not started': colorStyle = "bg-slate-100 text-slate-700"; break;
+                case 'pending': colorStyle = "bg-rose-100 text-rose-800"; break;
+                default: break;
+            }
+        }
+        return <span className={`${baseStyle} ${colorStyle}`}>{status || 'N/A'}</span>;
     };
 
-    // Helper functions for tasks
-    const getStatusColor = (status) => {
-        switch (status) {
-            case 'Not Started': return 'bg-gray-200 text-gray-800';
-            case 'In Progress': return 'bg-blue-100 text-blue-800';
-            case 'Completed': return 'bg-green-100 text-green-800';
-            default: return 'bg-gray-200 text-gray-800';
-        }
-    };
+    const formatBytes = (bytes, decimals = 2) => {
+        if (!+bytes) return '0 Bytes'
+        const k = 1024
+        const dm = decimals < 0 ? 0 : decimals
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
+        return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+    }
 
     const formatDate = (dateString) => {
         if (!dateString) return 'No date';
         return new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     };
 
-    if (isLoading) return <div className="text-center p-8">Loading project...</div>;
-    if (error) return <div className="text-center p-8 text-red-500">{error}</div>;
-    if (!projectData) return <div className="text-center p-8">Project not found.</div>;
+    const assigneeOptions = useMemo(() => {
+        if (!projectData?.fields) return [];
+        const {
+            'Assigned Consultant': assignedConsultant,
+            'Supervising Consultant': supervisingConsultant,
+            'collaborator_name': collaborators,
+        } = projectData.fields;
+        const options = new Set();
+        if (assignedConsultant) options.add(assignedConsultant);
+        if (supervisingConsultant) options.add(supervisingConsultant);
+        if (Array.isArray(collaborators)) {
+            collaborators.forEach(c => options.add(c.trim()));
+        }
+        return Array.from(options).filter(Boolean);
+    }, [projectData]);
 
-    const { fields } = projectData;
+
+    if (pageIsLoading) return <div className="flex justify-center items-center h-screen"><p>Loading Project...</p></div>;
+    if (error) return <div className="flex justify-center items-center h-screen"><p className="text-red-500">{error}</p></div>;
+    if (!projectData) return <div className="flex justify-center items-center h-screen"><p>Project not found.</p></div>;
+
 
     return (
-        <>
-            <div className="min-h-screen bg-slate-100 p-8">
-                <div className="max-w-5xl mx-auto">
-                    <header className="bg-white shadow-md rounded-lg p-6 mb-8">
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h1 className="text-3xl font-bold text-slate-800">{fields['Project Name']}</h1>
-                                <p className="text-sm text-slate-500 font-mono">ID: {fields['Project ID']}</p>
+        <div className="fixed inset-0 z-50 bg-slate-50 flex flex-col">
+            <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
+                <Link to="/" className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200" aria-label="Back">
+                    <BackIcon />
+                    <span className="hidden sm:inline">Exit Portal</span>
+                </Link>
+                <div className="text-center">
+                    <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
+                    <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
+                </div>
+                <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
+            </header>
+
+            <main className="flex-grow p-6 overflow-y-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+
+                    <div className="lg:col-span-3 space-y-6">
+                        {/* Project Details Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
                             </div>
-                            <Link to="/" className="text-sm text-blue-600 hover:underline">Exit Portal</Link>
-                        </div>
-                    </header>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                <div>
+                                    <span className="font-medium text-slate-500">Assigned Consultant:</span>
+                                    <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">State:</span>
+                                    <span className="text-slate-800 ml-2">{projectData.fields['States']}</span>
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Project Type:</span>
+                                    <span className="text-slate-800 ml-2">{projectData.fields['Project Type']}</span>
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Status:</span>
+                                    <span className="text-slate-800 ml-2">{projectData.fields['Status']}</span>
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">IRS Identifier:</span>
+                                    <span className="text-slate-800 ml-2">{projectData.fields['IRS Identifier (ID/EIN)']}</span>
+                                </div>
+                                <div className="md:col-span-2">
+                                    <span className="font-medium text-slate-500">Client Email:</span>
+                                    <a href={`mailto:${projectData.fields['Client Email']}`} className="text-blue-600 hover:underline ml-2">{projectData.fields['Client Email']}</a>
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Date of Submission:</span>
+                                    <span className="text-slate-800 ml-2">{projectData.fields['Date of Submission']}</span>
+                                </div>
+                                <div>
+                                    <span className="font-medium text-slate-500">Estimated Completion:</span>
+                                    <span className="text-slate-800 ml-2">{projectData.fields['Estimated Completion']}</span>
+                                </div>
+                            </div>
+                        </section>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="md:col-span-2 space-y-6">
-                            <section className="bg-white p-6 rounded-lg shadow-md">
-                                <div className="flex justify-between items-center mb-4">
-                                    <h2 className="text-xl font-semibold text-slate-700 text-black">Your Information</h2>
-                                    {isEditingDetails ? (
-                                        <div className="flex gap-2">
-                                            <button onClick={() => setIsEditingDetails(false)} className="text-sm font-medium text-slate-600">Cancel</button>
-                                            <button onClick={handleSaveDetails} className="text-sm font-medium text-emerald-600">Save</button>
+                        {/* Notes Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex justify-between items-center mb-2">
+                                <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
+                            </div>
+                            <RichTextEditor
+                                isEditable={false}
+                                initialContent={projectData.fields['Notes']}
+                            />
+                        </section>
+
+                        {/* Documents Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex justify-between items-center mb-3">
+                                <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
+                                <label className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer">
+                                    <UploadIcon />
+                                    Upload File
+                                    <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
+                                </label>
+                            </div>
+                            <ul className="space-y-2">
+                                {isUploading && (
+                                    <li className="flex items-center justify-between bg-slate-100 p-3 rounded-lg border border-slate-200 opacity-70">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-5 h-5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"></div>
+                                            <span className="text-sm font-medium text-slate-500">Uploading...</span>
                                         </div>
-                                    ) : (
-                                        <button onClick={() => setIsEditingDetails(true)} className="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-2 text-black"><EditIcon /> Edit</button>
-                                    )}
-                                </div>
-                                <div className="space-y-4 text-sm">
-                                    <div>
-                                        <label className="font-medium text-slate-500">Client Email</label>
-                                        {isEditingDetails ? <input type="email" value={editedDetails['Client Email'] || ''} onChange={e => handleDetailChange('Client Email', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black" /> : <p className="text-slate-800">{fields['Client Email']}</p>}
-                                    </div>
-                                    <div>
-                                        <label className="font-medium text-slate-500">IRS Identifier (ID/EIN)</label>
-                                        {isEditingDetails ? <input type="text" value={editedDetails['IRS Identifier (ID/EIN)'] || ''} onChange={e => handleDetailChange('IRS Identifier (ID/EIN)', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black" /> : <p className="text-slate-800">{fields['IRS Identifier (ID/EIN)']}</p>}
-                                    </div>
-                                </div>
-                            </section>
+                                    </li>
+                                )}
+                                {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
+                                    projectData.fields.Documents.map(doc => (
+                                        <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
+                                            <div className="flex items-center gap-3">
+                                                <DocumentIcon />
+                                                <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left">
+                                                    {doc.filename}
+                                                </button>
+                                            </div>
+                                            <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
+                                        </li>
+                                    ))
+                                ) : (
+                                    !isUploading && <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
+                                )}
+                            </ul>
+                        </section>
 
-                            <section className="bg-white p-6 rounded-lg shadow-md">
-                                <div className="flex justify-between items-center mb-2">
-                                    <h2 className="text-xl font-semibold text-slate-700 text-black">Project Notes</h2>
-                                </div>
-                                <div className="bg-slate-50 p-4 rounded border whitespace-pre-wrap text-sm text-black">
-                                    {fromLexical(notesRef.current) || 'No notes yet.'}
-                                </div>
-                            </section>
-
-                            <section className="bg-white p-6 rounded-lg shadow-md">
-                                <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-xl font-semibold text-slate-700 text-black">Documents</h2>
-                                    <label className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg cursor-pointer"><UploadIcon /> Upload File <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} /></label>
-                                </div>
-                                <ul className="space-y-2">
-                                    {isUploading && <li>Uploading...</li>}
-                                    {fields.Documents?.map(doc => <li key={doc.id} className="flex items-center justify-between bg-slate-50 p-3 rounded-lg"><a href={doc.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline flex items-center gap-2"><DocumentIcon />{doc.filename}</a><span className="text-xs text-slate-500">{formatBytes(doc.size)}</span></li>)}
-                                </ul>
-                            </section>
-
-                            <section className="bg-white p-6 rounded-lg shadow-md">
-                                <h2 className="text-xl font-semibold text-slate-700 mb-4 text-black">Tasks</h2>
-                                {isLoadingTasks ? <p>Loading tasks...</p> : (
-                                    <ul className="divide-y divide-slate-200">
-                                        {tasks.map(task => (
-                                            <li key={task.id} onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }} className="p-4 hover:bg-slate-50 cursor-pointer">
-                                                <div className="flex items-start gap-4">
-                                                    <div className="relative w-12 h-12 flex-shrink-0">
-                                                        <svg className="w-full h-full" viewBox="0 0 36 36">
-                                                            <circle cx="18" cy="18" r="16" fill="none" className="stroke-slate-100" strokeWidth="3" />
-                                                            <circle cx="18" cy="18" r="16" fill="none" className="stroke-blue-500" strokeWidth="3" strokeDasharray="100" strokeDashoffset={100 - ((task.fields.progress_bar || 0) * 100)} strokeLinecap="round" transform="rotate(-90 18 18)" />
-                                                            <text x="50%" y="50%" dy=".3em" textAnchor="middle" className="text-xs font-medium fill-slate-700">{Math.round((task.fields.progress_bar || 0) * 100)}%</text>
-                                                        </svg>
-                                                    </div>
-                                                    <div className="flex-1">
-                                                        <div className="flex justify-between items-start mb-2">
-                                                            <h4 className="text-sm font-medium text-slate-800">{fromLexical(task.fields.task_title)}</h4>
-                                                            <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(task.fields.task_status)}`}>{task.fields.task_status}</span>
-                                                        </div>
-                                                        <div className="flex gap-4 text-xs text-slate-500 mb-2">
-                                                            <span><span className="font-medium">Start:</span> {formatDate(task.fields.start_date)}</span>
-                                                            <span><span className="font-medium">Due:</span> {formatDate(task.fields.due_date)}</span>
-                                                        </div>
-                                                        {task.fields.tags && (
-                                                            <div className="mt-2 flex flex-wrap gap-1">
-                                                                {task.fields.tags.split(',').map((tag, index) => (
-                                                                    <span key={index} className="px-2 py-0.5 bg-slate-100 text-slate-700 text-xs rounded-full">{tag.trim()}</span>
-                                                                ))}
+                        {/* Tasks Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex justify-between items-center mb-4">
+                                <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
+                            </div>
+                            {isLoadingTasks ? (
+                                <p className="text-slate-500">Loading tasks...</p>
+                            ) : (
+                                <div className="space-y-4">
+                                    {taskData.groups.map((group) => (
+                                        <div key={group.id}>
+                                            <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
+                                                <div className="flex justify-between items-center p-2">
+                                                    <h4 className="font-bold text-slate-700">{group.name}</h4>
+                                                </div>
+                                                <ul className="space-y-2 p-2 min-h-[50px]">
+                                                    {group.tasks.map((task) => (
+                                                        <li
+                                                            key={task.id}
+                                                            onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                            className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                        >
+                                                            <div className="flex justify-between items-center">
+                                                                <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
+                                                                {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
                                                             </div>
-                                                        )}
+                                                            <div className="flex justify-end items-center mt-2">
+                                                                <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                            </div>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    <div className="mt-4">
+                                        <h4 className="font-bold text-slate-700 mb-2 p-2">Ungrouped Tasks</h4>
+                                        <ul className="space-y-2 p-2 min-h-[50px] bg-slate-50 rounded-lg border">
+                                            {taskData.ungroupedTasks.map((task) => (
+                                                <li
+                                                    key={task.id}
+                                                    onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                    className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                >
+                                                    <div className="flex justify-between items-center">
+                                                        <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
+                                                        {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                    </div>
+                                                    <div className="flex justify-end items-center mt-2">
+                                                        <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                    </div>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            )}
+                        </section>
+
+                        {/* Activities Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex justify-between items-center mb-4">
+                                <div className="flex items-center gap-3">
+                                    <CalendarIcon />
+                                    <h2 className="text-lg font-semibold text-slate-700">Activities</h2>
+                                </div>
+                            </div>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-sm text-left table-fixed">
+                                    <thead className="text-xs text-slate-700 uppercase bg-slate-100 rounded-t-lg">
+                                        <tr>
+                                            <th scope="col" className="px-6 py-3 w-1/2">Name</th>
+                                            <th scope="col" className="px-6 py-3 w-40">Due Date</th>
+                                            <th scope="col" className="px-6 py-3 w-36">Status</th>
+                                            <th scope="col" className="px-6 py-3 text-center w-24">Completed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {isLoadingActivities ? (
+                                            <tr><td colSpan="4" className="text-center p-4 text-slate-500">Loading activities...</td></tr>
+                                        ) : activities.map((activity, index) => (
+                                            <tr key={activity.id} className={`border-b ${index === activities.length - 1 ? 'border-transparent' : 'border-slate-200'} h-16 align-middle`}>
+                                                <td className="px-6 py-4 font-medium text-slate-800 whitespace-nowrap overflow-hidden text-ellipsis" title={activity.fields.name}>
+                                                    {activity.fields.name}
+                                                </td>
+                                                <td className="px-6 py-4 text-slate-600 whitespace-nowrap">
+                                                    <span>{activity.fields.dueDate}</span>
+                                                </td>
+                                                <td className="px-6 py-4">
+                                                    <StatusBadge status={activity.fields.status} />
+                                                </td>
+                                                <td className="px-6 py-4 text-center">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={activity.fields.completed || false}
+                                                        disabled={isClientView}
+                                                        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0"
+                                                    />
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        {/* Document Viewer Section */}
+                        {selectedDocument && (
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <div className="flex justify-between items-center mb-3">
+                                    <h2 className="text-lg font-semibold text-slate-700">📄 Document Viewer</h2>
+                                    <button onClick={() => setSelectedDocument(null)} className="p-1.5 text-slate-500 hover:bg-slate-200 rounded-full transition-colors" aria-label="Close document viewer">
+                                        <CloseIcon />
+                                    </button>
+                                </div>
+                                <div className="w-full h-[80vh] rounded-lg border border-slate-300 overflow-hidden bg-slate-200">
+                                    <iframe src={selectedDocument} title="Document Viewer" width="100%" height="100%" frameBorder="0" />
+                                </div>
+                            </section>
+                        )}
+                    </div>
+
+                    <div className="lg:col-span-2 space-y-6">
+                        {/* Project Status Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-lg font-semibold text-slate-700 text-center">Project Status</h2>
+                            </div>
+                            <div className="space-y-3">
+                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Current Status:</span><StatusBadge status={projectData.fields['Status']} /></div>
+                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submitted:</span><span className="font-semibold text-slate-800">{projectData.fields['Submitted (Y/N)']}</span></div>
+                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Balance:</span><span className="font-semibold text-slate-800">{projectData.fields['Balance']}</span></div>
+                            </div>
+                        </section>
+
+                        {/* Pending Action Section */}
+                        <section className="bg-amber-50 border-amber-200 p-5 rounded-xl border shadow-sm">
+                            <h2 className="text-lg font-semibold text-amber-800 mb-2 text-center">⏳ Pending Action</h2>
+                            <div className="bg-white rounded-md p-3 border border-amber-200 text-sm text-center text-amber-900">{projectData.fields['Pending Action (Client, Consulting or State)'] || 'All actions complete.'}</div>
+                        </section>
+
+                        {/* Key Dates Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
+                            <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Key Dates</h2>
+                            <div className="space-y-3">
+                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
+                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
+                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Est. Completion:</span><span className="font-semibold text-slate-800">{projectData.fields['Estimated Completion']}</span></div>
+                            </div>
+                        </section>
+
+                        {/* Actions Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex justify-between items-center mb-3">
+                                <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
+                            </div>
+                            <div className="space-y-3">
+                                {isLoadingActions ? (
+                                    <p className="text-sm text-slate-500 text-center py-4">Loading actions...</p>
+                                ) : actions && actions.length > 0 ? (
+                                    actions.map((action) => (
+                                        <div key={action.id} className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                            <div className="flex items-start gap-4">
+                                                <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0" aria-label="Action completed" />
+                                                <div className="flex-1">
+                                                    <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
+                                                    <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                        <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
+                                                        <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
                                                     </div>
                                                 </div>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p className="text-sm text-slate-500 text-center py-4">No actions found for this project.</p>
                                 )}
-                            </section>
-                        </div>
+                            </div>
+                        </section>
 
-                        <div className="space-y-6">
-                            <section className="bg-white p-6 rounded-lg shadow-md">
-                                <h2 className="text-xl font-semibold text-slate-700 mb-4 text-black">Project Status</h2>
-                                <p className="text-lg font-medium text-blue-600">{fields.Status}</p>
-                            </section>
-                            <section className="bg-white p-6 rounded-lg shadow-md">
-                                <h2 className="text-xl font-semibold text-slate-700 mb-4 text-black">Project Team</h2>
-                                <ul className="space-y-2">
-                                    <li className="text-sm text-slate-600 text-black">{fields['Assigned Consultant']} (Assigned)</li>
-                                    {fields['collaborator_name']?.map((name, i) => <li key={i} className="text-sm text-slate-600 text-black">{name}</li>)}
-                                </ul>
-                            </section>
-                        </div>
+                        {/* Collaborators Section */}
+                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex justify-between items-center mb-3">
+                                <div className="flex items-center gap-3">
+                                    <CollaboratorIcon />
+                                    <h2 className="text-lg font-semibold text-slate-700">Collaborators</h2>
+                                </div>
+                            </div>
+                            <div className="space-y-2">
+                                {projectData.fields['collaborator_name'] && projectData.fields['collaborator_name'].length > 0 ? (
+                                    projectData.fields['collaborator_name'].map((name, index) => (
+                                        <div key={index} className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-sm font-medium text-slate-800">
+                                            {name}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p className="text-sm text-slate-500 text-center py-2">No collaborators assigned.</p>
+                                )}
+                            </div>
+                        </section>
+
                     </div>
                 </div>
-            </div>
-            {isTaskCardVisible && <TaskCard task={selectedTask} onClose={() => setIsTaskCardVisible(false)} onTaskUpdate={fetchTasksForProject} assigneeOptions={fields['collaborator_name'] || []} isClientView={true} />}
-        </>
+            </main>
+
+            {isTaskCardVisible && (
+                <TaskCard
+                    task={selectedTask}
+                    onClose={() => setIsTaskCardVisible(false)}
+                    onTaskUpdate={() => { fetchTasksForProject(); setIsTaskCardVisible(false); }}
+                    assigneeOptions={assigneeOptions}
+                    isClientView={isClientView}
+                />
+            )}
+        </div>
     );
-} 
+}; 
