@@ -312,7 +312,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
 
     const handleFormAttached = async (form) => {
         if (!form || !task || !task.id) return;
-        
+
         const fieldIds = form.fields.task_forms_fields;
         if (!Array.isArray(fieldIds) || fieldIds.length === 0) {
             setError("This form has no fields linked to it and cannot be attached. Please update the form configuration.");
@@ -321,14 +321,14 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
 
         setIsLoading(true);
         setError(null);
-        
+
         try {
             // Step 1: Fetch the full field records to get their details.
             const formFieldsResponse = await ApiCaller('/records/by-ids', {
                 method: 'POST',
-                body: JSON.stringify({ 
-                    recordIds: fieldIds, 
-                    tableName: 'task_forms_fields' 
+                body: JSON.stringify({
+                    recordIds: fieldIds,
+                    tableName: 'task_forms_fields'
                 }),
             });
             const formFields = formFieldsResponse.records;
@@ -770,8 +770,8 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                 </div>
                                 <div className="mt-6 pt-6 border-t flex justify-between items-center">
                                     {/* Destructive action on the left */}
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         onClick={handleDeleteTask} // You would need to create this function
                                         className="px-4 py-2 bg-red-600 text-white font-medium text-sm rounded-lg hover:bg-red-700"
                                     >

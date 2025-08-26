@@ -63,6 +63,53 @@ function ClickableLinkPlugin({ isEditable }) {
     return null;
 }
 
+// Simple table insertion fallback
+function insertSimpleTable(editor, rows, cols) {
+    editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+            const tableText = `\n\n[TABLE ${rows}x${cols}]\n` + 
+                Array.from({length: rows}, (_, i) => 
+                    Array.from({length: cols}, (_, j) => `Cell ${i+1}-${j+1}`).join(' | ')
+                ).join('\n') + '\n[/TABLE]\n\n';
+                
+            selection.insertText(tableText);
+        }
+    });
+}
+
+// Table plugin component - simplified version
+function TablePluginComponent() {
+    const [editor] = useLexicalComposerContext();
+    
+    useEffect(() => {
+        let unregister;
+        
+        const initTablePlugin = async () => {
+            try {
+                const tableModule = await import('@lexical/table');
+                if (tableModule && tableModule.registerTablePlugin) {
+                    unregister = tableModule.registerTablePlugin(editor, {
+                        hasCellMerge: true,
+                        hasCellBackgroundColor: true,
+                        hasTabHandler: true,
+                    });
+                }
+            } catch (error) {
+                console.warn('Table plugin not available:', error);
+            }
+        };
+        
+        initTablePlugin();
+        
+        return () => {
+            if (unregister) unregister();
+        };
+    }, [editor]);
+    
+    return null;
+}
+
 // --- Toolbar Plugin ---
 function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -70,6 +117,16 @@ function ToolbarPlugin() {
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
   const [isLink, setIsLink] = useState(false);
+  const [hasTableSupport, setHasTableSupport] = useState(false);
+
+  // Check if table support is available
+  useEffect(() => {
+      import('@lexical/table').then(() => {
+          setHasTableSupport(true);
+      }).catch(() => {
+          setHasTableSupport(false);
+      });
+  }, []);
 
   const updateToolbar = useCallback(() => {
       const selection = $getSelection();
@@ -118,10 +175,43 @@ function ToolbarPlugin() {
     }
   }, [editor, isLink]);
 
+  const insertTable = useCallback(async () => {
+    const rows = prompt('Number of rows:', '3');
+    const cols = prompt('Number of columns:', '3');
+    
+    if (rows && cols) {
+      const numRows = parseInt(rows, 10);
+      const numCols = parseInt(cols, 10);
+      
+      if (numRows > 0 && numCols > 0 && numRows <= 20 && numCols <= 10) {
+        if (hasTableSupport) {
+          try {
+            const tableModule = await import('@lexical/table');
+            console.log('Inserting table with command:', tableModule.INSERT_TABLE_COMMAND);
+            editor.dispatchCommand(tableModule.INSERT_TABLE_COMMAND, {
+              columns: numCols,
+              rows: numRows,
+            });
+            console.log('Table command dispatched successfully');
+          } catch (error) {
+            console.error('Failed to insert table:', error);
+            insertSimpleTable(editor, numRows, numCols);
+            alert('Fell back to simple table format.');
+          }
+        } else {
+          insertSimpleTable(editor, numRows, numCols);
+          alert('Basic table inserted. Install @lexical/table for full functionality.');
+        }
+      } else {
+        alert('Please enter valid numbers (rows: 1-20, columns: 1-10)');
+      }
+    }
+  }, [editor, hasTableSupport]);
+
   return (
       <div 
-          className="flex items-center gap-2 p-2 bg-slate-100 border-b border-slate-300 rounded-t-md"
-            // By preventing the default mousedown action, you stop the toolbar from
+          className="flex items-center gap-2 p-2 bg-slate-100 border-b border-slate-300 rounded-t-md flex-wrap"
+          // By preventing the default mousedown action, you stop the toolbar from
           // taking focus away from the editor.
           onMouseDown={(e) => e.preventDefault()}
       >
@@ -157,6 +247,18 @@ function ToolbarPlugin() {
           >
               {isLink ? 'Unlink' : 'Link'}
           </button>
+          
+          <div className="w-px h-6 bg-slate-300 mx-1"></div>
+          
+          <button
+              type="button"
+              onClick={insertTable}
+              className="px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200"
+              aria-label="Insert Table"
+              title={hasTableSupport ? "Insert Table (full functionality)" : "Insert Table (basic text)"}
+          >
+              Table {!hasTableSupport && '⚠️'}
+          </button>
       </div>
   );
 }
@@ -176,7 +278,8 @@ function OnChangePlugin({ onChange }) {
     useEffect(() => {
         if (!onChange) return;
         return editor.registerUpdateListener(({ editorState }) => {
-            onChange(JSON.stringify(editorState)); 
+            const editorStateJSON = editorState.toJSON();
+            onChange(JSON.stringify(editorStateJSON)); 
         });
     }, [editor, onChange]);
     return null;
@@ -191,10 +294,24 @@ function InitialContentPlugin({ initialContent }) {
         }
         editor.update(() => {
             try {
-                const parsedState = editor.parseEditorState(initialContent);
+                let content = initialContent;
+                // Check if the content is a doubly-stringified JSON and parse it once.
+                if (typeof content === 'string') {
+                    try {
+                        const parsed = JSON.parse(content);
+                        if (typeof parsed === 'string') {
+                            content = parsed;
+                        }
+                    } catch (e) {
+                        // Not a valid JSON string, treat as plain text below.
+                    }
+                }
+
+                const parsedState = editor.parseEditorState(content);
                 editor.setEditorState(parsedState);
             } catch (error) {
-                // If parsing fails, treat as plain text.
+                // If parsing fails after all attempts, it's likely plain text.
+                // Create a valid editor state from this plain text.
                 const root = $getRoot();
                 root.clear();
                 const paragraphNode = $createParagraphNode();
@@ -208,6 +325,10 @@ function InitialContentPlugin({ initialContent }) {
 
 const editorTheme = {
   link: 'text-blue-600 underline hover:text-blue-800 cursor-pointer',
+  table: 'border-collapse my-4 w-full border border-slate-400',
+  tableRow: 'border-b border-slate-300',
+  tableCell: 'border border-slate-400 p-3 min-w-[100px] relative bg-white',
+  tableCellHeader: 'border border-slate-400 p-3 min-w-[100px] bg-slate-100 font-semibold relative',
 };
 
 function onError(error) {
@@ -233,8 +354,25 @@ const MATCHERS = [
   },
 ];
 
-
 function RichTextEditor({ isEditable, initialContent, onChange }) {
+    const [tableNodes, setTableNodes] = useState([]);
+    const [isTableNodesLoaded, setIsTableNodesLoaded] = useState(false);
+    
+    // Load table nodes on mount
+    useEffect(() => {
+        import('@lexical/table').then(tableModule => {
+            setTableNodes([
+                tableModule.TableNode,
+                tableModule.TableCellNode,
+                tableModule.TableRowNode
+            ]);
+            setIsTableNodesLoaded(true);
+        }).catch(() => {
+            setTableNodes([]);
+            setIsTableNodesLoaded(true); // Still set to true to proceed without table nodes
+        });
+    }, []);
+
     const initialConfig = {
         namespace: 'MyEditor',
         theme: editorTheme,
@@ -247,9 +385,19 @@ function RichTextEditor({ isEditable, initialContent, onChange }) {
             CodeNode,
             HashtagNode,
             AutoLinkNode,
-            LinkNode
+            LinkNode,
+            ...tableNodes
         ],
     };
+
+    // Don't render the composer until table nodes are loaded (or failed to load)
+    if (!isTableNodesLoaded) {
+        return (
+            <div className="relative border border-slate-300 rounded-md p-4 text-center text-gray-500">
+                Loading editor...
+            </div>
+        );
+    }
 
     return (
         <div className="relative border border-slate-300 rounded-md">
@@ -259,7 +407,12 @@ function RichTextEditor({ isEditable, initialContent, onChange }) {
                     <RichTextPlugin
                         contentEditable={
                             <ContentEditable 
-                                className={`p-2 ${isEditable ? 'min-h-[150px]' : ''} outline-none text-black`} 
+                                className={`p-2 ${isEditable ? 'min-h-[150px]' : ''} outline-none text-black prose max-w-none`} 
+                                style={{
+                                    // Ensure tables are visible with explicit CSS
+                                    '--table-border': '1px solid #94a3b8',
+                                    '--table-cell-padding': '12px'
+                                }}
                             />
                         }
                         placeholder={<div className="absolute top-2 left-2 text-gray-400 pointer-events-none">Enter some text...</div>}
@@ -271,6 +424,7 @@ function RichTextEditor({ isEditable, initialContent, onChange }) {
                 <HashtagPlugin />
                 <AutoLinkPlugin matchers={MATCHERS} />
                 <LinkPlugin />
+                <TablePluginComponent />
                 <ClickableLinkPlugin isEditable={isEditable} />
                 <SetEditablePlugin isEditable={isEditable} />
                 <OnChangePlugin onChange={onChange} />

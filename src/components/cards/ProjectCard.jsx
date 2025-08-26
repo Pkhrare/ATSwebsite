@@ -882,9 +882,10 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 text-sm text-slate-700 whitespace-pre-wrap max-h-48 overflow-y-auto">
-                                    {fromLexical(projectData.fields['Notes']) || 'No notes available.'}
-                                </div>
+                                <RichTextEditor
+                                    isEditable={false}
+                                    initialContent={projectData.fields['Notes']}
+                                />
                             )}
                         </section>
 

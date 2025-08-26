@@ -60,7 +60,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
             item.id === id ? { ...item, checklist_description: newDescription } : item
         ));
     };
-    
+
     const handleRemoveChecklistItem = (id) => {
         setChecklistItems(checklistItems.filter(item => item.id !== id));
     };
@@ -158,7 +158,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                                 </select>
                             </div>
                         </div>
-                        
+
                         {/* Due Date */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Due Date (Optional)</label>
@@ -188,7 +188,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
 
                         {/* Attached Form Section */}
                         {attachedForm && (
-                             <div className="p-4 border border-gray-200 rounded-lg">
+                            <div className="p-4 border border-gray-200 rounded-lg">
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <h3 className="text-sm font-medium text-gray-700">Attached Form</h3>
@@ -196,9 +196,9 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                                     </div>
                                     <button type="button" onClick={() => setAttachedForm(null)} className="text-red-500 hover:text-red-700 text-sm font-medium">Remove</button>
                                 </div>
-                             </div>
+                            </div>
                         )}
-                        
+
                         {/* Attachments Section */}
                         {isAttachmentsVisible && (
                             <div className="p-4 border border-gray-200 rounded-lg">
