@@ -12,6 +12,7 @@ import ClientCard from './components/cards/ClientCard';
 import ProtectedRoute from './utils/ProtectedRoute';
 import { useAuth } from './utils/AuthContext';
 import Templates from './Pages/Templates';
+import Layout from './components/layout/Layout';
 
 function App() {
   const { currentUser } = useAuth();
@@ -29,22 +30,18 @@ function App() {
         <Route path='/client-login' element={<ClientLogin />} />
         <Route path='/client/project/:projectId' element={<ClientCard />} />
         
-        {/* Protected routes - assuming dashboard is the main view after login */}
-        <Route path='/dashboard' element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        } />
-        <Route path='/projects' element={
-          <ProtectedRoute>
-            <Projects />
-          </ProtectedRoute>
-        } />
-        <Route path='/templates' element={
-          <ProtectedRoute>
-            <Templates />
-          </ProtectedRoute>
-        } />
+        {/* Protected routes wrapped by the persistent Layout component */}
+        <Route 
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path='/dashboard' element={<Home />} />
+          <Route path='/projects' element={<Projects />} />
+          <Route path='/templates' element={<Templates />} />
+        </Route>
         
         {/* Redirect any unknown/root paths for authenticated users to the dashboard */}
         <Route path='*' element={currentUser ? <Navigate to="/dashboard" replace /> : <Navigate to="/" replace />} />

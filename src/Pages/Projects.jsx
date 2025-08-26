@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Nav from '../components/layout/Nav';
 import '../Pages/All.css';
 import Card from '../components/cards/ProjectCard';
 import AddProjectCard from '../components/cards/AddProjectCard';
@@ -187,28 +186,26 @@ function Projects() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Nav />
-      <main className="p-8">
-        <div className="max-w-7xl mx-auto">
-          <header className="mb-6">
-            {/* Tab Navigation */}
-            <div className="border-b border-slate-200">
-              <nav className="-mb-px flex space-x-6" aria-label="Tabs">
-                <Link to="/projects" className="shrink-0 border-b-2 border-blue-600 px-1 pb-4 text-sm font-medium text-blue-600">
-                  Projects Dashboard
-                </Link>
-                <Link to="/templates" className="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-slate-500 hover:border-slate-300 hover:text-slate-700">
-                  Projects Template
-                </Link>
-              </nav>
-            </div>
-            <div className="mt-4">
-              <p className="mt-2 text-sm text-slate-600">View, edit, and manage all client projects.</p>
-            </div>
-          </header>
+    <div className="p-8">
+      <div className="max-w-7xl mx-auto">
+        <header className="mb-6">
+          {/* Tab Navigation */}
+          <div className="border-b border-slate-200">
+            <nav className="-mb-px flex space-x-6" aria-label="Tabs">
+              <Link to="/projects" className="shrink-0 border-b-2 border-blue-600 px-1 pb-4 text-sm font-medium text-blue-600">
+                Projects Dashboard
+              </Link>
+              <Link to="/templates" className="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-slate-500 hover:border-slate-300 hover:text-slate-700">
+                Projects Template
+              </Link>
+            </nav>
+          </div>
+          <div className="mt-4">
+            <p className="mt-2 text-sm text-slate-600">View, edit, and manage all client projects.</p>
+          </div>
+        </header>
 
-          <div className="flex justify-end items-center mb-6">
+        <div className="flex justify-end items-center mb-6">
             <div className="flex items-center space-x-2">
               {!isEditing && (
                 <>
@@ -365,8 +362,7 @@ function Projects() {
               </table>
             </div>
           </div>
-        </div>
-      </main>
+      </div>
 
       {isAddCardVisible && (
         <AddProjectCard
