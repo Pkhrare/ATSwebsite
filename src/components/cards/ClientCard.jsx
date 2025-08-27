@@ -126,7 +126,7 @@ export default function ClientCard() {
                 setPageIsLoading(false);
             }
         };
-        fetchProject();
+            fetchProject();
     }, [projectId]);
 
     const fetchTasksForProject = useCallback(async () => {
@@ -263,7 +263,7 @@ export default function ClientCard() {
             setIsUploading(false);
         }
     };
-
+    
 
     const StatusBadge = ({ status }) => {
         const baseStyle = "px-2.5 py-0.5 text-xs font-medium rounded-full inline-block";
@@ -328,9 +328,9 @@ export default function ClientCard() {
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
                     <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
-                </div>
+                            </div>
                 <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
-            </header>
+                    </header>
 
             <main className="flex-grow p-6 overflow-y-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
@@ -338,7 +338,7 @@ export default function ClientCard() {
                     <div className="lg:col-span-3 space-y-6">
                         {/* Project Details Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-4">
+                                <div className="flex justify-between items-center mb-4">
                                 <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
@@ -361,44 +361,44 @@ export default function ClientCard() {
                                 <div>
                                     <span className="font-medium text-slate-500">IRS Identifier:</span>
                                     <span className="text-slate-800 ml-2">{projectData.fields['IRS Identifier (ID/EIN)']}</span>
-                                </div>
+                                        </div>
                                 <div className="md:col-span-2">
                                     <span className="font-medium text-slate-500">Client Email:</span>
                                     <a href={`mailto:${projectData.fields['Client Email']}`} className="text-blue-600 hover:underline ml-2">{projectData.fields['Client Email']}</a>
                                 </div>
-                                <div>
+                                    <div>
                                     <span className="font-medium text-slate-500">Date of Submission:</span>
                                     <span className="text-slate-800 ml-2">{projectData.fields['Date of Submission']}</span>
-                                </div>
-                                <div>
+                                    </div>
+                                    <div>
                                     <span className="font-medium text-slate-500">Estimated Completion:</span>
                                     <span className="text-slate-800 ml-2">{projectData.fields['Estimated Completion']}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
 
                         {/* Notes Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-2">
+                                <div className="flex justify-between items-center mb-2">
                                 <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
-                            </div>
+                                </div>
                             <RichTextEditor
                                 isEditable={false}
                                 initialContent={projectData.fields['Notes']}
                             />
-                        </section>
+                            </section>
 
                         {/* Documents Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-3">
+                                <div className="flex justify-between items-center mb-3">
                                 <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
                                 <label className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer">
                                     <UploadIcon />
                                     Upload File
                                     <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
                                 </label>
-                            </div>
-                            <ul className="space-y-2">
+                                </div>
+                                <ul className="space-y-2">
                                 {isUploading && (
                                     <li className="flex items-center justify-between bg-slate-100 p-3 rounded-lg border border-slate-200 opacity-70">
                                         <div className="flex items-center gap-3">
@@ -422,14 +422,14 @@ export default function ClientCard() {
                                 ) : (
                                     !isUploading && <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
                                 )}
-                            </ul>
-                        </section>
+                                </ul>
+                            </section>
 
                         {/* Tasks Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
-                            </div>
+                                                    </div>
                             {isLoadingTasks ? (
                                 <p className="text-slate-500">Loading tasks...</p>
                             ) : (
@@ -439,7 +439,7 @@ export default function ClientCard() {
                                             <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
                                                 <div className="flex justify-between items-center p-2">
                                                     <h4 className="font-bold text-slate-700">{group.name}</h4>
-                                                </div>
+                                                        </div>
                                                 <ul className="space-y-2 p-2 min-h-[50px]">
                                                     {group.tasks.map((task) => (
                                                         <li
@@ -450,13 +450,13 @@ export default function ClientCard() {
                                                             <div className="flex justify-between items-center">
                                                                 <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
                                                                 {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
-                                                            </div>
+                                                        </div>
                                                             <div className="flex justify-end items-center mt-2">
                                                                 <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
-                                                            </div>
-                                                        </li>
-                                                    ))}
-                                                </ul>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
                                             </div>
                                         </div>
                                     ))}
@@ -481,8 +481,8 @@ export default function ClientCard() {
                                         </ul>
                                     </div>
                                 </div>
-                            )}
-                        </section>
+                                )}
+                            </section>
 
                         {/* Activities Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
@@ -545,7 +545,7 @@ export default function ClientCard() {
                                 </div>
                             </section>
                         )}
-                    </div>
+                        </div>
 
                     <div className="lg:col-span-2 space-y-6">
                         {/* Project Status Section */}
@@ -564,7 +564,7 @@ export default function ClientCard() {
                         <section className="bg-amber-50 border-amber-200 p-5 rounded-xl border shadow-sm">
                             <h2 className="text-lg font-semibold text-amber-800 mb-2 text-center">⏳ Pending Action</h2>
                             <div className="bg-white rounded-md p-3 border border-amber-200 text-sm text-center text-amber-900">{projectData.fields['Pending Action (Client, Consulting or State)'] || 'All actions complete.'}</div>
-                        </section>
+                            </section>
 
                         {/* Key Dates Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
@@ -574,7 +574,7 @@ export default function ClientCard() {
                                 <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
                                 <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Est. Completion:</span><span className="font-semibold text-slate-800">{projectData.fields['Estimated Completion']}</span></div>
                             </div>
-                        </section>
+                            </section>
 
                         {/* Actions Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
@@ -594,10 +594,10 @@ export default function ClientCard() {
                                                     <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
                                                         <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
                                                         <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                                     ))
                                 ) : (
                                     <p className="text-sm text-slate-500 text-center py-4">No actions found for this project.</p>
@@ -636,7 +636,8 @@ export default function ClientCard() {
                     onClose={() => setIsTaskCardVisible(false)}
                     onTaskUpdate={() => { fetchTasksForProject(); setIsTaskCardVisible(false); }}
                     assigneeOptions={assigneeOptions}
-                    isClientView={isClientView}
+                    isClientView={true}
+                    isEditable={selectedTask?.fields?.assigned_to === projectData?.fields['Project Name']}
                 />
             )}
         </div>

@@ -11,6 +11,8 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import ApiCaller from '../apiCall/ApiCaller';
 import { v4 as uuidv4 } from 'uuid'; // Import uuidv4
+import { useAuth } from '../../utils/AuthContext';
+import { TrashIcon } from '@heroicons/react/24/outline';
 
 
 const apiFetch = async (endpoint, options = {}) => {
@@ -18,7 +20,8 @@ const apiFetch = async (endpoint, options = {}) => {
 };
 
 
-const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView = false }) => {
+export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions, isClientView = false, isEditable = false }) {
+    const { userRole } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [editedTask, setEditedTask] = useState({});
     const [error, setError] = useState(null);
@@ -49,6 +52,10 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
     const forceRefetch = useCallback(() => setRefetchCounter(c => c + 1), []);
 
     const readOnlyFields = ["id", "project_id", "start_date", "Project Name (from project_id)", "Project ID (from Project ID)"];
+
+    // Determine if the user has permission to edit fields in this card
+    const canEdit = !isClientView || isEditable;
+
 
     useEffect(() => {
         // Socket.IO connection
@@ -305,6 +312,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
     };
 
     const handleChecklistItemChange = (itemId, completed) => {
+        if (!canEdit) return; // <-- Prevent changes if not editable
         setChecklistItems(prev =>
             prev.map(item => (item.id === itemId ? { ...item, completed } : item))
         );
@@ -384,6 +392,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
     };
 
     const handleFormSubmissionChange = (submissionId, value) => {
+        if (!canEdit) return; // <-- Prevent changes if not editable
         setFormSubmissions(prev =>
             prev.map(submission =>
                 submission.id === submissionId ? { ...submission, fields: { ...submission.fields, value } } : submission
@@ -514,15 +523,14 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
 
 
     return (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-5xl flex flex-col" style={{ maxHeight: '90vh' }}>
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={handleOverlayClick}>
+            <div ref={modalContentRef} className="bg-white rounded-lg shadow-xl w-full max-w-5xl flex flex-col" style={{ maxHeight: '90vh' }} onClick={e => e.stopPropagation()}>
                 <div className="p-6 border-b">
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <svg className="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <div className="flex items-center gap-3 min-w-0">
+                            <svg className="w-6 h-6 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             <h2 className="text-xl font-bold text-gray-800 truncate flex items-center gap-2">
-                                TASK #{editedTask.id}: {editedTask.task_title}
-                                {!isClientView && <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.5 4.5z" /></svg>}
+                                {`TASK #${editedTask.id}: ${editedTask.task_title}`}
                             </h2>
                         </div>
                         <button onClick={onClose} className="text-gray-500 hover:text-gray-700" aria-label="Close">
@@ -545,14 +553,13 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                                         {editedTask.assigned_to ? editedTask.assigned_to.substring(0, 2).toUpperCase() : '?'}
                                                     </span>
                                                 </div>
-                                                <select value={editedTask.assigned_to || ''} onChange={(e) => handleInputChange('assigned_to', e.target.value)} className="w-full pl-11 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black text-sm">
+                                                <select value={editedTask.assigned_to || ''} onChange={(e) => handleInputChange('assigned_to', e.target.value)} className="w-full pl-11 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black text-sm" disabled={!canEdit}>
                                                     <option value="">Unassigned</option>
                                                     {assigneeOptions.map(name => (
                                                         <option key={name} value={name}>{name}</option>
                                                     ))}
                                                 </select>
                                             </div>
-                                            {/* {!isClientView && <button type="button" className="p-2 border rounded-md hover:bg-gray-100"><svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg></button>} */}
                                         </div>
                                     </div>
                                     <div>
@@ -631,7 +638,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                                         checked={item.completed || false}
                                                         onChange={(e) => handleChecklistItemChange(item.id, e.target.checked)}
                                                         className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                                                        disabled={isChecklistLockedForClient}
+                                                        disabled={!canEdit}
                                                     />
                                                     <label className={`text-sm ${item.completed ? 'line-through text-gray-500' : 'text-gray-800'}`}>
                                                         {item.checklist_description}
@@ -659,7 +666,7 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                                 return null;
                                             })()}
                                         </div>
-                                        {(!isClientView || !isFormLockedForClient) &&
+                                        {(!isClientView || !isFormLockedForClient) && canEdit &&
                                             <button type="button" onClick={() => setIsEditingForm(!isEditingForm)} className="text-sm text-blue-600 hover:underline">
                                                 {isEditingForm ? 'Cancel' : 'Edit'}
                                             </button>
@@ -676,8 +683,8 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                                         type="text"
                                                         value={submission.fields.value === '--EMPTY--' ? '' : submission.fields.value || ''}
                                                         onChange={(e) => handleFormSubmissionChange(submission.id, e.target.value)}
-                                                        disabled={!isEditingForm || isFormLockedForClient}
-                                                        className={`w-full px-3 py-2 border rounded-md text-black text-sm ${!isEditingForm || isFormLockedForClient ? 'bg-gray-100' : ''}`}
+                                                        disabled={!canEdit || isFormLockedForClient}
+                                                        className={`w-full px-3 py-2 border rounded-md text-black text-sm ${!canEdit || isFormLockedForClient ? 'bg-gray-100' : ''}`}
                                                     />
                                                 </div>
                                             ))}
@@ -691,18 +698,11 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                     <h3 className="text-sm font-medium text-gray-700 mb-2">Attachments</h3>
                                     {isAttachmentsLoading ? (
                                         <div className="space-y-4">
-                                            <div className="animate-pulse flex items-center justify-between">
-                                                <div className="h-4 bg-gray-200 rounded w-3/5"></div>
-                                                <div className="h-8 bg-gray-200 rounded w-1/5"></div>
-                                            </div>
-                                            <div className="animate-pulse flex items-center justify-between">
-                                                <div className="h-4 bg-gray-200 rounded w-4/6"></div>
-                                                <div className="h-8 bg-gray-200 rounded w-1/5"></div>
-                                            </div>
+                                            <div className="animate-pulse flex items-center justify-between"><div className="h-4 bg-gray-200 rounded w-3/5"></div><div className="h-8 bg-gray-200 rounded w-1/5"></div></div>
+                                            <div className="animate-pulse flex items-center justify-between"><div className="h-4 bg-gray-200 rounded w-4/6"></div><div className="h-8 bg-gray-200 rounded w-1/5"></div></div>
                                         </div>
                                     ) : (
                                         <div className="space-y-3">
-
                                             {attachments.map((att) => (
                                                 <div key={att.id} className="grid grid-cols-[1fr,1fr,auto] gap-4 items-center">
                                                     <p className="text-sm text-gray-800 truncate">{att.fields.attachment_description}</p>
@@ -720,23 +720,11 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                                             <p className="text-sm text-gray-500 italic">No file uploaded</p>
                                                         )}
                                                     </div>
-
                                                     <div>
-                                                        <input
-                                                            type="file"
-                                                            className="hidden"
-                                                            ref={el => (fileInputRefs.current[att.id] = el)}
-                                                            onChange={(e) => handleFileChange(e, att)}
-                                                        />
-                                                        <button
-                                                            type="button"
-                                                            onClick={() => handleUploadClick(att)}
-                                                            className="text-sm bg-white border border-gray-300 text-gray-700 rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 flex items-center justify-center"
-                                                        >
+                                                        <input type="file" className="hidden" ref={el => (fileInputRefs.current[att.id] = el)} onChange={(e) => handleFileChange(e, att)} disabled={!canEdit} />
+                                                        <button type="button" onClick={() => handleUploadClick(att)} className="text-sm bg-white border border-gray-300 text-gray-700 rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 flex items-center justify-center disabled:opacity-50" disabled={!canEdit}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
-                                                            {isClientView
-                                                                ? (att.fields.Attachments?.length ? 'Add File' : 'Upload')
-                                                                : (att.fields.Attachments?.length ? 'Replace' : 'Upload')}
+                                                            {isClientView ? (att.fields.Attachments?.length ? 'Add File' : 'Upload') : (att.fields.Attachments?.length ? 'Replace' : 'Upload')}
                                                         </button>
                                                     </div>
                                                 </div>
@@ -762,26 +750,27 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Progress ({Math.round((editedTask.progress_bar || 0) * 100)}%)</label>
-                                    <input type="range" min="0" max="1" step="0.01" value={editedTask.progress_bar || 0} onChange={(e) => handleInputChange('progress_bar', e.target.value)} className="w-full" />
+                                    <input type="range" min="0" max="1" step="0.01" value={editedTask.progress_bar || 0} onChange={(e) => handleInputChange('progress_bar', e.target.value)} className="w-full" disabled={!canEdit} />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Tags</label>
-                                    <input type="text" value={editedTask.tags || ''} onChange={(e) => handleInputChange('tags', e.target.value)} className="w-full px-3 py-2 border rounded-md text-black text-sm" placeholder="Tag1,Tag2,..." />
+                                    <input type="text" value={editedTask.tags || ''} onChange={(e) => handleInputChange('tags', e.target.value)} className="w-full px-3 py-2 border rounded-md text-black text-sm" placeholder="Tag1,Tag2,..." disabled={!canEdit} />
                                 </div>
                                 <div className="mt-6 pt-6 border-t flex justify-between items-center">
-                                    {/* Destructive action on the left */}
-                                    <button
-                                        type="button"
-                                        onClick={handleDeleteTask} // You would need to create this function
-                                        className="px-4 py-2 bg-red-600 text-white font-medium text-sm rounded-lg hover:bg-red-700"
-                                    >
-                                        Delete Task
-                                    </button>
-
-                                    {/* Primary actions on the right */}
                                     <div>
-                                        <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-3 hover:bg-gray-300 font-medium">Cancel</button>
-                                        <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-300 font-medium" disabled={isLoading}>{isLoading ? 'Updating...' : 'Update Task'}</button>
+                                        {!isClientView && (
+                                            <button type="button" onClick={handleDeleteTask} className="px-4 py-2 bg-red-600 text-white font-medium text-sm rounded-lg hover:bg-red-700">
+                                                Delete Task
+                                            </button>
+                                        )}
+                                    </div>
+                                    <div>
+                                        <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-3 hover:bg-gray-300 font-medium" disabled={isLoading}>Cancel</button>
+                                        {canEdit && (
+                                            <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-300 font-medium" disabled={isLoading}>
+                                                {isLoading ? 'Updating...' : 'Update Task'}
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -800,21 +789,12 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                                     ))}
                                 </div>
                                 <div className="flex">
-                                    <input
-                                        type="text"
-                                        value={newMessage}
-                                        onChange={(e) => setNewMessage(e.target.value)}
-                                        onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                                        className="w-full px-3 py-2 border rounded-l-md text-black text-sm"
-                                        placeholder="Type a message..."
-                                    />
+                                    <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()} className="w-full px-3 py-2 border rounded-l-md text-black text-sm" placeholder="Type a message..." />
                                     <button onClick={handleSendMessage} type="button" className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">Send</button>
                                 </div>
                             </div>
 
                         </div>
-
-
                     </form>
 
                     {!isClientView && (
@@ -822,16 +802,12 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
                             <h3 className="font-semibold text-gray-800 mb-4">Add Task Fields</h3>
                             <ul className="space-y-2 text-sm text-gray-600">
                                 <li onClick={() => setAttachChecklistsFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                     Checklist
                                 </li>
                                 <li onClick={() => setAttachFilesFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg> Attach Files</li>
                                 <li onClick={() => setAttachTaskformsFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                                     Complete Form
                                 </li>
                             </ul>
@@ -862,5 +838,3 @@ const TaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions, isClientView =
         </div>
     );
 };
-
-export default TaskCard;
