@@ -45,7 +45,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [userRole, setUserRole] = useState(null); // Add userRole state
+    const [userRole, setUserRole] = useState(() => localStorage.getItem('userRole')); // Initialize from localStorage
 
     useEffect(() => {
         if (!firebaseInitialized) {
@@ -59,9 +59,13 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             console.log("Auth state changed:", user ? "User logged in" : "No user");
             setCurrentUser(user);
-            // Example of setting user role: you'll need to implement getRoleBasedOnEmail
-            setUserRole('consultant');
-
+            // When auth state changes, we rely on the role already in state/localStorage
+            // We no longer hardcode it here.
+            if (!user) {
+                // If user is null (logged out), clear the role
+                setUserRole(null);
+                localStorage.removeItem('userRole');
+            }
             setLoading(false);
         });
 
@@ -78,10 +82,19 @@ export const AuthProvider = ({ children }) => {
         console.log("Attempting email login");
         return signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log("Email login successful");
+            console.log("Email login successful for consultant");
             setCurrentUser(userCredential.user);
+            setUserRole('consultant'); // Set role for consultant
+            localStorage.setItem('userRole', 'consultant');
             return userCredential;
         });
+    };
+
+    const startClientSession = () => {
+        // This function doesn't authenticate, it just sets the role for the session
+        console.log("Starting a client session");
+        setUserRole('client');
+        localStorage.setItem('userRole', 'client');
     };
 
     const logout = () => {
@@ -95,6 +108,8 @@ export const AuthProvider = ({ children }) => {
         .then(() => {
             console.log("Logout successful");
             setCurrentUser(null);
+            setUserRole(null); // Clear role on logout
+            localStorage.removeItem('userRole');
         });
     };
 
@@ -109,6 +124,9 @@ export const AuthProvider = ({ children }) => {
         .then((result) => {
             console.log("Google sign in successful");
             setCurrentUser(result.user);
+            // Assuming Google sign-in is for consultants
+            setUserRole('consultant');
+            localStorage.setItem('userRole', 'consultant');
             return result;
         });
     };
@@ -116,12 +134,13 @@ export const AuthProvider = ({ children }) => {
     const value = {
         currentUser,
         loginWithEmail,
+        startClientSession, // Expose the new session function
         logout,
         signInWithGoogle,
         userRole // Add userRole to context value
     };
 
-    console.log("AuthProvider rendering, loading:", loading, "user:", currentUser ? "logged in" : "not logged in");
+    console.log("AuthProvider rendering, loading:", loading, "user:", currentUser ? "logged in" : "not logged in", "role:", userRole);
 
     // Don't render children until we've checked for a logged-in user
     return (

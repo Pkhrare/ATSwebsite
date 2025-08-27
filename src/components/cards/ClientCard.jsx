@@ -12,6 +12,7 @@ import ApiCaller from '../apiCall/ApiCaller';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import RichTextEditor from '../richText/RichTextEditor';
+import InfoSidebar from '../layout/InfoSidebar';
 
 
 // Helper function to fetch from the backend API
@@ -92,6 +93,7 @@ const IncompleteIcon = () => (
 export default function ClientCard() {
     const { projectId } = useParams();
     const isClientView = true;
+    const { logout } = useAuth(); // Get the logout function from auth context
 
     const [projectData, setProjectData] = useState(null);
     const [pageIsLoading, setPageIsLoading] = useState(true);
@@ -319,316 +321,324 @@ export default function ClientCard() {
 
 
     return (
-        <div className="fixed inset-0 z-50 bg-slate-50 flex flex-col">
-            <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
-                <Link to="/" className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200" aria-label="Back">
-                    <BackIcon />
-                    <span className="hidden sm:inline">Exit Portal</span>
-                </Link>
-                <div className="text-center">
-                    <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
-                    <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
-                            </div>
-                <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
-                    </header>
+        <div className="fixed inset-0 z-50 bg-slate-50 flex">
+            <InfoSidebar />
+            <div className="flex-1 flex flex-col overflow-hidden">
+                <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
+                    <Link
+                        to="/"
+                        onClick={logout} // Call logout when the link is clicked
+                        className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
+                        aria-label="Back"
+                    >
+                        <BackIcon />
+                        <span className="hidden sm:inline">Exit Portal</span>
+                    </Link>
+                    <div className="text-center">
+                        <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
+                        <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
+                    </div>
+                    <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
+                </header>
 
-            <main className="flex-grow p-6 overflow-y-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+                <main className="flex-grow p-6 overflow-y-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
 
-                    <div className="lg:col-span-3 space-y-6">
-                        {/* Project Details Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <div className="lg:col-span-3 space-y-6">
+                            {/* Project Details Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                 <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
-                                <div>
-                                    <span className="font-medium text-slate-500">Assigned Consultant:</span>
-                                    <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
+                                    <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
                                 </div>
-                                <div>
-                                    <span className="font-medium text-slate-500">State:</span>
-                                    <span className="text-slate-800 ml-2">{projectData.fields['States']}</span>
-                                </div>
-                                <div>
-                                    <span className="font-medium text-slate-500">Project Type:</span>
-                                    <span className="text-slate-800 ml-2">{projectData.fields['Project Type']}</span>
-                                </div>
-                                <div>
-                                    <span className="font-medium text-slate-500">Status:</span>
-                                    <span className="text-slate-800 ml-2">{projectData.fields['Status']}</span>
-                                </div>
-                                <div>
-                                    <span className="font-medium text-slate-500">IRS Identifier:</span>
-                                    <span className="text-slate-800 ml-2">{projectData.fields['IRS Identifier (ID/EIN)']}</span>
-                                        </div>
-                                <div className="md:col-span-2">
-                                    <span className="font-medium text-slate-500">Client Email:</span>
-                                    <a href={`mailto:${projectData.fields['Client Email']}`} className="text-blue-600 hover:underline ml-2">{projectData.fields['Client Email']}</a>
-                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                                     <div>
-                                    <span className="font-medium text-slate-500">Date of Submission:</span>
-                                    <span className="text-slate-800 ml-2">{projectData.fields['Date of Submission']}</span>
+                                        <span className="font-medium text-slate-500">Assigned Consultant:</span>
+                                        <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
                                     </div>
                                     <div>
-                                    <span className="font-medium text-slate-500">Estimated Completion:</span>
-                                    <span className="text-slate-800 ml-2">{projectData.fields['Estimated Completion']}</span>
+                                        <span className="font-medium text-slate-500">State:</span>
+                                        <span className="text-slate-800 ml-2">{projectData.fields['States']}</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-medium text-slate-500">Project Type:</span>
+                                        <span className="text-slate-800 ml-2">{projectData.fields['Project Type']}</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-medium text-slate-500">Status:</span>
+                                        <span className="text-slate-800 ml-2">{projectData.fields['Status']}</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-medium text-slate-500">IRS Identifier:</span>
+                                        <span className="text-slate-800 ml-2">{projectData.fields['IRS Identifier (ID/EIN)']}</span>
+                                    </div>
+                                    <div className="md:col-span-2">
+                                        <span className="font-medium text-slate-500">Client Email:</span>
+                                        <a href={`mailto:${projectData.fields['Client Email']}`} className="text-blue-600 hover:underline ml-2">{projectData.fields['Client Email']}</a>
+                                    </div>
+                                    <div>
+                                        <span className="font-medium text-slate-500">Date of Submission:</span>
+                                        <span className="text-slate-800 ml-2">{projectData.fields['Date of Submission']}</span>
+                                    </div>
+                                    <div>
+                                        <span className="font-medium text-slate-500">Estimated Completion:</span>
+                                        <span className="text-slate-800 ml-2">{projectData.fields['Estimated Completion']}</span>
                                     </div>
                                 </div>
                             </section>
 
-                        {/* Notes Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            {/* Notes Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                 <div className="flex justify-between items-center mb-2">
-                                <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
+                                    <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
                                 </div>
-                            <RichTextEditor
-                                isEditable={false}
-                                initialContent={projectData.fields['Notes']}
-                            />
+                                <RichTextEditor
+                                    isEditable={false}
+                                    initialContent={projectData.fields['Notes']}
+                                />
                             </section>
 
-                        {/* Documents Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            {/* Documents Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                 <div className="flex justify-between items-center mb-3">
-                                <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
-                                <label className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer">
-                                    <UploadIcon />
-                                    Upload File
-                                    <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
-                                </label>
+                                    <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
+                                    <label className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer">
+                                        <UploadIcon />
+                                        Upload File
+                                        <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
+                                    </label>
                                 </div>
                                 <ul className="space-y-2">
-                                {isUploading && (
-                                    <li className="flex items-center justify-between bg-slate-100 p-3 rounded-lg border border-slate-200 opacity-70">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-5 h-5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"></div>
-                                            <span className="text-sm font-medium text-slate-500">Uploading...</span>
-                                        </div>
-                                    </li>
-                                )}
-                                {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
-                                    projectData.fields.Documents.map(doc => (
-                                        <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
+                                    {isUploading && (
+                                        <li className="flex items-center justify-between bg-slate-100 p-3 rounded-lg border border-slate-200 opacity-70">
                                             <div className="flex items-center gap-3">
-                                                <DocumentIcon />
-                                                <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left">
-                                                    {doc.filename}
-                                                </button>
+                                                <div className="w-5 h-5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"></div>
+                                                <span className="text-sm font-medium text-slate-500">Uploading...</span>
                                             </div>
-                                            <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
                                         </li>
-                                    ))
-                                ) : (
-                                    !isUploading && <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
-                                )}
+                                    )}
+                                    {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
+                                        projectData.fields.Documents.map(doc => (
+                                            <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
+                                                <div className="flex items-center gap-3">
+                                                    <DocumentIcon />
+                                                    <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left">
+                                                        {doc.filename}
+                                                    </button>
+                                                </div>
+                                                <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
+                                            </li>
+                                        ))
+                                    ) : (
+                                        !isUploading && <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
+                                    )}
                                 </ul>
                             </section>
 
-                        {/* Tasks Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
+                            {/* Tasks Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
+                                </div>
+                                {isLoadingTasks ? (
+                                    <p className="text-slate-500">Loading tasks...</p>
+                                ) : (
+                                    <div className="space-y-4">
+                                        {taskData.groups.map((group) => (
+                                            <div key={group.id}>
+                                                <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
+                                                    <div className="flex justify-between items-center p-2">
+                                                        <h4 className="font-bold text-slate-700">{group.name}</h4>
                                                     </div>
-                            {isLoadingTasks ? (
-                                <p className="text-slate-500">Loading tasks...</p>
-                            ) : (
-                                <div className="space-y-4">
-                                    {taskData.groups.map((group) => (
-                                        <div key={group.id}>
-                                            <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
-                                                <div className="flex justify-between items-center p-2">
-                                                    <h4 className="font-bold text-slate-700">{group.name}</h4>
-                                                        </div>
-                                                <ul className="space-y-2 p-2 min-h-[50px]">
-                                                    {group.tasks.map((task) => (
-                                                        <li
-                                                            key={task.id}
-                                                            onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                            className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
-                                                        >
-                                                            <div className="flex justify-between items-center">
-                                                                <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
-                                                        </div>
-                                                            <div className="flex justify-end items-center mt-2">
-                                                                <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                    <ul className="space-y-2 p-2 min-h-[50px]">
+                                                        {group.tasks.map((task) => (
+                                                            <li
+                                                                key={task.id}
+                                                                onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                                className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                            >
+                                                                <div className="flex justify-between items-center">
+                                                                    <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
+                                                                    {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                </div>
+                                                                <div className="flex justify-end items-center mt-2">
+                                                                    <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                                </div>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
                                                 </div>
-                                            </li>
-                                        ))}
-                                    </ul>
                                             </div>
+                                        ))}
+                                        <div className="mt-4">
+                                            <h4 className="font-bold text-slate-700 mb-2 p-2">Ungrouped Tasks</h4>
+                                            <ul className="space-y-2 p-2 min-h-[50px] bg-slate-50 rounded-lg border">
+                                                {taskData.ungroupedTasks.map((task) => (
+                                                    <li
+                                                        key={task.id}
+                                                        onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                        className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                    >
+                                                        <div className="flex justify-between items-center">
+                                                            <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
+                                                            {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                        </div>
+                                                        <div className="flex justify-end items-center mt-2">
+                                                            <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                        </div>
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
-                                    ))}
-                                    <div className="mt-4">
-                                        <h4 className="font-bold text-slate-700 mb-2 p-2">Ungrouped Tasks</h4>
-                                        <ul className="space-y-2 p-2 min-h-[50px] bg-slate-50 rounded-lg border">
-                                            {taskData.ungroupedTasks.map((task) => (
-                                                <li
-                                                    key={task.id}
-                                                    onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                    className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
-                                                >
-                                                    <div className="flex justify-between items-center">
-                                                        <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                        {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
-                                                    </div>
-                                                    <div className="flex justify-end items-center mt-2">
-                                                        <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
-                                                    </div>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                    </div>
+                                )}
+                            </section>
+
+                            {/* Activities Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <div className="flex justify-between items-center mb-4">
+                                    <div className="flex items-center gap-3">
+                                        <CalendarIcon />
+                                        <h2 className="text-lg font-semibold text-slate-700">Activities</h2>
                                     </div>
                                 </div>
-                                )}
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-sm text-left table-fixed">
+                                        <thead className="text-xs text-slate-700 uppercase bg-slate-100 rounded-t-lg">
+                                            <tr>
+                                                <th scope="col" className="px-6 py-3 w-1/2">Name</th>
+                                                <th scope="col" className="px-6 py-3 w-40">Due Date</th>
+                                                <th scope="col" className="px-6 py-3 w-36">Status</th>
+                                                <th scope="col" className="px-6 py-3 text-center w-24">Completed</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {isLoadingActivities ? (
+                                                <tr><td colSpan="4" className="text-center p-4 text-slate-500">Loading activities...</td></tr>
+                                            ) : activities.map((activity, index) => (
+                                                <tr key={activity.id} className={`border-b ${index === activities.length - 1 ? 'border-transparent' : 'border-slate-200'} h-16 align-middle`}>
+                                                    <td className="px-6 py-4 font-medium text-slate-800 whitespace-nowrap overflow-hidden text-ellipsis" title={activity.fields.name}>
+                                                        {activity.fields.name}
+                                                    </td>
+                                                    <td className="px-6 py-4 text-slate-600 whitespace-nowrap">
+                                                        <span>{activity.fields.dueDate}</span>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <StatusBadge status={activity.fields.status} />
+                                                    </td>
+                                                    <td className="px-6 py-4 text-center">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={activity.fields.completed || false}
+                                                            disabled={isClientView}
+                                                            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </section>
 
-                        {/* Activities Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-4">
-                                <div className="flex items-center gap-3">
-                                    <CalendarIcon />
-                                    <h2 className="text-lg font-semibold text-slate-700">Activities</h2>
-                                </div>
-                            </div>
-                            <div className="overflow-x-auto">
-                                <table className="w-full text-sm text-left table-fixed">
-                                    <thead className="text-xs text-slate-700 uppercase bg-slate-100 rounded-t-lg">
-                                        <tr>
-                                            <th scope="col" className="px-6 py-3 w-1/2">Name</th>
-                                            <th scope="col" className="px-6 py-3 w-40">Due Date</th>
-                                            <th scope="col" className="px-6 py-3 w-36">Status</th>
-                                            <th scope="col" className="px-6 py-3 text-center w-24">Completed</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {isLoadingActivities ? (
-                                            <tr><td colSpan="4" className="text-center p-4 text-slate-500">Loading activities...</td></tr>
-                                        ) : activities.map((activity, index) => (
-                                            <tr key={activity.id} className={`border-b ${index === activities.length - 1 ? 'border-transparent' : 'border-slate-200'} h-16 align-middle`}>
-                                                <td className="px-6 py-4 font-medium text-slate-800 whitespace-nowrap overflow-hidden text-ellipsis" title={activity.fields.name}>
-                                                    {activity.fields.name}
-                                                </td>
-                                                <td className="px-6 py-4 text-slate-600 whitespace-nowrap">
-                                                    <span>{activity.fields.dueDate}</span>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <StatusBadge status={activity.fields.status} />
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={activity.fields.completed || false}
-                                                        disabled={isClientView}
-                                                        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0"
-                                                    />
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </section>
+                            {/* Document Viewer Section */}
+                            {selectedDocument && (
+                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    <div className="flex justify-between items-center mb-3">
+                                        <h2 className="text-lg font-semibold text-slate-700">📄 Document Viewer</h2>
+                                        <button onClick={() => setSelectedDocument(null)} className="p-1.5 text-slate-500 hover:bg-slate-200 rounded-full transition-colors" aria-label="Close document viewer">
+                                            <CloseIcon />
+                                        </button>
+                                    </div>
+                                    <div className="w-full h-[80vh] rounded-lg border border-slate-300 overflow-hidden bg-slate-200">
+                                        <iframe src={selectedDocument} title="Document Viewer" width="100%" height="100%" frameBorder="0" />
+                                    </div>
+                                </section>
+                            )}
+                        </div>
 
-                        {/* Document Viewer Section */}
-                        {selectedDocument && (
+                        <div className="lg:col-span-2 space-y-6">
+                            {/* Project Status Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className="text-lg font-semibold text-slate-700 text-center">Project Status</h2>
+                                </div>
+                                <div className="space-y-3">
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Current Status:</span><StatusBadge status={projectData.fields['Status']} /></div>
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submitted:</span><span className="font-semibold text-slate-800">{projectData.fields['Submitted (Y/N)']}</span></div>
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Balance:</span><span className="font-semibold text-slate-800">{projectData.fields['Balance']}</span></div>
+                                </div>
+                            </section>
+
+                            {/* Pending Action Section */}
+                            <section className="bg-amber-50 border-amber-200 p-5 rounded-xl border shadow-sm">
+                                <h2 className="text-lg font-semibold text-amber-800 mb-2 text-center">⏳ Pending Action</h2>
+                                <div className="bg-white rounded-md p-3 border border-amber-200 text-sm text-center text-amber-900">{projectData.fields['Pending Action (Client, Consulting or State)'] || 'All actions complete.'}</div>
+                            </section>
+
+                            {/* Key Dates Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
+                                <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Key Dates</h2>
+                                <div className="space-y-3">
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Est. Completion:</span><span className="font-semibold text-slate-800">{projectData.fields['Estimated Completion']}</span></div>
+                                </div>
+                            </section>
+
+                            {/* Actions Section */}
                             <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                 <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-lg font-semibold text-slate-700">📄 Document Viewer</h2>
-                                    <button onClick={() => setSelectedDocument(null)} className="p-1.5 text-slate-500 hover:bg-slate-200 rounded-full transition-colors" aria-label="Close document viewer">
-                                        <CloseIcon />
-                                    </button>
+                                    <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
                                 </div>
-                                <div className="w-full h-[80vh] rounded-lg border border-slate-300 overflow-hidden bg-slate-200">
-                                    <iframe src={selectedDocument} title="Document Viewer" width="100%" height="100%" frameBorder="0" />
+                                <div className="space-y-3">
+                                    {isLoadingActions ? (
+                                        <p className="text-sm text-slate-500 text-center py-4">Loading actions...</p>
+                                    ) : actions && actions.length > 0 ? (
+                                        actions.map((action) => (
+                                            <div key={action.id} className="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                                <div className="flex items-start gap-4">
+                                                    <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0" aria-label="Action completed" />
+                                                    <div className="flex-1">
+                                                        <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
+                                                        <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                            <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
+                                                            <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p className="text-sm text-slate-500 text-center py-4">No actions found for this project.</p>
+                                    )}
                                 </div>
                             </section>
-                        )}
-                        </div>
 
-                    <div className="lg:col-span-2 space-y-6">
-                        {/* Project Status Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold text-slate-700 text-center">Project Status</h2>
-                            </div>
-                            <div className="space-y-3">
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Current Status:</span><StatusBadge status={projectData.fields['Status']} /></div>
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submitted:</span><span className="font-semibold text-slate-800">{projectData.fields['Submitted (Y/N)']}</span></div>
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Balance:</span><span className="font-semibold text-slate-800">{projectData.fields['Balance']}</span></div>
-                            </div>
-                        </section>
-
-                        {/* Pending Action Section */}
-                        <section className="bg-amber-50 border-amber-200 p-5 rounded-xl border shadow-sm">
-                            <h2 className="text-lg font-semibold text-amber-800 mb-2 text-center">⏳ Pending Action</h2>
-                            <div className="bg-white rounded-md p-3 border border-amber-200 text-sm text-center text-amber-900">{projectData.fields['Pending Action (Client, Consulting or State)'] || 'All actions complete.'}</div>
+                            {/* Collaborators Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <div className="flex justify-between items-center mb-3">
+                                    <div className="flex items-center gap-3">
+                                        <CollaboratorIcon />
+                                        <h2 className="text-lg font-semibold text-slate-700">Collaborators</h2>
+                                    </div>
+                                </div>
+                                <div className="space-y-2">
+                                    {projectData.fields['collaborator_name'] && projectData.fields['collaborator_name'].length > 0 ? (
+                                        projectData.fields['collaborator_name'].map((name, index) => (
+                                            <div key={index} className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-sm font-medium text-slate-800">
+                                                {name}
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p className="text-sm text-slate-500 text-center py-2">No collaborators assigned.</p>
+                                    )}
+                                </div>
                             </section>
 
-                        {/* Key Dates Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
-                            <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Key Dates</h2>
-                            <div className="space-y-3">
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Est. Completion:</span><span className="font-semibold text-slate-800">{projectData.fields['Estimated Completion']}</span></div>
-                            </div>
-                            </section>
-
-                        {/* Actions Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-3">
-                                <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
-                            </div>
-                            <div className="space-y-3">
-                                {isLoadingActions ? (
-                                    <p className="text-sm text-slate-500 text-center py-4">Loading actions...</p>
-                                ) : actions && actions.length > 0 ? (
-                                    actions.map((action) => (
-                                        <div key={action.id} className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                                            <div className="flex items-start gap-4">
-                                                <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0" aria-label="Action completed" />
-                                                <div className="flex-1">
-                                                    <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
-                                                    <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
-                                                        <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
-                                                        <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
                         </div>
                     </div>
-                </div>
+                </main>
             </div>
-                                    ))
-                                ) : (
-                                    <p className="text-sm text-slate-500 text-center py-4">No actions found for this project.</p>
-                                )}
-                            </div>
-                        </section>
-
-                        {/* Collaborators Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-3">
-                                <div className="flex items-center gap-3">
-                                    <CollaboratorIcon />
-                                    <h2 className="text-lg font-semibold text-slate-700">Collaborators</h2>
-                                </div>
-                            </div>
-                            <div className="space-y-2">
-                                {projectData.fields['collaborator_name'] && projectData.fields['collaborator_name'].length > 0 ? (
-                                    projectData.fields['collaborator_name'].map((name, index) => (
-                                        <div key={index} className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-sm font-medium text-slate-800">
-                                            {name}
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p className="text-sm text-slate-500 text-center py-2">No collaborators assigned.</p>
-                                )}
-                            </div>
-                        </section>
-
-                    </div>
-                </div>
-            </main>
 
             {isTaskCardVisible && (
                 <TaskCard

@@ -323,6 +323,22 @@ function InitialContentPlugin({ initialContent }) {
     return null;
 }
 
+// Plugin to expose the editor instance via a ref
+function SetRefPlugin({ editorRef }) {
+    const [editor] = useLexicalComposerContext();
+    useEffect(() => {
+        if (editorRef) {
+            editorRef.current = editor;
+        }
+        return () => {
+            if (editorRef) {
+                editorRef.current = null;
+            }
+        };
+    }, [editor, editorRef]);
+    return null;
+}
+
 const editorTheme = {
   link: 'text-blue-600 underline hover:text-blue-800 cursor-pointer',
   table: 'border-collapse my-4 w-full border border-slate-400',
@@ -354,7 +370,7 @@ const MATCHERS = [
   },
 ];
 
-function RichTextEditor({ isEditable, initialContent, onChange }) {
+function RichTextEditor({ isEditable, initialContent, onChange, editorRef }) {
     const [tableNodes, setTableNodes] = useState([]);
     const [isTableNodesLoaded, setIsTableNodesLoaded] = useState(false);
     
@@ -429,6 +445,7 @@ function RichTextEditor({ isEditable, initialContent, onChange }) {
                 <SetEditablePlugin isEditable={isEditable} />
                 <OnChangePlugin onChange={onChange} />
                 <InitialContentPlugin initialContent={initialContent} />
+                <SetRefPlugin editorRef={editorRef} /> {/* Add the new ref plugin */}
                 {isEditable && <AutoFocusPlugin />}
             </LexicalComposer>
         </div>

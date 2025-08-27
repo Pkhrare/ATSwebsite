@@ -13,6 +13,8 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import { useAuth } from './utils/AuthContext';
 import Templates from './Pages/Templates';
 import Layout from './components/layout/Layout';
+import InfoPageView from './Pages/InfoPageView';
+import InfoPageEdit from './Pages/InfoPageEdit'; // 1. Import the edit component
 
 function App() {
   const { currentUser } = useAuth();
@@ -41,6 +43,8 @@ function App() {
           <Route path='/dashboard' element={<Home />} />
           <Route path='/projects' element={<Projects />} />
           <Route path='/templates' element={<Templates />} />
+          <Route path='/info/:pageId' element={<InfoPageView />} />
+          <Route path='/info/edit/:pageId' element={<InfoPageEdit />} /> {/* 2. Add the edit route */}
         </Route>
         
         {/* Redirect any unknown/root paths for authenticated users to the dashboard */}
