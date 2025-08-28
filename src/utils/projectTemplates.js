@@ -105,7 +105,7 @@ export const dummyProject = {
                 'Action_type': 'Review Only'
             }
         },
-            {
+        {
             id: 'template-task-4',
             groupId: 'template-group-1', // Belongs to "Phase 1"
             fields: {

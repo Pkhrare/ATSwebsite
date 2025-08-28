@@ -26,6 +26,8 @@ import {ListNode, ListItemNode} from '@lexical/list';
 import {CodeNode} from '@lexical/code';
 import {HashtagNode} from '@lexical/hashtag';
 import {AutoLinkNode, LinkNode} from '@lexical/link';
+import { ImageNode } from './nodes/ImageNode';
+import UnifiedPastePlugin from './UnifiedPastePlugin';
 
 // New component to handle link clicks in read-only mode.
 function ClickableLinkPlugin({ isEditable }) {
@@ -175,6 +177,11 @@ function ToolbarPlugin() {
     }
   }, [editor, isLink]);
 
+  const insertImage = useCallback(() => {
+    // Dispatch a custom command that the ImagePlugin will listen for
+    editor.dispatchCommand('OPEN_IMAGE_UPLOAD', undefined);
+  }, [editor]);
+
   const insertTable = useCallback(async () => {
     const rows = prompt('Number of rows:', '3');
     const cols = prompt('Number of columns:', '3');
@@ -252,6 +259,14 @@ function ToolbarPlugin() {
           
           <button
               type="button"
+              onClick={insertImage}
+              className="px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200"
+              aria-label="Insert Image"
+          >
+              Image
+          </button>
+          <button
+              type="button"
               onClick={insertTable}
               className="px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200"
               aria-label="Insert Table"
@@ -285,43 +300,80 @@ function OnChangePlugin({ onChange }) {
     return null;
 }
 
-// Plugin to load initial content from a prop
+// Plugin to load initial content from a prop (Final, More Robust Version)
 function InitialContentPlugin({ initialContent }) {
     const [editor] = useLexicalComposerContext();
-    useEffect(() => {
-        if (!initialContent) {
-            return;
-        }
-        editor.update(() => {
-            try {
-                let content = initialContent;
-                // Check if the content is a doubly-stringified JSON and parse it once.
-                if (typeof content === 'string') {
-                    try {
-                        const parsed = JSON.parse(content);
-                        if (typeof parsed === 'string') {
-                            content = parsed;
-                        }
-                    } catch (e) {
-                        // Not a valid JSON string, treat as plain text below.
-                    }
-                }
 
-                const parsedState = editor.parseEditorState(content);
-                editor.setEditorState(parsedState);
-            } catch (error) {
-                // If parsing fails after all attempts, it's likely plain text.
-                // Create a valid editor state from this plain text.
-                const root = $getRoot();
+    useEffect(() => {
+        editor.update(() => {
+            const root = $getRoot();
+            
+            if (!initialContent) {
                 root.clear();
-                const paragraphNode = $createParagraphNode();
-                paragraphNode.append($createTextNode(initialContent));
-                root.append(paragraphNode);
+                return;
+            }
+
+            try {
+                console.log('InitialContentPlugin: Raw initialContent:', initialContent);
+                let parsedJson;
+
+                // Handle cases where content might already be an object (e.g., from HMR)
+                if (typeof initialContent === 'object' && initialContent !== null) {
+                    parsedJson = initialContent;
+                } else {
+                    // Fix invalid escape sequences in URLs before parsing
+                    let sanitizedContent = initialContent;
+                    if (typeof initialContent === 'string') {
+                        // Fix the common issue where underscores in URLs get incorrectly escaped
+                        sanitizedContent = initialContent.replace(/\\_/g, '_');
+                        
+                        // Check if JSON appears to be truncated
+                        if (!sanitizedContent.trim().endsWith('}')) {
+                            console.warn('InitialContentPlugin: Content appears to be truncated, length:', sanitizedContent.length);
+                            console.warn('InitialContentPlugin: Last 100 characters:', sanitizedContent.slice(-100));
+                        }
+                    }
+                    console.log('InitialContentPlugin: Sanitized content length:', sanitizedContent.length);
+                    console.log('InitialContentPlugin: Content ends with:', sanitizedContent.slice(-20));
+                    parsedJson = JSON.parse(sanitizedContent);
+                }
+                
+                // Handle cases where the content might be wrapped in an array or is double-stringified
+                if (Array.isArray(parsedJson)) {
+                    parsedJson = parsedJson[0];
+                }
+                if (typeof parsedJson === 'string') {
+                    parsedJson = JSON.parse(parsedJson);
+                }
+                
+                console.log('InitialContentPlugin: Final parsedJson:', parsedJson);
+                
+                // Parse and set the editor state directly
+                // This is the correct way - setEditorState automatically replaces the entire state
+                const parsedState = editor.parseEditorState(parsedJson);
+                console.log('InitialContentPlugin: Parsed state:', parsedState);
+                editor.setEditorState(parsedState);
+                console.log('InitialContentPlugin: State set successfully');
+
+            } catch (error) {
+                // If any step fails, fall back to treating it as plain text.
+                console.warn('Could not parse initial content as Lexical JSON, treating as plain text.', error);
+                console.warn('InitialContentPlugin: Content length:', initialContent.length);
+                console.warn('InitialContentPlugin: This appears to be a backend truncation issue. Content may exceed storage limits.');
+                
+                // Show a user-friendly error instead of raw JSON
+                root.clear();
+                const paragraph = $createParagraphNode();
+                const errorText = $createTextNode('⚠️ Content too large to display properly. This content may have exceeded storage limits and been truncated. Please contact your administrator.');
+                paragraph.append(errorText);
+                root.append(paragraph);
             }
         });
     }, [editor, initialContent]);
+
     return null;
 }
+
 
 // Plugin to expose the editor instance via a ref
 function SetRefPlugin({ editorRef }) {
@@ -370,7 +422,7 @@ const MATCHERS = [
   },
 ];
 
-function RichTextEditor({ isEditable, initialContent, onChange, editorRef }) {
+function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourceTable, sourceRecordId }) {
     const [tableNodes, setTableNodes] = useState([]);
     const [isTableNodesLoaded, setIsTableNodesLoaded] = useState(false);
     
@@ -402,6 +454,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef }) {
             HashtagNode,
             AutoLinkNode,
             LinkNode,
+            ImageNode, // Register the ImageNode
             ...tableNodes
         ],
     };
@@ -440,6 +493,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef }) {
                 <HashtagPlugin />
                 <AutoLinkPlugin matchers={MATCHERS} />
                 <LinkPlugin />
+                {isEditable && <UnifiedPastePlugin sourceTable={sourceTable} sourceRecordId={sourceRecordId} />}
                 <TablePluginComponent />
                 <ClickableLinkPlugin isEditable={isEditable} />
                 <SetEditablePlugin isEditable={isEditable} />

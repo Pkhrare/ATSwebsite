@@ -175,6 +175,8 @@ const InfoPageEdit = () => {
                         isEditable={true}
                         initialContent={page?.content}
                         editorRef={editorRef}
+                        sourceTable="image_assets" 
+                        sourceRecordId={pageId}
                     />
                 </div>
 
