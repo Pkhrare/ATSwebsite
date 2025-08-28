@@ -11,6 +11,10 @@ const InfoSidebar = () => {
     const { userRole } = useAuth();
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const navigate = useNavigate();
+    
+    // Debug logging
+    console.log('InfoSidebar: userRole from useAuth():', userRole);
+    console.log('InfoSidebar: localStorage userRole:', localStorage.getItem('userRole'));
 
     const fetchInfoPages = async () => {
         try {

@@ -17,6 +17,10 @@ const InfoPageView = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const { userRole } = useAuth();
+    
+    // Debug logging
+    console.log('InfoPageView: userRole from useAuth():', userRole);
+    console.log('InfoPageView: localStorage userRole:', localStorage.getItem('userRole'));
 
     useEffect(() => {
         const fetchPage = async () => {

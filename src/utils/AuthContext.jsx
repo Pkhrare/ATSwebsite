@@ -45,7 +45,11 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [userRole, setUserRole] = useState(() => localStorage.getItem('userRole')); // Initialize from localStorage
+    const [userRole, setUserRole] = useState(() => {
+        const storedRole = localStorage.getItem('userRole');
+        console.log('AuthContext: Initial userRole from localStorage:', storedRole);
+        return storedRole;
+    });
 
     useEffect(() => {
         if (!firebaseInitialized) {
@@ -59,10 +63,25 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             console.log("Auth state changed:", user ? "User logged in" : "No user");
             setCurrentUser(user);
-            // When auth state changes, we rely on the role already in state/localStorage
-            // We no longer hardcode it here.
-            if (!user) {
+            
+            if (user) {
+                // User is logged in - check if we have a role stored
+                const storedRole = localStorage.getItem('userRole');
+                console.log("User logged in, stored role:", storedRole);
+                
+                if (!storedRole) {
+                    // No role stored, but user is authenticated via Firebase = consultant
+                    console.log("No stored role found, setting to 'consultant' for authenticated user");
+                    setUserRole('consultant');
+                    localStorage.setItem('userRole', 'consultant');
+                } else if (storedRole !== userRole) {
+                    // Sync the role from localStorage
+                    console.log("Syncing userRole from localStorage:", storedRole);
+                    setUserRole(storedRole);
+                }
+            } else {
                 // If user is null (logged out), clear the role
+                console.log("User logged out, clearing role");
                 setUserRole(null);
                 localStorage.removeItem('userRole');
             }
@@ -84,8 +103,11 @@ export const AuthProvider = ({ children }) => {
         .then((userCredential) => {
             console.log("Email login successful for consultant");
             setCurrentUser(userCredential.user);
+            console.log("Setting userRole to 'consultant' and storing in localStorage");
             setUserRole('consultant'); // Set role for consultant
             localStorage.setItem('userRole', 'consultant');
+            // Verify storage
+            console.log("Stored userRole verification:", localStorage.getItem('userRole'));
             return userCredential;
         });
     };
