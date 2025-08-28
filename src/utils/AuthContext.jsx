@@ -67,21 +67,15 @@ export const AuthProvider = ({ children }) => {
             if (user) {
                 // User is logged in - check if we have a role stored
                 const storedRole = localStorage.getItem('userRole');
-                console.log("User logged in, stored role:", storedRole);
-                console.log("Current userRole state:", userRole);
                 
                 // For Firebase authenticated users, always default to consultant if no valid stored role
                 if (!storedRole || storedRole === 'null' || storedRole === null) {
-                    console.log("No valid stored role found, setting to 'consultant' for authenticated user");
                     setUserRole('consultant');
                     localStorage.setItem('userRole', 'consultant');
-                    console.log("Role set to consultant, localStorage updated");
                 } else if (storedRole === 'client') {
-                    console.log("Found client role in localStorage, keeping it");
                     setUserRole('client');
                 } else {
                     // Default to consultant for any other case
-                    console.log("Found stored role, but defaulting to consultant for Firebase auth:", storedRole);
                     setUserRole('consultant');
                     localStorage.setItem('userRole', 'consultant');
                 }
@@ -92,11 +86,6 @@ export const AuthProvider = ({ children }) => {
                 localStorage.removeItem('userRole');
             }
             setLoading(false);
-            
-            // Additional debug log after processing
-            setTimeout(() => {
-                console.log("After auth state change processing - userRole:", userRole, "localStorage:", localStorage.getItem('userRole'));
-            }, 100);
         });
 
         // Cleanup subscription on unmount

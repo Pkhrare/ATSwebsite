@@ -12,6 +12,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import RichTextEditor from '../richText/RichTextEditor';
 import { loadContent, saveContent } from '../../utils/contentUtils';
+import InfoSidebar from '../layout/InfoSidebar';
 
 
 // Helper function to fetch from the backend API
@@ -749,7 +750,9 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                 <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
             </header>
 
-            <main className="flex-grow p-6 overflow-y-auto">
+            <div className="flex flex-1 overflow-hidden">
+                <InfoSidebar />
+                <main className="flex-1 p-6 overflow-y-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
 
                     <div className="lg:col-span-3 space-y-6">
@@ -1290,7 +1293,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
                     </div>
                 </div>
-            </main>
+                </main>
+            </div>
 
             {isTaskCardVisible && (
                 <TaskCard
