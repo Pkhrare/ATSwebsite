@@ -74,7 +74,7 @@ const InfoSidebar = () => {
                 {pages.map(page => (
                     <NavLink
                         key={page.id}
-                        to={`/info/${page.id}`}
+                        to={userRole === 'client' ? `/client/info/${page.id}` : `/info/${page.id}`}
                         className={({ isActive }) => `${linkStyle} ${isActive ? activeLinkStyle : ''}`}
                     >
                         {page.title}

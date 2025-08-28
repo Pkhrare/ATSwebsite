@@ -314,7 +314,6 @@ function InitialContentPlugin({ initialContent }) {
             }
 
             try {
-                console.log('InitialContentPlugin: Raw initialContent:', initialContent);
                 let parsedJson;
 
                 // Handle cases where content might already be an object (e.g., from HMR)
@@ -326,15 +325,7 @@ function InitialContentPlugin({ initialContent }) {
                     if (typeof initialContent === 'string') {
                         // Fix the common issue where underscores in URLs get incorrectly escaped
                         sanitizedContent = initialContent.replace(/\\_/g, '_');
-                        
-                        // Check if JSON appears to be truncated
-                        if (!sanitizedContent.trim().endsWith('}')) {
-                            console.warn('InitialContentPlugin: Content appears to be truncated, length:', sanitizedContent.length);
-                            console.warn('InitialContentPlugin: Last 100 characters:', sanitizedContent.slice(-100));
-                        }
                     }
-                    console.log('InitialContentPlugin: Sanitized content length:', sanitizedContent.length);
-                    console.log('InitialContentPlugin: Content ends with:', sanitizedContent.slice(-20));
                     parsedJson = JSON.parse(sanitizedContent);
                 }
                 
@@ -346,27 +337,28 @@ function InitialContentPlugin({ initialContent }) {
                     parsedJson = JSON.parse(parsedJson);
                 }
                 
-                console.log('InitialContentPlugin: Final parsedJson:', parsedJson);
-                
                 // Parse and set the editor state directly
-                // This is the correct way - setEditorState automatically replaces the entire state
                 const parsedState = editor.parseEditorState(parsedJson);
-                console.log('InitialContentPlugin: Parsed state:', parsedState);
                 editor.setEditorState(parsedState);
-                console.log('InitialContentPlugin: State set successfully');
 
             } catch (error) {
                 // If any step fails, fall back to treating it as plain text.
                 console.warn('Could not parse initial content as Lexical JSON, treating as plain text.', error);
-                console.warn('InitialContentPlugin: Content length:', initialContent.length);
-                console.warn('InitialContentPlugin: This appears to be a backend truncation issue. Content may exceed storage limits.');
                 
-                // Show a user-friendly error instead of raw JSON
-                root.clear();
-                const paragraph = $createParagraphNode();
-                const errorText = $createTextNode('⚠️ Content too large to display properly. This content may have exceeded storage limits and been truncated. Please contact your administrator.');
-                paragraph.append(errorText);
-                root.append(paragraph);
+                // Show a user-friendly error for truncated content
+                if (error.message && error.message.includes('Unexpected end of JSON input')) {
+                    root.clear();
+                    const paragraph = $createParagraphNode();
+                    const errorText = $createTextNode('⚠️ Content too large to display properly. This content may have exceeded storage limits. The new attachment system will resolve this issue.');
+                    paragraph.append(errorText);
+                    root.append(paragraph);
+                } else {
+                    // For other errors, try to display as plain text
+                    root.clear();
+                    const paragraph = $createParagraphNode();
+                    paragraph.append($createTextNode(initialContent));
+                    root.append(paragraph);
+                }
             }
         });
     }, [editor, initialContent]);
@@ -472,7 +464,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
         <div className="relative border border-slate-300 rounded-md">
             <LexicalComposer initialConfig={initialConfig}>
                 {isEditable && <ToolbarPlugin />}
-                <div className="relative">
+                <div className="relative min-h-[40px]">
                     <RichTextPlugin
                         contentEditable={
                             <ContentEditable 
@@ -484,7 +476,13 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                                 }}
                             />
                         }
-                        placeholder={<div className="absolute top-2 left-2 text-gray-400 pointer-events-none">Enter some text...</div>}
+                        placeholder={
+                            isEditable ? (
+                                <div className="absolute top-3 left-3 text-gray-400 pointer-events-none z-10">Enter some text...</div>
+                            ) : (
+                                <div className="absolute top-3 left-3 text-gray-500 pointer-events-none italic z-10">No content available.</div>
+                            )
+                        }
                         ErrorBoundary={LexicalErrorBoundary}
                     />
                 </div>

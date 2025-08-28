@@ -77,11 +77,8 @@ export class ImageNode extends DecoratorNode {
     }
 
     static importJSON(serializedNode) {
-        console.log('ImageNode.importJSON called with:', serializedNode);
         const { src, altText, width, height } = serializedNode;
-        const node = new ImageNode(src, altText, width, height);
-        console.log('ImageNode.importJSON created node:', node);
-        return node;
+        return new ImageNode(src, altText, width, height);
     }
 
     exportJSON() {

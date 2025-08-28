@@ -11,6 +11,7 @@ import ApiCaller from '../apiCall/ApiCaller';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import RichTextEditor from '../richText/RichTextEditor';
+import { loadContent, saveContent } from '../../utils/contentUtils';
 
 
 // Helper function to fetch from the backend API
@@ -181,9 +182,20 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
 
     useEffect(() => {
-        setProjectData(data);
-        notesEditorRef.current = toLexical(data.fields.Notes || '');
-        setEditedDetails(data.fields);
+        const initializeNotes = async () => {
+            setProjectData(data);
+            setEditedDetails(data.fields);
+            
+            // Load notes content from attachment with fallback to old Notes field
+            if (data.id) {
+                const notesContent = await loadContent('projects', data.id, 'Notes');
+                notesEditorRef.current = notesContent || toLexical(data.fields.Notes || '');
+            } else {
+                notesEditorRef.current = toLexical(data.fields.Notes || '');
+            }
+        };
+        
+        initializeNotes();
     }, [data]);
 
     useEffect(() => {
@@ -437,21 +449,16 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     };
 
     const handleSaveNotes = async () => {
-        const updates = {
-            id: projectData.id,
-            fields: { 'Notes': notesEditorRef.current }
-        };
         try {
-            await apiFetch('/records', {
-                method: 'PATCH',
-                body: JSON.stringify({ recordsToUpdate: [updates], tableName: 'projects' })
-            });
+            // Save notes content as attachment
+            await saveContent('projects', projectData.id, 'Notes', notesEditorRef.current);
 
+            // Update the local state (no need to update Airtable directly since it's now an attachment)
             const newProjectData = {
                 ...projectData,
                 fields: {
                     ...projectData.fields,
-                    Notes: notesEditorRef.current
+                    Notes: notesEditorRef.current // Keep for display purposes
                 }
             };
             setProjectData(newProjectData);
@@ -877,7 +884,12 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         }}
                                     />
                                     <div className="flex justify-end gap-2">
-                                        <button onClick={() => { setIsEditingNotes(false); notesEditorRef.current = toLexical(projectData.fields.Notes || ''); }} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md">Cancel</button>
+                                        <button onClick={async () => { 
+                                            setIsEditingNotes(false); 
+                                            // Reload original content from attachment
+                                            const originalContent = await loadContent('projects', projectData.id, 'Notes');
+                                            notesEditorRef.current = originalContent || toLexical(projectData.fields.Notes || ''); 
+                                        }} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md">Cancel</button>
                                         <button onClick={handleSaveNotes} className="text-sm text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-md">Save Notes</button>
                                     </div>
                                 </div>

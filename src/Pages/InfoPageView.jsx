@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ApiCaller from '../components/apiCall/ApiCaller';
 import RichTextEditor from '../components/richText/RichTextEditor';
 import { useAuth } from '../utils/AuthContext';
+import { loadContent } from '../utils/contentUtils';
 
 const EditIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -24,7 +25,14 @@ const InfoPageView = () => {
             setError(null);
             try {
                 const data = await ApiCaller(`/info-pages/${pageId}`);
-                setPage(data);
+                
+                // Load content from attachment with fallback to old content field
+                const content = await loadContent('informational_pages', pageId, 'pageContent');
+                
+                setPage({
+                    ...data,
+                    content: content // This will be the content from attachment or fallback
+                });
             } catch (err) {
                 setError('Failed to load the page content.');
                 console.error(err);
@@ -81,26 +89,6 @@ const InfoPageView = () => {
                         initialContent={page.content}
                     />
                 </div>
-
-                {page.attachment && page.attachment.length > 0 && (
-                    <div className="mt-8 pt-6 border-t">
-                        <h3 className="text-lg font-semibold text-slate-700 mb-4">Attachments</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            {page.attachment.map(att => (
-                                <a key={att.id} href={att.url} target="_blank" rel="noopener noreferrer" className="block border rounded-lg hover:shadow-lg transition-shadow">
-                                    <img 
-                                        src={att.thumbnails?.large?.url || att.url} 
-                                        alt={att.filename} 
-                                        className="w-full h-40 object-cover rounded-t-lg"
-                                    />
-                                    <div className="p-3">
-                                        <p className="text-sm font-medium text-blue-600 truncate">{att.filename}</p>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                )}
             </div>
         </main>
     );

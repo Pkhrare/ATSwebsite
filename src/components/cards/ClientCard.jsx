@@ -13,6 +13,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import RichTextEditor from '../richText/RichTextEditor';
 import InfoSidebar from '../layout/InfoSidebar';
+import { loadContent } from '../../utils/contentUtils';
 
 
 // Helper function to fetch from the backend API
@@ -120,7 +121,17 @@ export default function ClientCard() {
             try {
                 const data = await apiFetch(`/records/projects/${projectId}`);
                 setProjectData(data);
-                notesEditorRef.current = toLexical(data.fields.Notes || '');
+                
+                // Store project ID in sessionStorage for back navigation from info pages
+                sessionStorage.setItem('currentProjectId', projectId);
+                
+                // Load notes content from attachment with fallback to old Notes field
+                if (data.id) {
+                    const notesContent = await loadContent('projects', data.id, 'Notes');
+                    notesEditorRef.current = notesContent || toLexical(data.fields.Notes || '');
+                } else {
+                    notesEditorRef.current = toLexical(data.fields.Notes || '');
+                }
             } catch (err) {
                 setError('Failed to load project data.');
                 console.error(err);
@@ -393,7 +404,7 @@ export default function ClientCard() {
                                 </div>
                                 <RichTextEditor
                                     isEditable={false}
-                                    initialContent={projectData.fields['Notes']}
+                                    initialContent={notesEditorRef.current}
                                 />
                             </section>
 
