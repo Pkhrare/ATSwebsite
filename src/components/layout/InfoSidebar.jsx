@@ -15,6 +15,7 @@ const InfoSidebar = () => {
     // Debug logging
     console.log('InfoSidebar: userRole from useAuth():', userRole);
     console.log('InfoSidebar: localStorage userRole:', localStorage.getItem('userRole'));
+    console.log('InfoSidebar: Should show Add New Page button?', userRole === 'consultant');
 
     const fetchInfoPages = async () => {
         try {

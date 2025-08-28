@@ -21,6 +21,7 @@ const InfoPageView = () => {
     // Debug logging
     console.log('InfoPageView: userRole from useAuth():', userRole);
     console.log('InfoPageView: localStorage userRole:', localStorage.getItem('userRole'));
+    console.log('InfoPageView: Should show Edit Page button?', userRole === 'consultant');
 
     useEffect(() => {
         const fetchPage = async () => {
