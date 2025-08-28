@@ -60,11 +60,7 @@ const CloseIcon = () => (
     </svg>
 );
 
-const UploadIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-    </svg>
-);
+// UploadIcon removed - clients can't upload project documents
 
 const CalendarIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-slate-500">
@@ -103,7 +99,7 @@ export default function ClientCard() {
     const [actions, setActions] = useState([]);
     const [isLoadingActions, setIsLoadingActions] = useState(true);
     const [selectedDocument, setSelectedDocument] = useState(null);
-    const [isUploading, setIsUploading] = useState(false);
+    // isUploading removed - clients can't upload project documents
     const [activities, setActivities] = useState([]);
     const [isLoadingActivities, setIsLoadingActivities] = useState(true);
     const notesEditorRef = useRef(null);
@@ -249,33 +245,7 @@ export default function ClientCard() {
     }, [projectData, fetchTasksForProject, fetchActions, fetchAndProcessActivities]);
 
 
-    const handleFileUpload = async (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        setIsUploading(true);
-        const formData = new FormData();
-        formData.append('file', file);
-
-        try {
-            const updatedDocuments = await apiFetch(`/upload/projects/${projectData.id}/Documents`, {
-                method: 'POST',
-                body: formData,
-            });
-
-            const updatedProjectData = {
-                ...projectData,
-                fields: { ...projectData.fields, Documents: updatedDocuments }
-            };
-            setProjectData(updatedProjectData);
-
-        } catch (error) {
-            console.error('File upload failed:', error);
-            alert('File upload failed. Please try again.');
-        } finally {
-            setIsUploading(false);
-        }
-    };
+    // handleFileUpload removed - clients can't upload project documents
     
 
     const StatusBadge = ({ status }) => {
@@ -412,21 +382,10 @@ export default function ClientCard() {
                             <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                 <div className="flex justify-between items-center mb-3">
                                     <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
-                                    <label className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer">
-                                        <UploadIcon />
-                                        Upload File
-                                        <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
-                                    </label>
+                                    {/* Upload removed for clients - they can only upload to assigned tasks */}
                                 </div>
                                 <ul className="space-y-2">
-                                    {isUploading && (
-                                        <li className="flex items-center justify-between bg-slate-100 p-3 rounded-lg border border-slate-200 opacity-70">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-5 h-5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"></div>
-                                                <span className="text-sm font-medium text-slate-500">Uploading...</span>
-                                            </div>
-                                        </li>
-                                    )}
+                                    {/* Upload indicator removed - clients can't upload project documents */}
                                     {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
                                         projectData.fields.Documents.map(doc => (
                                             <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
@@ -440,7 +399,7 @@ export default function ClientCard() {
                                             </li>
                                         ))
                                     ) : (
-                                        !isUploading && <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
+                                        <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
                                     )}
                                 </ul>
                             </section>

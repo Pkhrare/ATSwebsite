@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { dropdownFields, safeNewDate } from '../../utils/validations';
 import RichTextEditor from '../richText/RichTextEditor';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
+import { saveContent } from '../../utils/contentUtils';
 import AttachChecklistsForm from './taskActionForms/AttachChecklistsForm';
 import { Draggable, Droppable, DragDropContext } from '@hello-pangea/dnd';
 import AttachTaskformsForm from './taskActionForms/AttachTaskformsForm';
@@ -97,12 +98,10 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
         setError(null);
         
         try {
-            // Step 1: Create the task
-            const descriptionState = descriptionRef.current || '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
+            // Step 1: Create the task (without description - we'll save it as attachment)
             const taskData = { 
                 ...formData, 
                 progress_bar: 0,
-                description: fromLexical(descriptionState),
                 order: nextTaskOrder,
             };
 
@@ -127,7 +126,16 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
             
             const newTaskId = taskResult.records[0].id;
 
-            // Step 2: Create attachments if any descriptions are provided
+            // Step 2: Save description as attachment if there's content
+            const descriptionState = descriptionRef.current || '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
+            try {
+                await saveContent('tasks', newTaskId, 'description', descriptionState);
+            } catch (descriptionError) {
+                console.error("Task created, but failed to save description:", descriptionError);
+                setError("Task created, but description failed to save. You can add it later via 'Edit Task'.");
+            }
+
+            // Step 3: Create attachments if any descriptions are provided
             const validDescriptions = attachmentDescriptions.map(d => d.trim()).filter(d => d);
             if (validDescriptions.length > 0) {
                 const attachmentsToCreate = validDescriptions.map(desc => ({
@@ -153,7 +161,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 }
             }
 
-            // Step 3: Create checklist items
+            // Step 4: Create checklist items
             if (checklistItems.length > 0) {
                 const recordsToCreate = checklistItems.map(item => ({
                     fields: {
@@ -181,7 +189,7 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                 }
             }
 
-            // Step 4: Create empty form submission if a form is attached
+            // Step 5: Create empty form submission if a form is attached
             console.log("attachedForm", attachedForm);
             if (attachedForm) {
                 console.log("attachedForm", attachedForm);

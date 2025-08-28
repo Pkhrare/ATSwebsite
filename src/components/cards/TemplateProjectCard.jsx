@@ -10,6 +10,7 @@ import { useAuth } from '../../utils/AuthContext';
 import ApiCaller from '../apiCall/ApiCaller';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
+import { saveContent } from '../../utils/contentUtils';
 import RichTextEditor from '../richText/RichTextEditor';
 
 // --- Helper Functions for Project ID Generation (from AddProjectCard) ---
@@ -182,13 +183,42 @@ export default function TemplateProjectCard({ template, onClose }) {
             }
             const balance = (Number(projectData['Full Cost']) || 0) - (Number(projectData['Paid']) || 0);
 
-            // Step 3: Create the main project record.
+            // Step 3: Create the main project record (without Notes - we'll save as attachment).
+            // Remove potential problematic fields that shouldn't be in creation
+            const { 
+                id, 
+                createdTime, 
+                Notes, 
+                Tasks, 
+                collaborator_name,
+                ServiceMilestones,
+                Actions,
+                Documents,
+                'Last Updated': lastUpdated,
+                ...cleanProjectData 
+            } = projectData;
+            
+            // Store Notes content for later attachment saving
+            const notesContent = Notes || notesEditorRef.current;
+
             const projectToCreate = { 
-                ...projectData, 
+                ...cleanProjectData, 
                 'Project ID': projectID,
-                'Balance': balance,
-                Notes: notesEditorRef.current 
+                'Balance': balance
             };
+
+            // Remove any undefined or null values
+            Object.keys(projectToCreate).forEach(key => {
+                if (projectToCreate[key] === undefined || projectToCreate[key] === null || projectToCreate[key] === '') {
+                    delete projectToCreate[key];
+                }
+            });
+
+            console.log('Creating project with data:', projectToCreate);
+            console.log('Project fields being sent:');
+            Object.keys(projectToCreate).forEach(key => {
+                console.log(`  ${key}: ${typeof projectToCreate[key]} = ${JSON.stringify(projectToCreate[key]).substring(0, 100)}...`);
+            });
 
             const createProjectResponse = await ApiCaller('/records', {
                 method: 'POST',
@@ -202,7 +232,15 @@ export default function TemplateProjectCard({ template, onClose }) {
             const newProjectId = newProjectRecord.id;
             const newProjectIdentifier = newProjectRecord.fields['Project ID']; // Get the human-readable ID
 
-            // Step 4: Create a collaborator for the client.
+            // Step 4: Save Notes as attachment if there's content
+            try {
+                await saveContent('projects', newProjectId, 'Notes', notesContent);
+            } catch (notesError) {
+                console.error("Project created, but failed to save notes:", notesError);
+                // Don't throw error here as project is already created
+            }
+
+            // Step 5: Create a collaborator for the client.
             const newClientCollaboratorName = projectData['Project Name'];
             await ApiCaller('/records', {
                 method: 'POST',
@@ -218,7 +256,7 @@ export default function TemplateProjectCard({ template, onClose }) {
                 })
             });
 
-            // Step 5: Create the task groups, linking them to the new project.
+            // Step 6: Create the task groups, linking them to the new project.
             const groupsToCreate = taskData.groups.map(group => ({
                 fields: {
                     group_name: group.name,
@@ -241,7 +279,7 @@ export default function TemplateProjectCard({ template, onClose }) {
                 tempGroupToNewIdMap.set(tempGroup.id, newGroupRecords[index].id);
             });
 
-            // Step 6: Create all tasks, along with their associated sub-items.
+            // Step 7: Create all tasks, along with their associated sub-items.
             const allTasksFromTemplate = [
                 ...taskData.groups.flatMap(group => 
                     group.tasks.map(task => ({ ...task, finalGroupId: tempGroupToNewIdMap.get(task.groupId) }))
@@ -250,6 +288,7 @@ export default function TemplateProjectCard({ template, onClose }) {
             ];
 
             // A single batch create for all tasks
+            const humanReadableIds = []; // Store IDs separately
             const tasksToCreatePayload = allTasksFromTemplate.map((task, index) => {
                 // Whitelist approach to build a clean payload, preventing read-only fields from being sent.
                 
@@ -263,29 +302,50 @@ export default function TemplateProjectCard({ template, onClose }) {
                 } else if (assigneePlaceholder === 'Supervising Consultant') {
                     finalAssignee = projectData['Supervising Consultant'];
                 }
+                
+                // If no assignee specified, default to the project's assigned consultant
+                if (!finalAssignee) {
+                    finalAssignee = projectData['Assigned Consultant'];
+                }
 
+                // Generate today's date for start_date if not specified
+                const today = new Date().toISOString().split('T')[0];
+                
                 const fieldsToCreate = {
-                    'id': `${newProjectIdentifier}-T${index + 1}`, // Generate a unique, human-readable ID
+                    // Don't set 'id' during creation - we'll update it after creation
                     'project_id': [newProjectId], // Use the correct field name 'project_id'
                     'task_title': task.fields.task_title,
                     'task_status': task.fields.task_status || 'Not Started',
-                    'order': task.fields.order,
+                    'order': task.fields.order || 0,
                     'task_groups': task.finalGroupId ? [task.finalGroupId] : [],
                     'assigned_to': finalAssignee, // Use the dynamically determined assignee
                     'due_date': task.fields.due_date,
-                    'start_date': task.fields.start_date,
+                    'start_date': task.fields.start_date || today, // Default to today if not specified
                     'progress_bar': task.fields.progress_bar || 0,
-                    'Action_type': task.fields.Action_type,
-                    'description': task.fields.description,
+                    'Action_type': task.fields.Action_type, // Don't set default here - let template control it
                     'tags': task.fields.tags
                 };
+                
+                // Store the human-readable ID separately
+                const humanReadableId = `${newProjectIdentifier}-T${index + 1}`;
+                humanReadableIds.push(humanReadableId);
             
-                // Remove any undefined fields to keep the payload clean
+                // Remove any undefined, null, or empty fields to keep the payload clean
                 Object.keys(fieldsToCreate).forEach(key => {
-                    if (fieldsToCreate[key] === undefined) {
+                    if (fieldsToCreate[key] === undefined || fieldsToCreate[key] === null || fieldsToCreate[key] === '') {
                         delete fieldsToCreate[key];
                     }
                 });
+
+                // Also remove any fields that shouldn't be in task creation
+                const fieldsToRemove = ['checklistItems', 'attachments', 'attachedForm', 'preAttachedFormName'];
+                fieldsToRemove.forEach(field => {
+                    if (fieldsToCreate[field] !== undefined) {
+                        delete fieldsToCreate[field];
+                    }
+                });
+                
+
             
                 return { fields: fieldsToCreate };
             });
@@ -296,6 +356,9 @@ export default function TemplateProjectCard({ template, onClose }) {
                 return;
             }
 
+            console.log('Creating tasks. Number of tasks:', tasksToCreatePayload.length);
+            console.log('Task creation payload:', JSON.stringify(tasksToCreatePayload, null, 2));
+
             const createTasksResponse = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -305,7 +368,42 @@ export default function TemplateProjectCard({ template, onClose }) {
             });
             const newTaskRecords = createTasksResponse.records;
 
-            // Step 7: Now that tasks are created, create all their sub-items in batch.
+            // Step 8: Update task IDs with human-readable IDs
+            const idUpdatePromises = humanReadableIds.map(async (humanReadableId, index) => {
+                const newTaskId = newTaskRecords[index].id;
+                
+                if (humanReadableId) {
+                    try {
+                        await ApiCaller(`/records/tasks/${newTaskId}`, {
+                            method: 'PATCH',
+                            body: JSON.stringify({
+                                fields: { id: humanReadableId }
+                            })
+                        });
+                    } catch (idError) {
+                        console.error(`Failed to update ID for task ${newTaskId}:`, idError);
+                    }
+                }
+            });
+            
+            await Promise.all(idUpdatePromises);
+
+            // Step 9: Save task descriptions as attachments
+            const descriptionPromises = allTasksFromTemplate.map(async (templateTask, index) => {
+                const newTaskId = newTaskRecords[index].id;
+                if (templateTask.fields.description) {
+                    try {
+                        await saveContent('tasks', newTaskId, 'description', templateTask.fields.description);
+                    } catch (descError) {
+                        console.error(`Failed to save description for task ${newTaskId}:`, descError);
+                    }
+                }
+            });
+            
+            // Wait for all descriptions to be saved
+            await Promise.all(descriptionPromises);
+
+            // Step 9: Now that tasks are created, create all their sub-items in batch.
             const checklistsToCreate = [];
             const attachmentsToCreate = [];
             const formSubmissionsToCreate = [];

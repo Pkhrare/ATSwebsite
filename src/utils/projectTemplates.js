@@ -102,7 +102,7 @@ export const dummyProject = {
                 'description': '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"SERVICES REQUESTED","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"heading","version":1,"tag":"h1"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"START UP ASSISTANCE SERVICE: Setting Up a New Agency - $8,500","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"(Ask for available sales and discounts when you speak to the specialist)","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"SERVICE REQUEST DETAILS","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"heading","version":1,"tag":"h2"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Our Start-Up Assistance Service is crafted for aspiring entrepreneurs committed to establishing waiver-funded healthcare agencies:","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}',
                 'assigned_to': 'Client',
                 'order': 2,
-                'Action_type': 'Review Only'
+                'Action_type': ''
             }
         },
         {
@@ -124,7 +124,9 @@ export const dummyProject = {
                 'task_title': 'Send Follow-up Email',
                 'task_status': 'Not Started',
                 'description': 'Draft and send the post-consultation follow-up email.',
+                'assigned_to': 'Consultant',
                 'order': 0,
+                'Action_type': 'Attach Files'
             }
         },
         {
@@ -134,7 +136,9 @@ export const dummyProject = {
                 'task_title': 'Internal Project Kick-off',
                 'task_status': 'Not Started',
                 'description': 'Hold an internal meeting to assign roles and start the project.',
+                'assigned_to': 'Consultant',
                 'order': 0,
+                'Action_type': 'Complete Form'
             }
         }
     ]

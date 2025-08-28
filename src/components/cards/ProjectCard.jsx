@@ -899,7 +899,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             ) : (
                                 <RichTextEditor
                                     isEditable={false}
-                                    initialContent={projectData.fields['Notes']}
+                                    initialContent={notesEditorRef.current}
                                 />
                             )}
                         </section>

@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 import RichTextEditor from '../richText/RichTextEditor';
 import { dropdownFields, safeNewDate } from '../../utils/validations';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
+import { loadContent, saveContent } from '../../utils/contentUtils';
 import AttachFilesForm from '../forms/taskActionForms/AttachFilesForm';
 import AttachChecklistsForm from '../forms/taskActionForms/AttachChecklistsForm';
 import AttachTaskformsForm from '../forms/taskActionForms/AttachTaskformsForm';
@@ -159,7 +160,18 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
 
         if (task) {
             setEditedTask(task.fields);
-            descriptionRef.current = toLexical(task.fields.description);
+            
+            // Load description content from attachment with fallback to old description field
+            const initializeDescription = async () => {
+                if (task.id) {
+                    const descriptionContent = await loadContent('tasks', task.id, 'description');
+                    descriptionRef.current = descriptionContent || toLexical(task.fields.description || '');
+                } else {
+                    descriptionRef.current = toLexical(task.fields.description || '');
+                }
+            };
+            
+            initializeDescription();
             fetchAttachments();
             fetchChecklists();
             fetchSubmissions();
@@ -451,6 +463,9 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 });
             }
 
+            // Save description as attachment
+            await saveContent('tasks', task.id, 'description', descriptionRef.current);
+
             // Whitelist approach: only construct an object with fields that are meant to be editable.
             // This prevents sending back read-only fields like lookups or formulas which can cause API errors.
             const updatableFields = {
@@ -458,7 +473,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 'task_status': editedTask.task_status,
                 'due_date': editedTask.due_date,
                 'Action_type': editedTask.Action_type,
-                'description': descriptionRef.current,
+                // 'description': removed - now saved as attachment
                 'progress_bar': editedTask.progress_bar,
                 'tags': editedTask.tags,
             };
