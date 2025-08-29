@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
 import ApiCaller from '../components/apiCall/ApiCaller';
+import { colorClasses } from '../utils/colorUtils';
 
 
 // Helper function to fetch from the backend API
@@ -274,12 +275,12 @@ function Projects() {
           <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-slate-200">
-                <thead className="bg-slate-50">
+                <thead className={colorClasses.button.secondary}>
                   <tr>
                     {columnHeaders.map((header, index) => (
                       <th
                         key={index}
-                        className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider"
+                        className={`px-6 py-3 text-left text-xs font-medium ${colorClasses.text.primary} uppercase tracking-wider`}
                       >
                         {header}
                       </th>

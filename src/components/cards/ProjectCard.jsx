@@ -13,6 +13,7 @@ import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import RichTextEditor from '../richText/RichTextEditor';
 import { loadContent, saveContent } from '../../utils/contentUtils';
 import InfoSidebar from '../layout/InfoSidebar';
+import { colorClasses } from '../../utils/colorUtils';
 
 
 // Helper function to fetch from the backend API
@@ -112,6 +113,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [editedDetails, setEditedDetails] = useState({});
     const [isAddCollaboratorVisible, setIsAddCollaboratorVisible] = useState(false);
     const [isEditingStatus, setIsEditingStatus] = useState(false);
+    const [isContentLoading, setIsContentLoading] = useState(true);
 
     // Task-related states
     const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
@@ -184,6 +186,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
     useEffect(() => {
         const initializeNotes = async () => {
+            setIsContentLoading(true);
             setProjectData(data);
             setEditedDetails(data.fields);
             
@@ -194,6 +197,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             } else {
                 notesEditorRef.current = toLexical(data.fields.Notes || '');
             }
+            
+            // Wait a bit to ensure content is properly initialized before showing
+            setTimeout(() => {
+                setIsContentLoading(false);
+            }, 300);
         };
         
         initializeNotes();
@@ -736,16 +744,101 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
+    // Loading screen component
+    if (isContentLoading) {
+        return (
+            <div className={`fixed inset-0 z-50 ${colorClasses.bg.secondary} flex flex-col`}>
+                <header className={`flex items-center justify-between p-4 border-b ${colorClasses.sidebar.border} flex-shrink-0 ${colorClasses.nav.base}`}>
+                    <button onClick={onClose} className={`flex items-center gap-2 ${colorClasses.button.neutral} px-4 py-2 rounded-lg shadow-sm transition-all duration-200`} aria-label="Back">
+                        <BackIcon />
+                        <span className="hidden sm:inline">Back</span>
+                    </button>
+                    <div className="text-center">
+                        <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{data.fields['Project Name']}</h1>
+                        <p className={`text-xs ${colorClasses.text.secondary} font-mono`}>ID: {data.fields['Project ID']}</p>
+                    </div>
+                    <div className="w-24 h-10"></div>
+                </header>
+                <div className="flex flex-1 overflow-hidden">
+                    <div className={`w-64 p-4 border-r ${colorClasses.sidebar.border} ${colorClasses.sidebar.base} flex-shrink-0`}>
+                        <div className="animate-pulse space-y-4">
+                            <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-20`}></div>
+                            <div className="space-y-2">
+                                <div className={`h-3 ${colorClasses.loading.skeleton} rounded w-32`}></div>
+                                <div className={`h-3 ${colorClasses.loading.skeleton} rounded w-28`}></div>
+                                <div className={`h-3 ${colorClasses.loading.skeleton} rounded w-36`}></div>
+                            </div>
+                        </div>
+                    </div>
+                    <main className="flex-1 p-6 overflow-y-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+                            <div className="lg:col-span-3 space-y-6">
+                                {/* Project Details Skeleton */}
+                                <div className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded w-1/3 mb-4`}></div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded`}></div>
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-3/4`}></div>
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-5/6`}></div>
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded`}></div>
+                                    </div>
+                                </div>
+                                
+                                {/* Notes Skeleton */}
+                                <div className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded w-1/4 mb-4`}></div>
+                                    <div className="space-y-3">
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded`}></div>
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-5/6`}></div>
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-3/4`}></div>
+                                    </div>
+                                </div>
+                                
+                                {/* Tasks Skeleton */}
+                                <div className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded w-1/4 mb-4`}></div>
+                                    <div className="space-y-4">
+                                        <div className={`h-16 ${colorClasses.loading.skeletonAlt} rounded`}></div>
+                                        <div className={`h-12 ${colorClasses.loading.skeletonAlt} rounded`}></div>
+                                        <div className={`h-12 ${colorClasses.loading.skeletonAlt} rounded`}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="lg:col-span-2 space-y-6">
+                                {/* Project Status Skeleton */}
+                                <div className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded w-1/2 mb-4`}></div>
+                                    <div className="space-y-3">
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-3/4`}></div>
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-1/2`}></div>
+                                        <div className={`h-4 ${colorClasses.loading.skeleton} rounded w-2/3`}></div>
+                                    </div>
+                                </div>
+                                
+                                {/* Additional sections skeleton */}
+                                <div className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded w-1/3 mb-4`}></div>
+                                    <div className={`h-16 ${colorClasses.loading.skeletonAlt} rounded`}></div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        );
+    }
+
     return (
-        <div className="fixed inset-0 z-50 bg-slate-50 flex flex-col">
-            <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
-                <button onClick={onClose} className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200" aria-label="Back">
+        <div className={`fixed inset-0 z-50 ${colorClasses.bg.secondary} flex flex-col`}>
+            <header className={`flex items-center justify-between p-4 border-b ${colorClasses.sidebar.border} flex-shrink-0 ${colorClasses.nav.base}`}>
+                <button onClick={onClose} className={`flex items-center gap-2 ${colorClasses.button.neutral} px-4 py-2 rounded-lg shadow-sm transition-all duration-200`} aria-label="Back">
                     <BackIcon />
                     <span className="hidden sm:inline">Back</span>
                 </button>
                 <div className="text-center">
-                    <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
-                    <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
+                    <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
+                    <p className={`text-xs ${colorClasses.text.secondary} font-mono`}>ID: {projectData.fields['Project ID']}</p>
                 </div>
                 <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
             </header>
@@ -757,16 +850,16 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
                     <div className="lg:col-span-3 space-y-6">
                         {/* Project Details Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Project Details</h2>
                                 {isEditingDetails ? (
                                     <div className="flex items-center gap-2">
-                                        <button onClick={() => { setIsEditingDetails(false); setEditedDetails(projectData.fields); }} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 text-sm font-medium">Cancel</button>
-                                        <button onClick={handleSaveDetails} className="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 text-sm font-medium">Save</button>
+                                        <button onClick={() => { setIsEditingDetails(false); setEditedDetails(projectData.fields); }} className={`px-4 py-2 ${colorClasses.button.neutral} rounded-md text-sm font-medium`}>Cancel</button>
+                                        <button onClick={handleSaveDetails} className={`px-4 py-2 ${colorClasses.button.success} rounded-md text-sm font-medium`}>Save</button>
                                     </div>
                                 ) : (
-                                    <button onClick={() => setIsEditingDetails(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                                    <button onClick={() => setIsEditingDetails(true)} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
                                     </button>
                                 )}
@@ -774,24 +867,24 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                                 {/* Assigned Consultant */}
                                 <div>
-                                    <span className="font-medium text-slate-500">Assigned Consultant:</span>
+                                    <span className={`font-medium ${colorClasses.form.label}`}>Assigned Consultant:</span>
                                     {isEditingDetails ? (
-                                        <select value={editedDetails['Assigned Consultant'] || ''} onChange={(e) => handleDetailChange('Assigned Consultant', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                        <select value={editedDetails['Assigned Consultant'] || ''} onChange={(e) => handleDetailChange('Assigned Consultant', e.target.value)} className={`w-full mt-1 p-2 ${colorClasses.form.input} rounded-md`}>
                                             {dropdownFields['Assigned Consultant'].map(c => <option key={c} value={c}>{c}</option>)}
                                         </select>
                                     ) : (
-                                        <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
+                                        <span className={`${colorClasses.text.primary} ml-2`}>{projectData.fields['Assigned Consultant']}</span>
                                     )}
                                 </div>
                                 {/* State */}
                                 <div>
-                                    <span className="font-medium text-slate-500">State:</span>
+                                    <span className={`font-medium ${colorClasses.form.label}`}>State:</span>
                                     {isEditingDetails ? (
-                                        <select value={editedDetails['States'] || ''} onChange={(e) => handleDetailChange('States', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                        <select value={editedDetails['States'] || ''} onChange={(e) => handleDetailChange('States', e.target.value)} className={`w-full mt-1 p-2 ${colorClasses.form.input} rounded-md`}>
                                             {dropdownFields['States'].map(s => <option key={s} value={s}>{s}</option>)}
                                         </select>
                                     ) : (
-                                        <span className="text-slate-800 ml-2">{projectData.fields['States']}</span>
+                                        <span className={`${colorClasses.text.primary} ml-2`}>{projectData.fields['States']}</span>
                                     )}
                                 </div>
                                 {/* Project Type */}
@@ -868,11 +961,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </section>
 
                         {/* Notes Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-2">
-                                <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📝 Notes</h2>
                                 {userRole !== 'client' && !isEditingNotes && (
-                                    <button onClick={() => setIsEditingNotes(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                                    <button onClick={() => setIsEditingNotes(true)} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
                                     </button>
                                 )}
@@ -892,8 +985,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                             // Reload original content from attachment
                                             const originalContent = await loadContent('projects', projectData.id, 'Notes');
                                             notesEditorRef.current = originalContent || toLexical(projectData.fields.Notes || ''); 
-                                        }} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md">Cancel</button>
-                                        <button onClick={handleSaveNotes} className="text-sm text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-md">Save Notes</button>
+                                        }} className={`text-sm ${colorClasses.button.neutral} px-4 py-2 rounded-md`}>Cancel</button>
+                                        <button onClick={handleSaveNotes} className={`text-sm ${colorClasses.button.success} px-4 py-2 rounded-md`}>Save Notes</button>
                                     </div>
                                 </div>
                             ) : (
@@ -905,10 +998,10 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </section>
 
                         {/* Documents Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-3">
-                                <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
-                                <label className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer">
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📎 Documents</h2>
+                                <label className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer`}>
                                     <UploadIcon />
                                     Upload File
                                     <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
@@ -942,14 +1035,14 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </section>
 
                         {/* Tasks Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
+                                <h3 className={`text-lg font-semibold ${colorClasses.card.header}`}>Tasks</h3>
                                 <div className="flex items-center gap-2">
-                                    <button onClick={handleAddNewGroup} className="flex items-center gap-2 px-3 py-1 bg-slate-200 text-slate-800 rounded-md text-sm hover:bg-slate-300">
+                                    <button onClick={handleAddNewGroup} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.neutral} rounded-md text-sm`}>
                                         <AddIcon /> Add Group
                                     </button>
-                                <button onClick={() => setIsAddTaskFormVisible(true)} className="flex items-center gap-2 px-3 py-1 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700">
+                                <button onClick={() => setIsAddTaskFormVisible(true)} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.secondary} rounded-md text-sm`}>
                                     <AddIcon /> Add Task
                                 </button>
                                 </div>
@@ -1040,17 +1133,17 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </section>
 
                         {/* Activities Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-4">
                                 <div className="flex items-center gap-3">
                                     <CalendarIcon />
-                                    <h2 className="text-lg font-semibold text-slate-700">Activities</h2>
+                                    <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Activities</h2>
                                 </div>
                                 {(changedActivities.toCreate.size > 0 || changedActivities.toUpdate.size > 0) && (
                                     <button
                                         onClick={handleSaveActivities}
                                         disabled={isUpdatingActivities}
-                                        className="flex items-center gap-2 text-sm text-white bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-400 px-3 py-1.5 rounded-lg shadow-sm transition-all"
+                                        className={`flex items-center gap-2 text-sm ${colorClasses.button.success} disabled:opacity-50 px-3 py-1.5 rounded-lg shadow-sm transition-all`}
                                     >
                                         {isUpdatingActivities ? 'Updating...' : 'Update Activities'}
                                     </button>
@@ -1151,11 +1244,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
                     <div className="lg:col-span-2 space-y-6">
                         {/* Project Status Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm text-sm`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold text-slate-700 text-center">Project Status</h2>
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header} text-center`}>Project Status</h2>
                                 {userRole === 'consultant' && !isEditingDetails && !isEditingStatus && (
-                                    <button onClick={() => { setEditedDetails(projectData.fields); setIsEditingStatus(true); }} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                                    <button onClick={() => { setEditedDetails(projectData.fields); setIsEditingStatus(true); }} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
                                     </button>
                                 )}
@@ -1185,8 +1278,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         <span className="font-semibold text-slate-800 justify-self-end">{projectData.fields['Balance']}</span>
                                     </div>
                                     <div className="flex justify-end gap-2 pt-2">
-                                        <button onClick={() => { setIsEditingStatus(false); setEditedDetails(projectData.fields); }} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md">Cancel</button>
-                                        <button onClick={() => { handleSaveDetails(); setIsEditingStatus(false); }} className="text-sm text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-md">Save</button>
+                                        <button onClick={() => { setIsEditingStatus(false); setEditedDetails(projectData.fields); }} className={`text-sm ${colorClasses.button.neutral} px-4 py-2 rounded-md`}>Cancel</button>
+                                        <button onClick={() => { handleSaveDetails(); setIsEditingStatus(false); }} className={`text-sm ${colorClasses.button.success} px-4 py-2 rounded-md`}>Save</button>
                                     </div>
                                 </div>
                             ) : (
@@ -1199,14 +1292,14 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </section>
 
                         {/* Pending Action Section */}
-                        <section className="bg-amber-50 border-amber-200 p-5 rounded-xl border shadow-sm">
+                        <section className={`${colorClasses.status.warning} p-5 rounded-xl shadow-sm`}>
                             <h2 className="text-lg font-semibold text-amber-800 mb-2 text-center">⏳ Pending Action</h2>
                             <div className="bg-white rounded-md p-3 border border-amber-200 text-sm text-center text-amber-900">{projectData.fields['Pending Action (Client, Consulting or State)'] || 'All actions complete.'}</div>
                         </section>
 
                         {/* Key Dates Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
-                            <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Key Dates</h2>
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm text-sm`}>
+                            <h2 className={`text-lg font-semibold ${colorClasses.card.header} mb-4 text-center`}>Key Dates</h2>
                             <div className="space-y-3">
                                 <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
                                 <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
@@ -1215,11 +1308,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </section>
 
                         {/* Actions Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-3">
-                                <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>⚡️ Actions</h2>
                                 {!isAddingAction && (
-                                    <button onClick={() => setIsAddingAction(true)} className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all">
+                                    <button onClick={() => setIsAddingAction(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
                                         <AddIcon />
                                         Add Action
                                     </button>
@@ -1267,13 +1360,13 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </section>
 
                         {/* Collaborators Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-3">
                                 <div className="flex items-center gap-3">
                                     <CollaboratorIcon />
-                                    <h2 className="text-lg font-semibold text-slate-700">Collaborators</h2>
+                                    <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Collaborators</h2>
                                 </div>
-                                <button onClick={() => setIsAddCollaboratorVisible(true)} className="flex items-center gap-2 text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1.5 rounded-lg shadow-sm transition-all">
+                                <button onClick={() => setIsAddCollaboratorVisible(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
                                     <AddIcon />
                                     Add
                                 </button>

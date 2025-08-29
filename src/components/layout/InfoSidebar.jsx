@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import ApiCaller from '../apiCall/ApiCaller';
 import { useAuth } from '../../utils/AuthContext';
 import AddInfoPageForm from '../forms/AddInfoPageForm';
+import { colorClasses } from '../../utils/colorUtils';
 
 const InfoSidebar = () => {
     const [pages, setPages] = useState([]);
@@ -45,17 +46,17 @@ const InfoSidebar = () => {
         }
     };
 
-    const linkStyle = "block px-4 py-2 text-sm text-slate-700 rounded-md hover:bg-slate-200 transition-colors";
-    const activeLinkStyle = `bg-blue-100 text-blue-600 font-semibold`;
+    const linkStyle = `block px-4 py-2 text-sm ${colorClasses.sidebar.text} rounded-md ${colorClasses.sidebar.hover} transition-colors`;
+    const activeLinkStyle = `bg-[#fef3c7] text-[#d97706] font-semibold`; // Yellow-100 bg, Yellow-600 text
 
     if (isLoading) {
         return (
-            <div className="w-64 p-4 border-r border-slate-200">
-                <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Information</h3>
+            <div className={`w-64 p-4 ${colorClasses.sidebar.base} flex-shrink-0`}>
+                <h3 className={`text-xs font-semibold ${colorClasses.sidebar.textSecondary} uppercase tracking-wider mb-3`}>Information</h3>
                 <div className="space-y-2">
-                    <div className="h-6 bg-slate-200 rounded animate-pulse"></div>
-                    <div className="h-6 bg-slate-200 rounded animate-pulse"></div>
-                    <div className="h-6 bg-slate-200 rounded animate-pulse"></div>
+                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded`}></div>
+                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded`}></div>
+                    <div className={`h-6 ${colorClasses.loading.skeleton} rounded`}></div>
                 </div>
             </div>
         );
@@ -63,15 +64,15 @@ const InfoSidebar = () => {
 
     if (error) {
         return (
-            <div className="w-64 p-4 border-r border-slate-200">
-                <p className="text-sm text-red-500">{error}</p>
+            <div className={`w-64 p-4 ${colorClasses.sidebar.base} flex-shrink-0`}>
+                <p className={`text-sm ${colorClasses.status.error}`}>{error}</p>
             </div>
         );
     }
 
     return (
-        <aside className="w-64 p-4 border-r border-slate-200 bg-white flex-shrink-0">
-            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Information</h3>
+        <aside className={`w-64 p-4 ${colorClasses.sidebar.base} flex-shrink-0`}>
+            <h3 className={`text-xs font-semibold ${colorClasses.sidebar.textSecondary} uppercase tracking-wider mb-3`}>Information</h3>
             <nav className="space-y-1">
                 {pages.map(page => (
                     <NavLink
@@ -85,10 +86,10 @@ const InfoSidebar = () => {
             </nav>
 
             {userRole === 'consultant' && (
-                <div className="mt-6 pt-4 border-t border-slate-200">
+                <div className={`mt-6 pt-4 border-t ${colorClasses.sidebar.border}`}>
                     <button
                         onClick={() => setIsAddModalOpen(true)}
-                        className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
+                        className={`w-full px-4 py-2 text-sm font-medium ${colorClasses.button.secondary} rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#d97706] transition-all`}>
                         + Add New Page
                     </button>
                 </div>
