@@ -264,7 +264,7 @@ export default function ClientCard() {
         }
         return <span className={`${baseStyle} ${colorStyle}`}>{status || 'N/A'}</span>;
     };
-
+    
     const formatBytes = (bytes, decimals = 2) => {
         if (!+bytes) return '0 Bytes'
         const k = 1024
@@ -318,9 +318,9 @@ export default function ClientCard() {
                     <div className="text-center">
                         <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
                         <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
-                    </div>
+                            </div>
                     <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
-                </header>
+                    </header>
 
                 <main className="flex-grow p-6 overflow-y-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
@@ -351,11 +351,11 @@ export default function ClientCard() {
                                     <div>
                                         <span className="font-medium text-slate-500">IRS Identifier:</span>
                                         <span className="text-slate-800 ml-2">{projectData.fields['IRS Identifier (ID/EIN)']}</span>
-                                    </div>
+                                        </div>
                                     <div className="md:col-span-2">
                                         <span className="font-medium text-slate-500">Client Email:</span>
                                         <a href={`mailto:${projectData.fields['Client Email']}`} className="text-blue-600 hover:underline ml-2">{projectData.fields['Client Email']}</a>
-                                    </div>
+                                </div>
                                     <div>
                                         <span className="font-medium text-slate-500">Date of Submission:</span>
                                         <span className="text-slate-800 ml-2">{projectData.fields['Date of Submission']}</span>
@@ -408,7 +408,7 @@ export default function ClientCard() {
                             <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                 <div className="flex justify-between items-center mb-4">
                                     <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
-                                </div>
+                                                    </div>
                                 {isLoadingTasks ? (
                                     <p className="text-slate-500">Loading tasks...</p>
                                 ) : (
@@ -418,7 +418,7 @@ export default function ClientCard() {
                                                 <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
                                                     <div className="flex justify-between items-center p-2">
                                                         <h4 className="font-bold text-slate-700">{group.name}</h4>
-                                                    </div>
+                                                        </div>
                                                     <ul className="space-y-2 p-2 min-h-[50px]">
                                                         {group.tasks.map((task) => (
                                                             <li
@@ -429,13 +429,13 @@ export default function ClientCard() {
                                                                 <div className="flex justify-between items-center">
                                                                     <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
                                                                     {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
-                                                                </div>
+                                                        </div>
                                                                 <div className="flex justify-end items-center mt-2">
                                                                     <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
-                                                                </div>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
                                                 </div>
                                             </div>
                                         ))}
@@ -500,7 +500,7 @@ export default function ClientCard() {
                                                             type="checkbox"
                                                             checked={activity.fields.completed || false}
                                                             disabled={isClientView}
-                                                            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0"
+                                                            className="h-4 w-4 rounded border-gray-300 bg-black text-white focus:ring-0 disabled:bg-black disabled:text-white"
                                                         />
                                                     </td>
                                                 </tr>
@@ -567,16 +567,16 @@ export default function ClientCard() {
                                         actions.map((action) => (
                                             <div key={action.id} className="p-3 bg-slate-50 rounded-lg border border-slate-200">
                                                 <div className="flex items-start gap-4">
-                                                    <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0" aria-label="Action completed" />
+                                                    <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 bg-black text-white focus:ring-0 disabled:bg-black disabled:text-white" aria-label="Action completed" />
                                                     <div className="flex-1">
                                                         <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
                                                         <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
                                                             <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
                                                             <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                                         ))
                                     ) : (
                                         <p className="text-sm text-slate-500 text-center py-4">No actions found for this project.</p>

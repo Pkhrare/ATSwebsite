@@ -1,13 +1,17 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { 
-    $getSelection, 
+import {
+    $getSelection,
     $isRangeSelection,
-    $createParagraphNode, 
+    $createParagraphNode,
     $createTextNode,
     $getRoot,
     FORMAT_TEXT_COMMAND,
+    $selectAll,
+    $getNodeByKey,
+    $isTextNode,
 } from 'lexical';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
+import { $patchStyleText } from '@lexical/selection';
 
 import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
@@ -28,6 +32,8 @@ import {HashtagNode} from '@lexical/hashtag';
 import {AutoLinkNode, LinkNode} from '@lexical/link';
 import { ImageNode } from './nodes/ImageNode';
 import UnifiedPastePlugin from './UnifiedPastePlugin';
+
+const DEFAULT_FONT_SIZE = '14px';
 
 // New component to handle link clicks in read-only mode.
 function ClickableLinkPlugin({ isEditable }) {
@@ -70,11 +76,11 @@ function insertSimpleTable(editor, rows, cols) {
     editor.update(() => {
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
-            const tableText = `\n\n[TABLE ${rows}x${cols}]\n` + 
-                Array.from({length: rows}, (_, i) => 
+            const tableText = `\n\n[TABLE ${rows}x${cols}]\n` +
+                Array.from({length: rows}, (_, i) =>
                     Array.from({length: cols}, (_, j) => `Cell ${i+1}-${j+1}`).join(' | ')
                 ).join('\n') + '\n[/TABLE]\n\n';
-                
+
             selection.insertText(tableText);
         }
     });
@@ -83,10 +89,10 @@ function insertSimpleTable(editor, rows, cols) {
 // Table plugin component - simplified version
 function TablePluginComponent() {
     const [editor] = useLexicalComposerContext();
-    
+
     useEffect(() => {
         let unregister;
-        
+
         const initTablePlugin = async () => {
             try {
                 const tableModule = await import('@lexical/table');
@@ -101,14 +107,14 @@ function TablePluginComponent() {
                 console.warn('Table plugin not available:', error);
             }
         };
-        
+
         initTablePlugin();
-        
+
         return () => {
             if (unregister) unregister();
         };
     }, [editor]);
-    
+
     return null;
 }
 
@@ -119,6 +125,7 @@ function ToolbarPlugin() {
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
   const [isLink, setIsLink] = useState(false);
+  const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
   const [hasTableSupport, setHasTableSupport] = useState(false);
 
   // Check if table support is available
@@ -130,27 +137,46 @@ function ToolbarPlugin() {
       });
   }, []);
 
-  const updateToolbar = useCallback(() => {
+  useEffect(() => {
+    return editor.registerUpdateListener(({editorState}) => {
+      editorState.read(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+            setIsBold(selection.hasFormat('bold'));
+            setIsItalic(selection.hasFormat('italic'));
+            setIsUnderline(selection.hasFormat('underline'));
+
+            const node = selection.getNodes()[0];
+            const parent = node ? node.getParent() : null;
+            setIsLink(!!(node && $isLinkNode(node)) || !!(parent && $isLinkNode(parent)));
+        }
+      });
+    });
+  }, [editor]);
+
+  const applyFontSize = useCallback((size) => {
+    editor.update(() => {
       const selection = $getSelection();
       if ($isRangeSelection(selection)) {
-          setIsBold(selection.hasFormat('bold'));
-          setIsItalic(selection.hasFormat('italic'));
-          setIsUnderline(selection.hasFormat('underline'));
-          
-          // Check if current selection is a link
-          const node = selection.getNodes()[0];
-          const parent = node.getParent();
-          setIsLink($isLinkNode(parent) || $isLinkNode(node));
+        $patchStyleText(selection, { 'font-size': size });
       }
-  }, []);
+    });
+  }, [editor]);
 
-  useEffect(() => {
-      return editor.registerUpdateListener(({editorState}) => {
-          editorState.read(() => {
-              updateToolbar();
-          });
-      });
-  }, [editor, updateToolbar]);
+  const changeFontSize = useCallback((direction) => {
+    const currentSize = parseInt((fontSize || DEFAULT_FONT_SIZE).replace('px', ''));
+    let newSize;
+    if (direction === 'increase') {
+        newSize = Math.min(currentSize + 1, 50);
+    } else {
+        newSize = Math.max(currentSize - 1, 5);
+    }
+    const newSizePx = `${newSize}px`;
+    // Set the state to update the UI immediately
+    setFontSize(newSizePx);
+    // Then apply the style to the editor state
+    applyFontSize(newSizePx);
+  }, [fontSize, applyFontSize, editor]);
 
   const insertLink = useCallback(() => {
     if (isLink) {
@@ -185,11 +211,11 @@ function ToolbarPlugin() {
   const insertTable = useCallback(async () => {
     const rows = prompt('Number of rows:', '3');
     const cols = prompt('Number of columns:', '3');
-    
+
     if (rows && cols) {
       const numRows = parseInt(rows, 10);
       const numCols = parseInt(cols, 10);
-      
+
       if (numRows > 0 && numCols > 0 && numRows <= 20 && numCols <= 10) {
         if (hasTableSupport) {
           try {
@@ -216,10 +242,8 @@ function ToolbarPlugin() {
   }, [editor, hasTableSupport]);
 
   return (
-      <div 
+      <div
           className="flex items-center gap-2 p-2 bg-slate-100 border-b border-slate-300 rounded-t-md flex-wrap"
-          // By preventing the default mousedown action, you stop the toolbar from
-          // taking focus away from the editor.
           onMouseDown={(e) => e.preventDefault()}
       >
           <button
@@ -254,9 +278,44 @@ function ToolbarPlugin() {
           >
               {isLink ? 'Unlink' : 'Link'}
           </button>
-          
+
           <div className="w-px h-6 bg-slate-300 mx-1"></div>
-          
+
+          {/* Font Size Controls */}
+          <div className="flex items-center gap-1">
+              <button
+                  type="button"
+                  onClick={() => changeFontSize('decrease')}
+                  className="px-2 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200 border"
+                  aria-label="Decrease Font Size"
+              >
+                  A-
+              </button>
+              <input
+                  type="number"
+                  value={fontSize.replace('px', '')}
+                  onChange={(e) => {
+                      const newSize = e.target.value;
+                      if (newSize) {
+                          applyFontSize(`${newSize}px`);
+                      }
+                  }}
+                  className="w-12 text-center py-1 rounded-md text-sm bg-white text-slate-700 border hover:bg-slate-50"
+                  aria-label="Font Size"
+                  onMouseDown={(e) => e.stopPropagation()}
+              />
+              <button
+                  type="button"
+                  onClick={() => changeFontSize('increase')}
+                  className="px-2 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200 border"
+                  aria-label="Increase Font Size"
+              >
+                  A+
+              </button>
+          </div>
+
+          <div className="w-px h-6 bg-slate-300 mx-1"></div>
+
           <button
               type="button"
               onClick={insertImage}
@@ -294,7 +353,7 @@ function OnChangePlugin({ onChange }) {
         if (!onChange) return;
         return editor.registerUpdateListener(({ editorState }) => {
             const editorStateJSON = editorState.toJSON();
-            onChange(JSON.stringify(editorStateJSON)); 
+            onChange(JSON.stringify(editorStateJSON));
         });
     }, [editor, onChange]);
     return null;
@@ -307,7 +366,7 @@ function InitialContentPlugin({ initialContent }) {
     useEffect(() => {
         editor.update(() => {
             const root = $getRoot();
-            
+
             if (!initialContent) {
                 root.clear();
                 return;
@@ -328,7 +387,7 @@ function InitialContentPlugin({ initialContent }) {
                     }
                     parsedJson = JSON.parse(sanitizedContent);
                 }
-                
+
                 // Handle cases where the content might be wrapped in an array or is double-stringified
                 if (Array.isArray(parsedJson)) {
                     parsedJson = parsedJson[0];
@@ -336,7 +395,7 @@ function InitialContentPlugin({ initialContent }) {
                 if (typeof parsedJson === 'string') {
                     parsedJson = JSON.parse(parsedJson);
                 }
-                
+
                 // Parse and set the editor state directly
                 const parsedState = editor.parseEditorState(parsedJson);
                 editor.setEditorState(parsedState);
@@ -344,7 +403,7 @@ function InitialContentPlugin({ initialContent }) {
             } catch (error) {
                 // If any step fails, fall back to treating it as plain text.
                 console.warn('Could not parse initial content as Lexical JSON, treating as plain text.', error);
-                
+
                 // Show a user-friendly error for truncated content
                 if (error.message && error.message.includes('Unexpected end of JSON input')) {
                     root.clear();
@@ -389,6 +448,12 @@ const editorTheme = {
   tableRow: 'border-b border-slate-300',
   tableCell: 'border border-slate-400 p-3 min-w-[100px] relative bg-white',
   tableCellHeader: 'border border-slate-400 p-3 min-w-[100px] bg-slate-100 font-semibold relative',
+  text: {
+    base: 'text-base',
+    bold: 'font-bold',
+    italic: 'italic',
+    underline: 'underline',
+  },
 };
 
 function onError(error) {
@@ -417,7 +482,7 @@ const MATCHERS = [
 function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourceTable, sourceRecordId }) {
     const [tableNodes, setTableNodes] = useState([]);
     const [isTableNodesLoaded, setIsTableNodesLoaded] = useState(false);
-    
+
     // Load table nodes on mount
     useEffect(() => {
         import('@lexical/table').then(tableModule => {
@@ -467,12 +532,13 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 <div className="relative min-h-[40px]">
                     <RichTextPlugin
                         contentEditable={
-                            <ContentEditable 
-                                className={`p-2 ${isEditable ? 'min-h-[150px]' : ''} outline-none text-black prose max-w-none`} 
+                            <ContentEditable
+                                className={`p-2 ${isEditable ? 'min-h-[150px]' : ''} outline-none text-black prose max-w-none`}
                                 style={{
                                     // Ensure tables are visible with explicit CSS
                                     '--table-border': '1px solid #94a3b8',
-                                    '--table-cell-padding': '12px'
+                                    '--table-cell-padding': '12px',
+                                    fontSize: DEFAULT_FONT_SIZE
                                 }}
                             />
                         }
@@ -487,7 +553,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                     />
                 </div>
                 <HistoryPlugin />
-                <ListPlugin />    
+                <ListPlugin />
                 <HashtagPlugin />
                 <AutoLinkPlugin matchers={MATCHERS} />
                 <LinkPlugin />

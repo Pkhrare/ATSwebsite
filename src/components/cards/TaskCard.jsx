@@ -681,7 +681,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                         {editedTask.assigned_to ? editedTask.assigned_to.substring(0, 2).toUpperCase() : '?'}
                                                     </span>
                                                 </div>
-                                                <select value={editedTask.assigned_to || ''} onChange={(e) => handleInputChange('assigned_to', e.target.value)} className="w-full pl-11 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white text-sm" disabled={!canEdit}>
+                                                <select value={editedTask.assigned_to || ''} onChange={(e) => handleInputChange('assigned_to', e.target.value)} className="w-full pl-11 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black text-sm" disabled={!canEdit}>
                                                     <option value="">Unassigned</option>
                                                     {assigneeOptions.map(name => (
                                                         <option key={name} value={name}>{name}</option>
@@ -699,7 +699,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                             <select
                                                 value={editedTask.task_status || ''}
                                                 onChange={(e) => handleInputChange('task_status', e.target.value)}
-                                                className={`w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white text-sm ${isClientView ? 'bg-gray-100' : ''}`}
+                                                className={`w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black text-sm ${isClientView ? 'bg-gray-100' : ''}`}
                                                 disabled={isClientView}
                                             >
                                                 <option>Not Started</option>
@@ -714,7 +714,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                             selected={safeNewDate(editedTask.due_date)}
                                             onChange={(date) => handleInputChange('due_date', date ? format(date, 'yyyy-MM-dd') : null)}
                                             dateFormat="yyyy-MM-dd"
-                                            className={`w-full px-3 py-2 border rounded-md text-white text-sm ${isClientView ? 'bg-gray-100' : ''}`}
+                                            className={`w-full px-3 py-2 border rounded-md bg-white text-black text-sm ${isClientView ? 'bg-gray-100' : ''}`}
                                             placeholderText="Pick a date"
                                             disabled={isClientView}
                                         />
@@ -724,7 +724,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         <select
                                             value={editedTask.Action_type || ''}
                                             onChange={(e) => handleInputChange('Action_type', e.target.value)}
-                                            className={`w-full px-3 py-2 border rounded-md text-white text-sm ${isClientView ? 'bg-gray-100' : ''}`}
+                                            className={`w-full px-3 py-2 border rounded-md bg-white text-black text-sm ${isClientView ? 'bg-gray-100' : ''}`}
                                             disabled={isClientView}
                                         >
                                             {dropdownFields.Action_type.map(option => (
@@ -744,12 +744,14 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         </button>
                                     )}
                                 </div>
-                                <RichTextEditor
-                                    key={task.id}
-                                    isEditable={isEditingDescription && !isClientView}
-                                    initialContent={descriptionRef.current}
-                                    onChange={handleDescriptionChange}
-                                />
+                                <div className="[&_.editor-text]:text-white [&_.editor-paragraph]:text-white [&_p]:text-white [&_div]:text-white [&_span]:text-white">
+                                    <RichTextEditor
+                                        key={task.id}
+                                        isEditable={isEditingDescription && !isClientView}
+                                        initialContent={descriptionRef.current}
+                                        onChange={handleDescriptionChange}
+                                    />
+                                </div>
                             </div>
 
                             {(isChecklistLoading || checklistItems.length > 0) && (
@@ -807,13 +809,13 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                             {formSubmissions.map(submission => (
                                                 <div key={submission.id}>
                                                     <label className="block text-sm font-medium ${colorClasses.text.primary}">{submission.fields['field_label (from Notes)']?.[0]}</label>
-                                                    <input
-                                                        type="text"
-                                                        value={submission.fields.value === '--EMPTY--' ? '' : submission.fields.value || ''}
-                                                        onChange={(e) => handleFormSubmissionChange(submission.id, e.target.value)}
-                                                        disabled={!canEdit || isFormLockedForClient}
-                                                        className={`w-full px-3 py-2 border rounded-md text-white text-sm ${!canEdit || isFormLockedForClient ? 'bg-gray-100' : ''}`}
-                                                    />
+                                                                                                            <input
+                                                            type="text"
+                                                            value={submission.fields.value === '--EMPTY--' ? '' : submission.fields.value || ''}
+                                                            onChange={(e) => handleFormSubmissionChange(submission.id, e.target.value)}
+                                                            disabled={!canEdit || isFormLockedForClient}
+                                                            className={`w-full px-3 py-2 border rounded-md bg-white text-black text-sm ${!canEdit || isFormLockedForClient ? 'bg-gray-100' : ''}`}
+                                                        />
                                                 </div>
                                             ))}
                                         </div>
@@ -873,16 +875,16 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                             Time Remaining
                                         </label>
-                                        <div className={`text-lg font-bold ${calculateDaysRemaining().includes('overdue') ? 'text-red-600' : calculateDaysRemaining() === 'Due today' ? 'text-orange-600' : '${colorClasses.text.primary}'}`}>{calculateDaysRemaining()}</div>
+                                        <div className={`text-lg font-bold ${calculateDaysRemaining().includes('overdue') ? 'text-red-600' : calculateDaysRemaining() === 'Due today' ? 'text-orange-600' : 'text-black'}`}>{calculateDaysRemaining()}</div>
                                     </div>
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Progress ({Math.round((editedTask.progress_bar || 0) * 100)}%)</label>
-                                    <input type="range" min="0" max="1" step="0.01" value={editedTask.progress_bar || 0} onChange={(e) => handleInputChange('progress_bar', e.target.value)} className="w-full" disabled={!canEdit} />
+                                    <input type="range" min="0" max="1" step="0.01" value={editedTask.progress_bar || 0} onChange={(e) => handleInputChange('progress_bar', e.target.value)} className="w-full bg-white" disabled={!canEdit} />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Tags</label>
-                                    <input type="text" value={editedTask.tags || ''} onChange={(e) => handleInputChange('tags', e.target.value)} className="w-full px-3 py-2 border rounded-md text-white text-sm" placeholder="Tag1,Tag2,..." disabled={!canEdit} />
+                                    <input type="text" value={editedTask.tags || ''} onChange={(e) => handleInputChange('tags', e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white text-black text-sm" placeholder="Tag1,Tag2,..." disabled={!canEdit} />
                                 </div>
                                 <div className="mt-6 pt-6 border-t flex justify-between items-center">
                                     <div>
@@ -917,7 +919,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                     ))}
                                 </div>
                                 <div className="flex">
-                                    <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()} className="w-full px-3 py-2 border rounded-l-md text-white text-sm" placeholder="Type a message..." />
+                                    <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()} className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" placeholder="Type a message..." />
                                     <button onClick={handleSendMessage} type="button" className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">Send</button>
                                 </div>
                             </div>

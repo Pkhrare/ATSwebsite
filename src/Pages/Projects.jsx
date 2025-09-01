@@ -310,7 +310,17 @@ function Projects() {
                       {columnHeaders.map((header) => {
                         const currentValue = record.fields[header];
                         const editedValue = editedRecords[record.id]?.fields?.[header];
-                        const displayValue = editedValue !== undefined ? editedValue : header === 'Last Updated' ? format(new Date(currentValue), 'MM/dd/yyyy h:mm a') : currentValue;
+                        
+                        // Add a safeguard for date formatting
+                        let displayValue = editedValue !== undefined ? editedValue : currentValue;
+                        if (header === 'Last Updated' && currentValue) {
+                            try {
+                                displayValue = format(new Date(currentValue), 'MM/dd/yyyy h:mm a');
+                            } catch (e) {
+                                console.error(`Invalid date value for 'Last Updated':`, currentValue);
+                                displayValue = 'Invalid Date'; // Fallback for invalid dates
+                            }
+                        }
 
                         return (
                           <td key={header} className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">

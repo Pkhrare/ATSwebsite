@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import TaskCard from './TaskCard';
 import AddTaskToProjectForm from '../forms/AddTaskToProjectForm';
 import AddCollaboratorForm from '../forms/AddCollaboratorForm';
+import AddGroupForm from '../forms/AddGroupForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { parse, format, isValid } from 'date-fns';
@@ -108,7 +109,9 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [activeEditingDate, setActiveEditingDate] = useState(null); // New state for the date picker
     const [isUpdatingActivities, setIsUpdatingActivities] = useState(false);
     const [isEditingNotes, setIsEditingNotes] = useState(false);
-    const notesEditorRef = useRef(null);
+    const [originalNotes, setOriginalNotes] = useState(null);
+    const notesEditorRef = useRef(null); // For the editor INSTANCE
+    const [notesContent, setNotesContent] = useState(null); // For the editor CONTENT
     const [isEditingDetails, setIsEditingDetails] = useState(false);
     const [editedDetails, setEditedDetails] = useState({});
     const [isAddCollaboratorVisible, setIsAddCollaboratorVisible] = useState(false);
@@ -121,6 +124,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [selectedTask, setSelectedTask] = useState(null);
     const [isTaskCardVisible, setIsTaskCardVisible] = useState(false);
     const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
+    const [isAddGroupFormVisible, setIsAddGroupFormVisible] = useState(false);
 
     const fetchTasksForProject = useCallback(async () => {
         if (!projectData?.id) return;
@@ -190,12 +194,12 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             setProjectData(data);
             setEditedDetails(data.fields);
             
-            // Load notes content from attachment with fallback to old Notes field
+            // Load notes content from attachment and set it in state
             if (data.id) {
-                const notesContent = await loadContent('projects', data.id, 'Notes');
-                notesEditorRef.current = notesContent || toLexical(data.fields.Notes || '');
+                const loadedContent = await loadContent('projects', data.id, 'Notes');
+                setNotesContent(loadedContent || toLexical(data.fields.Notes || ''));
             } else {
-                notesEditorRef.current = toLexical(data.fields.Notes || '');
+                setNotesContent(toLexical(data.fields.Notes || ''));
             }
             
             // Wait a bit to ensure content is properly initialized before showing
@@ -584,11 +588,34 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     }, [projectData]);
 
     const handleDetailChange = (field, value) => {
-        setEditedDetails(prev => ({ ...prev, [field]: value }));
+        let processedValue = value;
+        
+        // Ensure that cost and paid values are stored as numbers
+        if (field === 'Full Cost' || field === 'Paid') {
+            processedValue = value === '' ? null : parseFloat(value);
+        }
+
+        // Create a temporary state to calculate the new balance from
+        const newState = { ...editedDetails, [field]: processedValue };
+        const fullCost = parseFloat(newState['Full Cost']) || 0;
+        const paid = parseFloat(newState['Paid']) || 0;
+        const newBalance = fullCost - paid;
+
+        setEditedDetails(prev => ({ 
+            ...prev, 
+            [field]: processedValue,
+            'Balance': newBalance 
+        }));
     };
 
     const handleSaveDetails = async () => {
         const updatedFields = { ...editedDetails };
+        
+        // Do not attempt to update computed fields like 'Last Updated'
+        delete updatedFields['Last Updated'];
+        
+        delete updatedFields['collaborator_name'];
+
         try {
             await apiFetch(`/records/projects/${projectData.id}`, {
                 method: 'PATCH',
@@ -703,45 +730,9 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
-    const handleAddNewGroup = async () => {
-        const groupName = prompt("Enter the name for the new task group:");
-        if (!groupName || !groupName.trim()) {
-            return; // User cancelled or entered an empty name
-        }
-
-        // --- ID Generation Logic ---
-        // 1. Get the project's unique ID.
-        const projectId = projectData.fields['Project ID'];
-        // 2. Create a short, uppercase code from the group name (e.g., "Phase One" -> "PO").
-        const groupCode = groupName.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase();
-        // 3. Combine them for a unique and readable ID.
-        const generatedGroupId = `${projectId}-${groupCode}-${taskData.groups.length}`;
-
-        const newGroupOrder = taskData.groups.length;
-
-        try {
-            await apiFetch('/records', {
-                method: 'POST',
-                body: JSON.stringify({
-                    recordsToCreate: [{
-                        fields: {
-                            group_name: groupName,
-                            groupID: generatedGroupId, // The user-provided ID
-                            group_order: newGroupOrder,
-                            projectID: [projectData.id], // Corrected field name
-                            Tasks: [] // Initialize the linked Tasks field as empty
-                        }
-                    }],
-                    tableName: 'task_groups'
-                })
-            });
-            
-            fetchTasksForProject();
-
-        } catch (error) {
-            console.error("Failed to create new group:", error);
-            alert("An error occurred while creating the group.");
-        }
+    const handleGroupAdded = (newGroup) => {
+        // Refresh the tasks to show the new group
+        fetchTasksForProject();
     };
 
     // Loading screen component
@@ -965,7 +956,13 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             <div className="flex justify-between items-center mb-2">
                                 <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📝 Notes</h2>
                                 {userRole !== 'client' && !isEditingNotes && (
-                                    <button onClick={() => setIsEditingNotes(true)} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
+                                    <button onClick={() => {
+                                        // Save the current state before entering edit mode
+                                        if (notesEditorRef.current) {
+                                            setOriginalNotes(notesEditorRef.current.getEditorState().toJSON());
+                                        }
+                                        setIsEditingNotes(true);
+                                    }} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
                                     </button>
                                 )}
@@ -974,25 +971,26 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                 <div className="space-y-3">
                                     <RichTextEditor
                                         isEditable={true}
-                                        initialContent={notesEditorRef.current}
-                                        onChange={(editorState) => {
-                                            notesEditorRef.current = editorState;
-                                        }}
+                                        initialContent={notesContent}
+                                        editorRef={notesEditorRef}
                                     />
                                     <div className="flex justify-end gap-2">
-                                        <button onClick={async () => { 
-                                            setIsEditingNotes(false); 
-                                            // Reload original content from attachment
-                                            const originalContent = await loadContent('projects', projectData.id, 'Notes');
-                                            notesEditorRef.current = originalContent || toLexical(projectData.fields.Notes || ''); 
-                                        }} className={`text-sm ${colorClasses.button.neutral} px-4 py-2 rounded-md`}>Cancel</button>
+                                        <button onClick={() => { 
+                                            // Restore the original state on cancel
+                                            if (notesEditorRef.current && originalNotes) {
+                                                const originalState = notesEditorRef.current.parseEditorState(originalNotes);
+                                                notesEditorRef.current.setEditorState(originalState);
+                                            }
+                                            setIsEditingNotes(false);
+                                        }} className={`text-sm ${colorClasses.button.accent} px-4 py-2 rounded-md`}>Cancel</button>
                                         <button onClick={handleSaveNotes} className={`text-sm ${colorClasses.button.success} px-4 py-2 rounded-md`}>Save Notes</button>
                                     </div>
                                 </div>
                             ) : (
                                 <RichTextEditor
                                     isEditable={false}
-                                    initialContent={notesEditorRef.current}
+                                    initialContent={notesContent}
+                                    editorRef={notesEditorRef}
                                 />
                             )}
                         </section>
@@ -1039,7 +1037,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className={`text-lg font-semibold ${colorClasses.card.header}`}>Tasks</h3>
                                 <div className="flex items-center gap-2">
-                                    <button onClick={handleAddNewGroup} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.neutral} rounded-md text-sm`}>
+                                    <button onClick={() => setIsAddGroupFormVisible(true)} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.secondary} rounded-md text-sm`}>
                                         <AddIcon /> Add Group
                                     </button>
                                 <button onClick={() => setIsAddTaskFormVisible(true)} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.secondary} rounded-md text-sm`}>
@@ -1274,6 +1272,22 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                             {dropdownFields['Submitted (Y/N)'].map(s => <option key={s} value={s}>{s}</option>)}
                                         </select>
 
+                                        <span className="font-medium text-slate-500">Full Cost:</span>
+                                        <input
+                                            type="number"
+                                            value={editedDetails['Full Cost'] || ''}
+                                            onChange={(e) => handleDetailChange('Full Cost', e.target.value)}
+                                            className="w-full p-1 border border-slate-300 rounded-md text-sm text-black"
+                                        />
+
+                                        <span className="font-medium text-slate-500">Paid:</span>
+                                        <input
+                                            type="number"
+                                            value={editedDetails['Paid'] || ''}
+                                            onChange={(e) => handleDetailChange('Paid', e.target.value)}
+                                            className="w-full p-1 border border-slate-300 rounded-md text-sm text-black"
+                                        />
+
                                         <span className="font-medium text-slate-500">Balance:</span>
                                         <span className="font-semibold text-slate-800 justify-self-end">{projectData.fields['Balance']}</span>
                                     </div>
@@ -1286,6 +1300,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Current Status:</span><StatusBadge status={projectData.fields['Status']} /></div>
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submitted:</span><span className="font-semibold text-slate-800">{projectData.fields['Submitted (Y/N)']}</span></div>
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Full Cost:</span><span className="font-semibold text-slate-800">{projectData.fields['Full Cost']}</span></div>
+                                    <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Paid:</span><span className="font-semibold text-slate-800">{projectData.fields['Paid']}</span></div>
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Balance:</span><span className="font-semibold text-slate-800">{projectData.fields['Balance']}</span></div>
                                 </div>
                             )}
@@ -1301,7 +1317,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm text-sm`}>
                             <h2 className={`text-lg font-semibold ${colorClasses.card.header} mb-4 text-center`}>Key Dates</h2>
                             <div className="space-y-3">
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
+                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{projectData.fields['Last Updated'] ? format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a') : 'N/A'}</span></div>
                                 <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
                                 <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Est. Completion:</span><span className="font-semibold text-slate-800">{projectData.fields['Estimated Completion']}</span></div>
                             </div>
@@ -1406,6 +1422,15 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                     onTaskAdded={() => { fetchTasksForProject(); setIsAddTaskFormVisible(false); }}
                     assigneeOptions={assigneeOptions}
                     nextTaskOrder={taskData.ungroupedTasks.length}
+                />
+            )}
+
+            {isAddGroupFormVisible && (
+                <AddGroupForm
+                    projectData={projectData}
+                    taskData={taskData}
+                    onClose={() => setIsAddGroupFormVisible(false)}
+                    onGroupAdded={handleGroupAdded}
                 />
             )}
 
