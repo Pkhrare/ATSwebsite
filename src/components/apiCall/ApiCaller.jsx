@@ -1,7 +1,7 @@
 const API_URL = 'https://ats-backend-805977745256.us-central1.run.app/api';
 
 export default async function ApiCaller(endpoint, options = {}) {
-    const token = import.meta.env.VITE_BEARER_TOKEN;
+    const token = process.env.BEARER_TOKEN;;
     const headers = {
         "Authorization": `Bearer ${token}`,
         ...options.headers
