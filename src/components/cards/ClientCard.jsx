@@ -14,6 +14,7 @@ import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import RichTextEditor from '../richText/RichTextEditor';
 import InfoSidebar from '../layout/InfoSidebar';
 import { loadContent } from '../../utils/contentUtils';
+import { InfoPageProvider } from '../../utils/InfoPageContext';
 
 
 // Helper function to fetch from the backend API
@@ -302,136 +303,137 @@ export default function ClientCard() {
 
 
     return (
-        <div className="fixed inset-0 z-50 bg-slate-50 flex">
-            <InfoSidebar />
-            <div className="flex-1 flex flex-col overflow-hidden">
-                <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
-                    <Link
-                        to="/"
-                        onClick={logout} // Call logout when the link is clicked
-                        className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
-                        aria-label="Back"
-                    >
-                        <BackIcon />
-                        <span className="hidden sm:inline">Exit Portal</span>
-                    </Link>
-                    <div className="text-center">
-                        <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
-                        <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
-                            </div>
-                    <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
+        <InfoPageProvider>
+            <div className="fixed inset-0 z-50 bg-slate-50 flex">
+                <InfoSidebar />
+                <div className="flex-1 flex flex-col overflow-hidden">
+                    <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
+                        <Link
+                            to="/"
+                            onClick={logout} // Call logout when the link is clicked
+                            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
+                            aria-label="Back"
+                        >
+                            <BackIcon />
+                            <span className="hidden sm:inline">Exit Portal</span>
+                        </Link>
+                        <div className="text-center">
+                            <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
+                            <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
+                        </div>
+                        <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
                     </header>
 
-                <main className="flex-grow p-6 overflow-y-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                    <main className="flex-grow p-6 overflow-y-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
-                        <div className="lg:col-span-3 space-y-6">
-                            {/* Project Details Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                                <div className="flex justify-between items-center mb-4">
-                                    <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
-                                    <div>
-                                        <span className="font-medium text-slate-500">Assigned Consultant:</span>
-                                        <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
+                            <div className="lg:col-span-3 space-y-6">
+                                {/* Project Details Section */}
+                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
                                     </div>
-                                    <div>
-                                        <span className="font-medium text-slate-500">State:</span>
-                                        <span className="text-slate-800 ml-2">{projectData.fields['States']}</span>
-                                    </div>
-                                    <div>
-                                        <span className="font-medium text-slate-500">Project Type:</span>
-                                        <span className="text-slate-800 ml-2">{projectData.fields['Project Type']}</span>
-                                    </div>
-                                    <div>
-                                        <span className="font-medium text-slate-500">Status:</span>
-                                        <span className="text-slate-800 ml-2">{projectData.fields['Status']}</span>
-                                    </div>
-                                    <div>
-                                        <span className="font-medium text-slate-500">IRS Identifier:</span>
-                                        <span className="text-slate-800 ml-2">{projectData.fields['IRS Identifier (ID/EIN)']}</span>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                        <div>
+                                            <span className="font-medium text-slate-500">Assigned Consultant:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
                                         </div>
-                                    <div className="md:col-span-2">
-                                        <span className="font-medium text-slate-500">Client Email:</span>
-                                        <a href={`mailto:${projectData.fields['Client Email']}`} className="text-blue-600 hover:underline ml-2">{projectData.fields['Client Email']}</a>
-                                </div>
-                                    <div>
-                                        <span className="font-medium text-slate-500">Date of Submission:</span>
-                                        <span className="text-slate-800 ml-2">{projectData.fields['Date of Submission']}</span>
+                                        <div>
+                                            <span className="font-medium text-slate-500">State:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['States']}</span>
+                                        </div>
+                                        <div>
+                                            <span className="font-medium text-slate-500">Project Type:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['Project Type']}</span>
+                                        </div>
+                                        <div>
+                                            <span className="font-medium text-slate-500">Status:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['Status']}</span>
+                                        </div>
+                                        <div>
+                                            <span className="font-medium text-slate-500">IRS Identifier:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['IRS Identifier (ID/EIN)']}</span>
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <span className="font-medium text-slate-500">Client Email:</span>
+                                            <a href={`mailto:${projectData.fields['Client Email']}`} className="text-blue-600 hover:underline ml-2">{projectData.fields['Client Email']}</a>
                                     </div>
-                                    <div>
-                                        <span className="font-medium text-slate-500">Estimated Completion:</span>
-                                        <span className="text-slate-800 ml-2">{projectData.fields['Estimated Completion']}</span>
+                                        <div>
+                                            <span className="font-medium text-slate-500">Date of Submission:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['Date of Submission']}</span>
+                                        </div>
+                                        <div>
+                                            <span className="font-medium text-slate-500">Estimated Completion:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['Estimated Completion']}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </section>
+                                </section>
 
-                            {/* Notes Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                                <div className="flex justify-between items-center mb-2">
-                                    <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
-                                </div>
-                                <RichTextEditor
-                                    isEditable={false}
-                                    initialContent={notesEditorRef.current}
-                                />
-                            </section>
+                                {/* Notes Section */}
+                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
+                                    </div>
+                                    <RichTextEditor
+                                        isEditable={false}
+                                        initialContent={notesEditorRef.current}
+                                    />
+                                </section>
 
-                            {/* Documents Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                                <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
-                                    {/* Upload removed for clients - they can only upload to assigned tasks */}
-                                </div>
-                                <ul className="space-y-2">
-                                    {/* Upload indicator removed - clients can't upload project documents */}
-                                    {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
-                                        projectData.fields.Documents.map(doc => (
-                                            <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
-                                                <div className="flex items-center gap-3">
-                                                    <DocumentIcon />
-                                                    <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left">
-                                                        {doc.filename}
-                                                    </button>
-                                                </div>
-                                                <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
-                                            </li>
-                                        ))
-                                    ) : (
-                                        <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
-                                    )}
-                                </ul>
-                            </section>
-
-                            {/* Tasks Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                                <div className="flex justify-between items-center mb-4">
-                                    <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
+                                {/* Documents Section */}
+                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    <div className="flex justify-between items-center mb-3">
+                                        <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
+                                        {/* Upload removed for clients - they can only upload to assigned tasks */}
+                                    </div>
+                                    <ul className="space-y-2">
+                                        {/* Upload indicator removed - clients can't upload project documents */}
+                                        {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
+                                            projectData.fields.Documents.map(doc => (
+                                                <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
+                                                    <div className="flex items-center gap-3">
+                                                        <DocumentIcon />
+                                                        <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left">
+                                                            {doc.filename}
+                                                        </button>
                                                     </div>
-                                {isLoadingTasks ? (
-                                    <p className="text-slate-500">Loading tasks...</p>
-                                ) : (
-                                    <div className="space-y-4">
-                                        {taskData.groups.map((group) => (
-                                            <div key={group.id}>
-                                                <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
-                                                    <div className="flex justify-between items-center p-2">
-                                                        <h4 className="font-bold text-slate-700">{group.name}</h4>
+                                                    <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
+                                        )}
+                                    </ul>
+                                </section>
+
+                                {/* Tasks Section */}
+                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
+                                    </div>
+                                    {isLoadingTasks ? (
+                                        <p className="text-slate-500">Loading tasks...</p>
+                                    ) : (
+                                        <div className="space-y-4">
+                                            {taskData.groups.map((group) => (
+                                                <div key={group.id}>
+                                                    <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
+                                                        <div className="flex justify-between items-center p-2">
+                                                            <h4 className="font-bold text-slate-700">{group.name}</h4>
                                                         </div>
-                                                    <ul className="space-y-2 p-2 min-h-[50px]">
-                                                        {group.tasks.map((task) => (
-                                                            <li
-                                                                key={task.id}
-                                                                onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                                className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
-                                                            >
-                                                                <div className="flex justify-between items-center">
-                                                                    <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                    {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
-                                                        </div>
-                                                                <div className="flex justify-end items-center mt-2">
-                                                                    <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                        <ul className="space-y-2 p-2 min-h-[50px]">
+                                                            {group.tasks.map((task) => (
+                                                                <li
+                                                                    key={task.id}
+                                                                    onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
+                                                                    className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                                >
+                                                                    <div className="flex justify-between items-center">
+                                                                        <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
+                                                                        {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                            </div>
+                                                                    <div className="flex justify-end items-center mt-2">
+                                                                        <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
                                                 </div>
                                             </li>
                                         ))}
@@ -621,5 +623,6 @@ export default function ClientCard() {
                 />
             )}
         </div>
+        </InfoPageProvider>
     );
 }; 

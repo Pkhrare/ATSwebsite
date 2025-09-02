@@ -526,14 +526,14 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
     }
 
     return (
-        <div className="relative border border-slate-300 rounded-md">
+        <div className={`relative border border-slate-300 rounded-md ${!isEditable ? 'bg-slate-50/50' : 'bg-white'}`}>
             <LexicalComposer initialConfig={initialConfig}>
                 {isEditable && <ToolbarPlugin />}
-                <div className="relative min-h-[40px]">
+                <div className="relative">
                     <RichTextPlugin
                         contentEditable={
                             <ContentEditable
-                                className={`p-2 ${isEditable ? 'min-h-[150px]' : ''} outline-none text-black prose max-w-none`}
+                                className={`p-3 ${isEditable ? 'min-h-[150px]' : 'min-h-[120px]'} outline-none text-black prose max-w-none`}
                                 style={{
                                     // Ensure tables are visible with explicit CSS
                                     '--table-border': '1px solid #94a3b8',
@@ -546,7 +546,9 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                             isEditable ? (
                                 <div className="absolute top-3 left-3 text-gray-400 pointer-events-none z-10">Enter some text...</div>
                             ) : (
+                                !initialContent || initialContent === '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}' ?
                                 <div className="absolute top-3 left-3 text-gray-500 pointer-events-none italic z-10">No content available.</div>
+                                : null
                             )
                         }
                         ErrorBoundary={LexicalErrorBoundary}

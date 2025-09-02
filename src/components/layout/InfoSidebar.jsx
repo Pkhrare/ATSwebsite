@@ -1,52 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import ApiCaller from '../apiCall/ApiCaller';
 import { useAuth } from '../../utils/AuthContext';
 import AddInfoPageForm from '../forms/AddInfoPageForm';
 import { colorClasses } from '../../utils/colorUtils';
+import { useInfoPages } from '../../utils/InfoPageContext';
+import { IconRenderer } from '../forms/IconPicker';
+
 
 const InfoSidebar = () => {
-    const [pages, setPages] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const { pages, isLoading, error, fetchInfoPages } = useInfoPages();
     const { userRole } = useAuth();
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const navigate = useNavigate();
     
-
-
-    const fetchInfoPages = async () => {
-        try {
-            const data = await ApiCaller('/info-pages');
-            setPages(data || []);
-        } catch (err) {
-            setError('Failed to load informational pages.');
-            console.error(err);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     useEffect(() => {
         fetchInfoPages();
-    }, []);
+    }, [fetchInfoPages]);
 
     const handlePageAdded = (newPage) => {
         setIsAddModalOpen(false);
         fetchInfoPages(); // Refetch the list to show the new page in the sidebar
 
-        // Defensive check: only navigate if we received a valid page object with an ID
         const pageToNavigate = Array.isArray(newPage) ? newPage[0] : newPage;
 
         if (pageToNavigate && pageToNavigate.id) {
             navigate(`/info/${pageToNavigate.id}`);
         } else {
-            // If navigation fails, the user still sees the updated list. This is a graceful failure.
             console.error("Failed to navigate automatically, the API response might be malformed:", newPage);
         }
     };
 
-    const linkStyle = `block px-4 py-2 text-sm ${colorClasses.sidebar.text} rounded-md ${colorClasses.sidebar.hover} transition-colors`;
+    const linkStyle = `flex items-center px-4 py-2 text-sm ${colorClasses.sidebar.text} rounded-md ${colorClasses.sidebar.hover} transition-colors`;
     const activeLinkStyle = `bg-[#fef3c7] text-[#d97706] font-semibold`; // Yellow-100 bg, Yellow-600 text
 
     if (isLoading) {
@@ -80,7 +64,9 @@ const InfoSidebar = () => {
                         to={userRole === 'client' ? `/client/info/${page.id}` : `/info/${page.id}`}
                         className={({ isActive }) => `${linkStyle} ${isActive ? activeLinkStyle : ''}`}
                     >
-                        {page.title}
+                        <IconRenderer icon={page.icon} className="w-5 h-5 mr-3" />
+                        
+                        <span>{page.title}</span>
                     </NavLink>
                 ))}
             </nav>

@@ -14,6 +14,15 @@ function AttachChecklistsForm({ taskId, onClose, onChecklistSaved, initialCheckl
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const handleOverlayClick = (e) => {
+        // This stops the click from propagating to any other overlay click handlers beneath it
+        e.stopPropagation();
+        // We only call onClose if the click is on the overlay div itself, not on its children
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
     const fetchChecklists = useCallback(async () => {
         if (!taskId) return;
         setIsLoading(true);
@@ -140,8 +149,10 @@ function AttachChecklistsForm({ taskId, onClose, onChecklistSaved, initialCheckl
     };
     
     return (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg transform transition-all">
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[60] p-4" onClick={handleOverlayClick}>
+            <div 
+                className="bg-white rounded-2xl shadow-2xl w-full max-w-lg transform transition-all"
+            >
                 <div className="p-6 border-b border-gray-200 flex justify-between items-center">
                     <h2 className="text-xl font-bold text-gray-800">Checklist</h2>
                     <button onClick={onClose} className="text-gray-400 hover:bg-gray-100 rounded-full p-1.5">

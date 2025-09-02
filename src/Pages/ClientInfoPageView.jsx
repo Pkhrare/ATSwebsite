@@ -4,6 +4,7 @@ import ApiCaller from '../components/apiCall/ApiCaller';
 import RichTextEditor from '../components/richText/RichTextEditor';
 import InfoSidebar from '../components/layout/InfoSidebar';
 import { loadContent } from '../utils/contentUtils';
+import { InfoPageProvider } from '../utils/InfoPageContext';
 
 const BackIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -49,83 +50,91 @@ const ClientInfoPageView = () => {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-slate-50 flex flex-col">
-                <div className="flex flex-1 overflow-hidden">
-                    <InfoSidebar />
-                    <div className="flex-1 overflow-y-auto">
-                        <div className="p-8 flex-grow">
-                            <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
-                                <div className="h-10 bg-slate-200 rounded animate-pulse w-3/4 mb-6"></div>
-                                <div className="space-y-4">
-                                    <div className="h-4 bg-slate-200 rounded animate-pulse"></div>
-                                    <div className="h-4 bg-slate-200 rounded animate-pulse w-5/6"></div>
-                                    <div className="h-4 bg-slate-200 rounded animate-pulse w-3/4"></div>
+            <InfoPageProvider>
+                <div className="min-h-screen bg-slate-50 flex flex-col">
+                    <div className="flex flex-1 overflow-hidden">
+                        <InfoSidebar />
+                        <div className="flex-1 overflow-y-auto">
+                            <div className="p-8 flex-grow">
+                                <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                                    <div className="h-10 bg-slate-200 rounded animate-pulse w-3/4 mb-6"></div>
+                                    <div className="space-y-4">
+                                        <div className="h-4 bg-slate-200 rounded animate-pulse"></div>
+                                        <div className="h-4 bg-slate-200 rounded animate-pulse w-5/6"></div>
+                                        <div className="h-4 bg-slate-200 rounded animate-pulse w-3/4"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </InfoPageProvider>
         );
     }
 
     if (error) {
         return (
-            <div className="min-h-screen bg-slate-50 flex flex-col">
-                <div className="flex flex-1 overflow-hidden">
-                    <InfoSidebar />
-                    <div className="flex-1 overflow-y-auto">
-                        <div className="p-8 text-center text-red-500 flex-grow">{error}</div>
+            <InfoPageProvider>
+                <div className="min-h-screen bg-slate-50 flex flex-col">
+                    <div className="flex flex-1 overflow-hidden">
+                        <InfoSidebar />
+                        <div className="flex-1 overflow-y-auto">
+                            <div className="p-8 text-center text-red-500 flex-grow">{error}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </InfoPageProvider>
         );
     }
 
     if (!page) {
         return (
-            <div className="min-h-screen bg-slate-50 flex flex-col">
-                <div className="flex flex-1 overflow-hidden">
-                    <InfoSidebar />
-                    <div className="flex-1 overflow-y-auto">
-                        <div className="p-8 text-center text-slate-500 flex-grow">Page not found.</div>
+            <InfoPageProvider>
+                <div className="min-h-screen bg-slate-50 flex flex-col">
+                    <div className="flex flex-1 overflow-hidden">
+                        <InfoSidebar />
+                        <div className="flex-1 overflow-y-auto">
+                            <div className="p-8 text-center text-slate-500 flex-grow">Page not found.</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </InfoPageProvider>
         );
     }
 
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col">
-            <div className="flex flex-1 overflow-hidden">
-                <InfoSidebar />
-                <div className="flex-1 overflow-y-auto">
-                    <main className="p-8 flex-grow">
-                        <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
-                            <header className="flex items-center justify-between mb-8 border-b border-slate-200 pb-6">
-                                <h1 className="text-3xl font-bold text-slate-800">{page.title}</h1>
-                                {projectId && (
-                                    <button
-                                        onClick={() => navigate(`/client/project/${projectId}`)}
-                                        className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
-                                    >
-                                        <BackIcon />
-                                        <span>Back to Project</span>
-                                    </button>
-                                )}
-                            </header>
+        <InfoPageProvider>
+            <div className="min-h-screen bg-slate-50 flex flex-col">
+                <div className="flex flex-1 overflow-hidden">
+                    <InfoSidebar />
+                    <div className="flex-1 overflow-y-auto">
+                        <main className="p-8 flex-grow">
+                            <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                                <header className="flex items-center justify-between mb-8 border-b border-slate-200 pb-6">
+                                    <h1 className="text-3xl font-bold text-slate-800">{page.title}</h1>
+                                    {projectId && (
+                                        <button
+                                            onClick={() => navigate(`/client/project/${projectId}`)}
+                                            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
+                                        >
+                                            <BackIcon />
+                                            <span>Back to Project</span>
+                                        </button>
+                                    )}
+                                </header>
 
-                            <div className="prose max-w-none">
-                                <RichTextEditor
-                                    isEditable={false}
-                                    initialContent={page.content}
-                                />
+                                <div className="prose max-w-none">
+                                    <RichTextEditor
+                                        isEditable={false}
+                                        initialContent={page.content}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    </main>
+                        </main>
+                    </div>
                 </div>
             </div>
-        </div>
+        </InfoPageProvider>
     );
 };
 

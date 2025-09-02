@@ -71,7 +71,8 @@ function Projects() {
       column !== 'ServiceMilestones' &&
       column !== 'Tasks' &&
       column !== 'collaborator_name' &&
-      column !== "collaborators"
+      column !== "collaborators" &&
+      column !== "task_groups"
     );
 
     // Reorder columns to have 'Full Cost', 'Paid', 'Balance' next to each other

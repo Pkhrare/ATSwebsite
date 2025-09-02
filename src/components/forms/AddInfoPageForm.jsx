@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import ApiCaller from '../apiCall/ApiCaller';
+import IconPicker from './IconPicker';
 
 const AddInfoPageForm = ({ onClose, onPageAdded }) => {
     const [title, setTitle] = useState('');
+    const [icon, setIcon] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -16,12 +18,11 @@ const AddInfoPageForm = ({ onClose, onPageAdded }) => {
         setError('');
 
         try {
-            // The backend should create a new page with this title and empty content
             const newPage = await ApiCaller('/info-pages', {
                 method: 'POST',
-                body: JSON.stringify({ title: title.trim() }),
+                body: JSON.stringify({ title: title.trim(), icon: icon }),
             });
-            onPageAdded(newPage); // Pass the new page data back to be handled
+            onPageAdded(newPage);
         } catch (err) {
             setError('Failed to create the page. Please try again.');
             console.error(err);
@@ -47,6 +48,16 @@ const AddInfoPageForm = ({ onClose, onPageAdded }) => {
                             className="w-full mt-1 px-3 py-2 text-black border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter the page title"
                             autoFocus
+                            disabled={isLoading}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="pageIcon" className="block text-sm font-medium text-slate-700">
+                            Icon
+                        </label>
+                        <IconPicker
+                            selectedIcon={icon}
+                            onIconChange={setIcon}
                             disabled={isLoading}
                         />
                     </div>

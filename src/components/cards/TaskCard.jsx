@@ -331,6 +331,75 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         }
     };
 
+    const handleDeleteChecklistItem = async (itemId) => {
+        if (!window.confirm('Are you sure you want to delete this checklist item? This cannot be undone.')) {
+            return;
+        }
+
+        try {
+            await ApiCaller('/records/task_checklists', {
+                method: 'DELETE',
+                body: JSON.stringify({ recordIds: [itemId] })
+            });
+            
+            // Remove from local state
+            setChecklistItems(prev => prev.filter(item => item.id !== itemId));
+            setInitialChecklistItems(prev => prev.filter(item => item.id !== itemId));
+        } catch (error) {
+            console.error("Failed to delete checklist item:", error);
+            alert("There was an error deleting the checklist item.");
+        }
+    };
+
+
+
+    const handleDeleteForm = async (submissionId) => {
+        // Find all submissions with the same submission_id (same form)
+        const formToDelete = formSubmissions.find(sub => sub.id === submissionId);
+        if (!formToDelete) return;
+
+        const submissionIdToDelete = formToDelete.fields.submission_id;
+        const formsToDelete = formSubmissions.filter(sub => sub.fields.submission_id === submissionIdToDelete);
+        
+        if (!window.confirm(`Are you sure you want to delete this entire form? This will remove ${formsToDelete.length} form fields and cannot be undone.`)) {
+            return;
+        }
+
+        try {
+            const recordIds = formsToDelete.map(sub => sub.id);
+            await ApiCaller('/records/task_forms_submissions', {
+                method: 'DELETE',
+                body: JSON.stringify({ recordIds })
+            });
+            
+            // Remove all form submissions for this form
+            setFormSubmissions(prev => prev.filter(sub => sub.fields.submission_id !== submissionIdToDelete));
+            setInitialFormSubmissions(prev => prev.filter(sub => sub.fields.submission_id !== submissionIdToDelete));
+        } catch (error) {
+            console.error("Failed to delete form:", error);
+            alert("There was an error deleting the form.");
+        }
+    };
+
+    const handleDeleteAttachment = async (attachmentId) => {
+        if (!window.confirm('Are you sure you want to delete this attachment? This cannot be undone.')) {
+            return;
+        }
+
+        try {
+            await ApiCaller('/records/task_attachments', {
+                method: 'DELETE',
+                body: JSON.stringify({ recordIds: [attachmentId] })
+            });
+            
+            // Remove from local state
+            setAttachments(prev => prev.filter(att => att.id !== attachmentId));
+        } catch (error) {
+            console.error("Failed to delete attachment:", error);
+            alert("There was an error deleting the attachment.");
+        }
+    };
+
     const handleChecklistItemChange = (itemId, completed) => {
         if (!canEdit) return; // <-- Prevent changes if not editable
         setChecklistItems(prev =>
@@ -389,19 +458,22 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             const newSubmissions = submissionResult.records;
 
             // Step 4: Link the new submissions back to the parent task.
-            if (newSubmissions && newSubmissions.length > 0) {
-                await ApiCaller(`/records/tasks/${task.id}`, {
-                    method: 'PATCH',
-                    body: JSON.stringify({
-                        fields: {
-                            task_forms_submissions: newSubmissions.map(s => s.id)
-                        }
-                    })
-                });
-            }
+            // Note: We'll skip this step for now since the form submissions are already linked via task_id
+            // and updating the task record immediately can cause timing issues with newly created records
+            // The form submissions will be visible on the next refresh or when the task card is reopened
 
-            // Step 5: Refresh the UI.
-            forceRefetch();
+            // Step 5: Update local state to include new form submissions
+            setFormSubmissions(prev => [...prev, ...newSubmissions]);
+            setInitialFormSubmissions(prev => [...prev, ...newSubmissions]);
+            
+            // Update the local task state to include the new submission IDs
+            setEditedTask(prev => ({
+                ...prev,
+                task_forms_submissions: [...(prev.task_forms_submissions || []), ...newSubmissions.map(s => s.id)]
+            }));
+            
+            // Show success message
+            setSuccessMessage('Form attached successfully!');
 
         } catch (error) {
             console.error("Failed to create form submissions:", error);
@@ -647,7 +719,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     };
 
     const isChecklistLockedForClient = isClientView && initialChecklistItems.some(item => item.completed);
-    const isFormLockedForClient = isClientView && formSubmissions.length > 0 && (formSubmissions[0].fields.submission === 'Completed' || formSubmissions[0].fields.submission === 'Updated');
+    const isFormLockedForClient = isClientView && formSubmissions.length > 0 && formSubmissions.some(sub => sub.fields.submission === 'Completed' || sub.fields.submission === 'Updated');
 
 
     return (
@@ -762,7 +834,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                     ) : (
                                         <div className="space-y-2">
                                             {checklistItems.map(item => (
-                                                <div key={item.id} className="flex items-center gap-3">
+                                                <div key={item.id} className="group relative flex items-center gap-3 p-2 rounded-lg">
                                                     <input
                                                         type="checkbox"
                                                         checked={item.completed || false}
@@ -770,9 +842,19 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                         className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                                         disabled={!canEdit}
                                                     />
-                                                    <label className={`text-sm ${item.completed ? 'line-through text-gray-500' : '${colorClasses.text.primary}'}`}>
+                                                    <label className={`text-sm flex-1 ${item.completed ? 'line-through text-gray-500' : '${colorClasses.text.primary}'}`}>
                                                         {item.checklist_description}
                                                     </label>
+                                                    {canEdit && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => handleDeleteChecklistItem(item.id)}
+                                                            className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                                            title="Delete Checklist Item"
+                                                        >
+                                                            <TrashIcon className="h-4 w-4" />
+                                                        </button>
+                                                    )}
                                                 </div>
                                             ))}
                                         </div>
@@ -782,42 +864,96 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
 
                             {(isFormSubmissionsLoading || formSubmissions.length > 0) && (
                                 <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
-                                    <div className="flex justify-between items-center mb-2">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <h3 className="text-sm font-medium ${colorClasses.text.primary}">Forms</h3>
                                         <div className="flex items-center gap-2">
-                                            <h3 className="text-sm font-medium ${colorClasses.text.primary}">{formSubmissions[0]?.fields['form_name (from form)']?.[0] || 'Form'}</h3>
-                                            {(() => {
-                                                const firstSubmission = formSubmissions[0];
-                                                const submissionStatus = firstSubmission?.fields.submission;
-                                                const lastUpdated = firstSubmission?.fields.last_updated;
-                                                if (lastUpdated && (submissionStatus === 'Completed' || submissionStatus === 'Updated')) {
-                                                    const formattedDate = format(new Date(lastUpdated), 'MMM d, yyyy h:mm a');
-                                                    return <span className="text-xs text-gray-500 italic">({`${submissionStatus} on ${formattedDate}`})</span>;
-                                                }
-                                                return null;
-                                            })()}
+                                            {(!isClientView || !isFormLockedForClient) && canEdit &&
+                                                <button type="button" onClick={() => setIsEditingForm(!isEditingForm)} className="text-sm text-blue-600 hover:underline">
+                                                    {isEditingForm ? 'Cancel Edit' : 'Edit Forms'}
+                                                </button>
+                                            }
+                                            {canEdit && (
+                                                <button 
+                                                    type="button" 
+                                                    onClick={() => forceRefetch()} 
+                                                    className="text-sm text-slate-600 hover:text-slate-800"
+                                                    title="Refresh forms"
+                                                >
+                                                    ↻
+                                                </button>
+                                            )}
                                         </div>
-                                        {(!isClientView || !isFormLockedForClient) && canEdit &&
-                                            <button type="button" onClick={() => setIsEditingForm(!isEditingForm)} className="text-sm text-blue-600 hover:underline">
-                                                {isEditingForm ? 'Cancel' : 'Edit'}
-                                            </button>
-                                        }
                                     </div>
                                     {isFormSubmissionsLoading ? (
-                                        <p className="text-sm text-gray-500">Loading form...</p>
+                                        <p className="text-sm text-gray-500">Loading forms...</p>
                                     ) : (
-                                        <div className="space-y-4">
-                                            {formSubmissions.map(submission => (
-                                                <div key={submission.id}>
-                                                    <label className="block text-sm font-medium ${colorClasses.text.primary}">{submission.fields['field_label (from Notes)']?.[0]}</label>
-                                                                                                            <input
-                                                            type="text"
-                                                            value={submission.fields.value === '--EMPTY--' ? '' : submission.fields.value || ''}
-                                                            onChange={(e) => handleFormSubmissionChange(submission.id, e.target.value)}
-                                                            disabled={!canEdit || isFormLockedForClient}
-                                                            className={`w-full px-3 py-2 border rounded-md bg-white text-black text-sm ${!canEdit || isFormLockedForClient ? 'bg-gray-100' : ''}`}
-                                                        />
-                                                </div>
-                                            ))}
+                                        <div className="space-y-6">
+                                            {(() => {
+                                                // Group form submissions by submission_id to create separate forms
+                                                const formsMap = new Map();
+                                                formSubmissions.forEach(submission => {
+                                                    const submissionId = submission.fields.submission_id;
+                                                    if (!formsMap.has(submissionId)) {
+                                                        formsMap.set(submissionId, []);
+                                                    }
+                                                    formsMap.get(submissionId).push(submission);
+                                                });
+
+                                                return Array.from(formsMap.entries()).map(([submissionId, formFields]) => {
+                                                    const firstField = formFields[0];
+                                                    const formName = firstField?.fields['form_name (from form)']?.[0] || 'Unnamed Form';
+                                                    const submissionStatus = firstField?.fields.submission || 'Incomplete';
+                                                    const lastUpdated = firstField?.fields.last_updated;
+                                                    
+                                                    return (
+                                                        <div key={submissionId} className="group relative border border-slate-200 rounded-lg p-4 bg-black text-white">
+                                                            <div className="flex justify-between items-center mb-3">
+                                                                <div className="flex items-center gap-2">
+                                                                    <h4 className="text-sm font-semibold text-slate-800 text-white">{formName}</h4>
+                                                                    <span className={`px-2 py-1 text-xs rounded-full ${
+                                                                        submissionStatus === 'Completed' ? 'bg-green-100 text-green-800' :
+                                                                        submissionStatus === 'Updated' ? 'bg-blue-100 text-blue-800' :
+                                                                        'bg-yellow-100 text-yellow-800'
+                                                                    }`}>
+                                                                        {submissionStatus}
+                                                                    </span>
+                                                                    {lastUpdated && (submissionStatus === 'Completed' || submissionStatus === 'Updated') && (
+                                                                        <span className="text-xs text-gray-500 italic">
+                                                                            {format(new Date(lastUpdated), 'MMM d, yyyy h:mm a')}
+                                                                        </span>
+                                                                    )}
+                                                                </div>
+                                                                {canEdit && (
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => handleDeleteForm(firstField.id)}
+                                                                        className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                                                        title="Delete Entire Form"
+                                                                    >
+                                                                        <TrashIcon className="h-4 w-4" />
+                                                                    </button>
+                                                                )}
+                                                            </div>
+                                                            <div className="space-y-3">
+                                                                {formFields.map(field => (
+                                                                    <div key={field.id}>
+                                                                        <label className="block text-sm font-medium text-slate-700 mb-1 text-white">
+                                                                            {field.fields['field_label (from Notes)']?.[0] || 'Unnamed Field'}
+                                                                        </label>
+                                                                        <input
+                                                                            type="text"
+                                                                            value={field.fields.value === '--EMPTY--' ? '' : field.fields.value || ''}
+                                                                            onChange={(e) => handleFormSubmissionChange(field.id, e.target.value)}
+                                                                            disabled={!canEdit || isFormLockedForClient}
+                                                                            className={`w-full px-3 py-2 border rounded-md bg-black text-white text-sm ${!canEdit || isFormLockedForClient ? 'bg-gray-100' : ''}`}
+                                                                        />
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                });
+                                            })()}
                                         </div>
                                     )}
                                 </div>
@@ -834,7 +970,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                     ) : (
                                         <div className="space-y-3">
                                             {attachments.map((att) => (
-                                                <div key={att.id} className="grid grid-cols-[1fr,1fr,auto] gap-4 items-center">
+                                                <div key={att.id} className="group relative grid grid-cols-[1fr,1fr,auto] gap-4 items-center p-3 rounded-lg">
                                                     <p className="text-sm ${colorClasses.text.primary} truncate">{att.fields.attachment_description}</p>
                                                     <div>
                                                         {att.fields.Attachments && att.fields.Attachments.length > 0 ? (
@@ -842,7 +978,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                                 {att.fields.Attachments.map((file, index) => (
                                                                     <a key={index} href={file.url} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline flex items-center gap-1">
                                                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
-                                                                        {file.filename}
+                                                        {file.filename}
                                                                     </a>
                                                                 ))}
                                                             </div>
@@ -850,12 +986,22 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                             <p className="text-sm text-gray-500 italic">No file uploaded</p>
                                                         )}
                                                     </div>
-                                                    <div>
+                                                    <div className="flex items-center gap-2">
                                                         <input type="file" className="hidden" ref={el => (fileInputRefs.current[att.id] = el)} onChange={(e) => handleFileChange(e, att)} disabled={!canEdit} />
-                                                        <button type="button" onClick={() => handleUploadClick(att)} className="text-sm bg-white border border-gray-300 text-black rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 flex items-center justify-center disabled:opacity-50" disabled={!canEdit}>
+                                                        <button type="button" onClick={() => handleUploadClick(att)} className="text-sm bg-white border border-gray-300 text-black rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 flex items-center justify-center disabled:opacity-100" disabled={!canEdit}>
                                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
                                                             {isClientView ? (att.fields.Attachments?.length ? 'Add File' : 'Upload') : (att.fields.Attachments?.length ? 'Replace' : 'Upload')}
                                                         </button>
+                                                        {canEdit && (
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => handleDeleteAttachment(att.id)}
+                                                                className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                                                title="Delete Attachment"
+                                                            >
+                                                                <TrashIcon className="h-4 w-4" />
+                                                            </button>
+                                                        )}
                                                     </div>
                                                 </div>
                                             ))}
@@ -944,27 +1090,29 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         </div>
                     )}
                 </div>
+
+                {/* Modals are now inside the main content ref to prevent click-outside issues */}
+                {isAttachFilesFormOpen && (
+                    <AttachFilesForm
+                        taskId={task.id}
+                        onClose={() => setAttachFilesFormOpen(false)}
+                        onAttachmentsAdded={handleAttachmentsAdded}
+                    />
+                )}
+                {isAttachChecklistsFormOpen && (
+                    <AttachChecklistsForm
+                        taskId={task.id}
+                        onClose={() => setAttachChecklistsFormOpen(false)}
+                        onChecklistSaved={forceRefetch}
+                    />
+                )}
+                {isAttachTaskformsFormOpen && (
+                    <AttachTaskformsForm
+                        onClose={() => setAttachTaskformsFormOpen(false)}
+                        onFormAttach={handleFormAttached}
+                    />
+                )}
             </div>
-            {isAttachFilesFormOpen && (
-                <AttachFilesForm
-                    taskId={task.id}
-                    onClose={() => setAttachFilesFormOpen(false)}
-                    onAttachmentsAdded={handleAttachmentsAdded}
-                />
-            )}
-            {isAttachChecklistsFormOpen && (
-                <AttachChecklistsForm
-                    taskId={task.id}
-                    onClose={() => setAttachChecklistsFormOpen(false)}
-                    onChecklistSaved={forceRefetch}
-                />
-            )}
-            {isAttachTaskformsFormOpen && (
-                <AttachTaskformsForm
-                    onClose={() => setAttachTaskformsFormOpen(false)}
-                    onFormAttach={handleFormAttached}
-                />
-            )}
         </div>
     );
 };
