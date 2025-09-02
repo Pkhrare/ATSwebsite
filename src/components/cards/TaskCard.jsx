@@ -845,7 +845,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                     <label className={`text-sm flex-1 ${item.completed ? 'line-through text-gray-500' : '${colorClasses.text.primary}'}`}>
                                                         {item.checklist_description}
                                                     </label>
-                                                    {canEdit && (
+                                                    {!isClientView && (
                                                         <button
                                                             type="button"
                                                             onClick={() => handleDeleteChecklistItem(item.id)}
@@ -923,7 +923,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                                         </span>
                                                                     )}
                                                                 </div>
-                                                                {canEdit && (
+                                                                {!isClientView && (
                                                                     <button
                                                                         type="button"
                                                                         onClick={() => handleDeleteForm(firstField.id)}
@@ -996,7 +996,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
                                                             {isClientView ? (att.fields.Attachments?.length ? 'Add File' : 'Upload') : (att.fields.Attachments?.length ? 'Replace' : 'Upload')}
                                                         </button>
-                                                        {canEdit && (
+                                                        {!isClientView && (
                                                             <button
                                                                 type="button"
                                                                 onClick={() => handleDeleteAttachment(att.id)}

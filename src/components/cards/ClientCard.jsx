@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import TaskCard from './TaskCard';
-import AddTaskToProjectForm from '../forms/AddTaskToProjectForm';
-import AddCollaboratorForm from '../forms/AddCollaboratorForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { parse, format, isValid } from 'date-fns';
@@ -15,6 +13,7 @@ import RichTextEditor from '../richText/RichTextEditor';
 import InfoSidebar from '../layout/InfoSidebar';
 import { loadContent } from '../../utils/contentUtils';
 import { InfoPageProvider } from '../../utils/InfoPageContext';
+import { colorClasses } from '../../utils/colorUtils';
 
 
 // Helper function to fetch from the backend API
@@ -304,27 +303,29 @@ export default function ClientCard() {
 
     return (
         <InfoPageProvider>
-            <div className="fixed inset-0 z-50 bg-slate-50 flex">
-                <InfoSidebar />
-                <div className="flex-1 flex flex-col overflow-hidden">
-                    <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
-                        <Link
-                            to="/"
-                            onClick={logout} // Call logout when the link is clicked
-                            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
-                            aria-label="Back"
-                        >
-                            <BackIcon />
-                            <span className="hidden sm:inline">Exit Portal</span>
-                        </Link>
-                        <div className="text-center">
-                            <h1 className="text-2xl font-bold text-slate-800">{projectData.fields['Project Name']}</h1>
-                            <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
-                        </div>
-                        <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
-                    </header>
+            
+            <div className="fixed inset-0 z-50 bg-slate-50 flex flex-col">
+                <header className={`flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 ${colorClasses.nav.base}`}>
+                    <Link
+                        to="/"
+                        onClick={logout} // Call logout when the link is clicked
+                        className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
+                        aria-label="Back"
+                    >
+                        <BackIcon />
+                        <span className="hidden sm:inline">Exit Portal</span>
+                    </Link>
+                    <div className="text-center">
+                        <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
+                        <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
+                    </div>
+                    <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
+                </header>
 
-                    <main className="flex-grow p-6 overflow-y-auto">
+                <div className="flex flex-1 overflow-hidden">
+                    <InfoSidebar />
+                    <div className="flex-1 flex flex-col overflow-hidden">
+                        <main className="flex-grow p-6 overflow-y-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
                             <div className="lg:col-span-3 space-y-6">
@@ -610,6 +611,8 @@ export default function ClientCard() {
                         </div>
                     </div>
                 </main>
+                    </div>
+                </div>
             </div>
 
             {isTaskCardVisible && (
@@ -622,7 +625,6 @@ export default function ClientCard() {
                     isEditable={selectedTask?.fields?.assigned_to === projectData?.fields['Project Name']}
                 />
             )}
-        </div>
         </InfoPageProvider>
     );
 }; 
