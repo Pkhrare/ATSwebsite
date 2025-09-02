@@ -188,7 +188,7 @@ function Projects() {
 
   return (
     <div className="p-8">
-      <div className="max-w-7xl mx-auto">
+      <div>
         <header className="mb-6">
           {/* Tab Navigation */}
           <div className="border-b border-slate-200">

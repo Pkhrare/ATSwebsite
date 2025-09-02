@@ -96,7 +96,9 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const { userRole } = useAuth();
     const [projectData, setProjectData] = useState(data);
     const [copied, setCopied] = useState(false);
-    const [actions, setActions] = useState([]);
+    const [pendingActions, setPendingActions] = useState([]);
+    const [activeActions, setActiveActions] = useState([]);
+    const [completedActions, setCompletedActions] = useState([]);
     const [isLoadingActions, setIsLoadingActions] = useState(true);
     const [isAddingAction, setIsAddingAction] = useState(false);
     const [newAction, setNewAction] = useState({ description: '', estCompletion: '' });
@@ -211,33 +213,35 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         initializeNotes();
     }, [data]);
 
-    useEffect(() => {
-        const fetchActions = async () => {
-            if (!projectData.fields['Project ID']) return;
-            setIsLoadingActions(true);
-            try {
-                const actionRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/actions`);
-                if (!Array.isArray(actionRecords?.records) && !Array.isArray(actionRecords)) {
-                    console.warn("Unexpected actions API shape:", actionRecords);
-                }
-
-                setActions(
-                    Array.isArray(actionRecords?.records)
-                        ? actionRecords.records
-                        : Array.isArray(actionRecords)
-                            ? actionRecords
-                            : []
-                );
-
-            } catch (error) {
-                console.error("Failed to fetch actions:", error);
-                setActions([]);
-            } finally {
-                setIsLoadingActions(false);
+    const fetchActions = useCallback(async () => {
+        if (!projectData.fields['Project ID']) return;
+        setIsLoadingActions(true);
+        try {
+            const actionRecords = await ApiCaller(`/records/filter/${projectData.fields['Project ID']}/actions`);
+            if (!Array.isArray(actionRecords?.records) && !Array.isArray(actionRecords)) {
+                console.warn("Unexpected actions API shape:", actionRecords);
             }
-        };
-        fetchActions();
+
+            const allActions = Array.isArray(actionRecords?.records)
+                ? actionRecords.records
+                : Array.isArray(actionRecords)
+                    ? actionRecords
+                    : [];
+
+            setPendingActions(allActions.filter(a => a.fields.pending_action && !a.fields.completed));
+            setActiveActions(allActions.filter(a => !a.fields.pending_action && !a.fields.completed));
+            setCompletedActions(allActions.filter(a => a.fields.completed));
+
+        } catch (error) {
+            console.error("Failed to fetch actions:", error);
+        } finally {
+            setIsLoadingActions(false);
+        }
     }, [projectData]);
+
+    useEffect(() => {
+        fetchActions();
+    }, [fetchActions]);
 
     const fetchAndProcessActivities = React.useCallback(async () => {
         if (!projectData.fields['Project ID']) return;
@@ -409,18 +413,22 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             id: action.id,
             fields: { [field]: value }
         };
+    
+        // If a pending action is completed, it's no longer pending.
+        if (field === 'completed' && value && action.fields.pending_action) {
+            updates.fields.pending_action = false;
+        }
+    
         try {
             await apiFetch('/records', {
                 method: 'PATCH',
                 body: JSON.stringify({ recordsToUpdate: [updates], tableName: 'actions' })
             });
-            setActions(currentActions =>
-                currentActions.map(act =>
-                    act.id === action.id ? { ...act, fields: { ...act.fields, [field]: value } } : act
-                )
-            );
+            // Refetch actions to ensure UI is in sync with the database
+            fetchActions();
         } catch (error) {
             console.error("Failed to update action:", error);
+            // Optionally, revert state here on failure
         }
     };
 
@@ -446,13 +454,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         };
 
         try {
-            const response = await apiFetch('/records', {
+            await apiFetch('/records', {
                 method: 'POST',
                 body: JSON.stringify({ recordsToCreate: [recordToCreate], tableName: 'actions' })
             });
-
-            const createdRecord = response.records[0];
-            setActions(currentActions => [...currentActions, createdRecord]);
+            fetchActions(); // Refetch actions to include the new one
             setNewAction({ description: '', estCompletion: '' });
             setIsAddingAction(false);
         } catch (error) {
@@ -497,13 +503,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         formData.append('file', file);
 
         try {
-            // The `apiFetch` function now returns a JavaScript object directly
             const updatedDocuments = await apiFetch(`/upload/projects/${projectData.id}/Documents`, {
                 method: 'POST',
                 body: formData,
             });
-
-            // **THE FIX IS HERE:** No need to JSON.parse() the result
+            
             const updatedProjectData = {
                 ...projectData,
                 fields: { ...projectData.fields, Documents: updatedDocuments }
@@ -633,7 +637,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
-    const handleDragEnd = async (result) => {
+    const handleTaskDragEnd = async (result) => {
         const { destination, source, type } = result;
     
         if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) {
@@ -716,6 +720,67 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
+    const handleActionDragEnd = async (result) => {
+        const { destination, source, draggableId } = result;
+    
+        if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) return;
+    
+        // Prevent dropping into the 'completed' list
+        if (destination.droppableId === 'completedActions') return;
+    
+        const isMovingToPending = destination.droppableId === 'pendingActions';
+        
+        let sourceList, destList, movedAction;
+        
+        // Create copies for optimistic update
+        const currentPending = [...pendingActions];
+        const currentActive = [...activeActions];
+
+        if (source.droppableId === 'pendingActions') {
+            sourceList = currentPending;
+            [movedAction] = sourceList.splice(source.index, 1);
+        } else {
+            sourceList = currentActive;
+            [movedAction] = sourceList.splice(source.index, 1);
+        }
+
+        if (destination.droppableId === 'pendingActions') {
+            destList = currentPending;
+            destList.splice(destination.index, 0, movedAction);
+        } else {
+            destList = currentActive;
+            destList.splice(destination.index, 0, movedAction);
+        }
+        
+        // Optimistically update the UI
+        setPendingActions(currentPending);
+        setActiveActions(currentActive);
+    
+        // Update the backend
+        try {
+            await apiFetch('/records', {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    recordsToUpdate: [{ id: draggableId, fields: { pending_action: isMovingToPending } }],
+                    tableName: 'actions'
+                })
+            });
+        } catch (error) {
+            console.error("Failed to update action's pending status:", error);
+            // Revert UI changes on failure by refetching
+            fetchActions();
+        }
+    };
+
+    const onDragEnd = (result) => {
+        const { type } = result;
+        if (type === 'GROUP' || type === 'TASK') {
+            handleTaskDragEnd(result);
+        } else if (type === 'ACTION') {
+            handleActionDragEnd(result);
+        }
+    };
+
     const handleCollaboratorAdded = (newCollaborator) => {
         const updatedProjectData = {
             ...projectData,
@@ -762,7 +827,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         </div>
                     </div>
                     <main className="flex-1 p-6 overflow-y-auto">
-                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                             <div className="lg:col-span-3 space-y-6">
                                 {/* Project Details Skeleton */}
                                 <div className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
@@ -837,7 +902,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             <div className="flex flex-1 overflow-hidden">
                 <InfoSidebar />
                 <main className="flex-1 p-6 overflow-y-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+                <DragDropContext onDragEnd={onDragEnd}>
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
                     <div className="lg:col-span-3 space-y-6">
                         {/* Project Details Section */}
@@ -1048,7 +1114,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             {isLoadingTasks ? (
                                 <p className="text-slate-500">Loading tasks...</p>
                             ) : (
-                                <DragDropContext onDragEnd={handleDragEnd}>
+                                <div>
                                     <Droppable droppableId="all-groups" type="GROUP">
                                         {(provided) => (
                                             <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
@@ -1060,7 +1126,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                                     <div {...provided.dragHandleProps} className="flex justify-between items-center p-2 cursor-grab">
                                                                         <h4 className="font-bold text-slate-700">{group.name}</h4>
                                                                         {/* Placeholder for future actions like 'Add Task to Group' */}
-                                                </div>
+                                                                    </div>
                                                                     <Droppable droppableId={group.id} type="TASK">
                                                                         {(provided) => (
                                                                             <ul className="space-y-2 p-2 min-h-[50px]" {...provided.droppableProps} ref={provided.innerRef}>
@@ -1084,17 +1150,17 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                                                     </Draggable>
                                                                                 ))}
                                                                                 {provided.placeholder}
-                                                            </ul>
+                                                                            </ul>
                                                                         )}
                                                                     </Droppable>
                                                                 </div>
-                                                        </div>
-                                                    )}
+                                                            </div>
+                                                        )}
                                                     </Draggable>
-                                                            ))}
+                                                ))}
                                                 {provided.placeholder}
-                                                        </div>
-                                                    )}
+                                            </div>
+                                        )}
                                     </Droppable>
 
                                     <div className="mt-4">
@@ -1122,11 +1188,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                         </Draggable>
                                                     ))}
                                                     {provided.placeholder}
-                                </ul>
+                                                </ul>
                                             )}
                                         </Droppable>
                                     </div>
-                                </DragDropContext>
+                                </div>
                             )}
                         </section>
 
@@ -1307,12 +1373,6 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             )}
                         </section>
 
-                        {/* Pending Action Section */}
-                        <section className={`${colorClasses.status.warning} p-5 rounded-xl shadow-sm`}>
-                            <h2 className="text-lg font-semibold text-amber-800 mb-2 text-center">⏳ Pending Action</h2>
-                            <div className="bg-white rounded-md p-3 border border-amber-200 text-sm text-center text-amber-900">{projectData.fields['Pending Action (Client, Consulting or State)'] || 'All actions complete.'}</div>
-                        </section>
-
                         {/* Key Dates Section */}
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm text-sm`}>
                             <h2 className={`text-lg font-semibold ${colorClasses.card.header} mb-4 text-center`}>Key Dates</h2>
@@ -1325,54 +1385,135 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
                         {/* Actions Section */}
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
-                            <div className="flex justify-between items-center mb-3">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>⚡️ Actions</h2>
-                                {!isAddingAction && (
-                                    <button onClick={() => setIsAddingAction(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
-                                        <AddIcon />
-                                        Add Action
-                                    </button>
-                                )}
-                            </div>
-                            {isAddingAction && (
-                                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4 space-y-3">
-                                    <input type="text" placeholder="Action description..." value={newAction.description} onChange={(e) => handleNewActionInputChange('description', e.target.value)} className="w-full bg-white p-1 border border-slate-300 rounded-md text-sm text-slate-800" />
-                                    <DatePicker
-                                        selected={safeNewDate(newAction.estCompletion)}
-                                        onChange={(date) => handleNewActionInputChange('estCompletion', date ? format(date, 'yyyy-MM-dd') : '')}
-                                        dateFormat="MM-dd-yyyy"
-                                        className="w-full p-2 border border-slate-300 rounded-md text-sm text-slate-500"
-                                        placeholderText="Estimated completion date"
-                                        // autoFocus
-                                    />
-                                    <div className="flex justify-end gap-2">
-                                        <button onClick={() => setIsAddingAction(false)} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-3 py-1.5 rounded-md">Cancel</button>
-                                        <button onClick={handleSaveNewAction} className="text-sm text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-md">Save</button>
-                                    </div>
+                                <div className="flex justify-between items-center mb-3">
+                                    <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>⚡️ Actions</h2>
+                                    {!isAddingAction && (
+                                        <button onClick={() => setIsAddingAction(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
+                                            <AddIcon />
+                                            Add Action
+                                        </button>
+                                    )}
                                 </div>
-                            )}
-                            <div className="space-y-3">
+                                {isAddingAction && (
+                                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4 space-y-3">
+                                        <input type="text" placeholder="Action description..." value={newAction.description} onChange={(e) => handleNewActionInputChange('description', e.target.value)} className="w-full bg-white p-1 border border-slate-300 rounded-md text-sm text-slate-800" />
+                                        <DatePicker
+                                            selected={safeNewDate(newAction.estCompletion)}
+                                            onChange={(date) => handleNewActionInputChange('estCompletion', date ? format(date, 'yyyy-MM-dd') : '')}
+                                            dateFormat="MM-dd-yyyy"
+                                            className="w-full p-2 border border-slate-300 rounded-md text-sm text-slate-500"
+                                            placeholderText="Estimated completion date"
+                                        />
+                                        <div className="flex justify-end gap-2">
+                                            <button onClick={() => setIsAddingAction(false)} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-3 py-1.5 rounded-md">Cancel</button>
+                                            <button onClick={handleSaveNewAction} className="text-sm text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-md">Save</button>
+                                        </div>
+                                    </div>
+                                )}
                                 {isLoadingActions ? (
                                     <p className="text-sm text-slate-500 text-center py-4">Loading actions...</p>
-                                ) : actions && actions.length > 0 ? (
-                                    actions.map((action) => (
-                                        <div key={action.id} className="p-3 bg-slate-50 rounded-lg border border-slate-200 hover:border-slate-300 transition-colors">
-                                            <div className="flex items-start gap-4">
-                                                <input type="checkbox" checked={action.fields.completed || false} onChange={(e) => handleActionChange(action, 'completed', e.target.checked)} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0 cursor-pointer" aria-label="Action completed" />
-                                                <div className="flex-1">
-                                                    <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
-                                                    <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
-                                                        <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
-                                                        <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
+                                ) : (
+                                    <div className="space-y-6">
+                                        {/* --- Pending Actions --- */}
+                                        <div>
+                                            <h3 className="text-md font-semibold text-amber-800 mb-2 pb-1 border-b-2 border-amber-200">Pending Actions</h3>
+                                            <Droppable droppableId="pendingActions" type="ACTION">
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.droppableProps}
+                                                        className={`space-y-3 p-3 rounded-lg min-h-[60px] transition-colors ${snapshot.isDraggingOver ? 'bg-amber-100' : 'bg-amber-50'}`}
+                                                    >
+                                                        {pendingActions.map((action, index) => (
+                                                            <Draggable key={action.id} draggableId={action.id} index={index}>
+                                                                {(provided) => (
+                                                                    <div
+                                                                        ref={provided.innerRef}
+                                                                        {...provided.draggableProps}
+                                                                        {...provided.dragHandleProps}
+                                                                        className="p-3 bg-white rounded-lg border border-slate-200 hover:border-slate-300 transition-colors shadow-sm"
+                                                                    >
+                                                                        <div className="flex items-start gap-4">
+                                                                            <input type="checkbox" checked={action.fields.completed || false} onChange={(e) => handleActionChange(action, 'completed', e.target.checked)} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0 cursor-pointer" aria-label="Action completed" />
+                                                                            <div className="flex-1">
+                                                                                <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
+                                                                                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                                                    <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
+                                                                                    <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </Draggable>
+                                                        ))}
+                                                        {provided.placeholder}
                                                     </div>
-                                                </div>
+                                                )}
+                                            </Droppable>
+                                        </div>
+
+                                        {/* --- Active Actions --- */}
+                                        <div>
+                                            <h3 className="text-md font-semibold text-slate-700 mb-2 pb-1 border-b-2 border-slate-200">Actions</h3>
+                                            <Droppable droppableId="activeActions" type="ACTION">
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.droppableProps}
+                                                        className={`space-y-3 p-3 rounded-lg min-h-[60px] transition-colors ${snapshot.isDraggingOver ? 'bg-slate-100' : 'bg-slate-50'}`}
+                                                    >
+                                                        {activeActions.map((action, index) => (
+                                                            <Draggable key={action.id} draggableId={action.id} index={index}>
+                                                                {(provided) => (
+                                                                    <div
+                                                                        ref={provided.innerRef}
+                                                                        {...provided.draggableProps}
+                                                                        {...provided.dragHandleProps}
+                                                                        className="p-3 bg-white rounded-lg border border-slate-200 hover:border-slate-300 transition-colors shadow-sm"
+                                                                    >
+                                                                        <div className="flex items-start gap-4">
+                                                                            <input type="checkbox" checked={action.fields.completed || false} onChange={(e) => handleActionChange(action, 'completed', e.target.checked)} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0 cursor-pointer" aria-label="Action completed" />
+                                                                            <div className="flex-1">
+                                                                                <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
+                                                                                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                                                    <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
+                                                                                    <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </Draggable>
+                                                        ))}
+                                                        {provided.placeholder}
+                                                    </div>
+                                                )}
+                                            </Droppable>
+                                        </div>
+
+                                        {/* --- Completed Actions --- */}
+                                        <div>
+                                            <h3 className="text-md font-semibold text-slate-700 mb-2 pb-1 border-b-2 border-slate-200">Completed Actions</h3>
+                                            <div className="space-y-3 p-3 bg-slate-50 rounded-lg">
+                                                {completedActions.map((action) => (
+                                                    <div key={action.id} className="p-3 bg-white rounded-lg border border-slate-200 opacity-70">
+                                                        <div className="flex items-start gap-4">
+                                                            <input type="checkbox" checked={action.fields.completed || false} onChange={(e) => handleActionChange(action, 'completed', e.target.checked)} className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0 cursor-pointer" aria-label="Action completed" />
+                                                            <div className="flex-1">
+                                                                <p className="text-sm text-slate-600 font-medium line-through">{action.fields.action_description}</p>
+                                                                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                                    <span>Created: <span className="font-semibold">{action.fields.set_date}</span></span>
+                                                                    <span>Est. Completion: <span className="font-semibold">{action.fields.estimated_completion_date}</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
-                                    ))
-                                ) : (
-                                    <p className="text-sm text-slate-500 text-center py-4">No actions found for this project.</p>
+                                    </div>
                                 )}
-                            </div>
                         </section>
 
                         {/* Collaborators Section */}
@@ -1402,6 +1543,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
                     </div>
                 </div>
+                </DragDropContext>
                 </main>
             </div>
 

@@ -49,7 +49,7 @@ const InfoPageView = () => {
     if (isLoading) {
         return (
             <div className="p-8 flex-grow">
-                <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <div className="bg-white p-8 rounded-lg shadow-md">
                     <div className="h-10 bg-slate-200 rounded animate-pulse w-3/4 mb-6"></div>
                     <div className="space-y-4">
                         <div className="h-4 bg-slate-200 rounded animate-pulse"></div>
@@ -71,7 +71,7 @@ const InfoPageView = () => {
 
     return (
         <main className="flex-grow p-6">
-            <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-white p-8 rounded-lg shadow-md">
                 <header className="flex justify-between items-center mb-6 border-b pb-4">
                     <h1 className="text-3xl font-bold text-slate-800">{page.title}</h1>
                     {userRole === 'consultant' && (

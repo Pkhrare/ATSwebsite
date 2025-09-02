@@ -593,7 +593,7 @@ export default function TemplateProjectCard({ template, onClose }) {
             </header>
 
             <main className="flex-grow p-6 overflow-y-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                     <div className="lg:col-span-3 space-y-6">
                         {/* Project Details Section */}
                         <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">

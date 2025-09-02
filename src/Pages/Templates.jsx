@@ -18,7 +18,7 @@ const Templates = () => {
     return (
         <div className="p-8">
             <header className="mb-8">
-                <div className="max-w-7xl mx-auto">
+                <div>
                     {/* Tab Navigation */}
                     <div className="border-b border-slate-200">
                         <nav className="-mb-px flex space-x-6" aria-label="Tabs">
@@ -36,7 +36,7 @@ const Templates = () => {
                     </div>
                 </div>
             </header>
-            <div className="max-w-7xl mx-auto">
+            <div>
                 <div className="bg-white p-6 rounded-lg shadow-md border border-slate-200">
                     <div className="space-y-4">
                         {projectTemplates.map((template, index) => (
