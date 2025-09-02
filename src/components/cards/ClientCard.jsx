@@ -563,8 +563,8 @@ export default function ClientCard() {
                                     <div className="space-y-6">
                                         {/* --- Pending Actions --- */}
                                         <div>
-                                            <h3 className="text-md font-semibold text-amber-800 mb-2 pb-1 border-b-2 border-amber-200">Pending Actions</h3>
-                                            <div className="space-y-3 p-3 rounded-lg min-h-[60px] bg-amber-50">
+                                            <h3 className="text-md font-semibold text-slate-700 mb-2 pb-1 border-b-2 border-slate-200">Pending Actions</h3>
+                                            <div className="space-y-3 p-3 rounded-lg min-h-[60px] bg-slate-50">
                                                 {actions.filter(a => a.fields.pending_action && !a.fields.completed).map((action) => (
                                                     <div key={action.id} className="p-3 bg-white rounded-lg border border-slate-200 hover:border-slate-300 transition-colors shadow-sm">
                                                         <div className="flex items-start gap-4">
