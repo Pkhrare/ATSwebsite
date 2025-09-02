@@ -309,7 +309,7 @@ export default function ClientCard() {
                     <Link
                         to="/"
                         onClick={logout} // Call logout when the link is clicked
-                        className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200"
+                        className={`flex items-center gap-2 ${colorClasses.button.neutral} px-4 py-2 rounded-lg shadow-sm transition-all duration-200`}
                         aria-label="Back"
                     >
                         <BackIcon />
