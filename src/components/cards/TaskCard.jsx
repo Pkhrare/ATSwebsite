@@ -876,7 +876,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                 <button 
                                                     type="button" 
                                                     onClick={() => forceRefetch()} 
-                                                    className="text-sm text-slate-600 hover:text-slate-800"
+                                                    className="text-sm text-blue-600 hover:text-blue-800"
                                                     title="Refresh forms"
                                                 >
                                                     ↻
@@ -909,16 +909,16 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                         <div key={submissionId} className="group relative border border-slate-200 rounded-lg p-4 bg-black text-white">
                                                             <div className="flex justify-between items-center mb-3">
                                                                 <div className="flex items-center gap-2">
-                                                                    <h4 className="text-sm font-semibold text-slate-800 text-white">{formName}</h4>
+                                                                    <h4 className="text-sm font-semibold text-white">{formName}</h4>
                                                                     <span className={`px-2 py-1 text-xs rounded-full ${
-                                                                        submissionStatus === 'Completed' ? 'bg-green-100 text-green-800' :
-                                                                        submissionStatus === 'Updated' ? 'bg-blue-100 text-blue-800' :
-                                                                        'bg-yellow-100 text-yellow-800'
+                                                                        submissionStatus === 'Completed' ? 'bg-green-500 text-white' :
+                                                                        submissionStatus === 'Updated' ? 'bg-blue-500 text-white' :
+                                                                        'bg-yellow-500 text-white'
                                                                     }`}>
                                                                         {submissionStatus}
                                                                     </span>
                                                                     {lastUpdated && (submissionStatus === 'Completed' || submissionStatus === 'Updated') && (
-                                                                        <span className="text-xs text-gray-500 italic">
+                                                                        <span className="text-xs text-white opacity-75">
                                                                             {format(new Date(lastUpdated), 'MMM d, yyyy h:mm a')}
                                                                         </span>
                                                                     )}
@@ -937,7 +937,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                             <div className="space-y-3">
                                                                 {formFields.map(field => (
                                                                     <div key={field.id}>
-                                                                        <label className="block text-sm font-medium text-slate-700 mb-1 text-white">
+                                                                        <label className="block text-sm font-medium text-white mb-1">
                                                                             {field.fields['field_label (from Notes)']?.[0] || 'Unnamed Field'}
                                                                         </label>
                                                                         <input
@@ -945,7 +945,11 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                                             value={field.fields.value === '--EMPTY--' ? '' : field.fields.value || ''}
                                                                             onChange={(e) => handleFormSubmissionChange(field.id, e.target.value)}
                                                                             disabled={!canEdit || isFormLockedForClient}
-                                                                            className={`w-full px-3 py-2 border rounded-md bg-black text-white text-sm ${!canEdit || isFormLockedForClient ? 'bg-gray-100' : ''}`}
+                                                                            className={`w-full px-3 py-2 border rounded-md text-sm ${
+                                                                                !canEdit || isFormLockedForClient 
+                                                                                    ? 'bg-gray-100 text-gray-800' 
+                                                                                    : 'bg-white text-black'
+                                                                            }`}
                                                                         />
                                                                     </div>
                                                                 ))}
