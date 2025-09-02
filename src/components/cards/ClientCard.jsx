@@ -542,12 +542,6 @@ export default function ClientCard() {
                                 </div>
                             </section>
 
-                            {/* Pending Action Section */}
-                            <section className="bg-amber-50 border-amber-200 p-5 rounded-xl border shadow-sm">
-                                <h2 className="text-lg font-semibold text-amber-800 mb-2 text-center">⏳ Pending Action</h2>
-                                <div className="bg-white rounded-md p-3 border border-amber-200 text-sm text-center text-amber-900">{projectData.fields['Pending Action (Client, Consulting or State)'] || 'All actions complete.'}</div>
-                            </section>
-
                             {/* Key Dates Section */}
                             <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
                                 <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Key Dates</h2>
@@ -563,28 +557,83 @@ export default function ClientCard() {
                                 <div className="flex justify-between items-center mb-3">
                                     <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
                                 </div>
-                                <div className="space-y-3">
-                                    {isLoadingActions ? (
-                                        <p className="text-sm text-slate-500 text-center py-4">Loading actions...</p>
-                                    ) : actions && actions.length > 0 ? (
-                                        actions.map((action) => (
-                                            <div key={action.id} className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                                                <div className="flex items-start gap-4">
-                                                    <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 bg-black text-white focus:ring-0 disabled:bg-black disabled:text-white" aria-label="Action completed" />
-                                                    <div className="flex-1">
-                                                        <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
-                                                        <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
-                                                            <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
-                                                            <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                                        ))
-                                    ) : (
-                                        <p className="text-sm text-slate-500 text-center py-4">No actions found for this project.</p>
-                                    )}
-                                </div>
+                                {isLoadingActions ? (
+                                    <p className="text-sm text-slate-500 text-center py-4">Loading actions...</p>
+                                ) : (
+                                    <div className="space-y-6">
+                                        {/* --- Pending Actions --- */}
+                                        <div>
+                                            <h3 className="text-md font-semibold text-amber-800 mb-2 pb-1 border-b-2 border-amber-200">Pending Actions</h3>
+                                            <div className="space-y-3 p-3 rounded-lg min-h-[60px] bg-amber-50">
+                                                {actions.filter(a => a.fields.pending_action && !a.fields.completed).map((action) => (
+                                                    <div key={action.id} className="p-3 bg-white rounded-lg border border-slate-200 hover:border-slate-300 transition-colors shadow-sm">
+                                                        <div className="flex items-start gap-4">
+                                                            <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 bg-black text-white focus:ring-0 disabled:bg-black disabled:text-white" aria-label="Action completed" />
+                                                            <div className="flex-1">
+                                                                <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
+                                                                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                                    <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
+                                                                    <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                                {actions.filter(a => a.fields.pending_action && !a.fields.completed).length === 0 && (
+                                                    <p className="text-sm text-slate-500 text-center py-2">No pending actions.</p>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* --- Active Actions --- */}
+                                        <div>
+                                            <h3 className="text-md font-semibold text-slate-700 mb-2 pb-1 border-b-2 border-slate-200">Actions</h3>
+                                            <div className="space-y-3 p-3 rounded-lg min-h-[60px] bg-slate-50">
+                                                {actions.filter(a => !a.fields.pending_action && !a.fields.completed).map((action) => (
+                                                    <div key={action.id} className="p-3 bg-white rounded-lg border border-slate-200 hover:border-slate-300 transition-colors shadow-sm">
+                                                        <div className="flex items-start gap-4">
+                                                            <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 bg-black text-white focus:ring-0 disabled:bg-black disabled:text-white" aria-label="Action completed" />
+                                                            <div className="flex-1">
+                                                                <p className="text-sm text-slate-800 font-medium">{action.fields.action_description}</p>
+                                                                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                                    <span>Created: <span className="font-semibold text-slate-600">{action.fields.set_date}</span></span>
+                                                                    <span>Est. Completion: <span className="font-semibold text-slate-600">{action.fields.estimated_completion_date}</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                                {actions.filter(a => !a.fields.pending_action && !a.fields.completed).length === 0 && (
+                                                    <p className="text-sm text-slate-500 text-center py-2">No active actions.</p>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* --- Completed Actions --- */}
+                                        <div>
+                                            <h3 className="text-md font-semibold text-slate-700 mb-2 pb-1 border-b-2 border-slate-200">Completed Actions</h3>
+                                            <div className="space-y-3 p-3 bg-slate-50 rounded-lg">
+                                                {actions.filter(a => a.fields.completed).map((action) => (
+                                                    <div key={action.id} className="p-3 bg-white rounded-lg border border-slate-200 opacity-70">
+                                                        <div className="flex items-start gap-4">
+                                                            <input type="checkbox" checked={action.fields.completed || false} disabled={isClientView} className="mt-1 h-4 w-4 rounded border-gray-300 bg-black text-white focus:ring-0 disabled:bg-black disabled:text-white" aria-label="Action completed" />
+                                                            <div className="flex-1">
+                                                                <p className="text-sm text-slate-600 font-medium line-through">{action.fields.action_description}</p>
+                                                                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+                                                                    <span>Created: <span className="font-semibold">{action.fields.set_date}</span></span>
+                                                                    <span>Est. Completion: <span className="font-semibold">{action.fields.estimated_completion_date}</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                                {actions.filter(a => a.fields.completed).length === 0 && (
+                                                    <p className="text-sm text-slate-500 text-center py-2">No completed actions.</p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </section>
 
                             {/* Collaborators Section */}
