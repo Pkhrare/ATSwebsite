@@ -16,18 +16,25 @@ export const INSERT_IMAGE_COMMAND = createCommand('INSERT_IMAGE_COMMAND');
 export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
     const [editor] = useLexicalComposerContext();
     const fileInputRef = useRef(null);
+    
+    // Debug logging
+    console.log('UnifiedPastePlugin initialized with:', { sourceTable, sourceRecordId });
 
     const uploadImage = useCallback(async (file) => {
+        console.log('uploadImage called with:', { file, sourceTable, sourceRecordId });
+        
         const formData = new FormData();
         formData.append('file', file);
         formData.append('sourceTable', sourceTable);
         formData.append('sourceRecordId', sourceRecordId);
 
         try {
+            console.log('Sending image upload request to /upload-image');
             const response = await ApiCaller('/upload-image', {
                 method: 'POST',
                 body: formData,
             });
+            console.log('Image upload response:', response);
             const imageUrl = response.url;
             editor.dispatchCommand(INSERT_IMAGE_COMMAND, { src: imageUrl, altText: file.name });
         } catch (error) {
@@ -105,10 +112,14 @@ export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
     
     useEffect(() => {
         return editor.registerCommand('OPEN_IMAGE_UPLOAD', () => {
+            console.log('OPEN_IMAGE_UPLOAD command received, opening file dialog');
             openFileDialog();
             return true;
         }, 1);
     }, [editor]);
 
-    return <input type="file" accept="image/*" ref={fileInputRef} onChange={(e) => uploadImage(e.target.files[0])} style={{ display: 'none' }} />;
+    return <input type="file" accept="image/*" ref={fileInputRef} onChange={(e) => {
+        console.log('File input change event:', e.target.files[0]);
+        uploadImage(e.target.files[0]);
+    }} style={{ display: 'none' }} />;
 }

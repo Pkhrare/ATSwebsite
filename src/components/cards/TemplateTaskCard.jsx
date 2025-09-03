@@ -183,6 +183,8 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                                 isEditable={isEditingDescription}
                                 initialContent={descriptionRef.current}
                                 onChange={handleDescriptionChange}
+                                sourceTable="tasks"
+                                sourceRecordId={task.id}
                             />
                         </div>
 

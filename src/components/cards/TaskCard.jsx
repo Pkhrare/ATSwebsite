@@ -168,7 +168,19 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             const initializeDescription = async () => {
                 if (task.id) {
                     const descriptionContent = await loadContent('tasks', task.id, 'description');
-                    descriptionRef.current = descriptionContent || toLexical(task.fields.description || '');
+                    
+                    if (descriptionContent) {
+                        try {
+                            // Parse the JSON string back to an object for the editor
+                            const parsedContent = JSON.parse(descriptionContent);
+                            descriptionRef.current = parsedContent;
+                        } catch (error) {
+                            console.warn('Failed to parse description content, treating as plain text:', error);
+                            descriptionRef.current = toLexical(descriptionContent);
+                        }
+                    } else {
+                        descriptionRef.current = toLexical(task.fields.description || '');
+                    }
                 } else {
                     descriptionRef.current = toLexical(task.fields.description || '');
                 }
@@ -176,7 +188,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 // Wait a bit to ensure content is properly initialized before showing
                 setTimeout(() => {
                     setIsContentLoading(false);
-                }, 300);
+                }, 100);
             };
             
             initializeDescription();
@@ -576,7 +588,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             }
 
             setSuccessMessage('Task updated successfully!');
-            if (onTaskUpdate) onTaskUpdate(updatedTask);
+            onTaskUpdate();
         } catch (err) {
             setError(err.message || 'An error occurred');
         } finally {
@@ -599,8 +611,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
 
     if (!task) return null;
 
-    // Loading screen component
-    if (isContentLoading) {
+    // Loading screen component - only show if we don't have basic task data
+    if (isContentLoading && (!task.fields || !task.fields.task_title)) {
         return (
             <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
                 <div className={`${colorClasses.nav.base} rounded-lg shadow-xl w-full max-w-5xl flex flex-col`} style={{ maxHeight: '90vh' }}>
@@ -609,7 +621,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             <div className="flex items-center gap-3 min-w-0">
                                 <svg className={`w-6 h-6 ${colorClasses.nav.accent} flex-shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                 <h2 className={`text-xl font-bold ${colorClasses.text.inverse} truncate flex items-center gap-2`}>
-                                    {`TASK #${task.fields.id}: ${task.fields.task_title}`}
+                                    Loading Task...
                                 </h2>
                             </div>
                             <button onClick={onClose} className={`${colorClasses.text.inverse} hover:${colorClasses.nav.accent}`} aria-label="Close">
@@ -816,12 +828,14 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         </button>
                                     )}
                                 </div>
-                                <div className="[&_.editor-text]:text-white [&_.editor-paragraph]:text-white [&_p]:text-white [&_div]:text-white [&_span]:text-white">
+                                <div className="[&_.editor-text]:text-black [&_.editor-paragraph]:text-black [&_p]:text-black [&_div]:text-black [&_span]:text-black">
                                     <RichTextEditor
                                         key={task.id}
                                         isEditable={isEditingDescription && !isClientView}
                                         initialContent={descriptionRef.current}
                                         onChange={handleDescriptionChange}
+                                        sourceTable="tasks"
+                                        sourceRecordId={task.id}
                                     />
                                 </div>
                             </div>

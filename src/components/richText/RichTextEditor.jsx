@@ -204,6 +204,7 @@ function ToolbarPlugin() {
   }, [editor, isLink]);
 
   const insertImage = useCallback(() => {
+    console.log('Image button clicked, dispatching OPEN_IMAGE_UPLOAD command');
     // Dispatch a custom command that the ImagePlugin will listen for
     editor.dispatchCommand('OPEN_IMAGE_UPLOAD', undefined);
   }, [editor]);
@@ -368,7 +369,11 @@ function InitialContentPlugin({ initialContent }) {
             const root = $getRoot();
 
             if (!initialContent) {
-                root.clear();
+                // Ensure root is never empty
+                if (root.getChildrenSize() === 0) {
+                    const paragraph = $createParagraphNode();
+                    root.append(paragraph);
+                }
                 return;
             }
 
@@ -396,6 +401,16 @@ function InitialContentPlugin({ initialContent }) {
                     parsedJson = JSON.parse(parsedJson);
                 }
 
+                // Handle the editorState wrapper structure
+                if (parsedJson && parsedJson.editorState && parsedJson.editorState.root) {
+                    parsedJson = parsedJson.editorState;
+                }
+
+                // Validate that parsedJson has the expected structure
+                if (!parsedJson || typeof parsedJson !== 'object' || !parsedJson.root) {
+                    throw new Error('Invalid Lexical JSON structure');
+                }
+
                 // Parse and set the editor state directly
                 const parsedState = editor.parseEditorState(parsedJson);
                 editor.setEditorState(parsedState);
@@ -404,20 +419,24 @@ function InitialContentPlugin({ initialContent }) {
                 // If any step fails, fall back to treating it as plain text.
                 console.warn('Could not parse initial content as Lexical JSON, treating as plain text.', error);
 
+                // Ensure root is never empty
+                root.clear();
+                const paragraph = $createParagraphNode();
+                
                 // Show a user-friendly error for truncated content
                 if (error.message && error.message.includes('Unexpected end of JSON input')) {
-                    root.clear();
-                    const paragraph = $createParagraphNode();
                     const errorText = $createTextNode('⚠️ Content too large to display properly. This content may have exceeded storage limits. The new attachment system will resolve this issue.');
                     paragraph.append(errorText);
-                    root.append(paragraph);
                 } else {
                     // For other errors, try to display as plain text
-                    root.clear();
-                    const paragraph = $createParagraphNode();
-                    paragraph.append($createTextNode(initialContent));
-                    root.append(paragraph);
+                    if (typeof initialContent === 'string') {
+                        paragraph.append($createTextNode(initialContent));
+                    } else {
+                        paragraph.append($createTextNode('Content could not be loaded.'));
+                    }
                 }
+                
+                root.append(paragraph);
             }
         });
     }, [editor, initialContent]);

@@ -207,7 +207,18 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             // Load notes content from attachment and set it in state
             if (data.id) {
                 const loadedContent = await loadContent('projects', data.id, 'Notes');
-                setNotesContent(loadedContent || toLexical(data.fields.Notes || ''));
+                if (loadedContent) {
+                    try {
+                        // Parse the JSON string back to an object for the editor
+                        const parsedContent = JSON.parse(loadedContent);
+                        setNotesContent(parsedContent);
+                    } catch (error) {
+                        console.warn('Failed to parse notes content, treating as plain text:', error);
+                        setNotesContent(toLexical(loadedContent));
+                    }
+                } else {
+                    setNotesContent(toLexical(data.fields.Notes || ''));
+                }
             } else {
                 setNotesContent(toLexical(data.fields.Notes || ''));
             }
@@ -477,15 +488,22 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
     const handleSaveNotes = async () => {
         try {
+            // Extract the current content from the editor
+            const currentContent = notesEditorRef.current.getEditorState().toJSON();
+            const contentString = JSON.stringify(currentContent);
+            
             // Save notes content as attachment
-            await saveContent('projects', projectData.id, 'Notes', notesEditorRef.current);
+            await saveContent('projects', projectData.id, 'Notes', contentString);
 
+            // Update the local state with the new content
+            setNotesContent(contentString);
+            
             // Update the local state (no need to update Airtable directly since it's now an attachment)
             const newProjectData = {
                 ...projectData,
                 fields: {
                     ...projectData.fields,
-                    Notes: notesEditorRef.current // Keep for display purposes
+                    Notes: contentString // Keep for display purposes
                 }
             };
             setProjectData(newProjectData);
@@ -1182,7 +1200,14 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     <RichTextEditor
                                         isEditable={true}
                                         initialContent={notesContent}
+                                        onChange={(content) => {
+                                            // Track content changes but don't update initialContent
+                                            // This prevents the focus issue while still tracking changes
+                                            console.log('Content changed:', content);
+                                        }}
                                         editorRef={notesEditorRef}
+                                        sourceTable="projects"
+                                        sourceRecordId={projectData.id}
                                     />
                                     <div className="flex justify-end gap-2">
                                         <button onClick={() => { 
@@ -1201,6 +1226,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     isEditable={false}
                                     initialContent={notesContent}
                                     editorRef={notesEditorRef}
+                                    sourceTable="projects"
+                                    sourceRecordId={projectData.id}
                                 />
                             )}
                         </section>

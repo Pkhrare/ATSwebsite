@@ -33,7 +33,18 @@ const InfoPageEdit = () => {
         try {
             const data = await ApiCaller(`/info-pages/${pageId}`);
             const content = await loadContent('informational_pages', pageId, 'pageContent');
-            setPage({ ...data, content });
+            if (content) {
+                try {
+                    // Parse the JSON string back to an object for the editor
+                    const parsedContent = JSON.parse(content);
+                    setPage({ ...data, content: parsedContent });
+                } catch (error) {
+                    console.warn('Failed to parse page content, treating as plain text:', error);
+                    setPage({ ...data, content: content });
+                }
+            } else {
+                setPage({ ...data, content: '' });
+            }
             setTitle(data.title);
             setIcon(data.icon || '');
         } catch (err) {
@@ -153,6 +164,11 @@ const InfoPageEdit = () => {
                 <RichTextEditor
                     isEditable={true}
                     initialContent={page?.content}
+                    onChange={(content) => {
+                        // Update the local content state as the user types
+                        // This is optional since we're using editorRef for saving
+                        console.log('Content changed:', content);
+                    }}
                     editorRef={editorRef}
                     sourceTable="image_assets" 
                     sourceRecordId={pageId}

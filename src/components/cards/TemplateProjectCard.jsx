@@ -199,7 +199,12 @@ export default function TemplateProjectCard({ template, onClose }) {
             } = projectData;
             
             // Store Notes content for later attachment saving
-            const notesContent = Notes || notesEditorRef.current;
+            let notesContent = Notes;
+            
+            // If we have a notes editor ref but it's an editor instance, extract the content
+            if (notesEditorRef.current && typeof notesEditorRef.current === 'object' && notesEditorRef.current.getEditorState) {
+                notesContent = JSON.stringify(notesEditorRef.current.getEditorState().toJSON());
+            }
 
             const projectToCreate = { 
                 ...cleanProjectData, 
@@ -761,10 +766,12 @@ export default function TemplateProjectCard({ template, onClose }) {
                                 <div className="space-y-3">
                                     <RichTextEditor
                                         isEditable={true}
-                                        initialContent={notesEditorRef.current}
+                                        initialContent={''}
                                         onChange={(editorState) => {
                                             notesEditorRef.current = editorState;
                                         }}
+                                        sourceTable="projects"
+                                        sourceRecordId={projectData.id}
                                     />
                                     <div className="flex justify-end gap-2">
                                         <button onClick={() => setIsEditingNotes(false)} className="text-sm text-slate-600 bg-slate-200 hover:bg-slate-300 px-4 py-2 rounded-md">Done</button>

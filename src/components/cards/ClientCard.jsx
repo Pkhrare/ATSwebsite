@@ -124,7 +124,18 @@ export default function ClientCard() {
                 // Load notes content from attachment with fallback to old Notes field
                 if (data.id) {
                     const notesContent = await loadContent('projects', data.id, 'Notes');
-                    notesEditorRef.current = notesContent || toLexical(data.fields.Notes || '');
+                    if (notesContent) {
+                        try {
+                            // Parse the JSON string back to an object for the editor
+                            const parsedContent = JSON.parse(notesContent);
+                            notesEditorRef.current = parsedContent;
+                        } catch (error) {
+                            console.warn('Failed to parse notes content, treating as plain text:', error);
+                            notesEditorRef.current = toLexical(notesContent);
+                        }
+                    } else {
+                        notesEditorRef.current = toLexical(data.fields.Notes || '');
+                    }
                 } else {
                     notesEditorRef.current = toLexical(data.fields.Notes || '');
                 }
@@ -377,7 +388,7 @@ export default function ClientCard() {
                                     </div>
                                     <RichTextEditor
                                         isEditable={false}
-                                        initialContent={notesEditorRef.current}
+                                        initialContent={projectData.fields.Notes || ''}
                                     />
                                 </section>
 

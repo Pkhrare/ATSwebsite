@@ -127,7 +127,18 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
             const newTaskId = taskResult.records[0].id;
 
             // Step 2: Save description as attachment if there's content
-            const descriptionState = descriptionRef.current || '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
+            let descriptionState = descriptionRef.current;
+            
+            // If we have a description ref but it's an editor instance, extract the content
+            if (descriptionState && typeof descriptionState === 'object' && descriptionState.getEditorState) {
+                descriptionState = JSON.stringify(descriptionState.getEditorState().toJSON());
+            }
+            
+            // Fallback to empty content if no description
+            if (!descriptionState) {
+                descriptionState = '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1}],"direction":null,"format":"","indent":0,"type":"root","version":1}}';
+            }
+            
             try {
                 await saveContent('tasks', newTaskId, 'description', descriptionState);
             } catch (descriptionError) {
@@ -303,6 +314,8 @@ const AddTaskToProjectForm = ({ onClose, onTaskAdded, projectId, projectName, as
                                     isEditable={true} 
                                     initialContent={initialDescription}
                                     onChange={(state) => descriptionRef.current = state} 
+                                    sourceTable="projects"
+                                    sourceRecordId={projectId}
                                 />
                             </div>
 
