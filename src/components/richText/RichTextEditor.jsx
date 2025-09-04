@@ -217,7 +217,7 @@ function ToolbarPlugin() {
       const numRows = parseInt(rows, 10);
       const numCols = parseInt(cols, 10);
 
-      if (numRows > 0 && numCols > 0 && numRows <= 20 && numCols <= 10) {
+      if (numRows > 0 && numCols > 0 && numRows <= 60 && numCols <= 10) {
         if (hasTableSupport) {
           try {
             const tableModule = await import('@lexical/table');
