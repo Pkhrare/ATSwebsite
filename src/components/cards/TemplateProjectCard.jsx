@@ -578,8 +578,8 @@ export default function TemplateProjectCard({ template, onClose }) {
     };
     
     return (
-        <div className="fixed inset-0 z-50 bg-slate-50 flex flex-col">
-            <header className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white">
+        <div className="h-full flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white mb-6">
                 <button onClick={onClose} className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200" aria-label="Back">
                     <BackIcon />
                     <span className="hidden sm:inline">Back to Templates</span>
@@ -595,9 +595,9 @@ export default function TemplateProjectCard({ template, onClose }) {
                 >
                     {isCreatingProject ? 'Creating...' : 'Create Project'}
                 </button>
-            </header>
+            </div>
 
-            <main className="flex-grow p-6 overflow-y-auto">
+            <main className="flex-grow overflow-y-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
                     <div className="lg:col-span-3 space-y-6">
                         {/* Project Details Section */}

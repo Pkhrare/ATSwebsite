@@ -1568,7 +1568,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         <span className="font-semibold text-slate-800 justify-self-end">{projectData.fields['Balance']}</span>
                                     </div>
                                     <div className="flex justify-end gap-2 pt-2">
-                                        <button onClick={() => { setIsEditingStatus(false); setEditedDetails(projectData.fields); }} className={`text-sm ${colorClasses.button.neutral} px-4 py-2 rounded-md`}>Cancel</button>
+                                        <button onClick={() => { setIsEditingStatus(false); setEditedDetails(projectData.fields); }} className={`text-sm ${colorClasses.button.accent} px-4 py-2 rounded-md`}>Cancel</button>
                                         <button onClick={() => { handleSaveDetails(); setIsEditingStatus(false); }} className={`text-sm ${colorClasses.button.success} px-4 py-2 rounded-md`}>Save</button>
                                     </div>
                                 </div>
