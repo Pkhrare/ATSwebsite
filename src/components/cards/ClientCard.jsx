@@ -103,6 +103,7 @@ export default function ClientCard() {
     const [activities, setActivities] = useState([]);
     const [isLoadingActivities, setIsLoadingActivities] = useState(true);
     const notesEditorRef = useRef(null);
+    const [notesContent, setNotesContent] = useState(null);
 
     // Task-related states
     const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
@@ -123,21 +124,21 @@ export default function ClientCard() {
                 
                 // Load notes content from attachment with fallback to old Notes field
                 if (data.id) {
-                    const notesContent = await loadContent('projects', data.id, 'Notes');
-                    if (notesContent) {
+                    const loadedContent = await loadContent('projects', data.id, 'Notes');
+                    if (loadedContent) {
                         try {
                             // Parse the JSON string back to an object for the editor
-                            const parsedContent = JSON.parse(notesContent);
-                            notesEditorRef.current = parsedContent;
+                            const parsedContent = JSON.parse(loadedContent);
+                            setNotesContent(parsedContent);
                         } catch (error) {
                             console.warn('Failed to parse notes content, treating as plain text:', error);
-                            notesEditorRef.current = toLexical(notesContent);
+                            setNotesContent(toLexical(loadedContent));
                         }
                     } else {
-                        notesEditorRef.current = toLexical(data.fields.Notes || '');
+                        setNotesContent(toLexical(data.fields.Notes || ''));
                     }
                 } else {
-                    notesEditorRef.current = toLexical(data.fields.Notes || '');
+                    setNotesContent(toLexical(data.fields.Notes || ''));
                 }
             } catch (err) {
                 setError('Failed to load project data.');
@@ -388,7 +389,10 @@ export default function ClientCard() {
                                     </div>
                                     <RichTextEditor
                                         isEditable={false}
-                                        initialContent={projectData.fields.Notes || ''}
+                                        initialContent={notesContent}
+                                        editorRef={notesEditorRef}
+                                        sourceTable="projects"
+                                        sourceRecordId={projectData.id}
                                     />
                                 </section>
 
