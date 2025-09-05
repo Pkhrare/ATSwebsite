@@ -8,6 +8,7 @@ import { loadContent, saveContent } from '../../utils/contentUtils';
 import AttachFilesForm from '../forms/taskActionForms/AttachFilesForm';
 import AttachChecklistsForm from '../forms/taskActionForms/AttachChecklistsForm';
 import AttachTaskformsForm from '../forms/taskActionForms/AttachTaskformsForm';
+import AddApprovalForm from '../forms/taskActionForms/AddApprovalForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import ApiCaller from '../apiCall/ApiCaller';
@@ -34,6 +35,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [isAttachFilesFormOpen, setAttachFilesFormOpen] = useState(false);
     const [isAttachChecklistsFormOpen, setAttachChecklistsFormOpen] = useState(false);
     const [isAttachTaskformsFormOpen, setAttachTaskformsFormOpen] = useState(false);
+    const [isAddApprovalFormOpen, setAddApprovalFormOpen] = useState(false);
     const [isAttachmentsLoading, setIsAttachmentsLoading] = useState(false);
     const [checklistItems, setChecklistItems] = useState([]);
     const [initialChecklistItems, setInitialChecklistItems] = useState([]); // For locking
@@ -41,6 +43,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [formSubmissions, setFormSubmissions] = useState([]);
     const [initialFormSubmissions, setInitialFormSubmissions] = useState([]); // To track changes
     const [isFormSubmissionsLoading, setIsFormSubmissionsLoading] = useState(true);
+    const [approvals, setApprovals] = useState([]);
+    const [isApprovalsLoading, setIsApprovalsLoading] = useState(false);
     const [isEditingForm, setIsEditingForm] = useState(false);
     const fileInputRefs = useRef({});
     const [isUploadingAttachment, setIsUploadingAttachment] = useState(false);
@@ -160,6 +164,20 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             }
         };
 
+        const fetchApprovals = async () => {
+            if (!task?.id) return;
+            setIsApprovalsLoading(true);
+            try {
+                const data = await ApiCaller(`/records/filter/${task.fields.id}/task_approval`);
+                setApprovals(data.records || []);
+            } catch (error) {
+                console.error(error);
+                setError('Could not load approvals.');
+            } finally {
+                setIsApprovalsLoading(false);
+            }
+        };
+
         if (task) {
             setIsContentLoading(true);
             setEditedTask(task.fields);
@@ -196,6 +214,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             fetchChecklists();
             fetchSubmissions();
             fetchChatMessages();
+            fetchApprovals();
         }
     }, [task?.id, refetchCounter]);
 
@@ -502,6 +521,42 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 submission.id === submissionId ? { ...submission, fields: { ...submission.fields, value } } : submission
             )
         );
+    };
+
+    const handleApprovalAdded = (newApproval) => {
+        setApprovals(prev => [...prev, newApproval]);
+    };
+
+    const handleDeleteApproval = async (approvalId) => {
+        if (!window.confirm('Are you sure you want to delete this approval? This cannot be undone.')) {
+            return;
+        }
+
+        try {
+            await ApiCaller('/records/task_approval', {
+                method: 'DELETE',
+                body: JSON.stringify({ recordIds: [approvalId] })
+            });
+            
+            setApprovals(prev => prev.filter(approval => approval.id !== approvalId));
+        } catch (error) {
+            console.error("Failed to delete approval:", error);
+            alert("There was an error deleting the approval.");
+        }
+    };
+
+    const handleApprovalSignatureAdded = (approvalId, signatureUrl) => {
+        setApprovals(prev => prev.map(approval => 
+            approval.id === approvalId 
+                ? { 
+                    ...approval, 
+                    fields: { 
+                        ...approval.fields, 
+                        signature_attachment: [{ url: signatureUrl, filename: 'signature.png' }] 
+                    } 
+                }
+                : approval
+        ));
     };
 
     const handleSubmit = async (e) => {
@@ -977,6 +1032,28 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
                             )}
 
+                            {(isApprovalsLoading || approvals.length > 0) && (
+                                <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
+                                    <h3 className="text-sm font-medium ${colorClasses.text.primary} mb-2">Approvals</h3>
+                                    {isApprovalsLoading ? (
+                                        <p className="text-sm text-gray-500">Loading approvals...</p>
+                                    ) : (
+                                        <div className="space-y-3">
+                                            {approvals.map((approval) => (
+                                                <ApprovalItem 
+                                                    key={approval.id} 
+                                                    approval={approval} 
+                                                    canEdit={canEdit}
+                                                    isClientView={isClientView}
+                                                    onDelete={handleDeleteApproval}
+                                                    onSignatureAdded={handleApprovalSignatureAdded}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
                             {(isAttachmentsLoading || attachments.length > 0) && (
                                 <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
                                     <h3 className="text-sm font-medium ${colorClasses.text.primary} mb-2">Attachments</h3>
@@ -1104,6 +1181,12 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                                     Complete Form
                                 </li>
+                                <li onClick={() => setAddApprovalFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-white hover:font-semibold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Add Approval
+                                </li>
                             </ul>
                         </div>
                     )}
@@ -1130,7 +1213,194 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         onFormAttach={handleFormAttached}
                     />
                 )}
+                {isAddApprovalFormOpen && (
+                    <AddApprovalForm
+                        taskId={task.id}
+                        onClose={() => setAddApprovalFormOpen(false)}
+                        onApprovalAdded={handleApprovalAdded}
+                    />
+                )}
             </div>
+        </div>
+    );
+};
+
+// ApprovalItem component for individual approval display and signing
+const ApprovalItem = ({ approval, canEdit, isClientView, onDelete, onSignatureAdded }) => {
+    const [isSigning, setIsSigning] = useState(false);
+    const [isDrawing, setIsDrawing] = useState(false);
+    const [hasSignature, setHasSignature] = useState(false);
+    const canvasRef = useRef(null);
+    const [isUploading, setIsUploading] = useState(false);
+
+    const hasExistingSignature = approval.fields.signature_attachment && approval.fields.signature_attachment.length > 0;
+
+    const startDrawing = (e) => {
+        setIsDrawing(true);
+        const canvas = canvasRef.current;
+        const rect = canvas.getBoundingClientRect();
+        const ctx = canvas.getContext('2d');
+        
+        ctx.beginPath();
+        ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+    };
+
+    const draw = (e) => {
+        if (!isDrawing) return;
+        
+        const canvas = canvasRef.current;
+        const rect = canvas.getBoundingClientRect();
+        const ctx = canvas.getContext('2d');
+        
+        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+        ctx.stroke();
+        setHasSignature(true);
+    };
+
+    const stopDrawing = () => {
+        setIsDrawing(false);
+    };
+
+    const clearSignature = () => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        setHasSignature(false);
+    };
+
+    const handleSignApproval = async () => {
+        if (!hasSignature) {
+            alert('Please provide a signature first.');
+            return;
+        }
+
+        setIsUploading(true);
+        try {
+            // Convert canvas to blob and upload signature
+            const canvas = canvasRef.current;
+            const dataURL = canvas.toDataURL('image/png');
+            
+            // Convert data URL to blob
+            const response = await fetch(dataURL);
+            const blob = await response.blob();
+            
+            // Create FormData for file upload
+            const formData = new FormData();
+            formData.append('file', blob, 'signature.png');
+
+            // Upload signature to the approval record
+            await ApiCaller(`/upload/task_approval/${approval.id}/signature_attachment`, {
+                method: 'POST',
+                body: formData,
+            });
+
+            // Update local state
+            onSignatureAdded(approval.id, dataURL);
+            setIsSigning(false);
+            setHasSignature(false);
+
+        } catch (err) {
+            alert('Failed to upload signature. Please try again.');
+        } finally {
+            setIsUploading(false);
+        }
+    };
+
+    return (
+        <div className="border border-slate-200 rounded-lg p-3 bg-white">
+            <div className="flex justify-between items-start mb-2">
+                <p className="text-sm font-medium text-gray-800">
+                    {approval.fields.approval_description}
+                </p>
+                {!isClientView && (
+                    <button
+                        type="button"
+                        onClick={() => onDelete(approval.id)}
+                        className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white"
+                        title="Delete Approval"
+                    >
+                        <TrashIcon className="h-4 w-4" />
+                    </button>
+                )}
+            </div>
+            
+            {hasExistingSignature ? (
+                <div className="mt-2">
+                    <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs text-green-600 font-medium">✓ Signed</span>
+                    </div>
+                    <img 
+                        src={approval.fields.signature_attachment[0].url} 
+                        alt="Signature" 
+                        className="h-16 border rounded"
+                    />
+                </div>
+            ) : (
+                <div className="mt-2">
+                    {!isSigning ? (
+                        <div className="flex items-center gap-2">
+                            <span className="text-xs text-orange-600 font-medium">Pending Signature</span>
+                            {canEdit && (
+                                <button
+                                    type="button"
+                                    onClick={() => setIsSigning(true)}
+                                    className="text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
+                                >
+                                    Sign
+                                </button>
+                            )}
+                        </div>
+                    ) : (
+                        <div className="space-y-2">
+                            <div className="border-2 border-dashed border-gray-300 rounded-lg p-2">
+                                <canvas
+                                    ref={canvasRef}
+                                    width={300}
+                                    height={100}
+                                    className="border border-gray-200 rounded cursor-crosshair bg-white"
+                                    onMouseDown={startDrawing}
+                                    onMouseMove={draw}
+                                    onMouseUp={stopDrawing}
+                                    onMouseLeave={stopDrawing}
+                                />
+                                <div className="mt-1 flex justify-between items-center">
+                                    <p className="text-xs text-gray-500">
+                                        Draw your signature
+                                    </p>
+                                    <button
+                                        type="button"
+                                        onClick={clearSignature}
+                                        className="text-xs text-red-600 hover:text-red-800"
+                                    >
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="flex gap-2">
+                                <button
+                                    type="button"
+                                    onClick={handleSignApproval}
+                                    disabled={!hasSignature || isUploading}
+                                    className="text-xs bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 disabled:bg-gray-400"
+                                >
+                                    {isUploading ? 'Uploading...' : 'Submit Signature'}
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setIsSigning(false);
+                                        setHasSignature(false);
+                                        clearSignature();
+                                    }}
+                                    className="text-xs bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-700"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

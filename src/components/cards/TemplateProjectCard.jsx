@@ -412,6 +412,7 @@ export default function TemplateProjectCard({ template, onClose }) {
             const checklistsToCreate = [];
             const attachmentsToCreate = [];
             const formSubmissionsToCreate = [];
+            const approvalsToCreate = [];
 
             allTasksFromTemplate.forEach((templateTask, index) => {
                 const newTaskId = newTaskRecords[index].id;
@@ -458,6 +459,18 @@ export default function TemplateProjectCard({ template, onClose }) {
                         });
                     }
                 }
+
+                // Create approval records (if approvals exist)
+                if (templateTask.fields.approvals?.length > 0) {
+                    templateTask.fields.approvals.forEach(approval => {
+                        approvalsToCreate.push({
+                            fields: {
+                                task_id: [newTaskId],
+                                approval_description: approval.fields?.approval_description || approval.approval_description,
+                            }
+                        });
+                    });
+                }
             });
 
             // Batch create all sub-items in parallel
@@ -475,6 +488,11 @@ export default function TemplateProjectCard({ template, onClose }) {
             if (formSubmissionsToCreate.length > 0) {
                 subItemPromises.push(ApiCaller('/records', {
                     method: 'POST', body: JSON.stringify({ recordsToCreate: formSubmissionsToCreate, tableName: 'task_forms_submissions' })
+                }));
+            }
+            if (approvalsToCreate.length > 0) {
+                subItemPromises.push(ApiCaller('/records', {
+                    method: 'POST', body: JSON.stringify({ recordsToCreate: approvalsToCreate, tableName: 'task_approval' })
                 }));
             }
 

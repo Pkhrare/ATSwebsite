@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { v4 as uuidv4 } from 'uuid'; // For unique IDs for new checklist items
 import AttachTaskformsForm from "../forms/taskActionForms/AttachTaskformsForm"; // Import the form
+import AddApprovalForm from "../forms/taskActionForms/AddApprovalForm";
 
 const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] }) => {
     const [editedTask, setEditedTask] = useState(task.fields);
@@ -18,6 +19,8 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
     const [isAttachFormOpen, setIsAttachFormOpen] = useState(false);
     const [attachments, setAttachments] = useState([]);
     const [isAttachmentsVisible, setIsAttachmentsVisible] = useState(false);
+    const [approvals, setApprovals] = useState([]);
+    const [isAddApprovalFormOpen, setIsAddApprovalFormOpen] = useState(false);
 
 
     useEffect(() => {
@@ -34,6 +37,8 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
         if (task.fields.attachments && task.fields.attachments.length > 0) {
             setIsAttachmentsVisible(true);
         }
+        // Initialize approvals from the task prop, if they exist
+        setApprovals(task.fields.approvals || []);
     }, [task]);
 
     const handleInputChange = (field, value) => {
@@ -90,6 +95,14 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
         setAttachments(attachments.filter(att => att.id !== id));
     };
 
+    const handleApprovalAdded = (newApproval) => {
+        setApprovals(prev => [...prev, newApproval]);
+    };
+
+    const handleRemoveApproval = (id) => {
+        setApprovals(approvals.filter(approval => approval.id !== id));
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const finalTaskData = {
@@ -98,6 +111,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
             checklistItems: checklistItems,
             attachedForm: attachedForm, // Include attached form in the final data
             attachments: attachments, // Include attachments in the final data
+            approvals: approvals, // Include approvals in the final data
         };
         onTaskUpdate({ ...task, fields: finalTaskData });
         onClose();
@@ -116,6 +130,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                             <button type="button" onClick={() => setIsChecklistVisible(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Checklist</button>
                             <button type="button" onClick={() => setIsAttachFormOpen(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Form</button>
                             <button type="button" onClick={() => setIsAttachmentsVisible(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Attachment</button>
+                            <button type="button" onClick={() => setIsAddApprovalFormOpen(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Approval</button>
                             <button onClick={onClose} className="text-gray-500 hover:text-gray-700 ml-4" aria-label="Close">
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                             </button>
@@ -248,6 +263,30 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                             </div>
                         )}
 
+                        {/* Approvals Section */}
+                        {approvals.length > 0 && (
+                            <div className="p-4 border border-gray-200 rounded-lg">
+                                <h3 className="text-sm font-medium text-gray-700 mb-2">Approvals</h3>
+                                <div className="space-y-2">
+                                    {approvals.map((approval) => (
+                                        <div key={approval.id} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
+                                            <span className="text-sm text-gray-800 flex-1">
+                                                {approval.fields?.approval_description || approval.approval_description}
+                                            </span>
+                                            <button 
+                                                type="button" 
+                                                onClick={() => handleRemoveApproval(approval.id)} 
+                                                className="text-red-500 hover:text-red-700 p-1"
+                                            >
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         {/* Action Buttons */}
                         <div className="mt-6 pt-6 border-t flex justify-end items-center">
@@ -261,6 +300,14 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                 <AttachTaskformsForm
                     onClose={() => setIsAttachFormOpen(false)}
                     onFormAttach={handleFormAttach}
+                />
+            )}
+            {isAddApprovalFormOpen && (
+                <AddApprovalForm
+                    taskId={task.id}
+                    onClose={() => setIsAddApprovalFormOpen(false)}
+                    onApprovalAdded={handleApprovalAdded}
+                    isTemplateMode={true}
                 />
             )}
         </>
