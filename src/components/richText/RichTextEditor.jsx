@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import {
     $getSelection,
     $isRangeSelection,
@@ -30,7 +30,7 @@ import {ListNode, ListItemNode} from '@lexical/list';
 import {CodeNode} from '@lexical/code';
 import {HashtagNode} from '@lexical/hashtag';
 import {AutoLinkNode, LinkNode} from '@lexical/link';
-import { ImageNode } from './nodes/ImageNode';
+import { ImageNode, $isImageNode } from './nodes/ImageNode';
 import { YouTubeNode, $createYouTubeNode } from './nodes/YouTubeNode';
 import UnifiedPastePlugin, { INSERT_YOUTUBE_COMMAND } from './UnifiedPastePlugin';
 
@@ -126,6 +126,8 @@ function ToolbarPlugin() {
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
   const [isLink, setIsLink] = useState(false);
+  const [isImageSelected, setIsImageSelected] = useState(false);
+  const [selectedImageNode, setSelectedImageNode] = useState(null);
   const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
   const [hasTableSupport, setHasTableSupport] = useState(false);
 
@@ -150,6 +152,19 @@ function ToolbarPlugin() {
             const node = selection.getNodes()[0];
             const parent = node ? node.getParent() : null;
             setIsLink(!!(node && $isLinkNode(node)) || !!(parent && $isLinkNode(parent)));
+
+            // Check if an image is selected - use a more stable approach
+            const imageNode = selection.getNodes().find(n => $isImageNode(n));
+            const hasImageSelected = !!imageNode;
+            
+            // Use a more conservative update approach
+            if (hasImageSelected && !isImageSelected) {
+                setIsImageSelected(true);
+                setSelectedImageNode(imageNode);
+            } else if (!hasImageSelected && isImageSelected) {
+                setIsImageSelected(false);
+                setSelectedImageNode(null);
+            }
         }
       });
     });
@@ -180,6 +195,43 @@ function ToolbarPlugin() {
   }, [fontSize, applyFontSize, editor]);
 
   const insertLink = useCallback(() => {
+    // Handle image linking
+    if (isImageSelected && selectedImageNode) {
+        const currentHref = selectedImageNode.getHref();
+        const url = prompt(
+            currentHref 
+                ? `Current link: ${currentHref}\n\nEnter new URL (or leave empty to remove link):`
+                : 'Enter the URL for this image:'
+        );
+        
+        if (url !== null) { // User didn't cancel
+            // Use a more stable update approach
+            editor.update(() => {
+                const writableNode = selectedImageNode.getWritable();
+                if (url.trim() === '') {
+                    // Remove link
+                    writableNode.__href = null;
+                } else {
+                    // Validate URL
+                    try {
+                        new URL(url);
+                        writableNode.__href = url;
+                    } catch (error) {
+                        alert('Please enter a valid URL (e.g., https://example.com)');
+                        return;
+                    }
+                }
+            }, {
+                onUpdate: () => {
+                    // Ensure the editor maintains focus
+                    editor.focus();
+                }
+            });
+        }
+        return;
+    }
+
+    // Handle text linking (existing logic)
     if (isLink) {
         editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
         return;
@@ -194,15 +246,21 @@ function ToolbarPlugin() {
     });
 
     if (!isTextSelected) {
-        alert('Please select some text first, then click the Link button to make it clickable.');
+        alert('Please select some text or an image first, then click the Link button to make it clickable.');
         return;
     }
 
     const url = prompt('Enter the URL:');
     if (url) {
-        editor.dispatchCommand(TOGGLE_LINK_COMMAND, url);
+        // Validate URL
+        try {
+            new URL(url);
+            editor.dispatchCommand(TOGGLE_LINK_COMMAND, url);
+        } catch (error) {
+            alert('Please enter a valid URL (e.g., https://example.com)');
+        }
     }
-  }, [editor, isLink]);
+  }, [editor, isLink, isImageSelected, selectedImageNode]);
 
   const insertImage = useCallback(() => {
     console.log('Image button clicked, dispatching OPEN_IMAGE_UPLOAD command');
@@ -305,10 +363,17 @@ function ToolbarPlugin() {
           <button
               type="button"
               onClick={insertLink}
-              className={`px-3 py-1 rounded-md text-sm font-medium ${isLink ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 hover:bg-slate-200'}`}
+              className={`px-3 py-1 rounded-md text-sm font-medium ${
+                  isLink || (isImageSelected && selectedImageNode?.getHref()) 
+                      ? 'bg-blue-600 text-white' 
+                      : 'bg-white text-slate-700 hover:bg-slate-200'
+              }`}
               aria-label="Insert Link"
           >
-              {isLink ? 'Unlink' : 'Link'}
+              {isImageSelected 
+                  ? (selectedImageNode?.getHref() ? 'Unlink Image' : 'Link Image')
+                  : (isLink ? 'Unlink' : 'Link')
+              }
           </button>
 
           <div className="w-px h-6 bg-slate-300 mx-1"></div>
@@ -389,21 +454,44 @@ function SetEditablePlugin({isEditable}) {
 // Plugin to listen for changes and notify the parent component
 function OnChangePlugin({ onChange }) {
     const [editor] = useLexicalComposerContext();
+    const timeoutRef = useRef(null);
+    
     useEffect(() => {
         if (!onChange) return;
         return editor.registerUpdateListener(({ editorState }) => {
-            const editorStateJSON = editorState.toJSON();
-            onChange(JSON.stringify(editorStateJSON));
+            // Debounce the onChange callback to prevent excessive re-renders
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+            
+            timeoutRef.current = setTimeout(() => {
+                const editorStateJSON = editorState.toJSON();
+                onChange(JSON.stringify(editorStateJSON));
+            }, 100); // 100ms debounce
         });
     }, [editor, onChange]);
+    
+    // Cleanup timeout on unmount
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        };
+    }, []);
+    
     return null;
 }
 
 // Plugin to load initial content from a prop (Final, More Robust Version)
 function InitialContentPlugin({ initialContent }) {
     const [editor] = useLexicalComposerContext();
+    const [hasInitialized, setHasInitialized] = useState(false);
 
     useEffect(() => {
+        // Only initialize content once to prevent re-renders
+        if (hasInitialized) return;
+        
         editor.update(() => {
             const root = $getRoot();
 
@@ -413,6 +501,7 @@ function InitialContentPlugin({ initialContent }) {
                     const paragraph = $createParagraphNode();
                     root.append(paragraph);
                 }
+                setHasInitialized(true);
                 return;
             }
 
@@ -477,8 +566,10 @@ function InitialContentPlugin({ initialContent }) {
                 
                 root.append(paragraph);
             }
+            
+            setHasInitialized(true);
         });
-    }, [editor, initialContent]);
+    }, [editor, initialContent, hasInitialized]);
 
     return null;
 }
@@ -538,6 +629,64 @@ function ConvertIframePlugin() {
     return null;
 }
 
+// Plugin to handle cursor positioning around images
+function ImageCursorPlugin() {
+    const [editor] = useLexicalComposerContext();
+    
+    useEffect(() => {
+        const rootElement = editor.getRootElement();
+        if (!rootElement) return;
+
+        const handleClick = (event) => {
+            const target = event.target;
+            
+            // Check if the click is on an image
+            if (target.tagName === 'IMG') {
+                const img = target;
+                const imageContainer = img.closest('[data-lexical-decorator]');
+                
+                if (imageContainer) {
+                    const rect = imageContainer.getBoundingClientRect();
+                    const clickX = event.clientX;
+                    const imageCenter = rect.left + (rect.width / 2);
+                    
+                    // Determine if click is on left or right side of image
+                    const isLeftSide = clickX < imageCenter;
+                    
+                    editor.update(() => {
+                        const selection = $getSelection();
+                        if ($isRangeSelection(selection)) {
+                            // Find the image node
+                            const imageNode = selection.getNodes().find(n => $isImageNode(n));
+                            if (imageNode) {
+                                if (isLeftSide) {
+                                    // Position cursor before the image
+                                    const textNode = $createTextNode('');
+                                    imageNode.insertBefore(textNode);
+                                    textNode.select();
+                                } else {
+                                    // Position cursor after the image
+                                    const textNode = $createTextNode('');
+                                    imageNode.insertAfter(textNode);
+                                    textNode.select();
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        };
+
+        rootElement.addEventListener('click', handleClick);
+        
+        return () => {
+            rootElement.removeEventListener('click', handleClick);
+        };
+    }, [editor]);
+    
+    return null;
+}
+
 const editorTheme = {
   link: 'text-blue-600 underline hover:text-blue-800 cursor-pointer',
   table: 'border-collapse my-4 w-full border border-slate-400',
@@ -545,6 +694,7 @@ const editorTheme = {
   tableCell: 'border border-slate-400 p-3 min-w-[100px] relative bg-white',
   tableCellHeader: 'border border-slate-400 p-3 min-w-[100px] bg-slate-100 font-semibold relative',
   youtube: 'my-4 w-full max-w-4xl mx-auto',
+  image: 'inline-block align-middle', // Add image theme
   text: {
     base: 'text-base',
     bold: 'font-bold',
@@ -665,6 +815,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 <InitialContentPlugin initialContent={initialContent} />
                 <SetRefPlugin editorRef={editorRef} /> {/* Add the new ref plugin */}
                 <ConvertIframePlugin /> {/* Convert iframe text to YouTube nodes */}
+                {isEditable && <ImageCursorPlugin />} {/* Handle cursor positioning around images */}
                 {isEditable && <AutoFocusPlugin />}
             </LexicalComposer>
         </div>

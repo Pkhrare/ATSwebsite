@@ -6,6 +6,7 @@ import {
     $isRangeSelection,
     INSERT_PARAGRAPH_COMMAND,
     createCommand,
+    $createTextNode,
 } from 'lexical';
 import { $generateNodesFromDOM } from '@lexical/html';
 import { $createImageNode } from './nodes/ImageNode';
@@ -54,8 +55,33 @@ export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
                 editor.update(() => {
                     const selection = $getSelection();
                     if ($isRangeSelection(selection)) {
-                        selection.insertNodes([imageNode]);
-                        editor.dispatchCommand(INSERT_PARAGRAPH_COMMAND, undefined);
+                        // Try to insert the image inline within the current paragraph
+                        const anchorNode = selection.anchor.getNode();
+                        const parentNode = anchorNode.getParent();
+                        
+                        // If we're in a paragraph, insert the image there
+                        if (parentNode && parentNode.getType() === 'paragraph') {
+                            const textContent = anchorNode.getTextContent();
+                            const offset = selection.anchor.offset;
+                            
+                            // Split the text at the cursor position
+                            if (offset > 0) {
+                                const beforeText = textContent.substring(0, offset);
+                                const afterText = textContent.substring(offset);
+                                
+                                // Replace the text node with split text and image
+                                anchorNode.setTextContent(beforeText);
+                                const afterTextNode = $createTextNode(afterText);
+                                anchorNode.insertAfter(afterTextNode);
+                                afterTextNode.insertAfter(imageNode);
+                            } else {
+                                // Insert at the beginning
+                                anchorNode.insertBefore(imageNode);
+                            }
+                        } else {
+                            // Fallback to normal insertion
+                            selection.insertNodes([imageNode]);
+                        }
                     }
                 });
                 return true;

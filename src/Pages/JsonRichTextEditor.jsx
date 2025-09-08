@@ -108,6 +108,7 @@ const JsonRichTextEditor = () => {
     const [copyFeedback, setCopyFeedback] = useState({ json: false, richText: false });
     const [richTextContent, setRichTextContent] = useState(jsonContent);
     const [isApplyingJson, setIsApplyingJson] = useState(false);
+    const [editorKey, setEditorKey] = useState(0); // Add a key to force re-render
     const richTextEditorRef = useRef(null);
 
     // Handle changes from the rich text editor (real-time updates to JSON)
@@ -150,13 +151,14 @@ const JsonRichTextEditor = () => {
             // Set flag to prevent rich text change handler from running
             setIsApplyingJson(true);
             
-            // Update the rich text content state, which will trigger a re-render
+            // Update the rich text content state and force a complete re-render
             setRichTextContent(jsonContent);
+            setEditorKey(prev => prev + 1); // Force re-render by changing key
             
-            // Reset the flag after a short delay to allow the editor to update
+            // Reset the flag after a longer delay to ensure debounced callbacks have finished
             setTimeout(() => {
                 setIsApplyingJson(false);
-            }, 100);
+            }, 300);
         } catch (error) {
             setJsonError('Invalid JSON format');
         }
@@ -264,6 +266,7 @@ const JsonRichTextEditor = () => {
                         </div>
                         <div className="flex-1 min-h-[400px]">
                             <RichTextEditor
+                                key={editorKey}
                                 isEditable={true}
                                 initialContent={richTextContent}
                                 onChange={handleRichTextChange}
