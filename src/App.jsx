@@ -16,6 +16,7 @@ import Layout from './components/layout/Layout';
 import InfoPageView from './Pages/InfoPageView';
 import InfoPageEdit from './Pages/InfoPageEdit';
 import ClientInfoPageView from './Pages/ClientInfoPageView';
+import JsonRichTextEditor from './Pages/JsonRichTextEditor';
 
 function App() {
   const { currentUser } = useAuth();
@@ -47,6 +48,7 @@ function App() {
           <Route path='/dashboard' element={<Home />} />
           <Route path='/projects' element={<Projects />} />
           <Route path='/templates' element={<Templates />} />
+          <Route path='/json-editor' element={<JsonRichTextEditor />} />
           <Route path='/info/:pageId' element={<InfoPageView />} />
           <Route path='/info/edit/:pageId' element={<InfoPageEdit />} />
         </Route>

@@ -4,7 +4,7 @@ import { useAuth } from '../../utils/AuthContext';
 import { colorClasses } from '../../utils/colorUtils';
 
 const Nav = () => {
-    const { currentUser, logout } = useAuth();
+    const { currentUser, logout, userRole } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -36,6 +36,9 @@ const Nav = () => {
                                 <>
                                     <li><Link to="/dashboard" className={`${colorClasses.nav.link} px-3 py-2 rounded-md text-sm font-medium transition-colors`}>Home</Link></li>
                                     <li><Link to="/projects" className={`${colorClasses.nav.link} px-3 py-2 rounded-md text-sm font-medium transition-colors`}>Projects</Link></li>
+                                    {userRole === 'consultant' && (
+                                        <li><Link to="/json-editor" className={`${colorClasses.nav.link} px-3 py-2 rounded-md text-sm font-medium transition-colors`}>JSON Editor</Link></li>
+                                    )}
                                     <li>
                                         <button 
                                             onClick={handleLogout}

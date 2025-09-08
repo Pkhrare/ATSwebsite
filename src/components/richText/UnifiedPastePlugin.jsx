@@ -9,9 +9,11 @@ import {
 } from 'lexical';
 import { $generateNodesFromDOM } from '@lexical/html';
 import { $createImageNode } from './nodes/ImageNode';
+import { $createYouTubeNode } from './nodes/YouTubeNode';
 import ApiCaller from '../../components/apiCall/ApiCaller';
 
 export const INSERT_IMAGE_COMMAND = createCommand('INSERT_IMAGE_COMMAND');
+export const INSERT_YOUTUBE_COMMAND = createCommand('INSERT_YOUTUBE_COMMAND');
 
 export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
     const [editor] = useLexicalComposerContext();
@@ -45,7 +47,7 @@ export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
 
     useEffect(() => {
         // Handles image insertion from button click or paste
-        const unregisterInsert = editor.registerCommand(
+        const unregisterInsertImage = editor.registerCommand(
             INSERT_IMAGE_COMMAND,
             (payload) => {
                 const imageNode = $createImageNode(payload);
@@ -54,6 +56,26 @@ export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
                     if ($isRangeSelection(selection)) {
                         selection.insertNodes([imageNode]);
                         editor.dispatchCommand(INSERT_PARAGRAPH_COMMAND, undefined);
+                    }
+                });
+                return true;
+            },
+            1,
+        );
+
+        // Handles YouTube insertion from button click
+        const unregisterInsertYouTube = editor.registerCommand(
+            INSERT_YOUTUBE_COMMAND,
+            (payload) => {
+                console.log('INSERT_YOUTUBE_COMMAND received with payload:', payload);
+                const youtubeNode = $createYouTubeNode(payload);
+                console.log('Created YouTube node:', youtubeNode);
+                editor.update(() => {
+                    const selection = $getSelection();
+                    if ($isRangeSelection(selection)) {
+                        selection.insertNodes([youtubeNode]);
+                        editor.dispatchCommand(INSERT_PARAGRAPH_COMMAND, undefined);
+                        console.log('YouTube node inserted successfully');
                     }
                 });
                 return true;
@@ -77,9 +99,20 @@ export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
                     return true; // We handled the paste
                 }
 
-                // If no image, check for HTML content
+                // Check for YouTube iframe in HTML content
                 const html = clipboardData.getData('text/html');
                 if (html) {
+                    console.log('HTML content detected:', html);
+                    // Check if it contains a YouTube iframe
+                    const iframeMatch = html.match(/<iframe[^>]*src="([^"]*youtube[^"]*)"[^>]*>/i);
+                    if (iframeMatch) {
+                        const src = iframeMatch[1];
+                        console.log('YouTube iframe detected, src:', src);
+                        editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, { src });
+                        return true; // We handled the paste
+                    }
+
+                    // If no YouTube iframe, process as regular HTML
                     editor.update(() => {
                         const parser = new DOMParser();
                         const dom = parser.parseFromString(html, 'text/html');
@@ -92,13 +125,27 @@ export default function UnifiedPastePlugin({ sourceTable, sourceRecordId }) {
                     return true; // We handled the paste
                 }
 
+                // Also check plain text for iframe content
+                const text = clipboardData.getData('text/plain');
+                if (text) {
+                    console.log('Plain text content detected:', text);
+                    const iframeMatch = text.match(/<iframe[^>]*src="([^"]*youtube[^"]*)"[^>]*>/i);
+                    if (iframeMatch) {
+                        const src = iframeMatch[1];
+                        console.log('YouTube iframe detected in plain text, src:', src);
+                        editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, { src });
+                        return true; // We handled the paste
+                    }
+                }
+
                 return false; // Let default plain text paste happen
             },
             1 // High priority to triage all paste events
         );
 
         return () => {
-            unregisterInsert();
+            unregisterInsertImage();
+            unregisterInsertYouTube();
             unregisterPaste();
         };
     }, [editor, uploadImage]);

@@ -31,7 +31,8 @@ import {CodeNode} from '@lexical/code';
 import {HashtagNode} from '@lexical/hashtag';
 import {AutoLinkNode, LinkNode} from '@lexical/link';
 import { ImageNode } from './nodes/ImageNode';
-import UnifiedPastePlugin from './UnifiedPastePlugin';
+import { YouTubeNode, $createYouTubeNode } from './nodes/YouTubeNode';
+import UnifiedPastePlugin, { INSERT_YOUTUBE_COMMAND } from './UnifiedPastePlugin';
 
 const DEFAULT_FONT_SIZE = '14px';
 
@@ -209,6 +210,36 @@ function ToolbarPlugin() {
     editor.dispatchCommand('OPEN_IMAGE_UPLOAD', undefined);
   }, [editor]);
 
+  const insertYouTube = useCallback(() => {
+    const url = prompt('Enter YouTube URL or iframe embed code:');
+    if (!url) return;
+
+    console.log('YouTube button clicked with URL:', url);
+
+    // Check if it's an iframe embed code
+    const iframeMatch = url.match(/src="([^"]+)"/);
+    if (iframeMatch) {
+      const src = iframeMatch[1];
+      console.log('Detected iframe, src:', src);
+      editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, { src });
+      return;
+    }
+
+    // Check if it's a YouTube URL and convert to embed format
+    const youtubeMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+    if (youtubeMatch) {
+      const videoId = youtubeMatch[1];
+      const embedSrc = `https://www.youtube.com/embed/${videoId}`;
+      console.log('Detected YouTube URL, converted to:', embedSrc);
+      editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, { src: embedSrc });
+      return;
+    }
+
+    // If it doesn't match YouTube patterns, try to use it as-is
+    console.log('Using URL as-is:', url);
+    editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, { src: url });
+  }, [editor]);
+
   const insertTable = useCallback(async () => {
     const rows = prompt('Number of rows:', '3');
     const cols = prompt('Number of columns:', '3');
@@ -324,6 +355,14 @@ function ToolbarPlugin() {
               aria-label="Insert Image"
           >
               Image
+          </button>
+          <button
+              type="button"
+              onClick={insertYouTube}
+              className="px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200"
+              aria-label="Insert YouTube Video"
+          >
+              YouTube
           </button>
           <button
               type="button"
@@ -461,12 +500,51 @@ function SetRefPlugin({ editorRef }) {
     return null;
 }
 
+// Plugin to convert iframe text nodes to YouTube nodes
+function ConvertIframePlugin() {
+    const [editor] = useLexicalComposerContext();
+    
+    useEffect(() => {
+        return editor.registerUpdateListener(({ editorState }) => {
+            editorState.read(() => {
+                const root = $getRoot();
+                const children = root.getChildren();
+                
+                children.forEach((child) => {
+                    if (child.getType() === 'paragraph') {
+                        const paragraphChildren = child.getChildren();
+                        paragraphChildren.forEach((textNode) => {
+                            if ($isTextNode(textNode)) {
+                                const text = textNode.getTextContent();
+                                const iframeMatch = text.match(/<iframe[^>]*src="([^"]*youtube[^"]*)"[^>]*>/i);
+                                if (iframeMatch) {
+                                    const src = iframeMatch[1];
+                                    console.log('Converting iframe text to YouTube node:', src);
+                                    
+                                    // Replace the text node with a YouTube node
+                                    editor.update(() => {
+                                        const youtubeNode = $createYouTubeNode({ src });
+                                        textNode.replace(youtubeNode);
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    }, [editor]);
+    
+    return null;
+}
+
 const editorTheme = {
   link: 'text-blue-600 underline hover:text-blue-800 cursor-pointer',
   table: 'border-collapse my-4 w-full border border-slate-400',
   tableRow: 'border-b border-slate-300',
   tableCell: 'border border-slate-400 p-3 min-w-[100px] relative bg-white',
   tableCellHeader: 'border border-slate-400 p-3 min-w-[100px] bg-slate-100 font-semibold relative',
+  youtube: 'my-4 w-full max-w-4xl mx-auto',
   text: {
     base: 'text-base',
     bold: 'font-bold',
@@ -531,6 +609,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
             AutoLinkNode,
             LinkNode,
             ImageNode, // Register the ImageNode
+            YouTubeNode, // Register the YouTubeNode
             ...tableNodes
         ],
     };
@@ -585,6 +664,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 <OnChangePlugin onChange={onChange} />
                 <InitialContentPlugin initialContent={initialContent} />
                 <SetRefPlugin editorRef={editorRef} /> {/* Add the new ref plugin */}
+                <ConvertIframePlugin /> {/* Convert iframe text to YouTube nodes */}
                 {isEditable && <AutoFocusPlugin />}
             </LexicalComposer>
         </div>
