@@ -7,7 +7,7 @@ import colors from '../styles/colors.js';
 export const colorClasses = {
   // Navigation classes
   nav: {
-    base: "bg-black text-white border-gray-700",
+    base: "bg-gray-900 text-white border-gray-700",
     link: "text-white hover:text-yellow-400",
     accent: "text-yellow-400",
   },
@@ -30,7 +30,7 @@ export const colorClasses = {
   
   // Form classes
   form: {
-    input: "bg-white border border-gray-300 focus:border-black text-gray-800 placeholder:text-gray-400",
+    input: "bg-white border border-gray-900 focus:border-black text-gray-800 placeholder:text-gray-400",
     label: "text-gray-700",
     error: "text-red-500 bg-red-50",
     disabled: "bg-gray-100",
@@ -60,7 +60,7 @@ export const colorClasses = {
     primary: "bg-white",
     secondary: "bg-gray-50",
     tertiary: "bg-gray-100",
-    dark: "bg-black",
+    dark: "bg-black-400",
   },
   
   // Task status classes

@@ -31,6 +31,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [successMessage, setSuccessMessage] = useState(null);
     const [isEditingDescription, setIsEditingDescription] = useState(false);
     const descriptionRef = useRef(null);
+    const [descriptionKey, setDescriptionKey] = useState(0);
     const [attachments, setAttachments] = useState([]);
     const [isAttachFilesFormOpen, setAttachFilesFormOpen] = useState(false);
     const [isAttachChecklistsFormOpen, setAttachChecklistsFormOpen] = useState(false);
@@ -192,15 +193,19 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             // Parse the JSON string back to an object for the editor
                             const parsedContent = JSON.parse(descriptionContent);
                             descriptionRef.current = parsedContent;
+                            setDescriptionKey(prev => prev + 1); // Force re-render
                         } catch (error) {
                             console.warn('Failed to parse description content, treating as plain text:', error);
                             descriptionRef.current = toLexical(descriptionContent);
+                            setDescriptionKey(prev => prev + 1); // Force re-render
                         }
                     } else {
                         descriptionRef.current = toLexical(task.fields.description || '');
+                        setDescriptionKey(prev => prev + 1); // Force re-render
                     }
                 } else {
                     descriptionRef.current = toLexical(task.fields.description || '');
+                    setDescriptionKey(prev => prev + 1); // Force re-render
                 }
                 
                 // Wait a bit to ensure content is properly initialized before showing
@@ -885,7 +890,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
                                 <div className="[&_.editor-text]:text-black [&_.editor-paragraph]:text-black [&_p]:text-black [&_div]:text-black [&_span]:text-black">
                                     <RichTextEditor
-                                        key={task.id}
+                                        key={`${task.id}-${descriptionKey}`}
                                         isEditable={isEditingDescription && !isClientView}
                                         initialContent={descriptionRef.current}
                                         onChange={handleDescriptionChange}
@@ -975,7 +980,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                     const lastUpdated = firstField?.fields.last_updated;
                                                     
                                                     return (
-                                                        <div key={submissionId} className="group relative border border-slate-200 rounded-lg p-4 bg-black text-white">
+                                                        <div key={submissionId} className="group relative border border-slate-200 rounded-lg p-4 bg-gray-900 text-white">
                                                             <div className="flex justify-between items-center mb-3">
                                                                 <div className="flex items-center gap-2">
                                                                     <h4 className="text-sm font-semibold text-white">{formName}</h4>

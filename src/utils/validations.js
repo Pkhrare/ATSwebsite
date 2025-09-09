@@ -104,7 +104,9 @@ export const dropdownFields = {
         "Attach Files",
         "Complete Form",
         "Complete Checklist",
-        "Require Approval"
+        "Require Approval",
+        "Default",
+        "Review Only"
     ],
     "field_type": [
         "Single line text",

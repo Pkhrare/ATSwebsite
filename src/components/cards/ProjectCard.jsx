@@ -209,8 +209,13 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                 const loadedContent = await loadContent('projects', data.id, 'Notes');
                 if (loadedContent) {
                     try {
-                        // Parse the JSON string back to an object for the editor
-                        const parsedContent = JSON.parse(loadedContent);
+                        // Check if content is already a parsed object or needs parsing
+                        let parsedContent;
+                        if (typeof loadedContent === 'string') {
+                            parsedContent = JSON.parse(loadedContent);
+                        } else {
+                            parsedContent = loadedContent;
+                        }
                         setNotesContent(parsedContent);
                     } catch (error) {
                         console.warn('Failed to parse notes content, treating as plain text:', error);
@@ -1232,51 +1237,6 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             )}
                         </section>
 
-                        {/* Documents Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
-                            <div className="flex justify-between items-center mb-3">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📎 Documents</h2>
-                                <label className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer`}>
-                                    <UploadIcon />
-                                    Upload File
-                                    <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
-                                </label>
-                            </div>
-                            <ul className="space-y-2">
-                                {isUploading && (
-                                    <li className="flex items-center justify-between bg-slate-100 p-3 rounded-lg border border-slate-200 opacity-70">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-5 h-5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"></div>
-                                            <span className="text-sm font-medium text-slate-500">Uploading...</span>
-                                        </div>
-                                    </li>
-                                )}
-                                {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
-                                    projectData.fields.Documents.map(doc => (
-                                        <li key={doc.id} className="group relative flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
-                                            <div className="flex items-center gap-3 overflow-hidden">
-                                                <DocumentIcon />
-                                                <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left truncate" title={doc.filename}>
-                                                    {doc.filename}
-                                                </button>
-                                            </div>
-                                            <div className="flex items-center gap-2 flex-shrink-0">
-                                                <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
-                                                <button
-                                                    onClick={() => handleDeleteDocument(doc.id)}
-                                                    className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                                                    aria-label="Delete document"
-                                                >
-                                                    <TrashIcon />
-                                                </button>
-                                            </div>
-                                        </li>
-                                    ))
-                                ) : (
-                                    !isUploading && <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
-                                )}
-                            </ul>
-                        </section>
 
                         {/* Tasks Section */}
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
@@ -1404,6 +1364,52 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     </div>
                                 </div>
                             )}
+                        </section>
+
+                        {/* Documents Section */}
+                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                            <div className="flex justify-between items-center mb-3">
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📎 Documents</h2>
+                                <label className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer`}>
+                                    <UploadIcon />
+                                    Upload File
+                                    <input type="file" className="hidden" onChange={handleFileUpload} disabled={isUploading} />
+                                </label>
+                            </div>
+                            <ul className="space-y-2">
+                                {isUploading && (
+                                    <li className="flex items-center justify-between bg-slate-100 p-3 rounded-lg border border-slate-200 opacity-70">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-5 h-5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"></div>
+                                            <span className="text-sm font-medium text-slate-500">Uploading...</span>
+                                        </div>
+                                    </li>
+                                )}
+                                {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
+                                    projectData.fields.Documents.map(doc => (
+                                        <li key={doc.id} className="group relative flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
+                                            <div className="flex items-center gap-3 overflow-hidden">
+                                                <DocumentIcon />
+                                                <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left truncate" title={doc.filename}>
+                                                    {doc.filename}
+                                                </button>
+                                            </div>
+                                            <div className="flex items-center gap-2 flex-shrink-0">
+                                                <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
+                                                <button
+                                                    onClick={() => handleDeleteDocument(doc.id)}
+                                                    className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                                    aria-label="Delete document"
+                                                >
+                                                    <TrashIcon />
+                                                </button>
+                                            </div>
+                                        </li>
+                                    ))
+                                ) : (
+                                    !isUploading && <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
+                                )}
+                            </ul>
                         </section>
 
                         {/* Activities Section */}

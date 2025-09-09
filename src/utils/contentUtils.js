@@ -19,7 +19,22 @@ export const loadContent = async (tableName, recordId, fieldName) => {
         
         if (response.content) {
             console.log(`Content loaded from ${response.source} for ${tableName}.${fieldName}`);
-            return response.content;
+            
+            // Handle double-encoded content (content that has been JSON.stringify'd twice)
+            let content = response.content;
+            
+            // Check if the content is double-encoded (starts and ends with quotes and has escaped quotes)
+            if (typeof content === 'string' && content.startsWith('"') && content.endsWith('"') && content.includes('\\"')) {
+                try {
+                    // Parse the outer JSON string to get the inner JSON string
+                    content = JSON.parse(content);
+                    console.log('Fixed double-encoded content');
+                } catch (parseError) {
+                    console.warn('Failed to parse double-encoded content, using as-is:', parseError);
+                }
+            }
+            
+            return content;
         }
         
         console.log(`No content found for ${tableName}.${fieldName}, record: ${recordId}`);

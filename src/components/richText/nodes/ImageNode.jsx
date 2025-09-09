@@ -25,9 +25,7 @@ const ImageComponent = ({ src, altText, width, height, href }) => {
             onClick={handleImageClick}
             draggable={false}
             style={{
-                maxWidth: '200px', // Smaller width for better inline flow
-                maxHeight: '150px', // Smaller height for better inline flow
-                margin: '0 2px', // Smaller horizontal margin for tighter spacing
+                margin: '0 4px', // Restore normal horizontal margin
                 verticalAlign: 'middle',
                 display: 'inline'
             }}

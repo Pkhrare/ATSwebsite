@@ -127,8 +127,13 @@ export default function ClientCard() {
                     const loadedContent = await loadContent('projects', data.id, 'Notes');
                     if (loadedContent) {
                         try {
-                            // Parse the JSON string back to an object for the editor
-                            const parsedContent = JSON.parse(loadedContent);
+                            // Check if content is already a parsed object or needs parsing
+                            let parsedContent;
+                            if (typeof loadedContent === 'string') {
+                                parsedContent = JSON.parse(loadedContent);
+                            } else {
+                                parsedContent = loadedContent;
+                            }
                             setNotesContent(parsedContent);
                         } catch (error) {
                             console.warn('Failed to parse notes content, treating as plain text:', error);
@@ -396,31 +401,6 @@ export default function ClientCard() {
                                     />
                                 </section>
 
-                                {/* Documents Section */}
-                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                                    <div className="flex justify-between items-center mb-3">
-                                        <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
-                                        {/* Upload removed for clients - they can only upload to assigned tasks */}
-                                    </div>
-                                    <ul className="space-y-2">
-                                        {/* Upload indicator removed - clients can't upload project documents */}
-                                        {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
-                                            projectData.fields.Documents.map(doc => (
-                                                <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
-                                                    <div className="flex items-center gap-3">
-                                                        <DocumentIcon />
-                                                        <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left">
-                                                            {doc.filename}
-                                                        </button>
-                                                    </div>
-                                                    <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
-                                                </li>
-                                            ))
-                                        ) : (
-                                            <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
-                                        )}
-                                    </ul>
-                                </section>
 
                                 {/* Tasks Section */}
                                 <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
@@ -479,6 +459,32 @@ export default function ClientCard() {
                                         </div>
                                     </div>
                                 )}
+                            </section>
+
+                            {/* Documents Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <div className="flex justify-between items-center mb-3">
+                                    <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
+                                    {/* Upload removed for clients - they can only upload to assigned tasks */}
+                                </div>
+                                <ul className="space-y-2">
+                                    {/* Upload indicator removed - clients can't upload project documents */}
+                                    {projectData.fields.Documents && projectData.fields.Documents.length > 0 ? (
+                                        projectData.fields.Documents.map(doc => (
+                                            <li key={doc.id} className="flex items-center justify-between bg-slate-50 hover:bg-slate-100 p-3 rounded-lg border border-slate-200 transition">
+                                                <div className="flex items-center gap-3">
+                                                    <DocumentIcon />
+                                                    <button onClick={() => setSelectedDocument(doc.url)} className="text-sm font-medium text-blue-600 hover:underline text-left">
+                                                        {doc.filename}
+                                                    </button>
+                                                </div>
+                                                <span className="text-xs text-slate-500">{formatBytes(doc.size)}</span>
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <p className="text-sm text-slate-500 text-center py-2">No documents attached.</p>
+                                    )}
+                                </ul>
                             </section>
 
                             {/* Activities Section */}

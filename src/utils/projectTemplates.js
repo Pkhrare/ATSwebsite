@@ -72,100 +72,11 @@ export const dummyProject = {
                     "src": "https://storage.googleapis.com/waivergroup_uploads/frontDesk.jpg",
                     "altText": "First document image",
                     "width": 600,
-                    "height": 400,
-                    "version": 1
-                  },
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "Welcome to the JSON/Rich Text Editor Playground!",
-                    "type": "text",
+                    "height": 700,
                     "version": 1
                   }
                 ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "This is a utility for consultants to experiment with rich text content and see the corresponding JSON output. You can:",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "• Edit rich text on the right and see JSON update immediately",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "• Paste JSON on the left and click 'Apply Changes' to see it rendered",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "• Copy content from either panel using the copy buttons",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -178,8 +89,157 @@ export const dummyProject = {
                 "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence1.png",
                 "altText": "Second document image",
                 "width": 600,
-                "height": 400,
+                "height": 800,
                 "version": 1
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 27px;",
+                    "text": "IMPORTANT:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 27px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Please input all information correctly.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "If your agency has not been formed yet, input the name you would want to call your business.",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "If Waiver Consulting Group (WCG) is to form and register your agency, please write \"Pending WCG) for responses that you don't have.",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "For all other information that does not apply, please enter N/A",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "children": [
@@ -212,12 +272,13 @@ export const dummyProject = {
                 "textStyle": ""
               }
             ],
-            "direction": null,
+            "direction": "ltr",
             "format": "",
             "indent": 0,
             "type": "root",
             "version": 1,
-            "textFormat": 1
+            "textFormat": 1,
+            "textStyle": "font-size: 27px;"
           }
         }),
         'assigned_to': 'Client',
@@ -12693,7 +12754,7 @@ export const dummyProject = {
         }),
         'assigned_to': 'Client',
         'order': 2,
-        'Action_type': 'Review Only'
+        'Action_type': 'Default'
       }
     },
     {
@@ -17468,12 +17529,12 @@ export const customizedPolicy = {
   taskGroups: [
     {
       id: 'template-group-1-customized',
-      name: 'ONBOARDING TASKS FOR LICENSE',
+      name: 'ONBOARDING TASKS FOR YOUR POLICY MANUAL PROJECT',
       order: 0,
     },
     {
       id: 'template-group-2-customized',
-      name: 'ONBOARDING TASK FOR PROVIDER ENROLLMENT',
+      name: 'OTHER SERVICES YOU MAY NEED',
       order: 1,
     }
   ],
@@ -17493,101 +17554,12 @@ export const customizedPolicy = {
                     "type": "image",
                     "src": "https://storage.googleapis.com/waivergroup_uploads/frontDesk.jpg",
                     "altText": "First document image",
-                    "width": 600,
+                    "width": 800,
                     "height": 400,
                     "version": 1
-                  },
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "Welcome to the JSON/Rich Text Editor Playground!",
-                    "type": "text",
-                    "version": 1
                   }
                 ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "This is a utility for consultants to experiment with rich text content and see the corresponding JSON output. You can:",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "• Edit rich text on the right and see JSON update immediately",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "• Paste JSON on the left and click 'Apply Changes' to see it rendered",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 1,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "• Copy content from either panel using the copy buttons",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -17600,8 +17572,157 @@ export const customizedPolicy = {
                 "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence1.png",
                 "altText": "Second document image",
                 "width": 600,
-                "height": 400,
+                "height": 800,
                 "version": 1
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 27px;",
+                    "text": "IMPORTANT:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 27px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Please input all information correctly.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "If your agency has not been formed yet, input the name you would want to call your business.",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "If Waiver Consulting Group (WCG) is to form and register your agency, please write \"Pending WCG) for responses that you don't have.",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "For all other information that does not apply, please enter N/A",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "children": [
@@ -17634,12 +17755,13 @@ export const customizedPolicy = {
                 "textStyle": ""
               }
             ],
-            "direction": null,
+            "direction": "ltr",
             "format": "",
             "indent": 0,
             "type": "root",
             "version": 1,
-            "textFormat": 1
+            "textFormat": 1,
+            "textStyle": "font-size: 27px;"
           }
         }),
         'assigned_to': 'Client',
@@ -18227,7 +18349,7 @@ export const customizedPolicy = {
       id: 'template-task-4-customized',
       groupId: 'template-group-1-customized', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #2: HAVE DOCUMENTS FOR US TO REVIEW?",
+        'task_title': "TASK #3: VIEW & SELECT POLICY TYPE",
         'task_status': 'Not Started',
         'description': JSON.stringify(
           {
@@ -18417,15 +18539,5093 @@ export const customizedPolicy = {
           }
         ),
         'assigned_to': 'Client',
-        'order': 2,
-        'attachments': [
-          {
-            attachment_description: 'Please attach documents'
-          }
+        'order': 3,
+        'checklistItems': [
+          { 'checklist_description': 'ASSISTED LIVING POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'SUPPORTED LIVING SERVICES POLICY MANUAL' },
+          { 'checklist_description': 'HEALTHCARE STAFFING AGENCY POLICY MANUAL' },
+          { 'checklist_description': 'LICENSED HOME CARE POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'GROUP HOME / RESIDENTIAL CARE POLICY MANUAL' },
+          { 'checklist_description': 'CERTIFFICATE OF NEED (CON) DOCUMENT REPORT' },
+          { 'checklist_description': 'TELEHEALTH PROGRAM POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'PARTIAL HOSPITALIZATION POLICY MANUAL' },
+          { 'checklist_description': 'OSHA COMPLIANCE POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'INTENSIVE OUTPATIENT PROGRAM MANUAL' },
+          { 'checklist_description': 'HOSPICE PROGRAM POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'INPATIENT BEHAVIORAL HEALTH POLICY MANUAL' },
+          { 'checklist_description': 'HOME INFUSION THERAPY POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'HOME HEALTH POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'HIPAA GUIDELINE POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'DURABLE & HOME MEDICAL EQUIPMENT POLICY MANUAL' },
+          { 'checklist_description': 'BEHAVIORAL HEALTH PROGRAM POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'RESPITE CARE SERVICES POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'DAY HABILITATION SERVICES POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'HOMEMAKER SERVICE POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'RESIDENTIAL HABILITATION SERVICE POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'ADULT DAY HEALTH SERVICES POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'SUPPORTED EMPLOYMENT POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'MEAL & NUTRITION SERVICE POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'HOME MODIFICATION SERVICES POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'ADAPTIVE EQUIPMENT POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'PERSONAL ASSISTANCE SERVICES POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'ASSISTIVE TECHNOLOGY SERVICES POLICY & PROCEDURE MANUAL' },
+          { 'checklist_description': 'OTHER POLICY & PROCEDURE TYPE (DESCRIBE IN COMMENT BELOW)' }
         ],
-        'Action_type': 'Attach Files'
+        'Action_type': 'Complete Checklist'
       }
     },
+    {
+      id: 'template-task-5-customized',
+      groupId: 'template-group-1-customized', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #4: VIEW & PAY INVOICE",
+        'task_status': 'Not Started',
+        'description': JSON.stringify(
+          {
+            "root": {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "WAIVER CONSULTING GROUP",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "1515 MARKET STREET",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "SUITE: 1200",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "PHILADELPHIA, PA 19102",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 1,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "www.waivergroup.com",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 1,
+                      "rel": null,
+                      "target": "_blank",
+                      "title": null,
+                      "url": "http://www.waivergroup.com/"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " - ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 1,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "bills@waivergroup.com",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 1,
+                      "rel": null,
+                      "target": "_blank",
+                      "title": null,
+                      "url": "mailto:bills@waivergroup.com"
+                    },
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " ",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Phone: 1-302.888.9172 – Fax: 610-628-0283",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "type": "youtube",
+                      "src": "https://www.youtube.com/embed/HJybgoIfTdo",
+                      "version": 1
+                    },
+                    {
+                      "type": "image",
+                      "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence5.png",
+                      "altText": "image.png",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [],
+                  "direction": null,
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "PRODUCT",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "DESCRIPTION",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "INCLUDED",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "TOTAL",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Start Up Assistance",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Comprehensive Assistance with New Program Set Up",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "YES/NO",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "$Amount",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Provider Enrollment & Credentialing",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "YES/NO",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "$Amount",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Staff Training",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Training & Professional Development Service for Medicaid Waiver Providers",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "YES/NO",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "$Amount",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Market & Branding",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Marketing & Branding Service for Medicaid Waiver Providers",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "YES/NO",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "$Amount",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Customized Policy & Procedure Manual (Standalone Service)",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits.",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "YES",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "$4,200",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": null,
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Compliance Advisory",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape.",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "YES/NO",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "$Amount",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Program Development",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Expanding and optimizing an existing program / service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment.",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "YES/NO",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 1,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "$Amount",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "start",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 1,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "textFormat": 1,
+                          "backgroundColor": null,
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1,
+                      "textFormat": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "",
+                  "indent": 0,
+                  "type": "table",
+                  "version": 1,
+                  "textFormat": 1,
+                  "colWidths": [
+                    156,
+                    156,
+                    156,
+                    156
+                  ]
+                },
+                {
+                  "children": [],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Subtotal",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "right",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": "rgb(255, 255, 255)",
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "4200 ",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": null,
+                              "format": "right",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": "rgb(255, 255, 255)",
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Sales Tax",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "right",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": "rgb(255, 255, 255)",
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "0",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": null,
+                              "format": "right",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": "rgb(255, 255, 255)",
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "Total",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": "ltr",
+                              "format": "right",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": "ltr",
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": "rgb(255, 255, 255)",
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "detail": 0,
+                                  "format": 0,
+                                  "mode": "normal",
+                                  "style": "",
+                                  "text": "4200 ",
+                                  "type": "text",
+                                  "version": 1
+                                }
+                              ],
+                              "direction": null,
+                              "format": "right",
+                              "indent": 0,
+                              "type": "paragraph",
+                              "version": 1,
+                              "textFormat": 0,
+                              "textStyle": ""
+                            }
+                          ],
+                          "direction": null,
+                          "format": "",
+                          "indent": 0,
+                          "type": "tablecell",
+                          "version": 1,
+                          "backgroundColor": "rgb(255, 255, 255)",
+                          "colSpan": 1,
+                          "headerState": 0,
+                          "rowSpan": 1,
+                          "width": 75
+                        }
+                      ],
+                      "direction": null,
+                      "format": "",
+                      "indent": 0,
+                      "type": "tablerow",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "table",
+                  "version": 1,
+                  "colWidths": [
+                    108,
+                    208
+                  ]
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "children": [
+                        {
+                          "detail": 0,
+                          "format": 1,
+                          "mode": "normal",
+                          "style": "",
+                          "text": "VIEW & PAY INVOICE HERE",
+                          "type": "text",
+                          "version": 1
+                        }
+                      ],
+                      "direction": "ltr",
+                      "format": "",
+                      "indent": 0,
+                      "type": "link",
+                      "version": 1,
+                      "rel": "noopener noreferrer",
+                      "target": "_blank",
+                      "title": null,
+                      "url": "https://pay.waivergroup.com/b/5kQ6oJ1Vj4SPg5i1vTfYY01"
+                    }
+                  ],
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [],
+                  "direction": null,
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 1,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "MAKE PAYMENT",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " ",
+                      "type": "text",
+                      "version": 1
+                    },
+                    {
+                      "detail": 0,
+                      "format": 2,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "(You can only make payment after completing the Onboarding)",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [],
+                  "direction": null,
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Make all checks payable to Waiver Consulting Group, LLC",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [],
+                  "direction": null,
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [],
+                  "direction": null,
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "This invoice does not include third party payments like registration fees or cost of permits/licenses that are paid to the state or accrediting bodies. ",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": " ",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": null,
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [
+                    {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "Thank you for your business!",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                },
+                {
+                  "children": [],
+                  "direction": "ltr",
+                  "format": "left",
+                  "indent": 0,
+                  "type": "paragraph",
+                  "version": 1,
+                  "textFormat": 0,
+                  "textStyle": ""
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "root",
+              "version": 1,
+              "textFormat": 1
+            }
+          }
+        ),
+        'assigned_to': 'Client',
+        'order': 4,
+        'Action_type': 'Default'
+      }
+    },
+    {
+      id: 'template-task-6-customized',
+      groupId: 'template-group-1-customized', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #5: SIGN SERVICE AGREEMENT",
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/contract.jpg",
+                    "altText": "image.png",
+                    "version": 1
+                  },
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence6.png",
+                    "altText": "image.png",
+                    "version": 1
+                  },
+                  {
+                    "type": "youtube",
+                    "src": "https://www.youtube.com/embed/aYR4f5YbHis",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WAIVER CONSULTING GROUP CLIENT SERVICE AGREEMENT/CONTRACT",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " is entered into as of the date it is electronically signed by the Client via the Client Portal. The Client shall be identified as indicated in the title of the project or as registered or entered in the Onboarding Tasks, and it is entered between Waiver Consulting Group and the Client or a representative of the Client.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "1. SCOPE OF SERVICES",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG agrees to provide the following HIGHLIGHTED services to Client as outlined in the selected service package:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "[ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "[ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "[ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "[ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "[ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 5
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "[ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 6
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "[ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 7
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Any modifications to the services outlined herein must be agreed upon in writing and may result in additional fees.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "2. CLIENT RESPONSIBILITIES",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "The Client agrees to:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Provide accurate and complete information necessary for WCG to perform the services.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Submit all requested documentation and information by the deadlines established by WCG.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Make all payments according to the schedule outlined in this Agreement.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Refrain from sharing WCG’s proprietary materials, methods, or processes with any third party.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Failure to meet these responsibilities may result in delays, additional fees, or suspension of services.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "3. PAYMENT TERMS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Client agrees to pay WCG the total fee outlined in the signed reviewed and confirmed for the selected service package. The payment schedule is as follows:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "If a Full Payment Option is selected, you get a 10% discount on the full total of the selected service",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "If a Payment Plan is selected:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Initial deposit of 60% due at the time of signing this Agreement.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Second installment of 20% due 30 days after the initial deposit.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Final installment of 20% due 30 days after the second installment.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Payment Requirements:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "All payments are non-refundable, unless in the case of project failure or rejection by the state.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "If a Payment Plan is chosen, payments not received within 7 days of the due date will result in a late fee of 3.5% of the outstanding amount.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Failure to pay within 15 days of the due date of a payment on a Payment Plan may result in suspension of services and termination of Client’s portal access.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "4. PROPRIETARY MATERIALS AND CONFIDENTIALITY",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "All materials provided by WCG, including but not limited to templates, processes, methodologies, and completed applications, are proprietary and protected under intellectual property laws. Client agrees:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "To use such materials solely for the purposes outlined in this Agreement.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Not to share, reproduce, or distribute WCG’s materials without prior written consent.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "5. TIMELINES AND DEADLINES",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG will adhere to the following service timelines, provided that the Client submits all required documentation promptly:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "10 business days for application completion and submission upon receipt of all necessary information.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "5 business days for development of policy and procedure manuals.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Delays caused by Client’s failure to submit documentation or respond to requests will extend these timelines proportionally.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "6. COMMUNICATION AND APPROVAL",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "The Client acknowledges:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Applications and deliverables will be completed based on the information provided by the Client.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Client must sign application documents where applicable and other drafts (where applicable) within 3 business days. WCG may use its professional and technical expertise to determine if it can submit application without the client signature. Additionally, if the application is submitted to the client for review, failure to respond will result in WCG proceeding based on the last communicated preferences.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "WCG reserves the right to submit applications within the required regulatory deadlines unless otherwise agreed in writing.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "7. TERMINATION",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement may only be terminated as follows:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "By WCG",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": ": For failure by Client to fulfill obligations, including timely payment or submission of necessary information.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "By Client",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": ": Upon written notice and mutual agreement. In such cases, no refunds will be issued, and all outstanding fees become immediately due.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "8. LIMITATION OF LIABILITY",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG shall not be liable for:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Delays caused by Client’s failure to meet deadlines or provide accurate information.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Regulatory decisions or actions beyond WCG’s control.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Consequential, incidental, or indirect damages.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG’s total liability is limited to the fees paid by Client under this Agreement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "9. GOVERNING LAW AND DISPUTE RESOLUTION",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement shall be governed by the laws of the State of Pennsylvania, Philadelphia County. The Parties agree to resolve disputes through mediation before pursuing legal action. If mediation fails, the prevailing party in any litigation shall be entitled to reasonable attorney’s fees and costs.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "10. ENTIRE AGREEMENT",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement constitutes the entire understanding between the Parties and supersedes all prior agreements or understandings, whether written or oral. Any amendments must be made in writing and signed by both Parties.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "ADDITIONAL TERMS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "I, attest that the information I have provided to Waiver Consulting Group to complete my application on this Client Portal is accurate and acknowledge that it will be entered into my application documents exactly as written. I am aware that once I have submitted all necessary documents to The Waiver Consulting Group it will take 3-5 business days for my application to be completed. I further recognize that any changes made to this information, which require an application to be amended, are also subject to a 3 – 5 business days timeline for completion. I have read the statement above and by signing below, I accept the terms as written. By signing, I acknowledge the electronic signature as a full acceptance of the terms above.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "I, attest that the information I have provided to Waiver Consulting Group to complete my application on this Client Portal is accurate and acknowledge that it will be entered into my policies and procedures exactly as written. I am aware that once I have submitted all necessary information to The Waiver Consulting Group, it will take approximately up to 7 business days for my policies and procedures to be completed. I further recognize that any changes made to this information (name change, demographics change, logo change), which require policies to be amended, are subject to additional fees for which I will be solely responsible for. I have read the statement above and by signing below, I accept the terms as written. By signing, I acknowledge the electronic signature as a full acceptance of the terms above.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "If all of the above is agreeable to you, please indicate by signing below.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "I have read the conditions set forth in this Letter of Agreement and accept them as written, as evidenced by my signature below, which jointly binds the Agency, its owners, and its Board members to the terms of this agreement, and by doing so the initiation of services described in this Agreement letter is authorized. If for any reason I decide not to continue with this contract, all money paid on account will be held until I decide to move forward again. All sales are final. No refunds will be issued. I understand that any materials supplied are confidential and copyrighted. I agree not to allow any other agency or individual access to these documents. I also understand that fees paid to third parties are my responsibility. This Agreement is not cancellable without the consent of both parties and any unilateral cancellation or repudiation of this Agreement or failure by the Agency to pay any sums under this Agreement as they become due will result in the full payment amount of the Agreement becoming immediately due and payable. This agreement is governed under the laws of the State of Pennsylvania, Philadelphia County and the parties hereby consent to the venue and jurisdiction of an appropriate court located in Philadelphia County, Pennsylvania, and any failure to make a scheduled payment as defined above may result in a default judgment being brought for the full amount of the Agreement. Each of the parties hereto irrevocably waives any and all rights to trial by jury in any legal proceedings arising out of or relating to this agreement or transactions completed hereby. The prevailing party shall have the right to collect from the other party its reasonable costs and necessary disbursements and attorneys' fees incurred in enforcing this Agreement. Agency’s signature of authority.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "SIGNATURES/APPROVALS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "By approving or signing electronically, the Parties acknowledge that they have read and understood the terms of this Agreement and agree to be bound by them. The electronic signatures provided through the Client Portal shall serve as legally binding acceptance of this Agreement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1
+          }
+        }),
+        'assigned_to': 'Client',
+        "approvals": [{
+          fields: {
+            approval_description: 'Please sign the the service agreement'
+          }
+        }],
+        'order': 2,
+        'Action_type': 'Require Approval'
+      }
+    },
+    // {
+    //   id: 'template-task-7-customized',
+    //   groupId: 'template-group-2-customized', // Belongs to "Phase 1"
+    //   fields: {
+    //     'task_title': "BROWSE & SELECT ADDITIONAL SERVICES IF NEEDED",
+    //     'task_status': 'Not Started',
+    //     'description': JSON.stringify({
+    //       "root": {
+    //         "children": [
+    //           {
+    //             "children": [
+    //               {
+    //                 "type": "image",
+    //                 "src": "https://storage.googleapis.com/waivergroup_uploads/contract.jpg",
+    //                 "altText": "image.png",
+    //                 "version": 1
+    //               },
+    //               {
+    //                 "type": "image",
+    //                 "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence6.png",
+    //                 "altText": "image.png",
+    //                 "version": 1
+    //               },
+    //               {
+    //                 "type": "youtube",
+    //                 "src": "https://www.youtube.com/embed/aYR4f5YbHis",
+    //                 "version": 1
+    //               },
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "WAIVER CONSULTING GROUP CLIENT SERVICE AGREEMENT/CONTRACT",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 1,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "This Agreement",
+    //                 "type": "text",
+    //                 "version": 1
+    //               },
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": " is entered into as of the date it is electronically signed by the Client via the Client Portal. The Client shall be identified as indicated in the title of the project or as registered or entered in the Onboarding Tasks, and it is entered between Waiver Consulting Group and the Client or a representative of the Client.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 1,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "1. SCOPE OF SERVICES",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "WCG agrees to provide the following HIGHLIGHTED services to Client as outlined in the selected service package:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "[ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "[ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "[ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 3
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "[ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 4
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "[ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 5
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "[ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 6
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "[ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 7
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "Any modifications to the services outlined herein must be agreed upon in writing and may result in additional fees.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "2. CLIENT RESPONSIBILITIES",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "The Client agrees to:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Provide accurate and complete information necessary for WCG to perform the services.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Submit all requested documentation and information by the deadlines established by WCG.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Make all payments according to the schedule outlined in this Agreement.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 3
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Refrain from sharing WCG’s proprietary materials, methods, or processes with any third party.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 4
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "Failure to meet these responsibilities may result in delays, additional fees, or suspension of services.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "3. PAYMENT TERMS",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "Client agrees to pay WCG the total fee outlined in the signed reviewed and confirmed for the selected service package. The payment schedule is as follows:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "If a Full Payment Option is selected, you get a 10% discount on the full total of the selected service",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "If a Payment Plan is selected:",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "number",
+    //             "start": 1,
+    //             "tag": "ol"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Initial deposit of 60% due at the time of signing this Agreement.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Second installment of 20% due 30 days after the initial deposit.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Final installment of 20% due 30 days after the second installment.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 3
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "Payment Requirements:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 1,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "All payments are non-refundable, unless in the case of project failure or rejection by the state.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "If a Payment Plan is chosen, payments not received within 7 days of the due date will result in a late fee of 3.5% of the outstanding amount.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Failure to pay within 15 days of the due date of a payment on a Payment Plan may result in suspension of services and termination of Client’s portal access.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 3
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "4. PROPRIETARY MATERIALS AND CONFIDENTIALITY",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "All materials provided by WCG, including but not limited to templates, processes, methodologies, and completed applications, are proprietary and protected under intellectual property laws. Client agrees:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "To use such materials solely for the purposes outlined in this Agreement.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Not to share, reproduce, or distribute WCG’s materials without prior written consent.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "5. TIMELINES AND DEADLINES",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "WCG will adhere to the following service timelines, provided that the Client submits all required documentation promptly:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "10 business days for application completion and submission upon receipt of all necessary information.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "5 business days for development of policy and procedure manuals.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "Delays caused by Client’s failure to submit documentation or respond to requests will extend these timelines proportionally.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "6. COMMUNICATION AND APPROVAL",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "The Client acknowledges:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Applications and deliverables will be completed based on the information provided by the Client.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Client must sign application documents where applicable and other drafts (where applicable) within 3 business days. WCG may use its professional and technical expertise to determine if it can submit application without the client signature. Additionally, if the application is submitted to the client for review, failure to respond will result in WCG proceeding based on the last communicated preferences.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "WCG reserves the right to submit applications within the required regulatory deadlines unless otherwise agreed in writing.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 3
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "7. TERMINATION",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "This Agreement may only be terminated as follows:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 1,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "By WCG",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   },
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": ": For failure by Client to fulfill obligations, including timely payment or submission of necessary information.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "textFormat": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 1,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "By Client",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   },
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": ": Upon written notice and mutual agreement. In such cases, no refunds will be issued, and all outstanding fees become immediately due.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "textFormat": 1,
+    //                 "value": 2
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "number",
+    //             "start": 1,
+    //             "tag": "ol"
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "8. LIMITATION OF LIABILITY",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "WCG shall not be liable for:",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Delays caused by Client’s failure to meet deadlines or provide accurate information.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 1
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Regulatory decisions or actions beyond WCG’s control.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 2
+    //               },
+    //               {
+    //                 "children": [
+    //                   {
+    //                     "detail": 0,
+    //                     "format": 0,
+    //                     "mode": "normal",
+    //                     "style": "",
+    //                     "text": "Consequential, incidental, or indirect damages.",
+    //                     "type": "text",
+    //                     "version": 1
+    //                   }
+    //                 ],
+    //                 "direction": "ltr",
+    //                 "format": "left",
+    //                 "indent": 0,
+    //                 "type": "listitem",
+    //                 "version": 1,
+    //                 "value": 3
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "list",
+    //             "version": 1,
+    //             "listType": "bullet",
+    //             "start": 1,
+    //             "tag": "ul"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "WCG’s total liability is limited to the fees paid by Client under this Agreement.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "9. GOVERNING LAW AND DISPUTE RESOLUTION",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "This Agreement shall be governed by the laws of the State of Pennsylvania, Philadelphia County. The Parties agree to resolve disputes through mediation before pursuing legal action. If mediation fails, the prevailing party in any litigation shall be entitled to reasonable attorney’s fees and costs.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "10. ENTIRE AGREEMENT",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "This Agreement constitutes the entire understanding between the Parties and supersedes all prior agreements or understandings, whether written or oral. Any amendments must be made in writing and signed by both Parties.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "ADDITIONAL TERMS",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "I, attest that the information I have provided to Waiver Consulting Group to complete my application on this Client Portal is accurate and acknowledge that it will be entered into my application documents exactly as written. I am aware that once I have submitted all necessary documents to The Waiver Consulting Group it will take 3-5 business days for my application to be completed. I further recognize that any changes made to this information, which require an application to be amended, are also subject to a 3 – 5 business days timeline for completion. I have read the statement above and by signing below, I accept the terms as written. By signing, I acknowledge the electronic signature as a full acceptance of the terms above.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "I, attest that the information I have provided to Waiver Consulting Group to complete my application on this Client Portal is accurate and acknowledge that it will be entered into my policies and procedures exactly as written. I am aware that once I have submitted all necessary information to The Waiver Consulting Group, it will take approximately up to 7 business days for my policies and procedures to be completed. I further recognize that any changes made to this information (name change, demographics change, logo change), which require policies to be amended, are subject to additional fees for which I will be solely responsible for. I have read the statement above and by signing below, I accept the terms as written. By signing, I acknowledge the electronic signature as a full acceptance of the terms above.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "If all of the above is agreeable to you, please indicate by signing below.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "I have read the conditions set forth in this Letter of Agreement and accept them as written, as evidenced by my signature below, which jointly binds the Agency, its owners, and its Board members to the terms of this agreement, and by doing so the initiation of services described in this Agreement letter is authorized. If for any reason I decide not to continue with this contract, all money paid on account will be held until I decide to move forward again. All sales are final. No refunds will be issued. I understand that any materials supplied are confidential and copyrighted. I agree not to allow any other agency or individual access to these documents. I also understand that fees paid to third parties are my responsibility. This Agreement is not cancellable without the consent of both parties and any unilateral cancellation or repudiation of this Agreement or failure by the Agency to pay any sums under this Agreement as they become due will result in the full payment amount of the Agreement becoming immediately due and payable. This agreement is governed under the laws of the State of Pennsylvania, Philadelphia County and the parties hereby consent to the venue and jurisdiction of an appropriate court located in Philadelphia County, Pennsylvania, and any failure to make a scheduled payment as defined above may result in a default judgment being brought for the full amount of the Agreement. Each of the parties hereto irrevocably waives any and all rights to trial by jury in any legal proceedings arising out of or relating to this agreement or transactions completed hereby. The prevailing party shall have the right to collect from the other party its reasonable costs and necessary disbursements and attorneys' fees incurred in enforcing this Agreement. Agency’s signature of authority.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [],
+    //             "direction": null,
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 1,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "SIGNATURES/APPROVALS",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "",
+    //             "indent": 0,
+    //             "type": "heading",
+    //             "version": 1,
+    //             "tag": "h3"
+    //           },
+    //           {
+    //             "children": [
+    //               {
+    //                 "detail": 0,
+    //                 "format": 0,
+    //                 "mode": "normal",
+    //                 "style": "",
+    //                 "text": "By approving or signing electronically, the Parties acknowledge that they have read and understood the terms of this Agreement and agree to be bound by them. The electronic signatures provided through the Client Portal shall serve as legally binding acceptance of this Agreement.",
+    //                 "type": "text",
+    //                 "version": 1
+    //               }
+    //             ],
+    //             "direction": "ltr",
+    //             "format": "left",
+    //             "indent": 0,
+    //             "type": "paragraph",
+    //             "version": 1,
+    //             "textFormat": 0,
+    //             "textStyle": ""
+    //           }
+    //         ],
+    //         "direction": "ltr",
+    //         "format": "",
+    //         "indent": 0,
+    //         "type": "root",
+    //         "version": 1
+    //       }
+    //     }),
+    //     'assigned_to': 'Client',
+    //     'order': 0,
+    //     'Action_type': 'Default'
+    //   }
+    // }
+
 
   ]
 

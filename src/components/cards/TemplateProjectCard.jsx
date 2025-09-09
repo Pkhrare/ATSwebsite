@@ -166,7 +166,7 @@ export default function TemplateProjectCard({ template, onClose }) {
         setErrors({});
 
         // Step 1: Validate required fields before doing anything else.
-        const validationErrors = validateRow(projectData, true);
+        const validationErrors = validateRow(projectData);
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             setIsEditingDetails(true); // Open the details section to show the errors
