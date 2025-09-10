@@ -1156,7 +1156,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 <div ref={chatContainerRef} className="h-48 overflow-y-auto custom-scrollbar border rounded-md p-2 space-y-2 mb-2 bg-gray-50">
                                     {messages.map((msg) => (
                                         <div key={msg.id} className={`flex ${msg.fields.sender === 'Consultant' ? 'justify-end' : 'justify-start'}`}>
-                                            <div className={`p-2 rounded-lg max-w-xs ${msg.fields.sender === 'Consultant' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-white'}`}>
+                                            <div className={`p-2 rounded-lg max-w-xs ${msg.fields.sender === 'Consultant' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}>
                                                 <p className="text-xs font-bold">{msg.fields.sender}</p>
                                                 <p className="text-sm">{msg.fields.message_text}</p>
                                                 <p className="text-xs text-right opacity-75">{new Date(msg.createdTime).toLocaleTimeString()}</p>

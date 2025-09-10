@@ -14,6 +14,7 @@ import InfoSidebar from '../layout/InfoSidebar';
 import { loadContent } from '../../utils/contentUtils';
 import { InfoPageProvider } from '../../utils/InfoPageContext';
 import { colorClasses } from '../../utils/colorUtils';
+import io from 'socket.io-client';
 
 
 // Helper function to fetch from the backend API
@@ -104,12 +105,27 @@ export default function ClientCard() {
     const [isLoadingActivities, setIsLoadingActivities] = useState(true);
     const notesEditorRef = useRef(null);
     const [notesContent, setNotesContent] = useState(null);
+    const [projectMessages, setProjectMessages] = useState([]);
+    const [newProjectMessage, setNewProjectMessage] = useState('');
+    const projectSocketRef = useRef(null);
+    const projectChatContainerRef = useRef(null);
 
     // Task-related states
     const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
     const [isLoadingTasks, setIsLoadingTasks] = useState(true);
     const [selectedTask, setSelectedTask] = useState(null);
     const [isTaskCardVisible, setIsTaskCardVisible] = useState(false);
+
+    const fetchProjectMessages = useCallback(async () => {
+        if (!projectData?.fields['Project ID']) return;
+        try {
+            const { records } = await ApiCaller(`/messages/${projectData.fields['Project ID']}/project_messages`);
+            const sortedMessages = records.sort((a, b) => new Date(a.createdTime) - new Date(b.createdTime));
+            setProjectMessages(sortedMessages);
+        } catch (err) {
+            console.error('Failed to load project chat history:', err);
+        }
+    }, [projectData?.fields['Project ID']]);
 
     useEffect(() => {
         const fetchProject = async () => {
@@ -258,8 +274,55 @@ export default function ClientCard() {
             fetchTasksForProject();
             fetchActions();
             fetchAndProcessActivities();
+            fetchProjectMessages();
         }
-    }, [projectData, fetchTasksForProject, fetchActions, fetchAndProcessActivities]);
+    }, [projectData, fetchTasksForProject, fetchActions, fetchAndProcessActivities, fetchProjectMessages]);
+
+    useEffect(() => {
+        // Project-level Socket.IO connection
+        projectSocketRef.current = io("https://ats-backend-805977745256.us-central1.run.app");
+
+        projectSocketRef.current.on('connect', () => {
+            console.log('Connected to project socket server');
+            if (projectData?.id) {
+                projectSocketRef.current.emit('joinProjectRoom', projectData.id);
+            }
+        });
+
+        projectSocketRef.current.on('receiveProjectMessage', (message) => {
+            setProjectMessages(prevMessages => [...prevMessages, message]);
+        });
+
+        projectSocketRef.current.on('sendProjectMessageError', (error) => {
+            console.error("Error sending project message:", error);
+        });
+
+        return () => {
+            if (projectData?.id) {
+                projectSocketRef.current.emit('leaveProjectRoom', projectData.id);
+            }
+            projectSocketRef.current.disconnect();
+        };
+    }, [projectData?.id]);
+
+    useEffect(() => {
+        // Auto-scroll for project chat
+        if (projectChatContainerRef.current) {
+            projectChatContainerRef.current.scrollTop = projectChatContainerRef.current.scrollHeight;
+        }
+    }, [projectMessages]);
+
+    const handleSendProjectMessage = () => {
+        if (newProjectMessage.trim() && projectSocketRef.current) {
+            const senderName = projectData.fields['Project Name']; // Client's name is the Project Name
+            projectSocketRef.current.emit('sendProjectMessage', {
+                projectId: projectData.id,
+                message: newProjectMessage,
+                sender: senderName,
+            });
+            setNewProjectMessage('');
+        }
+    };
 
 
     // handleFileUpload removed - clients can't upload project documents
@@ -570,6 +633,33 @@ export default function ClientCard() {
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Est. Completion:</span><span className="font-semibold text-slate-800">{projectData.fields['Estimated Completion']}</span></div>
+                                </div>
+                            </section>
+
+                            {/* General Discussion Section */}
+                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <h2 className="text-lg font-semibold text-slate-700 mb-3">💬 General Discussion</h2>
+                                <div ref={projectChatContainerRef} className="h-48 overflow-y-auto custom-scrollbar border rounded-md p-2 space-y-2 mb-2 bg-slate-50">
+                                    {projectMessages.map((msg) => (
+                                        <div key={msg.id} className={`flex ${msg.fields.sender === 'Consultant' ? 'justify-end' : 'justify-start'}`}>
+                                            <div className={`p-2 rounded-lg max-w-xs ${msg.fields.sender === 'Consultant' ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-800'}`}>
+                                                <p className="text-xs font-bold">{msg.fields.sender}</p>
+                                                <p className="text-sm">{msg.fields.message_text}</p>
+                                                <p className="text-xs text-right opacity-75 mt-1">{new Date(msg.createdTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="flex">
+                                    <input 
+                                        type="text" 
+                                        value={newProjectMessage} 
+                                        onChange={(e) => setNewProjectMessage(e.target.value)} 
+                                        onKeyPress={(e) => e.key === 'Enter' && handleSendProjectMessage()} 
+                                        className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" 
+                                        placeholder="Type a message..." 
+                                    />
+                                    <button onClick={handleSendProjectMessage} type="button" className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">Send</button>
                                 </div>
                             </section>
 
