@@ -666,6 +666,20 @@ export default function TemplateProjectCard({ template, onClose }) {
                                 
                                 {/* --- ADDED FIELDS FOR PROJECT CREATION --- */}
                                 <div>
+                                    <span className="font-medium text-slate-500">Project Manager*:</span>
+                                    {isEditingDetails ? (
+                                        <>
+                                            <select value={projectData['Project Manager'] || ''} onChange={(e) => handleDetailChange('Project Manager', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                                <option value="">-- Select --</option>
+                                                {dropdownFields['Project Manager'].map(c => <option key={c} value={c}>{c}</option>)}
+                                            </select>
+                                            {errors['Project Manager'] && <p className="text-red-500 text-xs mt-1">{errors['Project Manager']}</p>}
+                                        </>
+                                    ) : (
+                                        <span className="text-slate-800 ml-2">{projectData['Project Manager'] || 'Not Set'}</span>
+                                    )}
+                                </div>
+                                <div>
                                     <span className="font-medium text-slate-500">Start Date*:</span>
                                     {isEditingDetails ? (
                                         <>

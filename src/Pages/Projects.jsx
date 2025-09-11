@@ -61,30 +61,55 @@ function Projects() {
   const columnHeaders = React.useMemo(() => {
     const set = new Set();
     data.forEach(r => Object.keys(r.fields).forEach(k => set.add(k)));
-    const columns = Array.from(set);
+    const allColumns = Array.from(set);
 
     // Remove unwanted columns
-    const filteredColumns = columns.filter(column =>
-      column !== 'Pending Action (Client, Consulting or State)' &&
-      column !== 'Notes' &&
-      column !== 'Estimated Completion' &&
-      column !== 'Actions' &&
-      column !== 'Documents' &&
-      column !== 'ServiceMilestones' &&
-      column !== 'Tasks' &&
-      column !== 'collaborator_name' &&
-      column !== "collaborators" &&
-      column !== "task_groups" &&
-      column !== "projectGeneralChat"
-    );
+    const unwantedColumns = new Set([
+      'Pending Action (Client, Consulting or State)',
+      'Notes',
+      'Estimated Completion',
+      'Actions',
+      'Documents',
+      'ServiceMilestones',
+      'Tasks',
+      'collaborator_name',
+      'collaborators',
+      'task_groups',
+      'projectGeneralChat'
+    ]);
+    const filteredColumns = allColumns.filter(column => !unwantedColumns.has(column));
 
-    // Reorder columns to have 'Full Cost', 'Paid', 'Balance' next to each other
-    const reorderedColumns = [
-      ...filteredColumns.filter(column => column !== 'Full Cost' && column !== 'Paid' && column !== 'Balance'),
-      'Full Cost',
-      'Paid',
-      'Balance'
+    // Define the desired order of columns
+    const preferredOrder = [
+        'Project ID',
+        'Project Name',
+        'Client Email',
+        'Start Date',
+        'States',
+        'Project Type',
+        'Assigned Consultant',
+        'Supervising Consultant',
+        'Project Manager',
+        'Status',
+        'Submitted (Y/N)',
+        'IRS Identifier (ID/EIN)',
+        'Last Updated',
+        'Full Cost',
+        'Paid',
+        'Balance',
     ];
+
+    // Create a set of preferred columns for quick lookup
+    const preferredOrderSet = new Set(preferredOrder);
+
+    // Get columns that are in the preferred order list, in that order
+    const orderedPart = preferredOrder.filter(column => filteredColumns.includes(column));
+
+    // Get the rest of the columns that are not in the preferred order list
+    const remainingPart = filteredColumns.filter(column => !preferredOrderSet.has(column));
+
+    // Combine them
+    const reorderedColumns = [...orderedPart, ...remainingPart];
 
     return reorderedColumns;
   }, [data]);

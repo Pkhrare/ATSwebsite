@@ -125,6 +125,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [editedDetails, setEditedDetails] = useState({});
     const [isAddCollaboratorVisible, setIsAddCollaboratorVisible] = useState(false);
     const [isEditingStatus, setIsEditingStatus] = useState(false);
+    const [isEditingKeyDates, setIsEditingKeyDates] = useState(false);
     const [isContentLoading, setIsContentLoading] = useState(true);
     const [editingGroupId, setEditingGroupId] = useState(null);
     const [editingGroupName, setEditingGroupName] = useState('');
@@ -1158,6 +1159,17 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         <span className={`${colorClasses.text.primary} ml-2`}>{projectData.fields['Assigned Consultant']}</span>
                                     )}
                                 </div>
+                                {/* Project Manager */}
+                                <div>
+                                    <span className={`font-medium ${colorClasses.form.label}`}>Project Manager:</span>
+                                    {isEditingDetails ? (
+                                        <select value={editedDetails['Project Manager'] || ''} onChange={(e) => handleDetailChange('Project Manager', e.target.value)} className={`w-full mt-1 p-2 ${colorClasses.form.input} rounded-md`}>
+                                            {dropdownFields['Project Manager'].map(c => <option key={c} value={c}>{c}</option>)}
+                                        </select>
+                                    ) : (
+                                        <span className={`${colorClasses.text.primary} ml-2`}>{projectData.fields['Project Manager']}</span>
+                                    )}
+                                </div>
                                 {/* State */}
                                 <div>
                                     <span className={`font-medium ${colorClasses.form.label}`}>State:</span>
@@ -1649,12 +1661,59 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
                         {/* Key Dates Section */}
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm text-sm`}>
-                            <h2 className={`text-lg font-semibold ${colorClasses.card.header} mb-4 text-center`}>Key Dates</h2>
-                            <div className="space-y-3">
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{projectData.fields['Last Updated'] ? format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a') : 'N/A'}</span></div>
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
-                                <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Est. Completion:</span><span className="font-semibold text-slate-800">{projectData.fields['Estimated Completion']}</span></div>
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Key Dates</h2>
+                                {userRole === 'consultant' && !isEditingDetails && !isEditingKeyDates && (
+                                    <button onClick={() => { setEditedDetails(projectData.fields); setIsEditingKeyDates(true); }} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
+                                        <EditIcon />
+                                    </button>
+                                )}
                             </div>
+                            {isEditingKeyDates ? (
+                                <div className="space-y-4">
+                                    <div className="space-y-3">
+                                        <div className="grid grid-cols-2 items-center">
+                                            <span className="font-medium text-slate-500">Last Updated:</span>
+                                            <span className="font-semibold text-slate-800 justify-self-end">{projectData.fields['Last Updated'] ? format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a') : 'N/A'}</span>
+                                        </div>
+                                        <div className="grid grid-cols-2 items-center">
+                                            <label htmlFor="submissionDate" className="font-medium text-slate-500">Submission Date:</label>
+                                            <DatePicker
+                                                id="submissionDate"
+                                                selected={safeNewDate(editedDetails['Date of Submission'])}
+                                                onChange={(date) => handleDetailChange('Date of Submission', date ? format(date, 'yyyy-MM-dd') : '')}
+                                                dateFormat="yyyy-MM-dd"
+                                                className="w-full p-1 border border-slate-300 rounded-md text-sm text-black"
+                                                placeholderText="Pick a date"
+                                            />
+                                        </div>
+                                        <div className="grid grid-cols-2 items-center">
+                                            <label htmlFor="estCompletion" className="font-medium text-slate-500">Est. Completion:</label>
+                                            <input
+                                                id="estCompletion"
+                                                type="text"
+                                                value={editedDetails['Estimated Completion'] || ''}
+                                                onChange={(e) => handleDetailChange('Estimated Completion', e.target.value)}
+                                                className="w-full p-1 border border-slate-300 rounded-md text-sm text-black"
+                                                placeholder="e.g., Q4 2025"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-end gap-2 pt-2">
+                                        <button onClick={() => { setIsEditingKeyDates(false); setEditedDetails(projectData.fields); }} className={`text-sm ${colorClasses.button.accent} px-4 py-2 rounded-md`}>Cancel</button>
+                                        <button onClick={() => { handleSaveDetails(); setIsEditingKeyDates(false); }} className={`text-sm ${colorClasses.button.success} px-4 py-2 rounded-md`}>Save</button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="grid grid-cols-2 items-center gap-y-3">
+                                    <span className="font-medium text-slate-500">Last Updated:</span>
+                                    <span className="font-semibold text-slate-800 justify-self-end">{projectData.fields['Last Updated'] ? format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a') : 'N/A'}</span>
+                                    <span className="font-medium text-slate-500">Submission Date:</span>
+                                    <span className="font-semibold text-slate-800 justify-self-end">{projectData.fields['Date of Submission']}</span>
+                                    <span className="font-medium text-slate-500">Est. Completion:</span>
+                                    <span className="font-semibold text-slate-800 justify-self-end">{projectData.fields['Estimated Completion']}</span>
+                                </div>
+                            )}
                         </section>
 
                         {/* General Discussion Section */}

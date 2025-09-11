@@ -8374,6 +8374,9 @@ export const dummyProject = {
         'attachments': [
           {
             attachment_description: 'Please attach documents'
+          },
+          {
+            attachment_description: 'Receipts from State Licensing (for consultant only)'
           }
         ],
         'Action_type': 'Attach Files'
@@ -18340,6 +18343,9 @@ export const customizedPolicy = {
         'attachments': [
           {
             attachment_description: 'Please attach documents'
+          },
+          {
+            attachment_description: 'Receipts from State Licensing (for consultant only)'
           }
         ],
         'Action_type': 'Attach Files'

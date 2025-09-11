@@ -420,6 +420,10 @@ export default function ClientCard() {
                                             <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
                                         </div>
                                         <div>
+                                            <span className="font-medium text-slate-500">Project Manager:</span>
+                                            <span className="text-slate-800 ml-2">{projectData.fields['Project Manager']}</span>
+                                        </div>
+                                        <div>
                                             <span className="font-medium text-slate-500">State:</span>
                                             <span className="text-slate-800 ml-2">{projectData.fields['States']}</span>
                                         </div>

@@ -120,7 +120,7 @@ const AddProjectCard = ({ onClose, onProjectAdded }) => {
 
     const allFields = [
         'Project Name', 'Client Email', 'Start Date', 'States', 'Project Type', 'Assigned Consultant', 
-        'Supervising Consultant', 'Status', 'Submitted (Y/N)', 'Full Cost', 'Paid',
+        'Supervising Consultant', 'Project Manager', 'Status', 'Submitted (Y/N)', 'Full Cost', 'Paid',
         'IRS Identifier (ID/EIN)'
     ];
 
