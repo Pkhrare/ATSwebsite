@@ -8383,10 +8383,234 @@ export const dummyProject = {
       }
     },
     {
-      id: 'template-task-4',
+      id: "template-task-4",
       groupId: 'template-group-1', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #3: REVIEW SERVICES, SCOPE OF WORK & CONFIRM QUOTES",
+        'task_title': "TASK #3: CORRECTION UPLOAD AND REVIEW",
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 20px;",
+                    "text": "This task is INITIALLY assigned to the consultant.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 20px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 20px;",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 20px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 8,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Plan of action:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 8,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 8,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "●",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Once they have completed the initial draft of the application packet they will attach it here for your review. ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "●",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " After review please attach a file which includes a copy of your corrections. ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "●",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " The consultant will then create another draft of your application packet and you will be required to review again and provide your corrections. ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "●",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " This process will continue until you are satisfied with the packet. Once this happens please sign the attached form and mention in the chat below that you are ready to proceed. ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              }
+            ],
+            "direction": null,
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1,
+            "textFormat": 8,
+            "textStyle": "font-size: 20px;"
+          }
+        }),
+        'assigned_to': 'Consultant',
+        'order': 3,
+        'attachments': [
+          {
+            attachment_description: 'Please attach Draft 1 of Application Packet.'
+          },
+          {
+            attachment_description: 'Please Attach corrections of Application Packet'
+          }
+        ],
+        'approvals': [{
+          fields: {
+            approval_description: 'Please approve the application packet'
+          }
+        }],
+        'Action_type': 'Attach Files'
+      }
+
+    },
+    {
+      id: 'template-task-5',
+      groupId: 'template-group-1', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #4: REVIEW SERVICES, SCOPE OF WORK & CONFIRM QUOTES",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -10534,15 +10758,15 @@ export const dummyProject = {
           }
         }],
         'assigned_to': 'Client',
-        'order': 2,
+        'order': 4,
         'Action_type': 'Require Approval'
       }
     },
     {
-      id: 'template-task-5',
+      id: 'template-task-6',
       groupId: 'template-group-1', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #4: REVIEW & PAY INVOICE",
+        'task_title': "TASK #5: REVIEW & PAY INVOICE",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -12756,15 +12980,15 @@ export const dummyProject = {
           }
         }),
         'assigned_to': 'Client',
-        'order': 2,
+        'order': 5,
         'Action_type': 'Default'
       }
     },
     {
-      id: 'template-task-6',
+      id: 'template-task-7',
       groupId: 'template-group-1', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #5: SIGN SERVICE AGREEMENT",
+        'task_title': "TASK #6: SIGN SERVICE AGREEMENT",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -14119,12 +14343,12 @@ export const dummyProject = {
             approval_description: 'Please sign the the service agreement'
           }
         }],
-        'order': 2,
+        'order': 6,
         'Action_type': 'Require Approval'
       }
     },
     {
-      id: 'template-task-7',
+      id: 'template-task-8',
       groupId: 'template-group-2', // Belongs to "Phase 2"
       fields: {
         'task_title': 'MEDICAID Provider Enrollment',
@@ -14141,7 +14365,7 @@ export const dummyProject = {
       }
     },
     {
-      id: 'template-task-8',
+      id: 'template-task-9',
       groupId: 'template-group-2', // Belongs to "Phase 2"
       fields: {
         'task_title': 'MEDICARE Enrollment & Credentialing',
@@ -14651,7 +14875,7 @@ export const dummyProject = {
       }
     },
     {
-      id: 'template-task-9',
+      id: 'template-task-10',
       groupId: "template-group-2", // This task is ungrouped
       fields: {
         'task_title': 'MCO Enrollment & Credentialing',
