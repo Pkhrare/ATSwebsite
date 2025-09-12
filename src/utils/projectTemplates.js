@@ -49459,10 +49459,13174 @@ export const expansionFranchiseService = {
   ]
 }
 
+export const NEMT = {
+  id: 'template-4',
+  name: 'NON-EMERGENCY MEDICAL TRANSPORTATION (NEMT) (ADULT HEALTH TRANSPORTATION)',
+  description: 'This template is for a non-emergency medical transportation (NEMT) program.',
+  projectData: {
+    'Project Name': 'NON-EMERGENCY MEDICAL TRANSPORTATION (NEMT) (ADULT HEALTH TRANSPORTATION)',
+    'Client Email': '',
+    'States': '',
+    'Project Type': '',
+    'Assigned Consultant': '',
+    'Status': 'Not Started',
+    'Notes': JSON.stringify({
+      "root": {
+        "children": [
+          { "children": [{ "detail": 0, "format": 0, "mode": "normal", "style": "", "text": "This is a pre-written note from the project template.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }
+        ], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1
+      }
+    })
+  },
+  taskGroups: [
+    {
+      id: 'template-group-1-NEMT',
+      name: 'ONBOARDING TASKS',
+      order: 0,
+    },
+  ],
+  tasks: [
+    {
+      id: 'template-task-1-NEMT',
+      groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
+      fields: {
+        'task_title': 'TASK #1: IF REGISTERED, TELL US ABOUT YOUR AGENCY/PRACTICE',
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/frontDesk.jpg",
+                    "altText": "First document image",
+                    "width": 600,
+                    "height": 700,
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "type": "image",
+                "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence1.png",
+                "altText": "Second document image",
+                "width": 600,
+                "height": 800,
+                "version": 1
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 27px;",
+                    "text": "IMPORTANT:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 27px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Please input all information correctly.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "If your agency has not been formed yet, input the name you would want to call your business.",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "If Waiver Consulting Group (WCG) is to form and register your agency, please write \"Pending WCG) for responses that you don't have.",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "detail": 0,
+                            "format": 1,
+                            "mode": "normal",
+                            "style": "",
+                            "text": "For all other information that does not apply, please enter N/A",
+                            "type": "text",
+                            "version": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "left",
+                        "indent": 0,
+                        "type": "heading",
+                        "version": 1,
+                        "tag": "h4"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "type": "youtube",
+                    "src": "https://www.youtube.com/embed/scQaBmSMGvI",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1,
+            "textFormat": 1,
+            "textStyle": "font-size: 27px;"
+          }
+        }),
+        'assigned_to': 'Client',
+        'order': 0,
+        'Action_type': 'Complete Form',
+        'preAttachedFormName': 'Agency Information' // This task will have the 'Agency Information' form attached by default.
+      }
+    },
+    {
+      id: 'template-task-2-NEMT',
+      groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #1a: BUSINESS NOT REGISTERED? LET'S GET IT REGISTERED",
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "type": "youtube",
+                    "src": "https://www.youtube.com/embed/-t9J0_BZusc",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "FIRST, SELECT THE STRUCTURE OF YOUR PROPOSED BUSINESS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "textFormat": 1,
+                "tag": "h1"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "(If you aren't sure, don't worry, call us to discuss them further)",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "type": "image",
+                "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence2.png",
+                "altText": "Business structure illustration",
+                "width": 600,
+                "height": 400,
+                "version": 1
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WHAT IS A BUSINESS STRUCTURE?",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "textFormat": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Business structures like different backpacks for carrying money that you earn from selling stuff, let's say like snacks or video games. Each backpack has its own rules for what happens if the snacks go bad or if you lose some video games, and also for how you count the money when you talk to the Money Collector (the IRS for taxes).",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Sole Proprietorship:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Imagine you're selling snacks all by yourself. You get all the profit, but if you owe money or get into trouble, it's all on you. And when you tell the Money Collector how much you made, it's just added to the money you got from mowing lawns or babysitting.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Partnership:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "This is like teaming up with a buddy to sell more snacks. You both share the money you make and the trouble you might get into. And you both tell the Money Collector about your share of the snack money.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Corporation (C Corp and S Corp):",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Think of a C Corp like a big, fancy backpack with lots of pockets. It's its own thing, and it keeps your personal stuff (like your house and video games) safe if something goes wrong. But, the Money Collector asks for a share of the money twice: once from the backpack (the corporation itself) and again from whatever you take out of it.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "An S Corp is like a C Corp, but you tell the Money Collector about the money you make directly, so it's only counted once. This is like having a fancy backpack but with a special pass to skip the double money check.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Limited Liability Company (LLC):",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "An LLC is like a backpack that protects your personal stuff and is flexible; you can carry it however you want. If you tell the Money Collector about the money in it, it's just once, like your allowance or birthday money.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Cooperative:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Imagine you and a bunch of friends run a snack stand together. You decide how to run it and what to do with the profits. If the stand makes money, you share it based on how much each person helped out or how many snacks they sold.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Each type of backpack (business structure) has different rules for handling problems, sharing profits, and dealing with the Money Collector. You'd pick the type based on what you're servicing, how many friends are helping, how much you want to protect your personal assets, and how you want to talk to the IRS about your business income. :)",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              }
+            ],
+            "direction": null,
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1,
+            "textFormat": 1
+          }
+        }),
+        'assigned_to': 'Client',
+        'order': 1,
+        'Action_type': 'Complete Checklist',
+        'checklistItems': [
+          { 'checklist_description': 'Sole Proprietorship' },
+          { 'checklist_description': 'Partnership' },
+          { 'checklist_description': 'Corporation (C Corp and S Corp)' },
+          { 'checklist_description': 'Limited Liability Company (LLC)' },
+          { 'checklist_description': 'Cooperative' }
+        ],
+        'attachments': [
+          { 'attachment_description': "Attach Copy of State Identification Documents (ID or Driver's License)" }
+        ],
+        'preAttachedFormName': "NEW AGENCY INFORMATION"
+
+      }
+    },
+    {
+      id: 'template-task-3-NEMT',
+      groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #2: UPLOAD REQUIRED DOCUMENTS",
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "type": "image",
+                "src": "https://storage.googleapis.com/waivergroup_uploads/upload_images.jpg",
+                "altText": "Checklist supporting image 1",
+                "width": 600,
+                "height": 400,
+                "version": 1
+              },
+              {
+                "type": "image",
+                "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence3.png",
+                "altText": "Checklist supporting image 2",
+                "width": 600,
+                "height": 400,
+                "version": 1
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "youtube",
+                    "src": "https://www.youtube.com/embed/BtJ5DnBOpFM",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [],
+                            "direction": null,
+                            "format": "center",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [
+                                  {
+                                    "children": [
+                                      {
+                                        "children": [],
+                                        "direction": null,
+                                        "format": "center",
+                                        "indent": 0,
+                                        "type": "paragraph",
+                                        "version": 1,
+                                        "textFormat": 0,
+                                        "textStyle": ""
+                                      },
+                                      {
+                                        "children": [
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "DOCUMENT/CATEGORY",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "WCG PROVIDED",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "CLIENT PROVIDED",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "1. ORGANIZATIONAL DOCUMENTS",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Articles of Incorporation/Business Registration",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "IRS EIN Confirmation",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Certificate of Good Standing",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Bylaws (if Applicable)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Operating Agreement",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "2. LICENSING AND CERTIFICATION APP",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Completed Application Form",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Licensing Fee Payment Proof",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Signed Provider Agreement",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Renewal Application (if applicable)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "3. POLICIES AND PROCEDURES",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Policy & Procedure Manual",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "4. COMPLIANCE & REGULATORY DOCs",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Background Check Clearances (State/FBI)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "HIPAA Compliance Agreement",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "NPI Number",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Medicaid/Medicare Enrollment Proof",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "OSHA Compliance Documentation",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Anti-Kickback Statute Compliance Statement",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "5. FINANCIAL & INSURANCE DOCUMENTS",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Proof of Financial Stability (Bank Statements, etc.)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Liability, Workers’ Comp & Professional Insurance",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Audit Reports (if required)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Bond Requirements (if applicable)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "6. STAFFING & HUMAN RESOURCES",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Organizational Chart and Staffing Plan",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Employee Licenses, Resumes, and Certifications",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "7. CLINICAL & SERVICE-SPECIFIC DOCs",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Accreditation & Medical Director Agreements",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Clinical Staff Licenses and Training Certificates",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "8. FACILITY & SAFETY REQUIREMENTS",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Fire/Health Department Inspection Reports",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Lease/Ownership Documentation and Safety Plans",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "ADA Compliance Documentation",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": " Emergency Preparedness Plan",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "9. CONTRACTS & AGREEMENTS",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Provider Participation & Referral Agreements",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": " Vendor/Supplier Contracts",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Business Associate Agreements (BAA)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "10. TRAINING & CONTINUING EDUCATION",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Staff Orientation Materials and Training Records",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "11. PROVIDER ENROLLMENT DOCs",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Medicaid/Medicare Enrollment Applications",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "CAQH Enrollment (if required)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Medicaid/Medicare P&P Manual",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Managed Care Organization (MCO) Contracts",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "12. QA & PERFORMANCE IMPROVEMENT",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Quality Assurance/Risk Management Plans",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Client Satisfaction and Performance Review Forms",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Root Cause Analysis Reports (if applicable)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "13. STATE-SPECIFIC & ADDITIONAL REQs",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": "ltr",
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "State-Specific Waiver, Special Permits, or Addendums",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Local Health Department Approvals",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Environmental Impact Assessments (if applicable)",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "14. TECHNOLOGY & IT COMPLIANCE",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": " ",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": " ",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Cybersecurity Policies",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Electronic Health Record (EHR) System Documentation",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Disaster Recovery Plan",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "15. MARKETING & ADVERTISING COMPLIANCE",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": null,
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": " ",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": " ",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Marketing Materials Approval",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          },
+                                          {
+                                            "children": [
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "children": [
+                                                          {
+                                                            "detail": 0,
+                                                            "format": 1,
+                                                            "mode": "normal",
+                                                            "style": "",
+                                                            "text": "Advertising Disclosures",
+                                                            "type": "text",
+                                                            "version": 1
+                                                          }
+                                                        ],
+                                                        "direction": "ltr",
+                                                        "format": "",
+                                                        "indent": 0,
+                                                        "type": "listitem",
+                                                        "version": 1,
+                                                        "textFormat": 1,
+                                                        "value": 1
+                                                      }
+                                                    ],
+                                                    "direction": "ltr",
+                                                    "format": "start",
+                                                    "indent": 0,
+                                                    "type": "list",
+                                                    "version": 1,
+                                                    "listType": "bullet",
+                                                    "start": 1,
+                                                    "tag": "ul"
+                                                  }
+                                                ],
+                                                "direction": "ltr",
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(255, 255, 255)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(218, 233, 247)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              },
+                                              {
+                                                "children": [
+                                                  {
+                                                    "children": [
+                                                      {
+                                                        "detail": 0,
+                                                        "format": 1,
+                                                        "mode": "normal",
+                                                        "style": "",
+                                                        "text": "[  ]",
+                                                        "type": "text",
+                                                        "version": 1
+                                                      }
+                                                    ],
+                                                    "direction": null,
+                                                    "format": "center",
+                                                    "indent": 0,
+                                                    "type": "paragraph",
+                                                    "version": 1,
+                                                    "textFormat": 0,
+                                                    "textStyle": ""
+                                                  }
+                                                ],
+                                                "direction": null,
+                                                "format": "",
+                                                "indent": 0,
+                                                "type": "tablecell",
+                                                "version": 1,
+                                                "backgroundColor": "rgb(193, 240, 199)",
+                                                "colSpan": 1,
+                                                "headerState": 0,
+                                                "rowSpan": 1,
+                                                "width": 75
+                                              }
+                                            ],
+                                            "direction": null,
+                                            "format": "",
+                                            "indent": 0,
+                                            "type": "tablerow",
+                                            "version": 1
+                                          }
+                                        ],
+                                        "direction": null,
+                                        "format": "start",
+                                        "indent": 0,
+                                        "type": "table",
+                                        "version": 1,
+                                        "colWidths": [
+                                          377,
+                                          110,
+                                          106
+                                        ]
+                                      }
+                                    ],
+                                    "direction": null,
+                                    "format": "",
+                                    "indent": 0,
+                                    "type": "tablecell",
+                                    "version": 1,
+                                    "backgroundColor": "rgb(255, 255, 255)",
+                                    "colSpan": 1,
+                                    "headerState": 0,
+                                    "rowSpan": 1,
+                                    "width": 75
+                                  }
+                                ],
+                                "direction": null,
+                                "format": "",
+                                "indent": 0,
+                                "type": "tablerow",
+                                "version": 1
+                              },
+                              {
+                                "children": [
+                                  {
+                                    "children": [
+                                      {
+                                        "children": [],
+                                        "direction": null,
+                                        "format": "center",
+                                        "indent": 0,
+                                        "type": "paragraph",
+                                        "version": 1,
+                                        "textFormat": 0,
+                                        "textStyle": ""
+                                      }
+                                    ],
+                                    "direction": null,
+                                    "format": "",
+                                    "indent": 0,
+                                    "type": "tablecell",
+                                    "version": 1,
+                                    "backgroundColor": "rgb(193, 240, 199)",
+                                    "colSpan": 1,
+                                    "headerState": 0,
+                                    "rowSpan": 1,
+                                    "width": 75
+                                  }
+                                ],
+                                "direction": null,
+                                "format": "",
+                                "indent": 0,
+                                "type": "tablerow",
+                                "version": 1
+                              }
+                            ],
+                            "direction": null,
+                            "format": "",
+                            "indent": 0,
+                            "type": "table",
+                            "version": 1,
+                            "colWidths": [
+                              377
+                            ]
+                          }
+                        ],
+                        "direction": null,
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": "rgb(242, 243, 245)",
+                        "colSpan": 1,
+                        "headerState": 1,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": null,
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "table",
+                "version": 1
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Provider Agency Licensing/Certification Document Checklist",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "PLEASE UPLOAD ITEMS IN SECTION 1 IF YOUR BUSINESS IS REGISTERED OR SECTION 2 IF YOUR BUSINESS IS NOT REGISTERED",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Instructions:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This checklist helps clarify responsibilities when a client is coming to WCG either to start from scratch or to supplement an existing process. The list is organic and can be adjusted or added upon based on evolving state or reviewer request.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "type": "image",
+                "src": "https://storage.googleapis.com/waivergroup_uploads/stop.png",
+                "altText": "Checklist supporting image 3",
+                "width": 600,
+                "height": 400,
+                "version": 1
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "PLEASE NOTE THAT NOT ALL REQUIREMENTS APPLY EQUALLY. ONLY UPLOAD ALL THAT IS APPLICABLE TO YOU.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "FOR REQUIREMENTS THAT YOU DO NOT HAVE, PLEASE CALL 302-888-9172 OR EMAIL US AT LICENSING@WAIVERGROUP.COM FOR ADVICE ON HOW TO PROCEED",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1,
+            "textFormat": 1
+          }
+        }),
+        'assigned_to': 'Client',
+        'order': 2,
+        'attachments': [
+          {
+            attachment_description: 'Please attach documents'
+          },
+          {
+            attachment_description: 'Receipts from State Licensing (for consultant only)'
+          }
+        ],
+        'Action_type': 'Attach Files'
+      }
+    },
+    {
+      id: 'template-task-4-NEMT',
+      groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #4: REVIEW SERVICES, SCOPE OF WORK & CONFIRM QUOTES",
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "type": "image",
+                "src": "https://storage.googleapis.com/waivergroup_uploads/meeting.jpg",
+                "altText": "Services Requested header image",
+                "width": 800,
+                "height": 400,
+                "version": 1
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "SERVICES REQUESTED",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h1"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "1. START UP ASSISTANCE SERVICE: Setting Up a New Agency - $9,500",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "(Ask for available sales and discounts when you speak to the specialist)",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "type": "image",
+                "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence4.png",
+                "altText": "Service Request Details section image",
+                "width": 800,
+                "height": 400,
+                "version": 1
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "SERVICE REQUEST DETAILS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Our Start-Up Assistance Service is crafted for aspiring entrepreneurs committed to establishing waiver-funded healthcare agencies:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "youtube",
+                    "src": "https://www.youtube.com/embed/ADNbUrDXUQg",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "SERVICE REQUEST DETAILS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Our Start-Up Assistance Service is crafted for aspiring entrepreneurs committed to establishing waiver-funded healthcare agencies:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "1. PREPARATION AND ASSISTANCE WITH REQUIRED CORPORATE ACTIONS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This section guides you through the foundational steps of starting your agency.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Incorporating or Setting Up Your Agency (LLC or Corp)",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Assistance with determining the best legal structure (LLC, Corporation, Sole Proprietorship) for the healthcare business based on state regulations and liability protection.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Filing necessary documents such as Articles of Incorporation, Operating Agreement, and agency minutes template.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Legal consultation on best practices for tax efficiency and personal asset protection.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Acquiring Tax ID and NPI Numbers:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Assistance with applying for an Employer Identification Number (EIN) through the IRS for tax purposes.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Registration for a National Provider Identifier (NPI) through the National Plan and Provider Enumeration System (NPPES), which is essential for billing Medicaid/Medicare.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Developing a Strategic Plan Specific to the State's Medicaid Waiver Program:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Help you create a comprehensive business plan that addresses market analysis, service offerings, operational structure, and financial projections specific to their state's Medicaid Waiver Program.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Provide insights into state Medicaid program nuances, competitive landscape, and potential growth opportunities.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Templates for Required Committee Meetings:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Provide customizable templates for essential committee meetings such as governing board meetings, quality assurance committees, and employee evaluations to ensure compliance with regulatory standards.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Offer agendas, minutes templates, and policy development forms that meet Medicaid waiver program requirements.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/preperation.png",
+                    "altText": "image.png",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "2. COMPLETION OF REQUIREMENT AND APPLICATION PROCESS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This service ensures you meet all state-specific and Medicaid program requirements to operate legally and efficiently.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Contact Information for the State's Department of Health and Human Services or Equivalent Regulatory Body:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Maintain direct contact with your state in relations to your application and other submissions to the state's health department or relevant licensing authority.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Help you establish relationships with key regulatory contacts for future supports during your operations.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Process for Developing Infrastructure and Tracking Waiver Services:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Create the forms & templates for operational infrastructure, such as health records compliance tools and care coordination tools for managing waiver services.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Provide forms and templates to track services delivered, ensure proper documentation for audits, and facilitate reporting to Medicaid.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Ensure Compliance with Program Standards and Medicaid Regulations Specific to the State:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Provide a checklist for compliance with state and federal Medicaid regulations, covering patient rights, service delivery, documentation, and billing protocols.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Offer ongoing compliance monitoring for the 12 months of signing up for this package to ensure your agency meets and stay compliance with all state-specific Medicaid requirements and avoid penalties.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/completionProcess.png",
+                    "altText": "image.png",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "3. CUSTOMIZED, STATE-SPECIFIC POLICIES AND PROCEDURES",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "A critical service to ensure your agency operates according to Medicaid and state guidelines.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 17px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 17px;",
+                    "text": "ADM-1.0 ADMINISTRATION",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 17px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● ADM-1.1 General Administrative Policies",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ ADM-1.1.1 Policy on Record Keeping",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Ensure the maintenance of accurate and complete administrative records, including trip logs, maintenance schedules, personnel files, and billing information.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ADM-1.1.2 Policy on Communication",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Establish clear internal and external communication protocols, including communication with healthcare facilities, passengers, and staff.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● ADM-1.2 Financial Management",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ ADM-1.2.1 Budgeting and Expense Tracking",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Outline procedures for budgeting, tracking expenses, and reconciling financial reports.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ ADM-1.2.2 Use of Funds",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Define acceptable use of operational and grant funds, including transportation reimbursements.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 17px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 17px;",
+                    "text": "OPS-2.0 OPERATIONS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 17px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● OPS-2.1 Trip Scheduling and Dispatch:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.1.1 Trip Request Intake Procedure",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Process for receiving trip requests via phone, app, or online portal with documentation standards.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.1.2 Trip Prioritization Guidelines",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Criteria for prioritizing urgent, recurring, or medically necessary trips.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.1.3 Vehicle Dispatch Protocol",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Procedures for matching passengers to appropriate vehicles and dispatching drivers",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.1.4 Communication with Clients and Facilities",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Real-time updates and coordination with healthcare providers and clients regarding schedules.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.1.5 Trip Cancellation and Modification",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Policies for handling cancellations, rescheduling, and no-shows.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● OPS-2.2 Vehicle Maintenance and Safety",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.2.1 Routine Vehicle Inspections",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Schedule and checklist for daily, weekly, and monthly inspections.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.2.2 Pre- and Post-Trip Safety Checks",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Procedures drivers must follow before and after each trip.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.2.3 Breakdown and Emergency Repairs",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Response protocols for vehicle malfunctions, roadside assistance, and passenger safety.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ OPS-2.2.4 Maintenance Recordkeeping",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "type": "linebreak",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Documentation requirements for repairs, inspections, and maintenance logs.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/1757694784334-image.png",
+                    "altText": "image.png",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "4. CLIENT ADMISSION PACKET",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Key documents and forms needed to onboard your client/patients.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Requirements for Compiling a Complete Client Information Booklet, Admission Forms, and Advanced Directives:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Create a customizable client admission packet that includes essential forms such as client rights, HIPAA disclosures, consent forms, and advanced directives specific to state requirements.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Provide guidance on state-specific content that must be included, such as information on covered and non-covered services, eligibility criteria, and discharge policies.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/clientAdmissionPacketProcess.png",
+                    "altText": "image.png",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "5. WEBSITE, DOMAIN, AND EMAIL SETUP",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h3"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "A professional online presence is crucial for attracting clients and establishing credibility.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Assistance with Creating an Online Presence, Including Website Creation and SEO Marketing for Healthcare Agencies:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Design a professional, mobile-responsive website that highlights the agency's services, mission, and contact information.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Implement search engine optimization (SEO) strategies to ensure the website ranks well for Medicaid waiver services and local healthcare searches.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Assist in setting up secure email domains and accounts, ensuring compliance with HIPAA and other data protection regulations.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/buildingOnlinePresence.png",
+                    "altText": "image.png",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "6. MARKETING AND ADVERTISING MATERIALS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Effective marketing materials help attract patients and build brand recognition.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Development of State-Specific Marketing Materials Such as Videos, Brochures, and Business Cards:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Design high-quality brochures, business cards, and promotional videos tailored to the healthcare agency's services and the needs of local Medicaid populations.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "○ Ensure all marketing materials comply with state regulations regarding Medicaid advertising and patient engagement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/unifiedMarketingStrat.png",
+                    "altText": "image.png",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              }
+            ],
+            "direction": null,
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1,
+            "textFormat": 1,
+            "textStyle": "font-size: 17px;"
+          }
+        }),
+        'approvals': [{
+          fields: {
+            approval_description: 'Please approve the services, scope of work and quotes'
+          }
+        }],
+        'assigned_to': 'Client',
+        'order': 4,
+        'Action_type': 'Require Approval'
+      }
+    },
+    {
+      id: 'template-task-5-NEMT',
+      groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #5: REVIEW & PAY INVOICE",
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WAIVER CONSULTING GROUP",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "textFormat": 1,
+                "tag": "h1"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "1515 MARKET STREET",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "SUITE: 1200",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "PHILADELPHIA, PA 19102",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "www.waivergroup.com",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "autolink",
+                    "version": 1,
+                    "rel": null,
+                    "target": null,
+                    "title": null,
+                    "url": "www.waivergroup.com",
+                    "isUnlinked": false
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "bills@waivergroup.com",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Phone: 1-302.888.9172 – Fax: 610-628-0283",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "type": "youtube",
+                    "src": "https://www.youtube.com/embed/HJybgoIfTdo",
+                    "version": 1
+                  },
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence5.png",
+                    "altText": "image.png",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "PRODUCT",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 1,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "textFormat": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "DESCRIPTION",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 1,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "textFormat": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "INCLUDED",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 1,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "textFormat": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 1,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "TOTAL",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 1,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "textFormat": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1,
+                    "textFormat": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Start Up Assistance",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Comprehensive Assistance with New Program Set Up",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "YES/NO",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": null,
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": null,
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "$Amount",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provider Enrollment & Credentialing",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "YES/NO",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "$Amount",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Staff Training",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Training & Professional Development Service for Medicaid Waiver Providers",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "YES/NO",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "$Amount",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Market & Branding",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Marketing & Branding Service for Medicaid Waiver Providers",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "YES/NO",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "$Amount",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Customized Policy & Procedure Manual (Standalone Service)",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "YES/NO",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "$Amount",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Program Development",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Expanding and optimizing an existing program / service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "YES/NO",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "$Amount",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "start",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": null,
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "table",
+                "version": 1,
+                "colWidths": [
+                  156,
+                  156,
+                  156,
+                  156
+                ]
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Subtotal",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "right",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "0",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": null,
+                            "format": "right",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": null,
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": null,
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bundled Discount",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "right",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "0",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": null,
+                            "format": "right",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": null,
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": null,
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Total",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "right",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "0",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": null,
+                            "format": "right",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          }
+                        ],
+                        "direction": null,
+                        "format": "",
+                        "indent": 0,
+                        "type": "tablecell",
+                        "version": 1,
+                        "backgroundColor": "rgb(255, 255, 255)",
+                        "colSpan": 1,
+                        "headerState": 0,
+                        "rowSpan": 1,
+                        "width": 75
+                      }
+                    ],
+                    "direction": null,
+                    "format": "",
+                    "indent": 0,
+                    "type": "tablerow",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "table",
+                "version": 1,
+                "colWidths": [
+                  108,
+                  208
+                ]
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 3,
+                    "mode": "normal",
+                    "style": "font-size: 18px;",
+                    "text": "This amount IS NOT DUE unless a contract is signed.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 3,
+                "textStyle": "font-size: 18px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "MAKE PAYMENT",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " (You can only make payment after completing the Onboarding)",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Make all checks payable to Waiver Consulting Group, LLC",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This invoice does not include third party payments like registration fees or cost of permits/licenses that are paid to the state or accrediting bodies.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Thank you for your business!",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1,
+            "textFormat": 3,
+            "textStyle": "font-size: 18px;"
+          }
+        }),
+        'assigned_to': 'Client',
+        'order': 5,
+        'Action_type': 'Default'
+      }
+    },
+    {
+      id: 'template-task-6-NEMT',
+      groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
+      fields: {
+        'task_title': "TASK #6: SIGN SERVICE AGREEMENT",
+        'task_status': 'Not Started',
+        'description': JSON.stringify({
+          "root": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/contract.jpg",
+                    "altText": "image.png",
+                    "version": 1
+                  },
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/setupSequence6.png",
+                    "altText": "image.png",
+                    "version": 1
+                  },
+                  {
+                    "type": "youtube",
+                    "src": "https://www.youtube.com/embed/aYR4f5YbHis",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WAIVER CONSULTING GROUP CLIENT SERVICE AGREEMENT/CONTRACT",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "center",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h1"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement is entered into as of the date it is electronically signed by the Client via the Client Portal. The Client shall be identified as indicated in the title of the project or as registered or entered in the Onboarding Tasks, and it is entered between Waiver Consulting Group and the Client or a representative of the Client.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "1. SCOPE OF SERVICES",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG agrees to provide the following HIGHLIGHTED services to Client as outlined in the selected service package:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● [ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● [ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● [ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● [ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● [ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● [ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● [ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Any modifications to the services outlined herein must be agreed upon in writing and may result in additional fees.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "2. CLIENT RESPONSIBILITIES",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "The Client agrees to:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Provide accurate and complete information necessary for WCG to perform the services.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Submit all requested documentation and information by the deadlines established by WCG.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Make all payments according to the schedule outlined in this Agreement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Refrain from sharing WCG's proprietary materials, methods, or processes with any third party.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Failure to meet these responsibilities may result in delays, additional fees, or suspension of services.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "3. PAYMENT TERMS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Client agrees to pay WCG the total fee outlined in the signed reviewed and confirmed for the selected service package. The payment schedule is as follows:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "1. If a Full Payment Option is selected, you get a 10% discount on the full total of the selected service",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "2. If a Payment Plan is selected:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Initial deposit of 60% due at the time of signing this Agreement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Second installment of 20% due 30 days after the initial deposit.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Final installment of 20% due 30 days after the second installment.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 1,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Payment Requirements:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● All payments are non-refundable, unless in the case of project failure or rejection by the state.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● If a Payment Plan is chosen, payments not received within 7 days of the due date will result in a late fee of 3.5% of the outstanding amount.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Failure to pay within 15 days of the due date of a payment on a Payment Plan may result in suspension of services and termination of Client's portal access.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "4. PROPRIETARY MATERIALS AND CONFIDENTIALITY",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "All materials provided by WCG, including but not limited to templates, processes, methodologies, and completed applications, are proprietary and protected under intellectual property laws. Client agrees:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● To use such materials solely for the purposes outlined in this Agreement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Not to share, reproduce, or distribute WCG's materials without prior written consent.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "5. TIMELINES AND DEADLINES",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG will adhere to the following service timelines, provided that the Client submits all required documentation promptly:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● 10 business days for application completion and submission upon receipt of all necessary information.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● 5 business days for development of policy and procedure manuals.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Delays caused by Client's failure to submit documentation or respond to requests will extend these timelines proportionally.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "6. COMMUNICATION AND APPROVAL",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "The Client acknowledges:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Applications and deliverables will be completed based on the information provided by the Client.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Client must sign application documents where applicable and other drafts (where applicable) within 3 business days. WCG may use its professional and technical expertise to determine if it can submit application without the client signature. Additionally, if the application is submitted to the client for review, failure to respond will result in WCG proceeding based on the last communicated preferences.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● WCG reserves the right to submit applications within the required regulatory deadlines unless otherwise agreed in writing.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "7. TERMINATION",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement may only be terminated as follows:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "1. By WCG: For failure by Client to fulfill obligations, including timely payment or submission of necessary information.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "2. By Client: Upon written notice and mutual agreement. In such cases, no refunds will be issued, and all outstanding fees become immediately due.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "8. LIMITATION OF LIABILITY",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG shall not be liable for:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Delays caused by Client's failure to meet deadlines or provide accurate information.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Regulatory decisions or actions beyond WCG's control.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● Consequential, incidental, or indirect damages.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "WCG's total liability is limited to the fees paid by Client under this Agreement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "9. GOVERNING LAW AND DISPUTE RESOLUTION",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement shall be governed by the laws of the State of Pennsylvania, Philadelphia County. The Parties agree to resolve disputes through mediation before pursuing legal action. If mediation fails, the prevailing party in any litigation shall be entitled to reasonable attorney's fees and costs.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "10. ENTIRE AGREEMENT",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Agreement constitutes the entire understanding between the Parties and supersedes all prior agreements or understandings, whether written or oral. Any amendments must be made in writing and signed by both Parties.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "ADDITIONAL TERMS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "I, attest that the information I have provided to Waiver Consulting Group to complete my application on this Client Portal is accurate and acknowledge that it will be entered into my application documents exactly as written. I am aware that once I have submitted all necessary documents to The Waiver Consulting Group it will take 3-5 business days for my application to be completed. I further recognize that any changes made to this information, which require an application to be amended, are also subject to a 3 – 5 business days timeline for completion. I have read the statement above and by signing below, I accept the terms as written. By signing, I acknowledge the electronic signature as a full acceptance of the terms above.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "I, attest that the information I have provided to Waiver Consulting Group to complete my application on this Client Portal is accurate and acknowledge that it will be entered into my policies and procedures exactly as written. I am aware that once I have submitted all necessary information to The Waiver Consulting Group, it will take approximately up to 7 business days for my policies and procedures to be completed. I further recognize that any changes made to this information (name change, demographics change, logo change), which require policies to be amended, are subject to additional fees for which I will be solely responsible for. I have read the statement above and by signing below, I accept the terms as written. By signing, I acknowledge the electronic signature as a full acceptance of the terms above.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "If all of the above is agreeable to you, please indicate by signing below.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "I have read the conditions set forth in this Letter of Agreement and accept them as written, as evidenced by my signature below, which jointly binds the Agency, its owners, and its Board members to the terms of this agreement, and by doing so the initiation of services described in this Agreement letter is authorized. If for any reason I decide not to continue with this contract, all money paid on account will be held until I decide to move forward again. All sales are final. No refunds will be issued. I understand that any materials supplied are confidential and copyrighted. I agree not to allow any other agency or individual access to these documents. I also understand that fees paid to third parties are my responsibility. This Agreement is not cancellable without the consent of both parties and any unilateral cancellation or repudiation of this Agreement or failure by the Agency to pay any sums under this Agreement as they become due will result in the full payment amount of the Agreement becoming immediately due and payable. This agreement is governed under the laws of the State of Pennsylvania, Philadelphia County and the parties hereby consent to the venue and jurisdiction of an appropriate court located in Philadelphia County, Pennsylvania, and any failure to make a scheduled payment as defined above may result in a default judgment being brought for the full amount of the Agreement. Each of the parties hereto irrevocably waives any and all rights to trial by jury in any legal proceedings arising out of or relating to this agreement or transactions completed hereby. The prevailing party shall have the right to collect from the other party its reasonable costs and necessary disbursements and attorneys' fees incurred in enforcing this Agreement. Agency's signature of authority.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "SIGNATURES/APPROVALS",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "heading",
+                "version": 1,
+                "tag": "h2"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "By approving or signing electronically, the Parties acknowledge that they have read and understood the terms of this Agreement and agree to be bound by them. The electronic signatures provided through the Client Portal shall serve as legally binding acceptance of this Agreement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1,
+            "textFormat": 1
+          }
+        }),
+        'assigned_to': 'Client',
+        "approvals": [{
+          fields: {
+            approval_description: 'Please sign the the service agreement'
+          }
+        }],
+        'order': 6,
+        'Action_type': 'Require Approval'
+      }
+    },
+
+  ]
+}
+
 // The main export is an array of all available templates.
 export const projectTemplates = [
   dummyProject,
   customizedPolicy,
-  expansionFranchiseService
+  expansionFranchiseService,
+  NEMT
   // Add other templates here by copying the `dummyProject` object.
 ];
