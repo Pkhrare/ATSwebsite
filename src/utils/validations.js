@@ -32,8 +32,15 @@ const PROJECT_TYPES = [
   'Market Research', 'Medicaid Enrollment Only',
   'Policy & Procedure Manual', 'PA', 'Home Health'
 ];
-const ASSIGNED_CONSULTANTS = ['Michael Tarr', 'Sheikh Konneh', 'Varlee Massalay', 'Amara Kamara', 'Fatu Kaba'];
-const SUPERVISING_CONSULTANTS = ['Amara Kamara', 'Michelle Gottlieb'];
+const ASSIGNED_CONSULTANTS = [
+  "Michael Tarr",
+  "Sheikh Konneh",
+  "Varlee Massalay",
+  "Amara M Kamara",
+  "Michelle Gottlieb",
+  "Fatu Kaba",
+];
+const SUPERVISING_CONSULTANTS = ['Amara M Kamara', 'Michelle Gottlieb'];
 const PROJECT_MANAGERS = ['Dave Logan', 'Fatima Koroma', 'System Notification', 'Waiver Group']
 const STATUS_OPTIONS = [
   'Active',
@@ -56,13 +63,20 @@ export const FORM_FIELD_TYPES = [
     "Phone number",
     "Number"
 ];
-
+export const assignedConsultants_record_ids = {
+  "Michael Tarr": "recOzrRz3YrzGii4n",
+  "Sheikh Konneh": "rec3fMpelGC2FuNEn",
+  "Varlee Massalay": "recmZVYx7eWMegqws",
+  "Amara M Kamara": "recq5ysM6WlPuPjvV",
+  "Michelle Gottlieb": "recXHKvFddE9Czi6e",
+  "Fatu Kaba": "reckzFP0vNYatsd3E"
+}
 export const dropdownFields = {
     "Assigned Consultant": [
       "Michael Tarr",
       "Sheikh Konneh",
       "Varlee Massalay",
-      "Amara Kamara",
+      "Amara M Kamara",
       "Michelle Gottlieb",
       "Fatu Kaba",
     ],
@@ -73,7 +87,7 @@ export const dropdownFields = {
       "Waiver Group"
     ],
     "Supervising Consultant": [
-      "Amara Kamara",
+      "Amara M Kamara",
       "Michelle Gottlieb"
     ],
     "States": [
@@ -133,15 +147,14 @@ export const validateRow = (fields) => {
     if (!STATES.includes(fields['States'])) rowErrors['States'] = 'Invalid state';
     if (!PROJECT_TYPES.includes(fields['Project Type'])) rowErrors['Project Type'] = 'Invalid project type';
     if (!ASSIGNED_CONSULTANTS.includes(fields['Assigned Consultant'])) rowErrors['Assigned Consultant'] = 'Invalid';
-    if (!SUPERVISING_CONSULTANTS.includes(fields['Supervising Consultant'])) rowErrors['Supervising Consultant'] = 'Invalid';
+    if (fields['Supervising Consultant'] && !SUPERVISING_CONSULTANTS.includes(fields['Supervising Consultant'])) rowErrors['Supervising Consultant'] = 'Invalid';
     if (!PROJECT_MANAGERS.includes(fields['Project Manager'])) rowErrors['Project Manager'] = 'Invalid';
     if (!STATUS_OPTIONS.includes(fields['Status'])) rowErrors['Status'] = 'Invalid';
     if (!YES_NO_OPTIONS.includes(fields['Submitted (Y/N)'])) rowErrors['Submitted (Y/N)'] = 'Must be Yes or No';
     if (fields['Full Cost'] !== undefined && isNaN(fields['Full Cost'])) rowErrors['Full Cost'] = 'Must be a number';
     if (fields['Paid'] !== undefined && isNaN(fields['Paid'])) rowErrors['Paid'] = 'Must be a number';
-    if (!PROJECT_MANAGERS.includes(fields['Project Manager'])) rowErrors['Project Manager'] = 'Invalid';
     const startDate = new Date(fields['Start date']);
-    
+
     const today = new Date();
     if (fields['Start date'] && (isNaN(startDate.getTime()) || startDate > today)) {
       rowErrors['Start date'] = 'Start date must be valid and not in the future';

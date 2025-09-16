@@ -5,7 +5,7 @@ import AddCollaboratorForm from '../forms/AddCollaboratorForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
-import { dropdownFields, validateRow, DEFAULT_ACTIVITIES, safeNewDate } from '../../utils/validations';
+import { dropdownFields, validateRow, DEFAULT_ACTIVITIES, safeNewDate, assignedConsultants_record_ids } from '../../utils/validations';
 import { useAuth } from '../../utils/AuthContext';
 import ApiCaller from '../apiCall/ApiCaller';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
@@ -168,6 +168,7 @@ export default function TemplateProjectCard({ template, onClose }) {
         // Step 1: Validate required fields before doing anything else.
         const validationErrors = validateRow(projectData);
         if (Object.keys(validationErrors).length > 0) {
+            console.log('Validation errors:', validationErrors);
             setErrors(validationErrors);
             setIsEditingDetails(true); // Open the details section to show the errors
             alert('Please fill in all required project details before creating the project.');
@@ -211,6 +212,12 @@ export default function TemplateProjectCard({ template, onClose }) {
                 'Project ID': projectID,
                 'Balance': balance
             };
+
+            const assignedConsultantName = projectToCreate['Assigned Consultant'];
+            if (assignedConsultantName && assignedConsultants_record_ids[assignedConsultantName]) {
+                projectToCreate['collaborators'] = [assignedConsultants_record_ids[assignedConsultantName]];
+            }
+
 
             // Remove any undefined or null values
             Object.keys(projectToCreate).forEach(key => {
@@ -510,7 +517,11 @@ export default function TemplateProjectCard({ template, onClose }) {
     };
 
     const handleDetailChange = (field, value) => {
-        setProjectData(prev => ({ ...prev, [field]: value }));
+        let processedValue = value;
+        if (field === 'Full Cost' || field === 'Paid') {
+            processedValue = value === '' ? null : parseFloat(value);
+        }
+        setProjectData(prev => ({ ...prev, [field]: processedValue }));
     };
 
     const handleSaveDetails = () => {

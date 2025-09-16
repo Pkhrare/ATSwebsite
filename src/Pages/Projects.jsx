@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../Pages/All.css';
 import Card from '../components/cards/ProjectCard';
 import AddProjectCard from '../components/cards/AddProjectCard';
-import { dropdownFields, safeNewDate } from '../utils/validations';
+import { dropdownFields, safeNewDate, assignedConsultants_record_ids } from '../utils/validations';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from 'date-fns';
@@ -155,20 +155,51 @@ function Projects() {
 
 
   const handleUpdateClick = async () => {
-    const updates = Object.values(editedRecords).map(record => ({
-      id: record.id,
-      fields: {
-        ...record.fields,
-        Balance: (Number(record.fields['Full Cost']) || 0) - (Number(record.fields['Paid']) || 0)
+    const updates = Object.values(editedRecords).map(record => {
+      const originalRecord = data.find(r => r.id === record.id);
+      const updatedFields = {
+          ...record.fields,
+          Balance: (Number(record.fields['Full Cost']) || 0) - (Number(record.fields['Paid']) || 0)
+      };
+
+      // Check if Assigned Consultant changed
+      if (record.fields['Assigned Consultant'] !== undefined) {
+          const oldConsultant = originalRecord.fields['Assigned Consultant'];
+          const newConsultant = record.fields['Assigned Consultant'];
+
+          if (oldConsultant !== newConsultant) {
+              const oldConsultantId = oldConsultant ? assignedConsultants_record_ids[oldConsultant] : null;
+              const newConsultantId = newConsultant ? assignedConsultants_record_ids[newConsultant] : null;
+
+              let currentCollaboratorIds = originalRecord.fields.collaborators || [];
+
+              // Remove old consultant
+              if (oldConsultantId) {
+                  currentCollaboratorIds = currentCollaboratorIds.filter(id => id !== oldConsultantId);
+              }
+
+              // Add new consultant
+              if (newConsultantId && !currentCollaboratorIds.includes(newConsultantId)) {
+                  currentCollaboratorIds.push(newConsultantId);
+              }
+
+              updatedFields.collaborators = currentCollaboratorIds;
+          }
       }
-    }));
+      return {
+          id: record.id,
+          fields: updatedFields
+      };
+    });
 
     try {
-      if (updates.length) await apiFetch('/records', {
-        method: 'PATCH',
-        body: JSON.stringify({ recordsToUpdate: updates, tableName: 'projects' })
-      });
-      await loadData();
+      if (updates.length) {
+        await apiFetch('/records', {
+            method: 'PATCH',
+            body: JSON.stringify({ recordsToUpdate: updates, tableName: 'projects' })
+        });
+      }
+      await loadData(); // Refetch all data to ensure UI is consistent
     } catch (e) {
       console.error('Update failed:', e);
     } finally {

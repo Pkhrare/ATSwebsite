@@ -6,7 +6,7 @@ import AddGroupForm from '../forms/AddGroupForm';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { parse, format, isValid } from 'date-fns';
-import { dropdownFields, DEFAULT_ACTIVITIES, safeNewDate } from '../../utils/validations';
+import { dropdownFields, DEFAULT_ACTIVITIES, safeNewDate, assignedConsultants_record_ids } from '../../utils/validations';
 import { useAuth } from '../../utils/AuthContext';
 import ApiCaller from '../apiCall/ApiCaller';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
@@ -98,6 +98,17 @@ const TrashIcon = () => (
     </svg>
 );
 
+const ReadReceipt = ({ isRead }) => (
+    <div className={`relative w-5 h-5 ml-1 inline-block ${isRead ? 'text-blue-400' : 'text-slate-400'}`}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 absolute" style={{ right: '6px' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 absolute" style={{ right: '0px' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+    </div>
+);
+
 // --- Main Card Component ---
 export default function Card({ data, onClose, onProjectUpdate }) {
     const { userRole } = useAuth();
@@ -152,6 +163,29 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             console.error('Failed to load project chat history:', err);
         }
     }, [projectData?.fields['Project ID']]);
+
+    useEffect(() => {
+        if (projectMessages.length > 0 && projectSocketRef.current && projectData) {
+            const unreadMessageIds = projectMessages
+                .filter(msg => !msg.fields.is_read && msg.fields.sender !== 'Consultant')
+                .map(msg => msg.id);
+
+            if (unreadMessageIds.length > 0) {
+                projectSocketRef.current.emit('markMessagesAsRead', {
+                    messageIds: unreadMessageIds,
+                    tableName: 'project_messages'
+                });
+                // Optimistic update
+                setProjectMessages(prevMessages =>
+                    prevMessages.map(msg =>
+                        unreadMessageIds.includes(msg.id)
+                            ? { ...msg, fields: { ...msg.fields, is_read: true } }
+                            : msg
+                    )
+                );
+            }
+        }
+    }, [projectMessages, projectData]);
 
     const fetchTasksForProject = useCallback(async () => {
         if (!projectData?.id) return;
@@ -351,7 +385,24 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         });
 
         projectSocketRef.current.on('receiveProjectMessage', (message) => {
-            setProjectMessages(prevMessages => [...prevMessages, message]);
+            setProjectMessages(prevMessages => {
+                const newMessages = [...prevMessages, message];
+                // When a new message is received, check if it should be marked as read immediately
+                if (userRole === 'consultant' && message.fields.sender !== 'Consultant') {
+                    setTimeout(() => {
+                        projectSocketRef.current.emit('markMessagesAsRead', {
+                            messageIds: [message.id],
+                            tableName: 'project_messages'
+                        });
+                    }, 1000);
+                }
+
+                return newMessages.map(m =>
+                    m.id === message.id && userRole === 'consultant' && message.fields.sender !== 'Consultant'
+                        ? { ...m, fields: { ...m.fields, is_read: true } }
+                        : m
+                );
+            });
         });
 
         projectSocketRef.current.on('sendProjectMessageError', (error) => {
@@ -693,6 +744,29 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const handleSaveDetails = async () => {
         const updatedFields = { ...editedDetails };
         
+        // Check if Assigned Consultant changed and update collaborators accordingly
+        const oldConsultant = projectData.fields['Assigned Consultant'];
+        const newConsultant = updatedFields['Assigned Consultant'];
+
+        if (oldConsultant !== newConsultant) {
+            const oldConsultantId = oldConsultant ? assignedConsultants_record_ids[oldConsultant] : null;
+            const newConsultantId = newConsultant ? assignedConsultants_record_ids[newConsultant] : null;
+
+            let currentCollaboratorIds = projectData.fields.collaborators || [];
+
+            // Remove old consultant if they existed
+            if (oldConsultantId) {
+                currentCollaboratorIds = currentCollaboratorIds.filter(id => id !== oldConsultantId);
+            }
+
+            // Add new consultant if they exist and are not already in the list
+            if (newConsultantId && !currentCollaboratorIds.includes(newConsultantId)) {
+                currentCollaboratorIds.push(newConsultantId);
+            }
+            
+            updatedFields.collaborators = currentCollaboratorIds;
+        }
+
         // Do not attempt to update computed fields like 'Last Updated'
         delete updatedFields['Last Updated'];
         
@@ -703,11 +777,14 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                 method: 'PATCH',
                 body: JSON.stringify({ fields: updatedFields }),
             });
-            const updatedProjectData = { ...projectData, fields: updatedFields };
-            setProjectData(updatedProjectData);
+
+            // After successful save, refetch the project data to get updated lookup fields
+            const refreshedProjectData = await apiFetch(`/records/projects/${projectData.id}`);
+
+            setProjectData(refreshedProjectData);
             setIsEditingDetails(false);
             if (onProjectUpdate) {
-                onProjectUpdate(updatedProjectData);
+                onProjectUpdate(refreshedProjectData);
             }
         } catch (error) {
             console.error('Failed to save details:', error);
@@ -1720,15 +1797,21 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <h2 className={`text-lg font-semibold ${colorClasses.card.header} mb-3`}>💬 General Discussion</h2>
                             <div ref={projectChatContainerRef} className="h-48 overflow-y-auto custom-scrollbar border rounded-md p-2 space-y-2 mb-2 bg-slate-50">
-                                {projectMessages.map((msg) => (
-                                    <div key={msg.id} className={`flex ${msg.fields.sender === 'Consultant' ? 'justify-end' : 'justify-start'}`}>
-                                        <div className={`p-2 rounded-lg max-w-xs ${msg.fields.sender === 'Consultant' ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-800'}`}>
-                                            <p className="text-xs font-bold">{msg.fields.sender}</p>
-                                            <p className="text-sm">{msg.fields.message_text}</p>
-                                            <p className="text-xs text-right opacity-75 mt-1">{new Date(msg.createdTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                                {projectMessages.map((msg) => {
+                                    const isConsultantMessage = msg.fields.sender === 'Consultant';
+                                    return (
+                                        <div key={msg.id} className={`flex ${isConsultantMessage ? 'justify-end' : 'justify-start'}`}>
+                                            <div className={`p-2 rounded-lg max-w-xs ${isConsultantMessage ? 'bg-slate-200 text-slate-800' : 'bg-blue-500 text-white'}`}>
+                                                <p className="text-xs font-bold">{msg.fields.sender}</p>
+                                                <p className="text-sm">{msg.fields.message_text}</p>
+                                                <div className="text-xs text-right opacity-75 mt-1 flex items-center justify-end">
+                                                    <span>{new Date(msg.createdTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                                                    {isConsultantMessage && <ReadReceipt isRead={msg.fields.is_read} />}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    )
+                                })}
                             </div>
                             <div className="flex">
                                 <input 

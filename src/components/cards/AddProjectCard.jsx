@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { dropdownFields, validateRow, safeNewDate } from '../../utils/validations';
+import { dropdownFields, validateRow, safeNewDate, assignedConsultants_record_ids } from '../../utils/validations';
 import { format } from 'date-fns';
 import ApiCaller from '../apiCall/ApiCaller';   
 
@@ -44,7 +44,11 @@ const AddProjectCard = ({ onClose, onProjectAdded }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (field, value) => {
-        setFields(prev => ({ ...prev, [field]: value }));
+        let processedValue = value;
+        if (field === 'Full Cost' || field === 'Paid') {
+            processedValue = value === '' ? null : parseFloat(value);
+        }
+        setFields(prev => ({ ...prev, [field]: processedValue }));
     };
 
     const handleSubmit = async (e) => {
@@ -62,9 +66,15 @@ const AddProjectCard = ({ onClose, onProjectAdded }) => {
             const projectID = await generateProjectID(fields['States'], fields['Project Type'], fields['Start Date']);
             const balance = (Number(fields['Full Cost']) || 0) - (Number(fields['Paid']) || 0);
             
+            const fieldsToCreate = { ...fields };
+            const assignedConsultantName = fieldsToCreate['Assigned Consultant'];
+            if (assignedConsultantName && assignedConsultants_record_ids[assignedConsultantName]) {
+                fieldsToCreate['collaborators'] = [assignedConsultants_record_ids[assignedConsultantName]];
+            }
+
             const recordToCreate = {
                 fields: {
-                    ...fields,
+                    ...fieldsToCreate,
                     'Project ID': projectID,
                     'Balance': balance,
                 }

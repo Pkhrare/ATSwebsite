@@ -17,6 +17,16 @@ import { useAuth } from '../../utils/AuthContext';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { colorClasses } from '../../utils/colorUtils';
 
+const ReadReceipt = ({ isRead }) => (
+    <div className={`relative w-5 h-5 ml-1 inline-block ${isRead ? 'text-blue-400' : 'text-slate-400'}`}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 absolute" style={{ right: '6px' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 absolute" style={{ right: '0px' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+    </div>
+);
 
 const apiFetch = async (endpoint, options = {}) => {
     return await ApiCaller(endpoint, options);
@@ -77,7 +87,26 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         });
 
         socketRef.current.on('receiveMessage', (message) => {
-            setMessages(prevMessages => [...prevMessages, message]);
+            setMessages(prevMessages => {
+                const newMessages = [...prevMessages, message];
+                const mySenderName = isClientView ? task.fields['Project Name (from project_id)'][0] : 'Consultant';
+                const isMyMessage = message.fields.sender === mySenderName;
+
+                if (!isMyMessage) {
+                    setTimeout(() => {
+                        socketRef.current.emit('markMessagesAsRead', {
+                            messageIds: [message.id],
+                            tableName: 'task_chat'
+                        });
+                    }, 1000);
+                }
+
+                return newMessages.map(m =>
+                    m.id === message.id && !isMyMessage
+                        ? { ...m, fields: { ...m.fields, is_read: true } }
+                        : m
+                );
+            });
         });
 
         socketRef.current.on('sendMessageError', (error) => {
@@ -223,6 +252,30 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         }
     }, [task?.id, refetchCounter]);
 
+
+    useEffect(() => {
+        if (messages.length > 0 && socketRef.current && task) {
+            const mySenderName = isClientView ? task.fields['Project Name (from project_id)'][0] : 'Consultant';
+            const unreadMessageIds = messages
+                .filter(msg => !msg.fields.is_read && msg.fields.sender !== mySenderName)
+                .map(msg => msg.id);
+
+            if (unreadMessageIds.length > 0) {
+                socketRef.current.emit('markMessagesAsRead', {
+                    messageIds: unreadMessageIds,
+                    tableName: 'task_chat'
+                });
+                // Optimistic update
+                setMessages(prevMessages =>
+                    prevMessages.map(msg =>
+                        unreadMessageIds.includes(msg.id)
+                            ? { ...msg, fields: { ...msg.fields, is_read: true } }
+                            : msg
+                    )
+                );
+            }
+        }
+    }, [messages, task, isClientView]);
 
     // --- Implement the click outside logic ---
     useEffect(() => {
@@ -1154,15 +1207,23 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
                                 <h3 className="text-sm font-medium ${colorClasses.text.primary} mb-2">Task Chat</h3>
                                 <div ref={chatContainerRef} className="h-48 overflow-y-auto custom-scrollbar border rounded-md p-2 space-y-2 mb-2 bg-gray-50">
-                                    {messages.map((msg) => (
-                                        <div key={msg.id} className={`flex ${msg.fields.sender === 'Consultant' ? 'justify-end' : 'justify-start'}`}>
-                                            <div className={`p-2 rounded-lg max-w-xs ${msg.fields.sender === 'Consultant' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}>
-                                                <p className="text-xs font-bold">{msg.fields.sender}</p>
-                                                <p className="text-sm">{msg.fields.message_text}</p>
-                                                <p className="text-xs text-right opacity-75">{new Date(msg.createdTime).toLocaleTimeString()}</p>
+                                    {messages.map((msg) => {
+                                        const mySenderName = isClientView ? task.fields['Project Name (from project_id)'][0] : 'Consultant';
+                                        const isMyMessage = msg.fields.sender === mySenderName;
+
+                                        return (
+                                            <div key={msg.id} className={`flex ${isMyMessage ? 'justify-end' : 'justify-start'}`}>
+                                                <div className={`p-2 rounded-lg max-w-xs ${isMyMessage ? 'bg-slate-200 text-slate-800' : 'bg-blue-500 text-white'}`}>
+                                                    <p className="text-xs font-bold">{msg.fields.sender}</p>
+                                                    <p className="text-sm">{msg.fields.message_text}</p>
+                                                    <div className="text-xs text-right opacity-75 flex items-center justify-end">
+                                                        <span>{new Date(msg.createdTime).toLocaleTimeString()}</span>
+                                                        {isMyMessage && <ReadReceipt isRead={msg.fields.is_read} />}
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                                 <div className="flex">
                                     <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()} className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" placeholder="Type a message..." />
