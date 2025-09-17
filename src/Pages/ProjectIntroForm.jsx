@@ -78,17 +78,42 @@ const FormComponent = () => {
                 })
             });
 
-            // --- Step 3: Select Template ---
-            // Directly use the imported dummyProject as the template.
-            // This is more robust than searching by name and avoids issues with the large template file.
+            // --- Step 3: Fetch supplemental data (like task forms) ---
+            const allForms = await ApiCaller('/all/task_forms');
+            
+            // Create a map for quick lookup
+            const formsMap = new Map();
+            if (allForms && Array.isArray(allForms)) {
+                allForms.forEach(form => {
+                    formsMap.set(form.fields.form_name, form);
+                });
+            }
+
+            // --- Step 4: Select Template and Enrich Tasks ---
             const template = dummyProject;
             if (!template) {
                 throw new Error(`The project template could not be loaded.`);
             }
-            console.log("DEBUG: Found template:", template);
+
+            // Enrich tasks with full form data
+            (template.tasks || []).forEach(task => {
+                if (task.fields.preAttachedFormName) {
+                    console.log(`DEBUG: Task "${task.fields.task_title}" has preAttachedFormName: "${task.fields.preAttachedFormName}"`);
+                    
+                    if (formsMap.has(task.fields.preAttachedFormName)) {
+                        const formData = formsMap.get(task.fields.preAttachedFormName);
+                        console.log(`DEBUG: Attaching form "${task.fields.preAttachedFormName}" to task "${task.fields.task_title}"`);
+                        console.log("DEBUG: Form data being attached:", formData);
+                        task.fields.attachedForm = formData;
+                    } else {
+                        console.error(`DEBUG: Could not find form "${task.fields.preAttachedFormName}" in formsMap!`);
+                        console.log("DEBUG: Available forms in map:", Array.from(formsMap.keys()));
+                    }
+                }
+            });
 
 
-            // --- Step 4: Prepare Project Data ---
+            // --- Step 5: Prepare Project Data ---
             const projectData = {
                 'Project Name': `${formData.fullName} - ${formData.agencyName}`,
                 'Client Email': formData.yourEmail,
@@ -105,7 +130,7 @@ const FormComponent = () => {
             console.log("DEBUG: Prepared project data:", projectData);
 
 
-            // --- Step 5: Execute Project Creation Logic (adapted from TemplateProjectCard) ---
+            // --- Step 6: Execute Project Creation Logic (adapted from TemplateProjectCard) ---
             const projectID = await generateProjectID(projectData['States'], projectData['Project Type'], projectData['Start Date']);
             if (!projectID) {
                 throw new Error("Failed to generate a Project ID.");
@@ -147,20 +172,17 @@ const FormComponent = () => {
                     tableName: 'collaborators'
                 })
             });
-            console.log("DEBUG: New client collaborator created.");
 
 
             // Create task groups
             const groupsToCreate = (template.taskGroups || []).map(group => ({
                 fields: { group_name: group.name, group_order: group.order, projectID: [newProjectId] }
             }));
-            console.log("DEBUG: Prepared groups to create:", groupsToCreate);
 
             const createGroupsResponse = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify({ recordsToCreate: groupsToCreate, tableName: 'task_groups' })
             });
-            console.log("DEBUG: Create groups response:", createGroupsResponse);
 
             const newGroupRecords = createGroupsResponse.records;
             const tempGroupToNewIdMap = new Map();
@@ -173,8 +195,6 @@ const FormComponent = () => {
                 const finalGroupId = task.groupId ? tempGroupToNewIdMap.get(task.groupId) : null;
                 return { ...task, finalGroupId };
             });
-
-            console.log("DEBUG: Extracted all tasks from template:", allTasksFromTemplate);
             
             const humanReadableIds = [];
             const tasksToCreatePayload = allTasksFromTemplate.map((task, index) => {
@@ -201,14 +221,12 @@ const FormComponent = () => {
                     'tags': task.fields.tags
                 }};
             });
-            console.log("DEBUG: Final task creation payload:", tasksToCreatePayload);
 
 
             const createTasksResponse = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify({ recordsToCreate: tasksToCreatePayload, tableName: 'tasks' })
             });
-            console.log("DEBUG: Create tasks response:", createTasksResponse);
             const newTaskRecords = createTasksResponse.records;
 
             // Update tasks with human-readable IDs and save descriptions
@@ -225,7 +243,49 @@ const FormComponent = () => {
             });
             await Promise.all(updateAndSavePromises);
 
-            // --- Step 6: Navigate to Success Page ---
+            // --- Step 7: Create all task sub-items (checklists, attachments, etc.) ---
+            const formSubmissionsToCreate = [];
+
+            allTasksFromTemplate.forEach((templateTask, index) => {
+                const newTaskId = newTaskRecords[index].id;
+                
+                // Only handle attached forms, as it's the only sub-item present in the template data
+                if (templateTask.fields.attachedForm?.fields?.task_forms_fields?.length > 0) {
+                    templateTask.fields.attachedForm.fields.task_forms_fields.forEach(fieldId => {
+                        formSubmissionsToCreate.push({ 
+                            fields: { 
+                                task_id: [newTaskId], 
+                                form: [templateTask.fields.attachedForm.id], 
+                                field: [fieldId], 
+                                value: '--EMPTY--', 
+                                submission: 'Incomplete' 
+                            } 
+                        });
+                    });
+                }
+            });
+
+            if (formSubmissionsToCreate.length > 0) {
+                console.log(`DEBUG: Sending request to create ${formSubmissionsToCreate.length} form submissions`);
+                try {
+                    const formSubmissionsResponse = await ApiCaller('/records', { 
+                        method: 'POST', 
+                        body: JSON.stringify({ 
+                            recordsToCreate: formSubmissionsToCreate, 
+                            tableName: 'task_forms_submissions' 
+                        }) 
+                    });
+                    console.log("DEBUG: Form submissions creation response:", formSubmissionsResponse);
+                } catch (error) {
+                    console.error("DEBUG: Error creating form submissions:", error);
+                    throw error;
+                }
+            } else {
+                console.warn("DEBUG: No form submissions to create!");
+            }
+
+
+            // --- Step 8: Navigate to Success Page ---
             navigate('/submission-success', {
                 state: {
                     projectId: newProjectIdentifier,
