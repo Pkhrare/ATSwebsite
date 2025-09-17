@@ -17,6 +17,8 @@ import InfoPageView from './Pages/InfoPageView';
 import InfoPageEdit from './Pages/InfoPageEdit';
 import ClientInfoPageView from './Pages/ClientInfoPageView';
 import JsonRichTextEditor from './Pages/JsonRichTextEditor';
+import ProjectIntroForm from './Pages/ProjectIntroForm';
+import PostSubmissionPage from './Pages/PostSubmissionPage';
 
 function App() {
   const { currentUser } = useAuth();
@@ -26,13 +28,15 @@ function App() {
       <Routes>
         {/* The new landing page is the entry point */}
         <Route path="/" element={<Landing />} />
-
+        
         {/* Public routes for login */}
         <Route path='/consultant-login' element={
           currentUser ? <Navigate to="/dashboard" replace /> : <ConsultantLogin />
         } />
         <Route path='/client-login' element={<ClientLogin />} />
         <Route path='/client/project/:projectId' element={<ClientCard />} />
+        <Route path="/project-intro-form" element={<ProjectIntroForm />} />
+        <Route path="/submission-success" element={<PostSubmissionPage />} />
         
         {/* Client-specific info pages (sidebar only, no navbar) */}
         <Route path='/client/info/:pageId' element={<ClientInfoPageView />} />
