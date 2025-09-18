@@ -97,18 +97,8 @@ const FormComponent = () => {
 
             // Enrich tasks with full form data
             (template.tasks || []).forEach(task => {
-                if (task.fields.preAttachedFormName) {
-                    console.log(`DEBUG: Task "${task.fields.task_title}" has preAttachedFormName: "${task.fields.preAttachedFormName}"`);
-                    
-                    if (formsMap.has(task.fields.preAttachedFormName)) {
-                        const formData = formsMap.get(task.fields.preAttachedFormName);
-                        console.log(`DEBUG: Attaching form "${task.fields.preAttachedFormName}" to task "${task.fields.task_title}"`);
-                        console.log("DEBUG: Form data being attached:", formData);
-                        task.fields.attachedForm = formData;
-                    } else {
-                        console.error(`DEBUG: Could not find form "${task.fields.preAttachedFormName}" in formsMap!`);
-                        console.log("DEBUG: Available forms in map:", Array.from(formsMap.keys()));
-                    }
+                if (task.fields.preAttachedFormName && formsMap.has(task.fields.preAttachedFormName)) {
+                    task.fields.attachedForm = formsMap.get(task.fields.preAttachedFormName);
                 }
             });
 
@@ -127,7 +117,6 @@ const FormComponent = () => {
                 'Full Cost': 0, // Defaulting cost fields to 0
                 'Paid': 0,
             };
-            console.log("DEBUG: Prepared project data:", projectData);
 
 
             // --- Step 6: Execute Project Creation Logic (adapted from TemplateProjectCard) ---
@@ -245,11 +234,14 @@ const FormComponent = () => {
 
             // --- Step 7: Create all task sub-items (checklists, attachments, etc.) ---
             const formSubmissionsToCreate = [];
+            const checklistsToCreate = [];
+            const attachmentsToCreate = [];
+            const approvalsToCreate = [];
 
             allTasksFromTemplate.forEach((templateTask, index) => {
                 const newTaskId = newTaskRecords[index].id;
                 
-                // Only handle attached forms, as it's the only sub-item present in the template data
+                // Handle attached forms
                 if (templateTask.fields.attachedForm?.fields?.task_forms_fields?.length > 0) {
                     templateTask.fields.attachedForm.fields.task_forms_fields.forEach(fieldId => {
                         formSubmissionsToCreate.push({ 
@@ -263,26 +255,99 @@ const FormComponent = () => {
                         });
                     });
                 }
+
+                // Handle checklist items
+                if (templateTask.fields.checklistItems && Array.isArray(templateTask.fields.checklistItems) && templateTask.fields.checklistItems.length > 0) {
+                    templateTask.fields.checklistItems.forEach(item => {
+                        checklistsToCreate.push({
+                            fields: {
+                                task_id: [newTaskId],
+                                checklist_description: item.checklist_description || item,
+                                completed: false
+                            }
+                        });
+                    });
+                }
+
+                // Handle attachment placeholders
+                if (templateTask.fields.attachments && Array.isArray(templateTask.fields.attachments) && templateTask.fields.attachments.length > 0) {
+                    templateTask.fields.attachments.forEach(attachment => {
+                        attachmentsToCreate.push({
+                            fields: {
+                                task_id: [newTaskId],
+                                attachment_description: attachment.attachment_description || attachment
+                            }
+                        });
+                    });
+                }
+
+                // Handle approvals
+                if (templateTask.fields.approvals && Array.isArray(templateTask.fields.approvals) && templateTask.fields.approvals.length > 0) {
+                    templateTask.fields.approvals.forEach(approval => {
+                        approvalsToCreate.push({
+                            fields: {
+                                task_id: [newTaskId],
+                                approval_description: approval.approval_description || 
+                                                     approval.fields?.approval_description || 
+                                                     approval
+                            }
+                        });
+                    });
+                }
             });
 
+            // Create all sub-items in parallel
+            const createPromises = [];
+
             if (formSubmissionsToCreate.length > 0) {
-                console.log(`DEBUG: Sending request to create ${formSubmissionsToCreate.length} form submissions`);
-                try {
-                    const formSubmissionsResponse = await ApiCaller('/records', { 
+                createPromises.push(
+                    ApiCaller('/records', { 
                         method: 'POST', 
                         body: JSON.stringify({ 
                             recordsToCreate: formSubmissionsToCreate, 
                             tableName: 'task_forms_submissions' 
                         }) 
-                    });
-                    console.log("DEBUG: Form submissions creation response:", formSubmissionsResponse);
-                } catch (error) {
-                    console.error("DEBUG: Error creating form submissions:", error);
-                    throw error;
-                }
-            } else {
-                console.warn("DEBUG: No form submissions to create!");
+                    })
+                );
             }
+
+            if (checklistsToCreate.length > 0) {
+                createPromises.push(
+                    ApiCaller('/records', { 
+                        method: 'POST', 
+                        body: JSON.stringify({ 
+                            recordsToCreate: checklistsToCreate, 
+                            tableName: 'task_checklists' 
+                        }) 
+                    })
+                );
+            }
+
+            if (attachmentsToCreate.length > 0) {
+                createPromises.push(
+                    ApiCaller('/records', { 
+                        method: 'POST', 
+                        body: JSON.stringify({ 
+                            recordsToCreate: attachmentsToCreate, 
+                            tableName: 'task_attachments' 
+                        }) 
+                    })
+                );
+            }
+
+            if (approvalsToCreate.length > 0) {
+                createPromises.push(
+                    ApiCaller('/records', { 
+                        method: 'POST', 
+                        body: JSON.stringify({ 
+                            recordsToCreate: approvalsToCreate, 
+                            tableName: 'task_approval' 
+                        }) 
+                    })
+                );
+            }
+
+            await Promise.all(createPromises);
 
 
             // --- Step 8: Navigate to Success Page ---
