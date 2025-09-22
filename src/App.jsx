@@ -17,7 +17,9 @@ import InfoPageView from './Pages/InfoPageView';
 import InfoPageEdit from './Pages/InfoPageEdit';
 import ClientInfoPageView from './Pages/ClientInfoPageView';
 import JsonRichTextEditor from './Pages/JsonRichTextEditor';
-import ProjectIntroForm from './Pages/ProjectIntroForm';
+import CombinedLicenseIntroPage from './Pages/ProjectPageForms/CombinedLicenseIntroPage';
+import EnrollmentIntroPage from './Pages/ProjectPageForms/EnrollmentIntroPage';
+import PolicyProcedureIntroPage from './Pages/ProjectPageForms/PolicyProcedureIntroPage';
 import PostSubmissionPage from './Pages/PostSubmissionPage';
 
 function App() {
@@ -35,7 +37,9 @@ function App() {
         } />
         <Route path='/client-login' element={<ClientLogin />} />
         <Route path='/client/project/:projectId' element={<ClientCard />} />
-        <Route path="/project-intro-form" element={<ProjectIntroForm />} />
+        <Route path="/combined-license-form" element={<CombinedLicenseIntroPage />} />
+        <Route path="/enrollment-form" element={<EnrollmentIntroPage />} />
+        <Route path="/policy-procedure-form" element={<PolicyProcedureIntroPage />} />
         <Route path="/submission-success" element={<PostSubmissionPage />} />
         
         {/* Client-specific info pages (sidebar only, no navbar) */}
