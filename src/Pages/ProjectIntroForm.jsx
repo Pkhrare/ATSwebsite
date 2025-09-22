@@ -11,6 +11,7 @@ import { saveContent } from '../utils/contentUtils';
 import CustomSelect from '../components/forms/CustomSelect';
 import ApiCaller from '../components/apiCall/ApiCaller';
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import CalendarAvailability from '../components/CalendarAvailability';
 
 
 const FormComponent = () => {
@@ -32,10 +33,11 @@ const FormComponent = () => {
         phone: '',
         confirmEmail: '',
         meetingDate: null,
-        meetingTimePreference: '',
         howSoon: '',
         consentName: '',
+        reasonForThisMeeting: '',
     });
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -347,10 +349,33 @@ const FormComponent = () => {
                 );
             }
 
+            // --- Step 8: Create Calendar Event ---
+            if (formData.meetingDate) {
+                try {
+                    await ApiCaller('/calendar/create-event', {
+                        method: 'POST',
+                        body: JSON.stringify(formData) // Send the whole form data
+                    });
+                } catch (calendarError) {
+                    console.error('Failed to create calendar event:', calendarError);
+                    // Decide if this should be a fatal error or just a warning
+                    // For now, we'll log it and continue
+                }
+            }
+
+            createPromises.push(
+                ApiCaller('/submit-intro-form', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        formData: formData
+                    })
+                })
+            );
+            console.log(formData)
             await Promise.all(createPromises);
 
 
-            // --- Step 8: Navigate to Success Page ---
+            // --- Step 9: Navigate to Success Page ---
             navigate('/submission-success', {
                 state: {
                     projectId: newProjectIdentifier,
@@ -479,20 +504,16 @@ const FormComponent = () => {
                             </div>
 
                             <div>
-                                <label htmlFor="meetingDate" className="block text-sm font-medium text-gray-300 mb-1">The Next Step After Submitting This Form May Be An Initial Google Meet/Zoom Meeting. Please select a date and time that works for you <span className="text-red-500">*</span></label>
-                                <DatePicker
-                                    selected={formData.meetingDate}
-                                    onChange={handleDateChange}
-                                    showTimeSelect
-                                    dateFormat="MMMM d, yyyy h:mm aa"
-                                    className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white"
+                                <label className="block text-sm font-medium text-gray-300 mb-1">The Next Step After Submitting This Form May Be An Initial Google Meet/Zoom Meeting. Please select a date and time that works for you <span className="text-red-500">*</span></label>
+                                <CalendarAvailability
+                                    onTimeSlotSelect={(slot) => handleDateChange(slot)}
                                 />
                             </div>
-
-                             <div>
-                                <label htmlFor="meetingTimePreference" className="block text-sm font-medium text-gray-300 mb-1">What Time Do You Prefer For The Initial Meeting? (Indicate Time Zone ex. EST, Central, etc to ensure accurate scheduling) <span className="text-red-500">*</span></label>
-                                <input type="text" name="meetingTimePreference" id="meetingTimePreference" value={formData.meetingTimePreference} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
-                            </div>
+                            
+                            <div>
+                               <label htmlFor="reasonForThisMeeting" className="block text-sm font-medium text-gray-300 mb-1">What do you hope to accomplish through this meeting? <span className="text-red-500">*</span></label>
+                               <textarea name="reasonForThisMeeting" id="reasonForThisMeeting" rows="4" value={formData.reasonForThisMeeting} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white"></textarea>
+                           </div>
 
                             <CustomSelect
                                 label="How Soon Are You Looking Start?"
