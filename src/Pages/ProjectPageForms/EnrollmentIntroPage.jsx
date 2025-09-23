@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../All.css';
-import { 
-    STATES, 
-    AGENCY_OVERVIEW, 
+import {
+    STATES,
+    AGENCY_OVERVIEW,
     ENROLLMENT_NEEDS_GOALS,
     BUSINESS_STRUCTURE
 } from '../../utils/FormUtils/formConstants';
@@ -91,15 +91,42 @@ const FormComponent = () => {
                 })
             });
 
+
             // --- Step 3: Fetch supplemental data (like task forms) ---
             const allForms = await ApiCaller('/all/task_forms');
-            
+
             // Create a map for quick lookup
             const formsMap = new Map();
+            const fieldDetailsMap = new Map(); // New map for field details
+
             if (allForms && Array.isArray(allForms)) {
                 allForms.forEach(form => {
                     formsMap.set(form.fields.form_name, form);
                 });
+
+                // Fetch all field details
+                const allFieldIds = allForms.flatMap(form => form.fields.task_forms_fields || []);
+                if (allFieldIds.length > 0) {
+                    try {
+                        const formFieldsResponse = await ApiCaller('/records/by-ids', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                recordIds: allFieldIds,
+                                tableName: 'task_forms_fields'
+                            })
+                        });
+
+                        formFieldsResponse.records.forEach(field => {
+                            fieldDetailsMap.set(field.id, {
+                                id: field.id,
+                                label: field.fields.field_label,
+                                type: field.fields.field_type
+                            });
+                        });
+                    } catch (error) {
+                        console.error('Failed to fetch field details:', error);
+                    }
+                }
             }
 
             // --- Step 4: Select Template and Enrich Tasks ---
@@ -137,7 +164,7 @@ const FormComponent = () => {
             if (!projectID) {
                 throw new Error("Failed to generate a Project ID.");
             }
-            
+
             const projectToCreate = {
                 ...projectData,
                 'Project ID': projectID,
@@ -166,11 +193,13 @@ const FormComponent = () => {
             await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify({
-                    recordsToCreate: [{ fields: {
-                        collaborator_name: newClientCollaboratorName,
-                        collaborator_email: projectData['Client Email'],
-                        Projects: [newProjectId]
-                    }}],
+                    recordsToCreate: [{
+                        fields: {
+                            collaborator_name: newClientCollaboratorName,
+                            collaborator_email: projectData['Client Email'],
+                            Projects: [newProjectId]
+                        }
+                    }],
                     tableName: 'collaborators'
                 })
             });
@@ -197,7 +226,7 @@ const FormComponent = () => {
                 const finalGroupId = task.groupId ? tempGroupToNewIdMap.get(task.groupId) : null;
                 return { ...task, finalGroupId };
             });
-            
+
             const humanReadableIds = [];
             const tasksToCreatePayload = allTasksFromTemplate.map((task, index) => {
                 let finalAssignee = task.fields.assigned_to;
@@ -209,19 +238,21 @@ const FormComponent = () => {
                 const humanReadableId = `${newProjectIdentifier}-T${index + 1}`;
                 humanReadableIds.push(humanReadableId);
 
-                return { fields: {
-                    'project_id': [newProjectId],
-                    'task_title': task.fields.task_title,
-                    'task_status': task.fields.task_status || 'Not Started',
-                    'order': task.fields.order || 0,
-                    'task_groups': task.finalGroupId ? [task.finalGroupId] : [],
-                    'assigned_to': finalAssignee,
-                    'due_date': task.fields.due_date,
-                    'start_date': task.fields.start_date || new Date().toISOString().split('T')[0],
-                    'progress_bar': task.fields.progress_bar || 0,
-                    'Action_type': task.fields.Action_type,
-                    'tags': task.fields.tags
-                }};
+                return {
+                    fields: {
+                        'project_id': [newProjectId],
+                        'task_title': task.fields.task_title,
+                        'task_status': task.fields.task_status || 'Not Started',
+                        'order': task.fields.order || 0,
+                        'task_groups': task.finalGroupId ? [task.finalGroupId] : [],
+                        'assigned_to': finalAssignee,
+                        'due_date': task.fields.due_date,
+                        'start_date': task.fields.start_date || new Date().toISOString().split('T')[0],
+                        'progress_bar': task.fields.progress_bar || 0,
+                        'Action_type': task.fields.Action_type,
+                        'tags': task.fields.tags
+                    }
+                };
             });
 
 
@@ -253,19 +284,99 @@ const FormComponent = () => {
 
             allTasksFromTemplate.forEach((templateTask, index) => {
                 const newTaskId = newTaskRecords[index].id;
-                
+
                 // Handle attached forms
                 if (templateTask.fields.attachedForm?.fields?.task_forms_fields?.length > 0) {
                     templateTask.fields.attachedForm.fields.task_forms_fields.forEach(fieldId => {
-                        formSubmissionsToCreate.push({ 
-                            fields: { 
-                                task_id: [newTaskId], 
-                                form: [templateTask.fields.attachedForm.id], 
-                                field: [fieldId], 
-                                value: '--EMPTY--', 
-                                submission: 'Incomplete' 
-                            } 
-                        });
+                        if (templateTask.fields.preAttachedFormName === 'Provider_enrollment_getting_started') {
+                            const fieldLabel = fieldDetailsMap.get(fieldId)?.label || fieldId;
+                            console.log(`Processing field: ${fieldLabel} (ID: ${fieldId})`);
+
+                            let value;
+                            switch (fieldLabel) {
+                                case 'Your Agency/Practice Name':
+                                    value = formData.agencyName;
+                                    break;
+                                case 'Your Email':
+                                    value = formData.email;
+                                    break;
+                                case 'First & Last Name':
+                                    value = formData.fullName;
+                                    break;
+                                case "In Your Own Words, Describe The Type Of Service(s) You're Starting":
+                                    value = formData.serviceDescription;
+                                    break;
+                                case "AGENCY OVERVIEW":
+                                    value = formData.agencyOverview;
+                                    break;
+                                case "Agency Status: Is your organization a new startup (not yet serving clients) or an existing provider agency? If existing, please briefly describe your current operations (e.g., year founded, services currently offered). If a startup, you may note your expected launch timeframe.":
+                                    value = formData.agencyStatus;
+                                    break;
+                                case "Services Provided: What types of services or programs do you plan to offer (or currently provide)?":
+                                    value = formData.servicesProvided;
+                                    break;
+                                case "State(s) of Operation: In which state or states will your agency be operating?":
+                                    value = `${formData.statesOfOperation}`;
+                                    break;
+                                case 'Current Service Delivery: Are you currently serving clients or delivering services under any program, or will this be a new operation starting after enrollment approval? If you are already serving clients (e.g., under private pay or other programs), please explain the context. If not, you can indicate “not yet operational.”':
+                                    value = formData.currentServiceDelivery;
+                                    break;
+                                case 'ENROLLMENT NEEDS & GOALS':
+                                    value = formData.enrollmentNeeds;
+                                    break;
+                                case 'Enrollment Type(s) Sought: Which provider enrollments or credentials are you seeking through our assistance? (Select all that apply: Medicaid (state Medicaid and/or HCBS waiver programs), Medicare, Managed Care Organization (MCO) network enrollment, Other). Please list the specific program types if known (e.g., Medicaid Waiver for Ohio, Medicare Part B supplier, etc.).':
+                                    value = formData.enrollmentTypesSought;
+                                    break;
+                                case 'State Medicaid Programs: If you are pursuing Medicaid enrollment, do you know which state program or waiver you will enroll in, or will this be a general state Medicaid provider enrollment? If known, please specify the state’s program (for example, “Georgia SOURCE Waiver” or “Indiana A&D Waiver”). If not, we will help identify the appropriate program.':
+                                    value = formData.stateMedicaidPrograms;
+                                    break;
+                                case 'Medicare Provider Requirements: Are you seeking to enroll as a Medicare provider? (Yes/No) If yes, what type of provider will you be for Medicare (e.g., Home Health Agency, DME supplier, Clinic)? And have you obtained any required accreditation or certification for Medicare participation (for example, ACHC or Joint Commission accreditation for a home health agency)? If yes, please specify the accreditation or state survey status. If no, please note if you will need guidance obtaining the necessary certification.':
+                                    value = formData.medicareProvider;
+                                    break;
+                                case 'Managed Care Networks: Do you plan to enroll with or seek contracts with specific Managed Care Organizations (MCOs) or private insurance networks? (Yes/No/Not Sure) If yes, please list any target MCOs or health plans by name (if known). This helps us understand which networks you wish to join after base enrollment.':
+                                    value = formData.managedCareNetworks;
+                                    break;
+                                case 'Enrollment Process Started: Have you already begun any enrollment application on your own, such as using a state’s provider enrollment portal (for example, New Jersey’s PRISM system or Ohio’s MITS portal)? (Yes/No) If yes, please indicate which system or application you started, and describe the current status (e.g., “submitted Part 1, awaiting response” or “in progress, need help with certain sections”).':
+                                    value = formData.enrollmentProcessStarted;
+                                    break;
+                                case 'BUSINESS STRUCTURE & LICENSURE':
+                                    value = formData.businessStructure;
+                                    break;
+                                case 'Legal Entity Formation: Has your agency been legally formed as a business entity (e.g., LLC, Corporation, Non-Profit)? (Yes/No) If yes, please specify the entity type and the state of incorporation/registration. If no, please explain your current status (e.g., formation in progress or assistance needed).':
+                                    value = formData.legalEntityFormation;
+                                    break;
+                                case 'Existing Provider Numbers: If you are an existing agency, do you already have any provider enrollment identifiers or numbers? (Yes/No/Not Applicable) If yes, please list any current provider numbers you have, such as a Medicaid Provider ID (and state), Medicare PTAN, NPI (if not already provided), or other credentialing identifiers.':
+                                    value = formData.existingProviderNumbers;
+                                    break;
+                                case "Policies and Procedures: Have you developed the required policies and procedures for your agency's operations and compliance? (Yes/No/In Progress)":
+                                    value = formData.policiesAndProcedures;
+                                    break;
+                                case 'Key Staff & Leadership: Have you identified or hired key management staff required for operating your agency in compliance with regulations? (Yes/No)':
+                                    value = formData.keyStaffAndLeadership;
+                                    break;
+                                default:
+                                    value = '--EMPTY--';
+                            }
+                            formSubmissionsToCreate.push({
+                                fields: {
+                                    task_id: [newTaskId],
+                                    form: [templateTask.fields.attachedForm.id],
+                                    field: [fieldId],
+                                    value: value,
+                                    submission: 'Completed'
+                                }
+                            });
+                        } else {
+                            formSubmissionsToCreate.push({
+                                fields: {
+                                    task_id: [newTaskId],
+                                    form: [templateTask.fields.attachedForm.id],
+                                    field: [fieldId],
+                                    value: '--EMPTY--',
+                                    submission: 'Incomplete'
+                                }
+                            });
+                        }
                     });
                 }
 
@@ -300,9 +411,9 @@ const FormComponent = () => {
                         approvalsToCreate.push({
                             fields: {
                                 task_id: [newTaskId],
-                                approval_description: approval.approval_description || 
-                                                     approval.fields?.approval_description || 
-                                                     approval
+                                approval_description: approval.approval_description ||
+                                    approval.fields?.approval_description ||
+                                    approval
                             }
                         });
                     });
@@ -314,53 +425,54 @@ const FormComponent = () => {
 
             if (formSubmissionsToCreate.length > 0) {
                 createPromises.push(
-                    ApiCaller('/records', { 
-                        method: 'POST', 
-                        body: JSON.stringify({ 
-                            recordsToCreate: formSubmissionsToCreate, 
-                            tableName: 'task_forms_submissions' 
-                        }) 
+                    ApiCaller('/records', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            recordsToCreate: formSubmissionsToCreate,
+                            tableName: 'task_forms_submissions'
+                        })
                     })
                 );
             }
 
             if (checklistsToCreate.length > 0) {
                 createPromises.push(
-                    ApiCaller('/records', { 
-                        method: 'POST', 
-                        body: JSON.stringify({ 
-                            recordsToCreate: checklistsToCreate, 
-                            tableName: 'task_checklists' 
-                        }) 
+                    ApiCaller('/records', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            recordsToCreate: checklistsToCreate,
+                            tableName: 'task_checklists'
+                        })
                     })
                 );
             }
 
             if (attachmentsToCreate.length > 0) {
                 createPromises.push(
-                    ApiCaller('/records', { 
-                        method: 'POST', 
-                        body: JSON.stringify({ 
-                            recordsToCreate: attachmentsToCreate, 
-                            tableName: 'task_attachments' 
-                        }) 
+                    ApiCaller('/records', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            recordsToCreate: attachmentsToCreate,
+                            tableName: 'task_attachments'
+                        })
                     })
                 );
             }
 
             if (approvalsToCreate.length > 0) {
                 createPromises.push(
-                    ApiCaller('/records', { 
-                        method: 'POST', 
-                        body: JSON.stringify({ 
-                            recordsToCreate: approvalsToCreate, 
-                            tableName: 'task_approval' 
-                        }) 
+                    ApiCaller('/records', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            recordsToCreate: approvalsToCreate,
+                            tableName: 'task_approval'
+                        })
                     })
                 );
             }
 
-            
+
+
 
             createPromises.push(
                 ApiCaller('/submit-Enrollment-intro-form', {
@@ -389,7 +501,7 @@ const FormComponent = () => {
             setIsSubmitting(false);
         }
     }, [executeRecaptcha, formData, navigate]);
-    
+
     // Helper function to create project from template
     const createProjectFromTemplate = async (template, projectData, formData) => {
         try {
@@ -398,7 +510,7 @@ const FormComponent = () => {
             if (!projectID) {
                 throw new Error("Failed to generate a Project ID.");
             }
-            
+
             const projectToCreate = {
                 ...projectData,
                 'Project ID': projectID,
@@ -415,7 +527,7 @@ const FormComponent = () => {
                 recordsToCreate: [{ fields: projectToCreate }],
                 tableName: 'projects'
             });
-            
+
             let createProjectResponse;
             try {
                 createProjectResponse = await ApiCaller('/records', {
@@ -425,7 +537,7 @@ const FormComponent = () => {
                         tableName: 'projects'
                     })
                 });
-                
+
                 console.log('Project creation successful:', createProjectResponse);
             } catch (error) {
                 console.error('Error creating project:', error);
@@ -442,27 +554,29 @@ const FormComponent = () => {
             await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify({
-                    recordsToCreate: [{ fields: {
-                        collaborator_name: newClientCollaboratorName,
-                        collaborator_email: projectData['Client Email'],
-                        Projects: [newProjectId]
-                    }}],
+                    recordsToCreate: [{
+                        fields: {
+                            collaborator_name: newClientCollaboratorName,
+                            collaborator_email: projectData['Client Email'],
+                            Projects: [newProjectId]
+                        }
+                    }],
                     tableName: 'collaborators'
                 })
             });
 
             // Submit the form data and navigate to success page
             await submitFormAndNavigate(formData, newProjectIdentifier, projectData['Project Name']);
-            
+
         } catch (error) {
             throw error;
         }
     };
-    
+
     // Helper function to submit form data and navigate to success page
     const submitFormAndNavigate = async (formData, projectId, projectName) => {
         console.log('Submitting form data:', formData);
-        
+
         try {
             // Use the generic form submission endpoint that we know exists
             await ApiCaller('/submit-intro-form', {
@@ -472,7 +586,7 @@ const FormComponent = () => {
                     formType: 'enrollment' // Add a type identifier so the backend knows which form it is
                 })
             });
-            
+
             // Navigate to success page
             navigate('/submission-success', {
                 state: {
@@ -483,7 +597,7 @@ const FormComponent = () => {
         } catch (error) {
             console.error('Error submitting form data:', error);
             console.log('Continuing to navigate to success page despite form submission error');
-            
+
             // Navigate to success page even if form submission fails
             navigate('/submission-success', {
                 state: {
@@ -493,7 +607,7 @@ const FormComponent = () => {
             });
         }
     };
-    
+
     // Helper function to create tasks and groups
     const createTasksAndGroups = async (template, newProjectId, newProjectIdentifier, projectData, newClientCollaboratorName, formData) => {
         try {
@@ -501,7 +615,7 @@ const FormComponent = () => {
             console.log('Template:', template);
             console.log('Template task groups:', template.taskGroups);
             console.log('Template tasks:', template.tasks);
-            
+
             // Check if template has task groups
             if (!template.taskGroups || template.taskGroups.length === 0) {
                 console.log('No task groups found in template. Skipping task group creation.');
@@ -509,14 +623,14 @@ const FormComponent = () => {
                 await submitFormAndNavigate(formData, newProjectIdentifier, projectData['Project Name']);
                 return; // Exit early if no task groups
             }
-            
+
             // Create task groups
             const groupsToCreate = (template.taskGroups || []).map(group => ({
                 fields: { group_name: group.name, group_order: group.order, projectID: [newProjectId] }
             }));
-            
+
             console.log('Creating task groups:', groupsToCreate);
-            
+
             let createGroupsResponse;
             try {
                 createGroupsResponse = await ApiCaller('/records', {
@@ -534,7 +648,7 @@ const FormComponent = () => {
             (template.taskGroups || []).forEach((tempGroup, index) => {
                 tempGroupToNewIdMap.set(tempGroup.id, newGroupRecords[index].id);
             });
-            
+
             // Check if template has tasks
             if (!template.tasks || template.tasks.length === 0) {
                 console.log('No tasks found in template. Skipping task creation.');
@@ -548,7 +662,7 @@ const FormComponent = () => {
                 const finalGroupId = task.groupId ? tempGroupToNewIdMap.get(task.groupId) : null;
                 return { ...task, finalGroupId };
             });
-            
+
             const humanReadableIds = [];
             const tasksToCreatePayload = allTasksFromTemplate.map((task, index) => {
                 let finalAssignee = task.fields.assigned_to;
@@ -560,23 +674,25 @@ const FormComponent = () => {
                 const humanReadableId = `${newProjectIdentifier}-T${index + 1}`;
                 humanReadableIds.push(humanReadableId);
 
-                return { fields: {
-                    'project_id': [newProjectId],
-                    'task_title': task.fields.task_title || `Task ${index + 1}`,
-                    'task_status': task.fields.task_status || 'Not Started',
-                    'order': task.fields.order || 0,
-                    'task_groups': task.finalGroupId ? [task.finalGroupId] : [],
-                    'assigned_to': finalAssignee,
-                    'due_date': task.fields.due_date,
-                    'start_date': task.fields.start_date || new Date().toISOString().split('T')[0],
-                    'progress_bar': task.fields.progress_bar || 0,
-                    'Action_type': task.fields.Action_type || 'Default',
-                    'tags': task.fields.tags
-                }};
+                return {
+                    fields: {
+                        'project_id': [newProjectId],
+                        'task_title': task.fields.task_title || `Task ${index + 1}`,
+                        'task_status': task.fields.task_status || 'Not Started',
+                        'order': task.fields.order || 0,
+                        'task_groups': task.finalGroupId ? [task.finalGroupId] : [],
+                        'assigned_to': finalAssignee,
+                        'due_date': task.fields.due_date,
+                        'start_date': task.fields.start_date || new Date().toISOString().split('T')[0],
+                        'progress_bar': task.fields.progress_bar || 0,
+                        'Action_type': task.fields.Action_type || 'Default',
+                        'tags': task.fields.tags
+                    }
+                };
             });
-            
+
             console.log('Creating tasks:', tasksToCreatePayload);
-            
+
             let createTasksResponse;
             try {
                 createTasksResponse = await ApiCaller('/records', {
@@ -589,7 +705,7 @@ const FormComponent = () => {
                 console.error('Task payload that failed:', tasksToCreatePayload);
                 throw new Error(`Failed to create tasks: ${error.message}`);
             }
-            
+
             const newTaskRecords = createTasksResponse.records;
 
             // Update tasks with human-readable IDs and save descriptions
@@ -608,7 +724,7 @@ const FormComponent = () => {
 
             // Since createSubItemsAndSubmitForm was removed, we'll handle task sub-items here
             console.log('Creating task sub-items...');
-            
+
             try {
                 // --- Step 7: Create all task sub-items (checklists, attachments, etc.) ---
                 const formSubmissionsToCreate = [];
@@ -618,18 +734,18 @@ const FormComponent = () => {
 
                 allTasksFromTemplate.forEach((templateTask, index) => {
                     const newTaskId = newTaskRecords[index].id;
-                    
+
                     // Handle attached forms
                     if (templateTask.fields.attachedForm?.fields?.task_forms_fields?.length > 0) {
                         templateTask.fields.attachedForm.fields.task_forms_fields.forEach(fieldId => {
-                            formSubmissionsToCreate.push({ 
-                                fields: { 
-                                    task_id: [newTaskId], 
-                                    form: [templateTask.fields.attachedForm.id], 
-                                    field: [fieldId], 
-                                    value: '--EMPTY--', 
-                                    submission: 'Incomplete' 
-                                } 
+                            formSubmissionsToCreate.push({
+                                fields: {
+                                    task_id: [newTaskId],
+                                    form: [templateTask.fields.attachedForm.id],
+                                    field: [fieldId],
+                                    value: '--EMPTY--',
+                                    submission: 'Incomplete'
+                                }
                             });
                         });
                     }
@@ -665,9 +781,9 @@ const FormComponent = () => {
                             approvalsToCreate.push({
                                 fields: {
                                     task_id: [newTaskId],
-                                    approval_description: approval.approval_description || 
-                                                        approval.fields?.approval_description || 
-                                                        approval
+                                    approval_description: approval.approval_description ||
+                                        approval.fields?.approval_description ||
+                                        approval
                                 }
                             });
                         });
@@ -679,48 +795,48 @@ const FormComponent = () => {
 
                 if (formSubmissionsToCreate.length > 0) {
                     createPromises.push(
-                        ApiCaller('/records', { 
-                            method: 'POST', 
-                            body: JSON.stringify({ 
-                                recordsToCreate: formSubmissionsToCreate, 
-                                tableName: 'task_forms_submissions' 
-                            }) 
+                        ApiCaller('/records', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                recordsToCreate: formSubmissionsToCreate,
+                                tableName: 'task_forms_submissions'
+                            })
                         })
                     );
                 }
 
                 if (checklistsToCreate.length > 0) {
                     createPromises.push(
-                        ApiCaller('/records', { 
-                            method: 'POST', 
-                            body: JSON.stringify({ 
-                                recordsToCreate: checklistsToCreate, 
-                                tableName: 'task_checklists' 
-                            }) 
+                        ApiCaller('/records', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                recordsToCreate: checklistsToCreate,
+                                tableName: 'task_checklists'
+                            })
                         })
                     );
                 }
 
                 if (attachmentsToCreate.length > 0) {
                     createPromises.push(
-                        ApiCaller('/records', { 
-                            method: 'POST', 
-                            body: JSON.stringify({ 
-                                recordsToCreate: attachmentsToCreate, 
-                                tableName: 'task_attachments' 
-                            }) 
+                        ApiCaller('/records', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                recordsToCreate: attachmentsToCreate,
+                                tableName: 'task_attachments'
+                            })
                         })
                     );
                 }
 
                 if (approvalsToCreate.length > 0) {
                     createPromises.push(
-                        ApiCaller('/records', { 
-                            method: 'POST', 
-                            body: JSON.stringify({ 
-                                recordsToCreate: approvalsToCreate, 
-                                tableName: 'task_approval' 
-                            }) 
+                        ApiCaller('/records', {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                recordsToCreate: approvalsToCreate,
+                                tableName: 'task_approval'
+                            })
                         })
                     );
                 }
@@ -728,11 +844,13 @@ const FormComponent = () => {
                 if (createPromises.length > 0) {
                     await Promise.all(createPromises);
                 }
+
+                
             } catch (error) {
                 console.error('Error creating task sub-items:', error);
                 // Continue with form submission even if sub-items fail
             }
-            
+
         } catch (error) {
             throw error;
         }
@@ -741,14 +859,14 @@ const FormComponent = () => {
     return (
         <div className="min-h-screen bg-slate-100 text-gray-800">
             <div className="container mx-auto p-4 md:p-8">
-                
+
                 <header className="bg-black py-8 mb-12 flex justify-center rounded-lg">
                     <img src="https://storage.googleapis.com/waivergroup_uploads/1758117318568-image.png" alt="The Waiver Consulting Group" className="h-16 object-contain" />
                 </header>
 
                 <main className="max-w-4xl mx-auto">
                     <h2 className="text-4xl font-bold text-yellow-500 mb-8">Provider Enrollment Assistance</h2>
-                    
+
                     <img src="https://storage.googleapis.com/waivergroup_uploads/1756908272203-VENDOR.jpg" alt="Waiver Consulting Group Team" className="w-full rounded-lg mb-12" />
 
                     <section className="mb-12">
@@ -760,10 +878,10 @@ const FormComponent = () => {
                             After submitting this form, you'll be connected with an enrollment specialist who will review your information and provide guidance on the next steps in your enrollment journey.
                         </p>
                     </section>
-                    
+
                     <div className="bg-gray-800 p-8 rounded-lg">
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            
+
                             {/* Basic Information */}
                             <div>
                                 <label htmlFor="agencyName" className="block text-sm font-medium text-gray-300 mb-1">Your Agency/Practice Name <span className="text-red-500">*</span></label>
@@ -787,7 +905,7 @@ const FormComponent = () => {
 
                             {/* Agency Overview Section */}
                             <div className="pt-6 border-t border-gray-700">
-                                
+
                                 <CustomSelect
                                     label="AGENCY OVERVIEW"
                                     options={AGENCY_OVERVIEW}
@@ -836,13 +954,13 @@ const FormComponent = () => {
                             <div className="pt-6 border-t border-gray-700">
                                 <CustomSelect
                                     label="ENROLLMENT NEEDS & GOALS"
-                                    options={ENROLLMENT_NEEDS_GOALS }
+                                    options={ENROLLMENT_NEEDS_GOALS}
                                     selected={formData.enrollmentNeeds}
                                     setSelected={(value) => setFormData(prev => ({ ...prev, enrollmentNeeds: value }))}
                                     required
                                 />
-                                
-                                
+
+
                                 <div className="mt-4">
                                     <label htmlFor="enrollmentTypesSought" className="block text-sm font-medium text-gray-300 mb-1">Enrollment Type(s) Sought: Which provider enrollments or credentials are you seeking through our assistance? (Select all that apply: Medicaid (state Medicaid and/or HCBS waiver programs), Medicare, Managed Care Organization (MCO) network enrollment, Other). Please list the specific program types if known (e.g., Medicaid Waiver for Ohio, Medicare Part B supplier, etc.). <span className="text-red-500">*</span></label>
                                     <textarea name="enrollmentTypesSought" id="enrollmentTypesSought" rows="3" value={formData.enrollmentTypesSought} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white"></textarea>
@@ -868,12 +986,12 @@ const FormComponent = () => {
                                     <textarea name="enrollmentProcessStarted" id="enrollmentProcessStarted" rows="3" value={formData.enrollmentProcessStarted} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white"></textarea>
                                 </div>
 
-                               
+
                             </div>
 
                             {/* Business Structure & Licensure Section */}
                             <div className="pt-6 border-t border-gray-700">
-                                
+
                                 <CustomSelect
                                     label="BUSINESS STRUCTURE & LICENSURE"
                                     options={BUSINESS_STRUCTURE}
@@ -881,7 +999,7 @@ const FormComponent = () => {
                                     setSelected={(value) => setFormData(prev => ({ ...prev, businessStructure: value }))}
                                     required
                                 />
-                                
+
                                 <div className="mt-4">
                                     <label htmlFor="legalEntityFormation" className="block text-sm font-medium text-gray-300 mb-1">Legal Entity Formation: Has your agency been legally formed as a business entity (e.g., LLC, Corporation, Non-Profit)? (Yes/No) If yes, please specify the entity type and the state of incorporation/registration. If no, please explain your current status (e.g., formation in progress or assistance needed). <span className="text-red-500">*</span></label>
                                     <input type="text" name="legalEntityFormation" id="legalEntityFormation" value={formData.legalEntityFormation} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
@@ -902,7 +1020,7 @@ const FormComponent = () => {
                                     <input type="text" name="keyStaffAndLeadership" id="keyStaffAndLeadership" value={formData.keyStaffAndLeadership} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
                                 </div>
                             </div>
-                            
+
                             <div className="flex justify-center pt-4">
                                 <button
                                     type="submit"
