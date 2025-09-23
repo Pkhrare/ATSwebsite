@@ -21,7 +21,7 @@ import CombinedLicenseIntroPage from './Pages/ProjectPageForms/CombinedLicenseIn
 import EnrollmentIntroPage from './Pages/ProjectPageForms/EnrollmentIntroPage';
 import PolicyProcedureIntroPage from './Pages/ProjectPageForms/PolicyProcedureIntroPage';
 import PostSubmissionPage from './Pages/PostSubmissionPage';
-
+import QuickIntroPage from './Pages/ProjectPageForms/QuickIntroPage';
 function App() {
   const { currentUser } = useAuth();
 
@@ -40,6 +40,7 @@ function App() {
         <Route path="/combined-license-form" element={<CombinedLicenseIntroPage />} />
         <Route path="/enrollment-form" element={<EnrollmentIntroPage />} />
         <Route path="/policy-procedure-form" element={<PolicyProcedureIntroPage />} />
+        <Route path="/quick-intro-form" element={<QuickIntroPage />} />
         <Route path="/submission-success" element={<PostSubmissionPage />} />
         
         {/* Client-specific info pages (sidebar only, no navbar) */}

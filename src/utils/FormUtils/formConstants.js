@@ -174,4 +174,48 @@ export const BUSINESS_STRUCTURE = [
     
 ];
 
+export const MANUAL_PURPOSES = [
+    'State Licensure',
+    'Provider Enrollment',
+    'Staff Training',
+    'Response to State Inspection',
+    'Corrective Action Plan (CAP)',
+    'Quality Improvement',
+    'Best Practice Purpose',
+    'Risk Management',
+    'Consistency & Standardization',
+    'Client Or Patient Care',
+    'Employee Accountability',
+    'Efficiency and Productivity',
+    'Others'
+];
 
+export const POPULATIONS_SERVED_POLICY = [
+    'Elderly population (seniors)',
+    'Individuals with disabilities (physical)',
+    'Developmental & Intellectual Disabilities',
+    'Pediatric population (children and adolescents)',
+    'Individuals with chronic illnesses or conditions',
+    'Medicaid beneficiaries',
+    'Medicare beneficiaries',
+    'Low-income or underserved communities',
+    'Veterans and military personnel',
+    'Mental health population',
+    'Substance abuse population',
+    'Homebound or bedridden individuals',
+    'LGBTQ+ community',
+    'Rural population',
+    'Urban population',
+    'Specific ethnic or cultural communities',
+    'Individuals receiving long-term care services',
+    'Individuals requiring home health care',
+    'Individuals in assisted living facilities',
+    'Individuals in nursing homes',
+    'Individuals in hospice care',
+];
+
+export const PROJECT_TYPES = [
+    'Licensing & Medicaid', 'Licensing Only', 'Technical (Other)',
+    'Market Research', 'Medicaid Enrollment Only',
+    'Policy & Procedure Manual', 'PA', 'Home Health'
+];
