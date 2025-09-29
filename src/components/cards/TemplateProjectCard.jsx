@@ -639,6 +639,7 @@ export default function TemplateProjectCard({ template, onClose }) {
                                     <span className="font-medium text-slate-500">Assigned Consultant:</span>
                                     {isEditingDetails ? (
                                         <select value={projectData['Assigned Consultant'] || ''} onChange={(e) => handleDetailChange('Assigned Consultant', e.target.value)} className="w-full mt-1 p-2 border rounded-md text-black">
+                                            <option value="">-- Select --</option>
                                             {dropdownFields['Assigned Consultant'].map(c => <option key={c} value={c}>{c}</option>)}
                                         </select>
                                     ) : (
