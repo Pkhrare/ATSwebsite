@@ -9,7 +9,17 @@ import {
     $selectAll,
     $getNodeByKey,
     $isTextNode,
+    INDENT_CONTENT_COMMAND,
+    OUTDENT_CONTENT_COMMAND,
+    KEY_TAB_COMMAND,
 } from 'lexical';
+import {
+    INSERT_UNORDERED_LIST_COMMAND,
+    INSERT_ORDERED_LIST_COMMAND,
+    REMOVE_LIST_COMMAND,
+    $isListItemNode,
+    $isListNode,
+} from '@lexical/list';
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
 import { $patchStyleText } from '@lexical/selection';
 
@@ -130,6 +140,8 @@ function ToolbarPlugin() {
   const [selectedImageNode, setSelectedImageNode] = useState(null);
   const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
   const [hasTableSupport, setHasTableSupport] = useState(false);
+  const [isUnorderedList, setIsUnorderedList] = useState(false);
+  const [isOrderedList, setIsOrderedList] = useState(false);
 
   // Check if table support is available
   useEffect(() => {
@@ -165,10 +177,26 @@ function ToolbarPlugin() {
                 setIsImageSelected(false);
                 setSelectedImageNode(null);
             }
+            
+            // Check if the selection is in a list
+            const anchorNode = selection.anchor.getNode();
+            let element = anchorNode.getKey() === 'root' ? anchorNode : anchorNode.getTopLevelElementOrThrow();
+            
+            const elementParent = element.getParent();
+            const isInList = elementParent && elementParent.getType() === 'list';
+            
+            if (isInList) {
+                const listType = elementParent.getListType();
+                setIsUnorderedList(listType === 'bullet');
+                setIsOrderedList(listType === 'number');
+            } else {
+                setIsUnorderedList(false);
+                setIsOrderedList(false);
+            }
         }
       });
     });
-  }, [editor]);
+  }, [editor, isImageSelected]);
 
   const applyFontSize = useCallback((size) => {
     editor.update(() => {
@@ -330,6 +358,22 @@ function ToolbarPlugin() {
       }
     }
   }, [editor, hasTableSupport]);
+  
+  const toggleBulletList = useCallback(() => {
+    if (isUnorderedList) {
+      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
+    } else {
+      editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined);
+    }
+  }, [editor, isUnorderedList]);
+  
+  const toggleNumberedList = useCallback(() => {
+    if (isOrderedList) {
+      editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
+    } else {
+      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+    }
+  }, [editor, isOrderedList]);
 
   return (
       <div
@@ -410,6 +454,25 @@ function ToolbarPlugin() {
                   A+
               </button>
           </div>
+
+          <div className="w-px h-6 bg-slate-300 mx-1"></div>
+
+          <button
+              type="button"
+              onClick={toggleBulletList}
+              className={`px-3 py-1 rounded-md text-sm font-medium ${isUnorderedList ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 hover:bg-slate-200'}`}
+              aria-label="Bullet List"
+          >
+              • List
+          </button>
+          <button
+              type="button"
+              onClick={toggleNumberedList}
+              className={`px-3 py-1 rounded-md text-sm font-medium ${isOrderedList ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 hover:bg-slate-200'}`}
+              aria-label="Numbered List"
+          >
+              1. List
+          </button>
 
           <div className="w-px h-6 bg-slate-300 mx-1"></div>
 
@@ -687,6 +750,61 @@ function ImageCursorPlugin() {
     return null;
 }
 
+// Plugin for handling nested lists with Tab and Shift+Tab
+function NestedListPlugin() {
+    const [editor] = useLexicalComposerContext();
+
+    useEffect(() => {
+        const unregister = editor.registerCommand(
+            KEY_TAB_COMMAND,
+            (event) => {
+                const editorState = editor.getEditorState();
+                let listItemNode = null;
+
+                editorState.read(() => {
+                    const selection = $getSelection();
+                    if (!$isRangeSelection(selection)) return;
+                    
+                    const node = selection.anchor.getNode();
+                    const parent = findParent(node, $isListItemNode);
+                    if (parent) {
+                        listItemNode = parent;
+                    }
+                });
+
+                if (listItemNode) {
+                    event.preventDefault();
+                    if (event.shiftKey) {
+                        editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
+                    } else {
+                        editor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
+                    }
+                    return true;
+                }
+                return false;
+            },
+            1, // High priority
+        );
+
+        function findParent(node, predicate) {
+            let parent = node;
+            while (parent !== null) {
+                if (predicate(parent)) {
+                    return parent;
+                }
+                parent = parent.getParent();
+            }
+            return null;
+        }
+
+        return () => {
+            unregister();
+        };
+    }, [editor]);
+
+    return null;
+}
+
 const editorTheme = {
   link: 'text-blue-600 underline hover:text-blue-800 cursor-pointer',
   table: 'border-collapse my-4 w-full border border-slate-400',
@@ -695,6 +813,28 @@ const editorTheme = {
   tableCellHeader: 'border border-slate-400 p-3 min-w-[100px] bg-slate-100 font-semibold relative',
   youtube: 'my-4 w-full max-w-4xl mx-auto',
   image: 'inline-block align-middle', // Add image theme
+  list: {
+    ul: 'list-[disc] ml-6 pl-2',
+    ol: 'list-[decimal] ml-6 pl-2',
+    listitem: 'my-1',
+    nested: {
+      listitem: 'list-none',
+    },
+    ulDepth: [
+      'list-[disc]',
+      'list-[circle]',
+      'list-[square]',
+      'list-dash',
+      'list-check',
+    ],
+    olDepth: [
+      'list-[decimal]',
+      'list-[lower-alpha]',
+      'list-[lower-roman]',
+      'list-[decimal]',
+      'list-[lower-alpha]',
+    ],
+  },
   text: {
     base: 'text-base',
     bold: 'font-bold',
@@ -816,6 +956,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 <SetRefPlugin editorRef={editorRef} /> {/* Add the new ref plugin */}
                 <ConvertIframePlugin /> {/* Convert iframe text to YouTube nodes */}
                 {isEditable && <ImageCursorPlugin />} {/* Handle cursor positioning around images */}
+                {isEditable && <NestedListPlugin />}
                 {isEditable && <AutoFocusPlugin />}
             </LexicalComposer>
         </div>

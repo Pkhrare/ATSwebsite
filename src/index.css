@@ -1,5 +1,16 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .list-dash > li::marker {
+    content: '- ';
+  }
+  .list-check > li::marker {
+    content: '✓ ';
+  }
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
