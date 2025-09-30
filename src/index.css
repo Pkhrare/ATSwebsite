@@ -47,3 +47,64 @@
   background-color: #64748b; /* slate-500 */
 }
 
+/* CodeMirror Editor Styles */
+.code-editor-gray .cm-editor {
+  background-color: #1e293b !important; /* Tailwind slate-800 */
+  color: #f1f5f9 !important; /* Tailwind slate-100 */
+}
+
+.code-editor-gray .cm-scroller {
+  background-color: #1e293b !important; /* Tailwind slate-800 */
+}
+
+.code-editor-gray .cm-content {
+  background-color: #1e293b !important; /* Tailwind slate-800 */
+}
+
+.code-editor-gray .cm-line {
+  background-color: #1e293b !important; /* Tailwind slate-800 */
+}
+
+.code-editor-gray .cm-gutters {
+  background-color: #0f172a !important; /* Tailwind slate-900 */
+  border-right: 1px solid #334155 !important; /* Tailwind slate-700 */
+  color: #94a3b8 !important; /* Tailwind slate-400 */
+}
+
+/* Syntax highlighting colors for better visibility */
+.code-editor-gray .cm-keyword {
+  color: #c4b5fd !important; /* Tailwind violet-300 */
+}
+
+.code-editor-gray .cm-string {
+  color: #86efac !important; /* Tailwind green-300 */
+}
+
+.code-editor-gray .cm-comment {
+  color: #94a3b8 !important; /* Tailwind slate-400 */
+}
+
+.code-editor-gray .cm-tag {
+  color: #fb923c !important; /* Tailwind orange-400 */
+}
+
+.code-editor-gray .cm-attribute {
+  color: #60a5fa !important; /* Tailwind blue-400 */
+}
+
+.code-editor-gray .cm-number {
+  color: #fda4af !important; /* Tailwind rose-300 */
+}
+
+.code-editor-gray .cm-property {
+  color: #93c5fd !important; /* Tailwind blue-300 */
+}
+
+.code-editor-gray .cm-variable {
+  color: #e2e8f0 !important; /* Tailwind slate-200 */
+}
+
+.code-editor-gray .cm-operator {
+  color: #f9a8d4 !important; /* Tailwind pink-300 */
+}
+

@@ -228,21 +228,13 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 if (task.id) {
                     const descriptionContent = await loadContent('tasks', task.id, 'description');
                     
+                    // Let RichTextEditor handle content type detection and parsing
                     if (descriptionContent) {
-                        try {
-                            // Parse the JSON string back to an object for the editor
-                            const parsedContent = JSON.parse(descriptionContent);
-                            descriptionRef.current = parsedContent;
-                            setDescriptionKey(prev => prev + 1); // Force re-render
-                        } catch (error) {
-                            console.warn('Failed to parse description content, treating as plain text:', error);
-                            descriptionRef.current = toLexical(descriptionContent);
-                            setDescriptionKey(prev => prev + 1); // Force re-render
-                        }
+                        descriptionRef.current = descriptionContent;
                     } else {
-                        descriptionRef.current = toLexical(task.fields.description || '');
-                        setDescriptionKey(prev => prev + 1); // Force re-render
+                        descriptionRef.current = task.fields.description || '';
                     }
+                    setDescriptionKey(prev => prev + 1); // Force re-render
                 } else {
                     descriptionRef.current = toLexical(task.fields.description || '');
                     setDescriptionKey(prev => prev + 1); // Force re-render

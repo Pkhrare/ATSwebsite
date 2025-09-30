@@ -20,19 +20,37 @@ export const loadContent = async (tableName, recordId, fieldName) => {
         if (response.content) {
             console.log(`Content loaded from ${response.source} for ${tableName}.${fieldName}`);
             
-            // Handle double-encoded content (content that has been JSON.stringify'd twice)
+            // Handle double-encoded or triple-encoded content
             let content = response.content;
+            console.log('Raw content from API:', content.substring(0, 100) + '...');
             
-            // Check if the content is double-encoded (starts and ends with quotes and has escaped quotes)
-            if (typeof content === 'string' && content.startsWith('"') && content.endsWith('"') && content.includes('\\"')) {
+            // Try to decode multiple times if needed
+            let decodingAttempts = 0;
+            const maxDecodingAttempts = 3; // Prevent infinite loops
+            
+            while (decodingAttempts < maxDecodingAttempts && 
+                   typeof content === 'string' && 
+                   content.startsWith('"') && 
+                   content.endsWith('"') && 
+                   (content.includes('\\"') || content.includes('\\\\"'))) {
                 try {
-                    // Parse the outer JSON string to get the inner JSON string
+                    const oldContent = content;
                     content = JSON.parse(content);
-                    console.log('Fixed double-encoded content');
+                    decodingAttempts++;
+                    console.log(`Decoded content (attempt ${decodingAttempts}):`, content.substring(0, 100) + '...');
+                    
+                    // If parsing didn't change the content, break to avoid infinite loop
+                    if (oldContent === content) {
+                        console.warn('Parsing did not change content, stopping decoding attempts');
+                        break;
+                    }
                 } catch (parseError) {
-                    console.warn('Failed to parse double-encoded content, using as-is:', parseError);
+                    console.warn(`Failed to parse encoded content (attempt ${decodingAttempts}):`, parseError);
+                    break;
                 }
             }
+            
+            console.log(`Content after ${decodingAttempts} decoding attempts:`, content.substring(0, 100) + '...');
             
             return content;
         }

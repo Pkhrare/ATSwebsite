@@ -33,18 +33,8 @@ const InfoPageEdit = () => {
         try {
             const data = await ApiCaller(`/info-pages/${pageId}`);
             const content = await loadContent('informational_pages', pageId, 'pageContent');
-            if (content) {
-                try {
-                    // Parse the JSON string back to an object for the editor
-                    const parsedContent = JSON.parse(content);
-                    setPage({ ...data, content: parsedContent });
-                } catch (error) {
-                    console.warn('Failed to parse page content, treating as plain text:', error);
-                    setPage({ ...data, content: content });
-                }
-            } else {
-                setPage({ ...data, content: '' });
-            }
+            // Let RichTextEditor handle content type detection and parsing
+            setPage({  content: content || '' });
             setTitle(data.title);
             setIcon(data.icon || '');
         } catch (err) {

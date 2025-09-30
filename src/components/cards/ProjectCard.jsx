@@ -339,23 +339,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             // Load notes content from attachment and set it in state
             if (data.id) {
                 const loadedContent = await loadContent('projects', data.id, 'Notes');
-                if (loadedContent) {
-                    try {
-                        // Check if content is already a parsed object or needs parsing
-                        let parsedContent;
-                        if (typeof loadedContent === 'string') {
-                            parsedContent = JSON.parse(loadedContent);
-                        } else {
-                            parsedContent = loadedContent;
-                        }
-                        setNotesContent(parsedContent);
-                    } catch (error) {
-                        console.warn('Failed to parse notes content, treating as plain text:', error);
-                        setNotesContent(toLexical(loadedContent));
-                    }
-                } else {
-                    setNotesContent(toLexical(data.fields.Notes || ''));
-                }
+                // Let RichTextEditor handle content type detection and parsing
+                setNotesContent(loadedContent || data.fields.Notes || '');
             } else {
                 setNotesContent(toLexical(data.fields.Notes || ''));
             }
@@ -603,9 +588,26 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
     const handleSaveNotes = async () => {
         try {
-            // Extract the current content from the editor
-            const currentContent = notesEditorRef.current.getEditorState().toJSON();
-            const contentString = JSON.stringify(currentContent);
+            let contentString;
+            
+            // Check if we're dealing with code content or rich text content
+            if (notesContent && typeof notesContent === 'string' && notesContent.includes('code-content')) {
+                // This is code content, use it directly
+                contentString = notesContent;
+                console.log('Saving code content:', contentString);
+            } else {
+                // This is rich text content, get it from the editor
+                if (!notesEditorRef.current) {
+                    console.error("Notes editor reference is null");
+                    alert("Cannot save notes: Editor not initialized. Please try again.");
+                    return;
+                }
+                
+                // Extract the current content from the editor
+                const currentContent = notesEditorRef.current.getEditorState().toJSON();
+                contentString = JSON.stringify(currentContent);
+                console.log('Saving rich text content:', contentString);
+            }
             
             // Save notes content as attachment
             await saveContent('projects', projectData.id, 'Notes', contentString);
@@ -1432,13 +1434,14 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         isEditable={true}
                                         initialContent={notesContent}
                                         onChange={(content) => {
-                                            // Track content changes but don't update initialContent
-                                            // This prevents the focus issue while still tracking changes
+                                            // Track content changes and update the state
                                             console.log('Content changed:', content);
+                                            setNotesContent(content);
                                         }}
                                         editorRef={notesEditorRef}
                                         sourceTable="projects"
                                         sourceRecordId={projectData.id}
+                                        showCodeEditButton={true}
                                     />
                                     <div className="flex justify-end gap-2">
                                         <button onClick={() => { 
@@ -1459,6 +1462,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     editorRef={notesEditorRef}
                                     sourceTable="projects"
                                     sourceRecordId={projectData.id}
+                                    showCodeEditButton={false}
                                 />
                             )}
                         </section>

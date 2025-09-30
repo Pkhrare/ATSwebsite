@@ -175,23 +175,8 @@ export default function ClientCard() {
                 // Load notes content from attachment with fallback to old Notes field
                 if (data.id) {
                     const loadedContent = await loadContent('projects', data.id, 'Notes');
-                    if (loadedContent) {
-                        try {
-                            // Check if content is already a parsed object or needs parsing
-                            let parsedContent;
-                            if (typeof loadedContent === 'string') {
-                                parsedContent = JSON.parse(loadedContent);
-                            } else {
-                                parsedContent = loadedContent;
-                            }
-                            setNotesContent(parsedContent);
-                        } catch (error) {
-                            console.warn('Failed to parse notes content, treating as plain text:', error);
-                            setNotesContent(toLexical(loadedContent));
-                        }
-                    } else {
-                        setNotesContent(toLexical(data.fields.Notes || ''));
-                    }
+                    // Let RichTextEditor handle content type detection and parsing
+                    setNotesContent(loadedContent || data.fields.Notes || '');
                 } else {
                     setNotesContent(toLexical(data.fields.Notes || ''));
                 }
