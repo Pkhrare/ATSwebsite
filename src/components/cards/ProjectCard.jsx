@@ -142,6 +142,10 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [editingGroupName, setEditingGroupName] = useState('');
     const [projectMessages, setProjectMessages] = useState([]);
     const [newProjectMessage, setNewProjectMessage] = useState('');
+    const [projectChatAttachment, setProjectChatAttachment] = useState(null);
+    const projectChatFileInputRef = useRef(null);
+    const [isUploadingProjectChatFile, setIsUploadingProjectChatFile] = useState(false);
+    const [previewImage, setPreviewImage] = useState(null);
     const projectSocketRef = useRef(null);
     const projectChatContainerRef = useRef(null);
 
@@ -385,6 +389,13 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         });
 
         projectSocketRef.current.on('receiveProjectMessage', (message) => {
+            console.log('Received project message:', message);
+            console.log('Message fields:', message.fields);
+            console.log('Has attachment URL?', !!message.fields.attachmentUrl);
+            console.log('Attachment URL:', message.fields.attachmentUrl);
+            console.log('Attachment name:', message.fields.attachmentName);
+            console.log('Attachment type:', message.fields.attachmentType);
+            
             setProjectMessages(prevMessages => {
                 const newMessages = [...prevMessages, message];
                 // When a new message is received, check if it should be marked as read immediately
@@ -1091,15 +1102,82 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
-    const handleSendProjectMessage = () => {
-        if (newProjectMessage.trim() && projectSocketRef.current) {
-            const senderName = userRole === 'consultant' ? 'Consultant' : projectData.fields['Project Name'];
-            projectSocketRef.current.emit('sendProjectMessage', {
+    const handleSendProjectMessage = async () => {
+        // Allow sending if either there's a message or an attachment
+        if (!projectSocketRef.current || (!newProjectMessage.trim() && !projectChatAttachment)) return;
+        
+        const senderName = userRole === 'consultant' ? 'Consultant' : projectData.fields['Project Name'];
+        
+        try {
+            setIsUploadingProjectChatFile(true);
+            
+            let attachmentUrl = null;
+            
+            // If there's a file attachment, upload it first
+            if (projectChatAttachment) {
+                const formData = new FormData();
+                formData.append('file', projectChatAttachment);
+                formData.append('sourceTable', 'project_messages');
+                formData.append('sourceRecordId', projectData.id);
+                
+                const response = await ApiCaller('/upload-image', {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                console.log('Upload response:', response);
+                console.log('Response type:', typeof response);
+                
+                // Try different ways to access the URL
+                if (response && typeof response === 'object') {
+                    if (response.url) {
+                        attachmentUrl = response.url;
+                        console.log('Found URL directly in response:', attachmentUrl);
+                    } else if (response.data && response.data.url) {
+                        attachmentUrl = response.data.url;
+                        console.log('Found URL in response.data:', attachmentUrl);
+                    } else if (typeof response === 'string' && response.includes('http')) {
+                        attachmentUrl = response;
+                        console.log('Response is a URL string:', attachmentUrl);
+                    } else {
+                        // Try to find any URL-like string in the response
+                        const responseStr = JSON.stringify(response);
+                        const urlMatch = responseStr.match(/(https?:\/\/[^\s"]+)/);
+                        if (urlMatch) {
+                            attachmentUrl = urlMatch[0];
+                            console.log('Extracted URL from response string:', attachmentUrl);
+                        } else {
+                            console.log('Could not find URL in response:', response);
+                        }
+                    }
+                }
+            }
+            
+            // Send the message with optional attachment
+            const messageData = {
                 projectId: projectData.id,
-                message: newProjectMessage,
+                message: newProjectMessage.trim() ? newProjectMessage.trim() : (projectChatAttachment ? projectChatAttachment.name : ''),
                 sender: senderName,
-            });
+                // Ensure these fields are properly named to match what the backend expects
+                attachmentUrl: attachmentUrl || null,
+                attachmentName: projectChatAttachment ? projectChatAttachment.name : null,
+                attachmentType: projectChatAttachment ? projectChatAttachment.type : null,
+                // Add these fields as well to cover different possible field names
+                attachment_url: attachmentUrl || null,
+                attachment_name: projectChatAttachment ? projectChatAttachment.name : null,
+                attachment_type: projectChatAttachment ? projectChatAttachment.type : null,
+            };
+            
+            console.log('Sending project message with data:', messageData);
+            projectSocketRef.current.emit('sendProjectMessage', messageData);
+            
             setNewProjectMessage('');
+            setProjectChatAttachment(null);
+        } catch (error) {
+            console.error('Failed to send message with attachment:', error);
+            alert('Failed to upload attachment. Please try again.');
+        } finally {
+            setIsUploadingProjectChatFile(false);
         }
     };
 
@@ -1803,7 +1881,35 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         <div key={msg.id} className={`flex ${isConsultantMessage ? 'justify-end' : 'justify-start'}`}>
                                             <div className={`p-2 rounded-lg max-w-xs ${isConsultantMessage ? 'bg-slate-200 text-slate-800' : 'bg-blue-500 text-white'}`}>
                                                 <p className="text-xs font-bold">{msg.fields.sender}</p>
-                                                <p className="text-sm">{msg.fields.message_text}</p>
+                                                {msg.fields.message_text && <p className="text-sm">{msg.fields.message_text}</p>}
+                                                
+                                                {(msg.fields.attachmentUrl || msg.fields.attachment_url) && (
+                                                    <div className="mt-2">
+                                                        {msg.fields.attachmentType?.startsWith('image/') ? (
+                                                            <div className="mt-1 mb-1">
+                                                                <img 
+                                                                    src={msg.fields.attachmentUrl || msg.fields.attachment_url} 
+                                                                    alt={msg.fields.attachmentName || msg.fields.attachment_name || "Attachment"} 
+                                                                    className="max-w-full rounded border border-white/20 cursor-pointer hover:opacity-90"
+                                                                    onClick={() => setPreviewImage(msg.fields.attachmentUrl || msg.fields.attachment_url)}
+                                                                />
+                                                            </div>
+                                                        ) : (
+                                                            <a 
+                                                                href={msg.fields.attachmentUrl || msg.fields.attachment_url} 
+                                                                target="_blank" 
+                                                                rel="noopener noreferrer"
+                                                                className={`flex items-center gap-1 text-xs py-1 px-2 rounded ${isConsultantMessage ? 'bg-slate-300 text-blue-700' : 'bg-blue-600 text-white'} hover:underline`}
+                                                            >
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                </svg>
+                                                                <span className="truncate max-w-[150px]">{msg.fields.attachmentName || msg.fields.attachment_name || "Download"}</span>
+                                                            </a>
+                                                        )}
+                                                    </div>
+                                                )}
+                                                
                                                 <div className="text-xs text-right opacity-75 mt-1 flex items-center justify-end">
                                                     <span>{new Date(msg.createdTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                                                     {isConsultantMessage && <ReadReceipt isRead={msg.fields.is_read} />}
@@ -1813,16 +1919,67 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     )
                                 })}
                             </div>
-                            <div className="flex">
-                                <input 
-                                    type="text" 
-                                    value={newProjectMessage} 
-                                    onChange={(e) => setNewProjectMessage(e.target.value)} 
-                                    onKeyPress={(e) => e.key === 'Enter' && handleSendProjectMessage()} 
-                                    className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" 
-                                    placeholder="Type a message..." 
-                                />
-                                <button onClick={handleSendProjectMessage} type="button" className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">Send</button>
+                            <div>
+                                {projectChatAttachment && (
+                                    <div className="mb-2 p-2 bg-gray-100 rounded-md flex items-center justify-between">
+                                        <div className="flex items-center gap-2 text-sm text-gray-700 truncate">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                            </svg>
+                                            <span className="truncate max-w-[200px]">{projectChatAttachment.name}</span>
+                                        </div>
+                                        <button 
+                                            type="button" 
+                                            onClick={() => setProjectChatAttachment(null)} 
+                                            className="text-gray-500 hover:text-gray-700"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                )}
+                                <div className="flex">
+                                    <input 
+                                        type="text" 
+                                        value={newProjectMessage} 
+                                        onChange={(e) => setNewProjectMessage(e.target.value)} 
+                                        onKeyPress={(e) => e.key === 'Enter' && !isUploadingProjectChatFile && handleSendProjectMessage()} 
+                                        className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" 
+                                        placeholder="Type a message..." 
+                                        disabled={isUploadingProjectChatFile}
+                                    />
+                                    <input 
+                                        type="file" 
+                                        ref={projectChatFileInputRef} 
+                                        onChange={(e) => {
+                                            if (e.target.files[0]) {
+                                                setProjectChatAttachment(e.target.files[0]);
+                                            }
+                                            // Reset the file input value so the same file can be selected again
+                                            e.target.value = '';
+                                        }}
+                                        className="hidden" 
+                                    />
+                                    <button 
+                                        type="button" 
+                                        onClick={() => projectChatFileInputRef.current?.click()} 
+                                        className="px-2 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                        disabled={isUploadingProjectChatFile || !!projectChatAttachment}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                        </svg>
+                                    </button>
+                                    <button 
+                                        onClick={handleSendProjectMessage} 
+                                        type="button" 
+                                        className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 disabled:bg-blue-400"
+                                        disabled={isUploadingProjectChatFile}
+                                    >
+                                        {isUploadingProjectChatFile ? 'Sending...' : 'Send'}
+                                    </button>
+                                </div>
                             </div>
                         </section>
 
@@ -2053,6 +2210,29 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                     onClose={() => setIsAddCollaboratorVisible(false)}
                     onCollaboratorAdded={handleCollaboratorAdded}
                 />
+            )}
+            
+            {/* Image Preview Modal */}
+            {previewImage && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
+                    <div className="relative max-w-4xl max-h-[90vh] overflow-auto">
+                        <button 
+                            onClick={() => setPreviewImage(null)} 
+                            className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-lg hover:bg-gray-200"
+                            aria-label="Close image preview"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img 
+                            src={previewImage} 
+                            alt="Preview" 
+                            className="max-w-full max-h-[85vh] object-contain"
+                            onClick={(e) => e.stopPropagation()} 
+                        />
+                    </div>
+                </div>
             )}
         </div>
     );

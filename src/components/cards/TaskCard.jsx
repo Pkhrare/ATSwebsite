@@ -61,6 +61,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [isUploadingAttachment, setIsUploadingAttachment] = useState(false);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
+    const [chatAttachment, setChatAttachment] = useState(null);
+    const chatFileInputRef = useRef(null);
     const socketRef = useRef();
     const chatContainerRef = useRef(null);
     // --- Add this ref for the modal content ---
@@ -68,6 +70,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [refetchCounter, setRefetchCounter] = useState(0);
     const forceRefetch = useCallback(() => setRefetchCounter(c => c + 1), []);
     const [isContentLoading, setIsContentLoading] = useState(true);
+    const [isUploadingChatFile, setIsUploadingChatFile] = useState(false);
+    const [previewImage, setPreviewImage] = useState(null);
 
     const readOnlyFields = ["id", "project_id", "start_date", "Project Name (from project_id)", "Project ID (from Project ID)"];
 
@@ -87,6 +91,13 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         });
 
         socketRef.current.on('receiveMessage', (message) => {
+            console.log('Received message:', message);
+            console.log('Message fields:', message.fields);
+            console.log('Has attachment URL?', !!message.fields.attachmentUrl);
+            console.log('Attachment URL:', message.fields.attachmentUrl);
+            console.log('Attachment name:', message.fields.attachmentName);
+            console.log('Attachment type:', message.fields.attachmentType);
+            
             setMessages(prevMessages => {
                 const newMessages = [...prevMessages, message];
                 const mySenderName = isClientView ? task.fields['Project Name (from project_id)'][0] : 'Consultant';
@@ -709,16 +720,83 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         }
     };
 
-    const handleSendMessage = () => {
-        if (newMessage.trim() && socketRef.current) {
-            const senderName = isClientView ? task.fields['Project Name (from project_id)'][0] : 'Consultant';
-            const idToSend = task.id || task.fields.id;
-            socketRef.current.emit('sendMessage', {
+    const handleSendMessage = async () => {
+        // Allow sending if either there's a message or an attachment
+        if (!socketRef.current || (!newMessage.trim() && !chatAttachment)) return;
+        
+        const senderName = isClientView ? task.fields['Project Name (from project_id)'][0] : 'Consultant';
+        const idToSend = task.id || task.fields.id;
+        
+        try {
+            setIsUploadingChatFile(true);
+            
+            let attachmentUrl = null;
+            
+            // If there's a file attachment, upload it first
+            if (chatAttachment) {
+                const formData = new FormData();
+                formData.append('file', chatAttachment);
+                formData.append('sourceTable', 'task_chat');
+                formData.append('sourceRecordId', idToSend);
+                
+                const response = await ApiCaller('/upload-image', {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                console.log('Upload response:', response);
+                console.log('Response type:', typeof response);
+                
+                // Try different ways to access the URL
+                if (response && typeof response === 'object') {
+                    if (response.url) {
+                        attachmentUrl = response.url;
+                        console.log('Found URL directly in response:', attachmentUrl);
+                    } else if (response.data && response.data.url) {
+                        attachmentUrl = response.data.url;
+                        console.log('Found URL in response.data:', attachmentUrl);
+                    } else if (typeof response === 'string' && response.includes('http')) {
+                        attachmentUrl = response;
+                        console.log('Response is a URL string:', attachmentUrl);
+                    } else {
+                        // Try to find any URL-like string in the response
+                        const responseStr = JSON.stringify(response);
+                        const urlMatch = responseStr.match(/(https?:\/\/[^\s"]+)/);
+                        if (urlMatch) {
+                            attachmentUrl = urlMatch[0];
+                            console.log('Extracted URL from response string:', attachmentUrl);
+                        } else {
+                            console.log('Could not find URL in response:', response);
+                        }
+                    }
+                }
+            }
+            
+            // Send the message with optional attachment
+            const messageData = {
                 taskId: idToSend,
-                message: newMessage,
+                message: newMessage.trim() ? newMessage.trim() : (chatAttachment ? chatAttachment.name : ''),
                 sender: senderName,
-            });
+                // Ensure these fields are properly named to match what the backend expects
+                attachmentUrl: attachmentUrl || null,
+                attachmentName: chatAttachment ? chatAttachment.name : null,
+                attachmentType: chatAttachment ? chatAttachment.type : null,
+                // Add these fields as well to cover different possible field names
+                attachment_url: attachmentUrl || null,
+                attachment_name: chatAttachment ? chatAttachment.name : null,
+                attachment_type: chatAttachment ? chatAttachment.type : null,
+            };
+            
+            console.log('Sending message with data:', messageData);
+            socketRef.current.emit('sendMessage', messageData);
+            
             setNewMessage('');
+            setChatAttachment(null);
+        } catch (error) {
+            console.error('Failed to send message with attachment:', error);
+            alert('Failed to upload attachment. Please try again.');
+        } finally {
+            setIsUploadingChatFile(false);
         }
     };
 
@@ -1215,7 +1293,35 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                             <div key={msg.id} className={`flex ${isMyMessage ? 'justify-end' : 'justify-start'}`}>
                                                 <div className={`p-2 rounded-lg max-w-xs ${isMyMessage ? 'bg-slate-200 text-slate-800' : 'bg-blue-500 text-white'}`}>
                                                     <p className="text-xs font-bold">{msg.fields.sender}</p>
-                                                    <p className="text-sm">{msg.fields.message_text}</p>
+                                                    {msg.fields.message_text && <p className="text-sm">{msg.fields.message_text}</p>}
+                                                    
+                                                    {(msg.fields.attachmentUrl || msg.fields.attachment_url) && (
+                                                        <div className="mt-2">
+                                                            {msg.fields.attachmentType?.startsWith('image/') ? (
+                                                                <div className="mt-1 mb-1">
+                                                                    <img 
+                                                                        src={msg.fields.attachmentUrl || msg.fields.attachment_url} 
+                                                                        alt={msg.fields.attachmentName || msg.fields.attachment_name || "Attachment"} 
+                                                                        className="max-w-full rounded border border-white/20 cursor-pointer hover:opacity-90"
+                                                                        onClick={() => setPreviewImage(msg.fields.attachmentUrl || msg.fields.attachment_url)}
+                                                                    />
+                                                                </div>
+                                                            ) : (
+                                                                <a 
+                                                                    href={msg.fields.attachmentUrl || msg.fields.attachment_url} 
+                                                                    target="_blank" 
+                                                                    rel="noopener noreferrer"
+                                                                    className={`flex items-center gap-1 text-xs py-1 px-2 rounded ${isMyMessage ? 'bg-slate-300 text-blue-700' : 'bg-blue-600 text-white'} hover:underline`}
+                                                                >
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                    </svg>
+                                                                    <span className="truncate max-w-[150px]">{msg.fields.attachmentName || msg.fields.attachment_name || "Download"}</span>
+                                                                </a>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    
                                                     <div className="text-xs text-right opacity-75 flex items-center justify-end">
                                                         <span>{new Date(msg.createdTime).toLocaleTimeString()}</span>
                                                         {isMyMessage && <ReadReceipt isRead={msg.fields.is_read} />}
@@ -1225,9 +1331,67 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         );
                                     })}
                                 </div>
-                                <div className="flex">
-                                    <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()} className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" placeholder="Type a message..." />
-                                    <button onClick={handleSendMessage} type="button" className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">Send</button>
+                                <div>
+                                    {chatAttachment && (
+                                        <div className="mb-2 p-2 bg-gray-100 rounded-md flex items-center justify-between">
+                                            <div className="flex items-center gap-2 text-sm text-gray-700 truncate">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                </svg>
+                                                <span className="truncate max-w-[200px]">{chatAttachment.name}</span>
+                                            </div>
+                                            <button 
+                                                type="button" 
+                                                onClick={() => setChatAttachment(null)} 
+                                                className="text-gray-500 hover:text-gray-700"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    )}
+                                    <div className="flex">
+                                        <input 
+                                            type="text" 
+                                            value={newMessage} 
+                                            onChange={(e) => setNewMessage(e.target.value)} 
+                                            onKeyPress={(e) => e.key === 'Enter' && !isUploadingChatFile && handleSendMessage()} 
+                                            className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" 
+                                            placeholder="Type a message..." 
+                                            disabled={isUploadingChatFile}
+                                        />
+                                        <input 
+                                            type="file" 
+                                            ref={chatFileInputRef} 
+                                            onChange={(e) => {
+                                            if (e.target.files[0]) {
+                                                setChatAttachment(e.target.files[0]);
+                                            }
+                                            // Reset the file input value so the same file can be selected again
+                                            e.target.value = '';
+                                            }}
+                                            className="hidden" 
+                                        />
+                                        <button 
+                                            type="button" 
+                                            onClick={() => chatFileInputRef.current?.click()} 
+                                            className="px-2 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                            disabled={isUploadingChatFile || !!chatAttachment}
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                            </svg>
+                                        </button>
+                                        <button 
+                                            onClick={handleSendMessage} 
+                                            type="button" 
+                                            className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 disabled:bg-blue-400"
+                                            disabled={isUploadingChatFile}
+                                        >
+                                            {isUploadingChatFile ? 'Sending...' : 'Send'}
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1285,6 +1449,29 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         onClose={() => setAddApprovalFormOpen(false)}
                         onApprovalAdded={handleApprovalAdded}
                     />
+                )}
+                
+                {/* Image Preview Modal */}
+                {previewImage && (
+                    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
+                        <div className="relative max-w-4xl max-h-[90vh] overflow-auto">
+                            <button 
+                                onClick={() => setPreviewImage(null)} 
+                                className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-lg hover:bg-gray-200"
+                                aria-label="Close image preview"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <img 
+                                src={previewImage} 
+                                alt="Preview" 
+                                className="max-w-full max-h-[85vh] object-contain"
+                                onClick={(e) => e.stopPropagation()} 
+                            />
+                        </div>
+                    </div>
                 )}
             </div>
         </div>
