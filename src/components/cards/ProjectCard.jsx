@@ -3,6 +3,7 @@ import TaskCard from './TaskCard';
 import AddTaskToProjectForm from '../forms/AddTaskToProjectForm';
 import AddCollaboratorForm from '../forms/AddCollaboratorForm';
 import AddGroupForm from '../forms/AddGroupForm';
+import InternalNotesSection from './InternalNotesSection';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { parse, format, isValid } from 'date-fns';
@@ -111,7 +112,7 @@ const ReadReceipt = ({ isRead }) => (
 
 // --- Main Card Component ---
 export default function Card({ data, onClose, onProjectUpdate }) {
-    const { userRole } = useAuth();
+    const { userRole, currentUser } = useAuth();
     const [projectData, setProjectData] = useState(data);
     const [copied, setCopied] = useState(false);
     const [pendingActions, setPendingActions] = useState([]);
@@ -2136,6 +2137,14 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     </div>
                                 )}
                         </section>
+
+                        {/* Internal Notes Section */}
+                        <InternalNotesSection 
+                            projectId={projectData.id} 
+                            currentUser={currentUser}
+                            userRole={userRole}
+                            projectIDReadable={projectData.fields['Project ID']}
+                        />
 
                         {/* Collaborators Section */}
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
