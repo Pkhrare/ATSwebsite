@@ -61,7 +61,11 @@ const CloseIcon = () => (
     </svg>
 );
 
-// UploadIcon removed - clients can't upload project documents
+    const UploadIcon = () => (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+        </svg>
+    );
 
 const CalendarIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-slate-500">
@@ -118,8 +122,12 @@ export default function ClientCard() {
     const [notesContent, setNotesContent] = useState(null);
     const [projectMessages, setProjectMessages] = useState([]);
     const [newProjectMessage, setNewProjectMessage] = useState('');
+    const [projectChatAttachment, setProjectChatAttachment] = useState(null);
+    const [isUploadingProjectChatFile, setIsUploadingProjectChatFile] = useState(false);
+    const [previewImage, setPreviewImage] = useState(null);
     const projectSocketRef = useRef(null);
     const projectChatContainerRef = useRef(null);
+    const projectChatFileInputRef = useRef(null);
 
     // Task-related states
     const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
@@ -347,15 +355,75 @@ export default function ClientCard() {
         }
     }, [projectMessages]);
 
-    const handleSendProjectMessage = () => {
-        if (newProjectMessage.trim() && projectSocketRef.current) {
-            const senderName = projectData.fields['Project Name']; // Client's name is the Project Name
-            projectSocketRef.current.emit('sendProjectMessage', {
+    const handleSendProjectMessage = async () => {
+        // Allow sending if either there's a message or an attachment
+        if (!projectSocketRef.current || (!newProjectMessage.trim() && !projectChatAttachment)) return;
+        
+        const senderName = projectData.fields['Project Name']; // Client's name is the Project Name
+        
+        try {
+            setIsUploadingProjectChatFile(true);
+            
+            let attachmentUrl = null;
+            
+            // If there's a file attachment, upload it first
+            if (projectChatAttachment) {
+                const formData = new FormData();
+                formData.append('file', projectChatAttachment);
+                formData.append('sourceTable', 'project_messages');
+                formData.append('sourceRecordId', projectData.id);
+                
+                const response = await ApiCaller('/upload-image', {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                console.log('Upload response:', response);
+                
+                // Try different ways to access the URL
+                if (response && typeof response === 'object') {
+                    if (response.url) {
+                        attachmentUrl = response.url;
+                    } else if (response.data && response.data.url) {
+                        attachmentUrl = response.data.url;
+                    } else if (typeof response === 'string' && response.includes('http')) {
+                        attachmentUrl = response;
+                    } else {
+                        // Try to find any URL-like string in the response
+                        const responseStr = JSON.stringify(response);
+                        const urlMatch = responseStr.match(/(https?:\/\/[^\s"]+)/);
+                        if (urlMatch) {
+                            attachmentUrl = urlMatch[0];
+                        }
+                    }
+                }
+            }
+            
+            // Send the message with optional attachment
+            const messageData = {
                 projectId: projectData.id,
-                message: newProjectMessage,
+                message: newProjectMessage.trim() ? newProjectMessage.trim() : (projectChatAttachment ? projectChatAttachment.name : ''),
                 sender: senderName,
-            });
+                // Ensure these fields are properly named to match what the backend expects
+                attachmentUrl: attachmentUrl || null,
+                attachmentName: projectChatAttachment ? projectChatAttachment.name : null,
+                attachmentType: projectChatAttachment ? projectChatAttachment.type : null,
+                // Add these fields as well to cover different possible field names
+                attachment_url: attachmentUrl || null,
+                attachment_name: projectChatAttachment ? projectChatAttachment.name : null,
+                attachment_type: projectChatAttachment ? projectChatAttachment.type : null,
+            };
+            
+            console.log('Sending project message with data:', messageData);
+            projectSocketRef.current.emit('sendProjectMessage', messageData);
+            
             setNewProjectMessage('');
+            setProjectChatAttachment(null);
+        } catch (error) {
+            console.error('Failed to send message with attachment:', error);
+            alert('Failed to upload attachment. Please try again.');
+        } finally {
+            setIsUploadingProjectChatFile(false);
         }
     };
 
@@ -687,7 +755,35 @@ export default function ClientCard() {
                                             <div key={msg.id} className={`flex ${isConsultantMessage ? 'justify-start' : 'justify-end'}`}>
                                                 <div className={`p-2 rounded-lg max-w-xs ${isConsultantMessage ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-800'}`}>
                                                     <p className="text-xs font-bold">{msg.fields.sender}</p>
-                                                    <p className="text-sm">{msg.fields.message_text}</p>
+                                                    {msg.fields.message_text && <p className="text-sm">{msg.fields.message_text}</p>}
+                                                    
+                                                    {(msg.fields.attachmentUrl || msg.fields.attachment_url) && (
+                                                        <div className="mt-2">
+                                                            {(msg.fields.attachmentType?.startsWith('image/') || msg.fields.attachment_type?.startsWith('image/')) ? (
+                                                                <div className="mt-1 mb-1">
+                                                                    <img 
+                                                                        src={msg.fields.attachmentUrl || msg.fields.attachment_url} 
+                                                                        alt={msg.fields.attachmentName || msg.fields.attachment_name || "Attachment"} 
+                                                                        className="max-w-full rounded border border-white/20 cursor-pointer hover:opacity-90"
+                                                                        onClick={() => setPreviewImage(msg.fields.attachmentUrl || msg.fields.attachment_url)}
+                                                                    />
+                                                                </div>
+                                                            ) : (
+                                                                <a 
+                                                                    href={msg.fields.attachmentUrl || msg.fields.attachment_url} 
+                                                                    target="_blank" 
+                                                                    rel="noopener noreferrer"
+                                                                    className={`flex items-center gap-1 text-xs py-1 px-2 rounded ${isConsultantMessage ? 'bg-blue-600 text-white' : 'bg-slate-300 text-blue-700'} hover:underline`}
+                                                                >
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                                    </svg>
+                                                                    <span className="truncate max-w-[150px]">{msg.fields.attachmentName || msg.fields.attachment_name || "Download"}</span>
+                                                                </a>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    
                                                     <div className="text-xs text-right opacity-75 mt-1 flex items-center justify-end">
                                                         <span>{new Date(msg.createdTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                                                         {isMyMessage && <ReadReceipt isRead={msg.fields.is_read} />}
@@ -697,16 +793,65 @@ export default function ClientCard() {
                                         )
                                     })}
                                 </div>
+                                {projectChatAttachment && (
+                                    <div className="mb-2 p-2 bg-gray-100 rounded-md flex items-center justify-between">
+                                        <div className="flex items-center gap-2 text-sm text-gray-700 truncate">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                            </svg>
+                                            <span className="truncate max-w-[200px]">{projectChatAttachment.name}</span>
+                                        </div>
+                                        <button 
+                                            type="button" 
+                                            onClick={() => setProjectChatAttachment(null)} 
+                                            className="text-gray-500 hover:text-gray-700"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                )}
                                 <div className="flex">
                                     <input 
                                         type="text" 
                                         value={newProjectMessage} 
                                         onChange={(e) => setNewProjectMessage(e.target.value)} 
-                                        onKeyPress={(e) => e.key === 'Enter' && handleSendProjectMessage()} 
+                                        onKeyPress={(e) => e.key === 'Enter' && !isUploadingProjectChatFile && handleSendProjectMessage()} 
                                         className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" 
                                         placeholder="Type a message..." 
+                                        disabled={isUploadingProjectChatFile}
                                     />
-                                    <button onClick={handleSendProjectMessage} type="button" className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">Send</button>
+                                    <input 
+                                        type="file" 
+                                        ref={projectChatFileInputRef} 
+                                        onChange={(e) => {
+                                            if (e.target.files[0]) {
+                                                setProjectChatAttachment(e.target.files[0]);
+                                            }
+                                            // Reset the file input value so the same file can be selected again
+                                            e.target.value = '';
+                                        }}
+                                        className="hidden" 
+                                    />
+                                    <button 
+                                        type="button" 
+                                        onClick={() => projectChatFileInputRef.current?.click()} 
+                                        className="px-2 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                        disabled={isUploadingProjectChatFile || !!projectChatAttachment}
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                        </svg>
+                                    </button>
+                                    <button 
+                                        onClick={handleSendProjectMessage} 
+                                        type="button" 
+                                        className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 disabled:bg-blue-400"
+                                        disabled={isUploadingProjectChatFile}
+                                    >
+                                        {isUploadingProjectChatFile ? 'Sending...' : 'Send'}
+                                    </button>
                                 </div>
                             </section>
 
@@ -831,6 +976,29 @@ export default function ClientCard() {
                     isClientView={true}
                     isEditable={selectedTask?.fields?.assigned_to === projectData?.fields['Project Name']}
                 />
+            )}
+            
+            {/* Image Preview Modal */}
+            {previewImage && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
+                    <div className="relative max-w-4xl max-h-[90vh] overflow-auto">
+                        <button 
+                            onClick={() => setPreviewImage(null)} 
+                            className="absolute top-2 right-2 bg-red-500 rounded-full p-1 shadow-lg hover:bg-gray-200"
+                            aria-label="Close image preview"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <img 
+                            src={previewImage} 
+                            alt="Preview" 
+                            className="max-w-full max-h-[85vh] object-contain"
+                            onClick={(e) => e.stopPropagation()} 
+                        />
+                    </div>
+                </div>
             )}
         </InfoPageProvider>
     );
