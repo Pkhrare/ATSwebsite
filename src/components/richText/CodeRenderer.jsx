@@ -11,114 +11,18 @@ const CodeRenderer = ({ content, onEdit, showEditButton = true }) => {
   const extractCode = (contentStr) => {
     if (!contentStr) return '';
     
-    console.log('extractCode - input:', contentStr.substring(0, 200) + '...');
-    
-    // First, try to clean up the content by removing any extra quotes or backslashes
-    let cleanedContent = contentStr;
-    
-    // If the content is wrapped in quotes, remove them
-    if (cleanedContent.startsWith('"') && cleanedContent.endsWith('"')) {
-      cleanedContent = cleanedContent.substring(1, cleanedContent.length - 1);
-      console.log('extractCode - removed outer quotes');
-    }
-    
-    // Replace escaped quotes with regular quotes
-    cleanedContent = cleanedContent.replace(/\\"/g, '"');
-    console.log('extractCode - cleaned content:', cleanedContent.substring(0, 200) + '...');
-    
-    if (cleanedContent.includes('code-content')) {
+    if (contentStr.includes('code-content')) {
       try {
-        // Try to find the opening div tag with different quote styles
-        let openTagIndex = cleanedContent.indexOf('<div class="code-content">');
-        if (openTagIndex === -1) {
-          openTagIndex = cleanedContent.indexOf("<div class='code-content'>");
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(contentStr, 'text/html');
+        const codeElement = doc.querySelector('.code-content');
+        if (codeElement) {
+          return codeElement.innerHTML;
         }
-        if (openTagIndex === -1) {
-          // Try with any whitespace and quotes
-          const openTagMatch = cleanedContent.match(/<div[^>]*class=["']code-content["'][^>]*>/);
-          if (openTagMatch) {
-            openTagIndex = openTagMatch.index;
-            const openTagLength = openTagMatch[0].length;
-            
-            // Find the matching closing div tag
-            let depth = 0;
-            let currentIndex = openTagIndex;
-            let closeTagIndex = -1;
-            
-            while (currentIndex < cleanedContent.length) {
-              if (cleanedContent.substring(currentIndex, currentIndex + 4) === '<div') {
-                depth++;
-              } else if (cleanedContent.substring(currentIndex, currentIndex + 6) === '</div>') {
-                depth--;
-                if (depth === 0) {
-                  closeTagIndex = currentIndex;
-                  break;
-                }
-              }
-              currentIndex++;
-            }
-            
-            if (closeTagIndex !== -1) {
-              // Extract the content between the opening and closing tags
-              const startIndex = openTagIndex + openTagLength;
-              const extracted = cleanedContent.substring(startIndex, closeTagIndex);
-              console.log('extractCode - extracted content via complex string manipulation:', extracted.substring(0, 200) + '...');
-              return extracted;
-            }
-          }
-        } else {
-          // Simple case - standard opening tag found
-          // Find the matching closing div tag
-          let depth = 0;
-          let currentIndex = openTagIndex;
-          let closeTagIndex = -1;
-          
-          while (currentIndex < cleanedContent.length) {
-            if (cleanedContent.substring(currentIndex, currentIndex + 4) === '<div') {
-              depth++;
-            } else if (cleanedContent.substring(currentIndex, currentIndex + 6) === '</div>') {
-              depth--;
-              if (depth === 0) {
-                closeTagIndex = currentIndex;
-                break;
-              }
-            }
-            currentIndex++;
-          }
-          
-          if (closeTagIndex !== -1) {
-            // Extract the content between the opening and closing tags
-            const startIndex = openTagIndex + '<div class="code-content">'.length;
-            const extracted = cleanedContent.substring(startIndex, closeTagIndex);
-            console.log('extractCode - extracted content via string manipulation:', extracted.substring(0, 200) + '...');
-            return extracted;
-          }
-        }
-        
-        // Last resort: try regex approach with multiple quote styles
-        const regex = /<div[^>]*class=["']code-content["'][^>]*>([\s\S]*?)<\/div>/;
-        const match = cleanedContent.match(regex);
-        if (match && match[1]) {
-          const extracted = match[1];
-          console.log('extractCode - extracted content via regex:', extracted.substring(0, 200) + '...');
-          return extracted;
-        }
-        
-        console.log('extractCode - could not extract content from wrapper');
-        
       } catch (error) {
         console.error('Error parsing code content:', error);
       }
     }
-    
-    // If we're here, we couldn't extract the content from the wrapper
-    // Check if the content itself looks like HTML/JS/CSS code
-    if (cleanedContent.includes('<script') || cleanedContent.includes('<style') || cleanedContent.includes('<html')) {
-      console.log('extractCode - content appears to be code already, returning cleaned content');
-      return cleanedContent;
-    }
-    
-    console.log('extractCode - returning original content');
     return contentStr;
   };
 
@@ -127,9 +31,6 @@ const CodeRenderer = ({ content, onEdit, showEditButton = true }) => {
     if (useSandbox && iframeRef.current) {
       const contentStr = typeof content === 'string' ? content : JSON.stringify(content);
       const codeToRender = extractCode(contentStr);
-      
-      console.log('CodeRenderer - contentStr:', contentStr.substring(0, 200) + '...');
-      console.log('CodeRenderer - codeToRender:', codeToRender.substring(0, 200) + '...');
       
       // Create a complete HTML document for the iframe
       const iframeContent = `
@@ -157,8 +58,6 @@ const CodeRenderer = ({ content, onEdit, showEditButton = true }) => {
         </body>
         </html>
       `;
-      
-      console.log('CodeRenderer - iframeContent length:', iframeContent.length);
       
       // Use srcdoc to avoid cross-origin issues
       iframeRef.current.srcdoc = iframeContent;

@@ -137,7 +137,8 @@ function ToolbarPlugin({
   onSwitchToCode = () => {},
   setRichTextBackup = () => {},
   setConfirmationAction = () => {},
-  setIsConfirmationOpen = () => {}
+  setIsConfirmationOpen = () => {},
+  showCodeEditButton = true
 }) {
   const [editor] = useLexicalComposerContext();
   const [isBold, setIsBold] = useState(false);
@@ -510,26 +511,30 @@ function ToolbarPlugin({
               Table {!hasTableSupport && '⚠️'}
           </button>
           
-          <div className="w-px h-6 bg-slate-300 mx-1"></div>
-          
-          <button
-              type="button"
-              onClick={() => {
-                const editorState = editor.getEditorState();
-                const jsonString = JSON.stringify(editorState.toJSON());
-                setRichTextBackup(jsonString);
-                
-                setConfirmationAction(() => () => {
-                  onSwitchToCode();
-                });
-                setIsConfirmationOpen(true);
-              }}
-              className="px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200"
-              aria-label="Edit HTML/CSS/JS Code"
-              title="Edit HTML/CSS/JS Code"
-          >
-              <span className="inline-block">&lt;/&gt;</span>
-          </button>
+          {showCodeEditButton && (
+            <>
+              <div className="w-px h-6 bg-slate-300 mx-1"></div>
+              
+              <button
+                  type="button"
+                  onClick={() => {
+                    const editorState = editor.getEditorState();
+                    const jsonString = JSON.stringify(editorState.toJSON());
+                    setRichTextBackup(jsonString);
+                    
+                    setConfirmationAction(() => () => {
+                      onSwitchToCode();
+                    });
+                    setIsConfirmationOpen(true);
+                  }}
+                  className="px-3 py-1 rounded-md text-sm font-medium bg-white text-slate-700 hover:bg-slate-200"
+                  aria-label="Edit HTML/CSS/JS Code"
+                  title="Edit HTML/CSS/JS Code"
+              >
+                  <span className="inline-block">&lt;/&gt;</span>
+              </button>
+            </>
+          )}
       </div>
   );
 }
@@ -895,7 +900,7 @@ const MATCHERS = [
   },
 ];
 
-function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourceTable, sourceRecordId, showCodeEditButton = true }) {
+function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourceTable, sourceRecordId, showCodeEditButton = true, hideContainer = false }) {
     const [tableNodes, setTableNodes] = useState([]);
     const [isTableNodesLoaded, setIsTableNodesLoaded] = useState(false);
     const [isCodeEditorOpen, setIsCodeEditorOpen] = useState(false);
@@ -904,9 +909,6 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
     const [isCodeMode, setIsCodeMode] = useState(false);
     const [codeContent, setCodeContent] = useState('');
     const [richTextBackup, setRichTextBackup] = useState(null);
-    
-    // Create a wrapper for the editorRef that handles both modes
-    const editorRefWrapper = useRef(null);
 
     // Detect if content is code or rich text
     const detectContentType = useCallback((content) => {
@@ -916,38 +918,28 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
         const contentStr = typeof content === 'string' ? content : JSON.stringify(content);
         const trimmed = contentStr.trim();
         
-        console.log('RichTextEditor detectContentType - content:', contentStr.substring(0, 100) + '...');
-        console.log('RichTextEditor detectContentType - trimmed:', trimmed.substring(0, 100) + '...');
-        
         // Check if it's wrapped in our code wrapper
         if (trimmed.includes('code-content')) {
-            console.log('RichTextEditor detectContentType - detected as CODE');
             return 'code';
         }
         // Check if it starts with a JSON-like structure
         if (trimmed.startsWith('{')) {
-            console.log('RichTextEditor detectContentType - detected as RICH-TEXT (JSON)');
             return 'rich-text';
         }
         // Check if it starts with HTML tags
         if (trimmed.startsWith('<')) {
-            console.log('RichTextEditor detectContentType - detected as CODE (HTML)');
             return 'code';
         }
         // Default to rich text
-        console.log('RichTextEditor detectContentType - defaulting to RICH-TEXT');
         return 'rich-text';
     }, []);
     
     // Initialize content based on type
     useEffect(() => {
         if (initialContent) {
-            console.log('RichTextEditor initialization - initialContent:', initialContent.substring(0, 100) + '...');
             const contentType = detectContentType(initialContent);
-            console.log('RichTextEditor initialization - contentType:', contentType);
             setIsCodeMode(contentType === 'code');
             if (contentType === 'code') {
-                console.log('RichTextEditor initialization - setting code content');
                 setCodeContent(initialContent);
             }
         }
@@ -967,43 +959,6 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
             setIsTableNodesLoaded(true); // Still set to true to proceed without table nodes
         });
     }, []);
-
-    // Method to get current content regardless of mode (rich text or code)
-    const getCurrentContent = useCallback(() => {
-        if (isCodeMode) {
-            // Return code content as a string
-            return codeContent;
-        } else {
-            // Return rich text content as JSON string
-            if (editorRef?.current) {
-                const editorState = editorRef.current.getEditorState();
-                return JSON.stringify(editorState.toJSON());
-            }
-            return '';
-        }
-    }, [isCodeMode, codeContent, editorRef]);
-
-    // Effect to manage editorRef for both modes
-    useEffect(() => {
-        if (editorRef) {
-            editorRef.current = {
-                getEditorState: () => {
-                    if (isCodeMode) {
-                        // Return a mock editor state for code content
-                        return {
-                            toJSON: () => codeContent
-                        };
-                    } else if (editorRefWrapper.current) {
-                        return editorRefWrapper.current.getEditorState();
-                    }
-                    return null;
-                },
-                getCurrentContent,
-                // Pass through other methods if they exist
-                ...(editorRefWrapper.current || {})
-            };
-        }
-    }, [isCodeMode, codeContent, getCurrentContent, editorRef]);
 
     const initialConfig = {
         namespace: 'MyEditor',
@@ -1026,26 +981,18 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
 
     // Handle code editor save
     const handleCodeSave = (newCodeContent) => {
-        try {
-            console.log('Saving code content:', newCodeContent);
-            setCodeContent(newCodeContent);
-            setIsCodeMode(true);
-            setIsCodeEditorOpen(false);
-            
-            // Notify parent component about the change
-            if (onChange) {
-                onChange(newCodeContent);
-            }
-        } catch (error) {
-            console.error('Error saving code content:', error);
-            // Keep the editor open if there's an error
-            alert('There was an error saving your code. Please try again.');
+        setCodeContent(newCodeContent);
+        setIsCodeMode(true);
+        setIsCodeEditorOpen(false);
+        
+        // Notify parent component about the change
+        if (onChange) {
+            onChange(newCodeContent);
         }
     };
     
     // Handle switching back to rich text mode
     const handleEditCode = () => {
-        console.log('Opening code editor with content:', codeContent);
         setIsCodeEditorOpen(true);
     };
     
@@ -1073,14 +1020,12 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 {isEditable ? (
                     <CodeRenderer 
                         content={codeContent} 
-                        onEdit={handleEditCode}
-                        showEditButton={showCodeEditButton}
+                        onEdit={handleEditCode} 
                     />
                 ) : (
                     <CodeRenderer 
                         content={codeContent} 
-                        onEdit={() => {}}
-                        showEditButton={false}
+                        onEdit={() => {}} 
                     />
                 )}
                 
@@ -1106,34 +1051,24 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
 
     // Handler for switching to code mode
     const handleSwitchToCode = () => {
-        try {
-            setIsCodeMode(true);
-            setIsCodeEditorOpen(true);
-            
-            // Set initial empty content if needed
-            if (!codeContent) {
-                setCodeContent('<div class="code-content"><h1>Hello World</h1><p>Start coding here...</p></div>');
-            }
-        } catch (error) {
-            console.error('Error switching to code mode:', error);
-        }
+        setIsCodeEditorOpen(true);
     };
 
-
     return (
-        <div className={`relative border border-slate-300 rounded-md ${!isEditable ? 'bg-slate-50/50' : 'bg-white'}`}>
+        <div className={`relative ${!hideContainer ? 'border border-slate-300 rounded-md' : ''} ${!isEditable && !hideContainer ? 'bg-slate-50/50' : hideContainer ? '' : 'bg-white'}`}>
             <LexicalComposer initialConfig={initialConfig}>
                 {isEditable && <ToolbarPlugin 
                     onSwitchToCode={handleSwitchToCode}
                     setRichTextBackup={setRichTextBackup}
                     setConfirmationAction={setConfirmationAction}
                     setIsConfirmationOpen={setIsConfirmationOpen}
+                    showCodeEditButton={showCodeEditButton}
                 />}
                 <div className="relative">
                     <RichTextPlugin
                         contentEditable={
                             <ContentEditable
-                                className={`p-3 ${isEditable ? 'min-h-[150px]' : 'min-h-[120px]'} outline-none text-black prose max-w-none`}
+                                className={`p-3 ${isEditable ? 'min-h-[60px] max-h-[200px] overflow-y-auto' : 'min-h-[20px]'} outline-none text-black prose max-w-none`}
                                 style={{
                                     // Ensure tables are visible with explicit CSS
                                     '--table-border': '1px solid #94a3b8',
@@ -1163,9 +1098,9 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 <TablePluginComponent />
                 <ClickableLinkPlugin isEditable={isEditable} />
                 <SetEditablePlugin isEditable={isEditable} />
-                {!isCodeMode && <OnChangePlugin onChange={onChange} />}
-                {!isCodeMode && <InitialContentPlugin initialContent={initialContent} />}
-                <SetRefPlugin editorRef={editorRefWrapper} /> {/* Add the new ref plugin */}
+                <OnChangePlugin onChange={onChange} />
+                <InitialContentPlugin initialContent={initialContent} />
+                <SetRefPlugin editorRef={editorRef} /> {/* Add the new ref plugin */}
                 <ConvertIframePlugin /> {/* Convert iframe text to YouTube nodes */}
                 {isEditable && <ImageCursorPlugin />} {/* Handle cursor positioning around images */}
                 {isEditable && <NestedListPlugin />}
@@ -1177,7 +1112,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 isOpen={isCodeEditorOpen}
                 onClose={() => setIsCodeEditorOpen(false)}
                 onSave={handleCodeSave}
-                initialContent={codeContent}
+                initialContent=""
             />
             
             {/* Confirmation Dialog */}

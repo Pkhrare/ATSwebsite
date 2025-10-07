@@ -12,11 +12,25 @@ import { useAuth } from '../../utils/AuthContext';
 import ApiCaller from '../apiCall/ApiCaller';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { toLexical, fromLexical } from '../../utils/lexicalUtils';
+import { $getRoot, $createParagraphNode } from 'lexical';
 import RichTextEditor from '../richText/RichTextEditor';
 import { loadContent, saveContent } from '../../utils/contentUtils';
 import InfoSidebar from '../layout/InfoSidebar';
 import { colorClasses } from '../../utils/colorUtils';
 import io from 'socket.io-client';
+import AIDropdown from '../ai/AIDropdown';
+import AITypingIndicator from '../ai/AITypingIndicator';
+import AIMessage from '../ai/AIMessage';
+import { 
+    isAIMessage, 
+    isConsultantMessage, 
+    isClientMessage, 
+    getMessageStyling, 
+    shouldTriggerAI, 
+    validateAIRequest, 
+    createAIRequestPayload,
+    debounce 
+} from '../../utils/aiUtils';
 
 
 // Helper function to fetch from the backend API
@@ -149,6 +163,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const [previewImage, setPreviewImage] = useState(null);
     const projectSocketRef = useRef(null);
     const projectChatContainerRef = useRef(null);
+
+    // AI-related states
+    const [isAIMode, setIsAIMode] = useState(false);
+    const [isAITyping, setIsAITyping] = useState(false);
+    const [aiRequestInProgress, setAiRequestInProgress] = useState(false);
 
     // Task-related states
     const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
@@ -404,6 +423,41 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
         projectSocketRef.current.on('sendProjectMessageError', (error) => {
             console.error("Error sending project message:", error);
+        });
+
+        // AI-related socket events
+        projectSocketRef.current.on('waiverlyn:typing', (data) => {
+            setIsAITyping(data.isTyping);
+        });
+
+        projectSocketRef.current.on('waiverlyn:response', (data) => {
+            console.log('Received Waiverlyn response:', data);
+            setAiRequestInProgress(false);
+            setIsAITyping(false);
+            
+            // Sanitize AI response to ensure raw Lexical JSON (strip code fences, etc.)
+            if (data?.message?.fields?.message_text && typeof data.message.fields.message_text === 'string') {
+                try {
+                    const { sanitizeLexicalJsonString } = require('../../utils/aiUtils');
+                    data.message.fields.message_text = sanitizeLexicalJsonString(data.message.fields.message_text);
+                } catch (e) {
+                    console.warn('Failed to sanitize AI response, using as-is', e);
+                }
+            }
+
+            // Add the AI response to the messages
+            if (data.message) {
+                setProjectMessages(prevMessages => [...prevMessages, data.message]);
+            }
+        });
+
+        projectSocketRef.current.on('waiverlyn:error', (data) => {
+            console.error('Waiverlyn error:', data);
+            setAiRequestInProgress(false);
+            setIsAITyping(false);
+            
+            // Show error message to user
+            alert(`AI Error: ${data.error}`);
         });
 
         return () => {
@@ -1105,9 +1159,32 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
+    // Debounced AI request handler
+    const debouncedAIRequest = useCallback(
+        debounce(async (projectId, message, sender) => {
+            if (!projectSocketRef.current) return;
+            
+            const validation = validateAIRequest(projectId, message, sender);
+            if (!validation.isValid) {
+                alert(`AI Request Error: ${validation.error}`);
+                return;
+            }
+
+            setAiRequestInProgress(true);
+            const payload = createAIRequestPayload(projectId, message, sender);
+            
+            console.log('Sending AI request:', payload);
+            projectSocketRef.current.emit('waiverlyn:request', payload);
+        }, 2000), // 2 second debounce
+        [projectSocketRef]
+    );
+
     const handleSendProjectMessage = async () => {
+        // Get message content from plain text input
+        const messageContent = newProjectMessage.trim();
+        
         // Allow sending if either there's a message or an attachment
-        if (!projectSocketRef.current || (!newProjectMessage.trim() && !projectChatAttachment)) return;
+        if (!projectSocketRef.current || (!messageContent && !projectChatAttachment)) return;
         
         const senderName = userRole === 'consultant' ? 'Consultant' : projectData.fields['Project Name'];
         
@@ -1159,7 +1236,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             // Send the message with optional attachment
             const messageData = {
                 projectId: projectData.id,
-                message: newProjectMessage.trim() ? newProjectMessage.trim() : (projectChatAttachment ? projectChatAttachment.name : ''),
+                message: messageContent || (projectChatAttachment ? projectChatAttachment.name : ''),
                 sender: senderName,
                 // Ensure these fields are properly named to match what the backend expects
                 attachmentUrl: attachmentUrl || null,
@@ -1174,6 +1251,12 @@ export default function Card({ data, onClose, onProjectUpdate }) {
             console.log('Sending project message with data:', messageData);
             projectSocketRef.current.emit('sendProjectMessage', messageData);
             
+            // Trigger AI response if in AI mode and conditions are met
+            if (isAIMode && shouldTriggerAI(messageContent, true) && !aiRequestInProgress) {
+                debouncedAIRequest(projectData.id, messageContent, senderName);
+            }
+            
+            // Clear the input
             setNewProjectMessage('');
             setProjectChatAttachment(null);
         } catch (error) {
@@ -1878,24 +1961,65 @@ export default function Card({ data, onClose, onProjectUpdate }) {
 
                         {/* General Discussion Section */}
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
-                            <h2 className={`text-lg font-semibold ${colorClasses.card.header} mb-3`}>💬 General Discussion</h2>
-                            <div ref={projectChatContainerRef} className="h-48 overflow-y-auto custom-scrollbar border rounded-md p-2 space-y-2 mb-2 bg-slate-50">
+                            <div className="flex justify-between items-center mb-3">
+                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>💬 General Discussion</h2>
+                                <AIDropdown 
+                                    isAIMode={isAIMode}
+                                    onToggle={setIsAIMode}
+                                    disabled={isUploadingProjectChatFile || aiRequestInProgress}
+                                />
+                            </div>
+                            <div ref={projectChatContainerRef} className="h-96 overflow-y-auto custom-scrollbar border-2 border-slate-200 rounded-xl p-4 space-y-4 mb-4 bg-gradient-to-b from-slate-50 to-white shadow-inner">
+                                {isAIMode && (
+                                    <div className="flex items-center justify-center py-2">
+                                        <div className="flex items-center gap-2 px-3 py-1.5 bg-purple-50 border border-purple-200 rounded-lg">
+                                            <svg className="w-3 h-3 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                                            </svg>
+                                            <span className="text-xs font-medium text-purple-700">AI responses use redacted project context</span>
+                                        </div>
+                                    </div>
+                                )}
                                 {projectMessages.map((msg) => {
-                                    const isConsultantMessage = msg.fields.sender === 'Consultant';
+                                    const isAI = isAIMessage(msg);
+                                    const isConsultant = isConsultantMessage(msg);
+                                    const isClient = isClientMessage(msg, projectData.fields['Project Name']);
+                                    
+                                    if (isAI) {
+                                        return <AIMessage key={msg.id} message={msg} />;
+                                    }
+                                    
+                                        const styling = getMessageStyling(msg, userRole, projectData.fields['Project Name']);
                                     return (
-                                        <div key={msg.id} className={`flex ${isConsultantMessage ? 'justify-end' : 'justify-start'}`}>
-                                            <div className={`p-2 rounded-lg max-w-xs ${isConsultantMessage ? 'bg-slate-200 text-slate-800' : 'bg-blue-500 text-white'}`}>
-                                                <p className="text-xs font-bold">{msg.fields.sender}</p>
-                                                {msg.fields.message_text && <p className="text-sm">{msg.fields.message_text}</p>}
+                                            <div key={msg.id} className={`flex ${styling.alignment}`}>
+                                                <div className="relative max-w-md">
+                                                    <div className={`p-4 rounded-2xl shadow-sm border ${styling.bgColor} ${styling.borderColor}`}>
+                                                        <div className="flex items-center gap-3 mb-2">
+                                                            <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                                                                styling.label === 'Consultant' ? 'bg-blue-500' : 'bg-slate-500'
+                                                            }`}>
+                                                                <span className="text-white text-xs font-bold">
+                                                                    {styling.label === 'Consultant' ? 'C' : 'U'}
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <span className="text-sm font-semibold">{styling.label}</span>
+                                                            </div>
+                                                        </div>
+                                                        {msg.fields.message_text && (
+                                                            <div className="text-sm leading-relaxed mb-2">
+                                                                {msg.fields.message_text}
+                                                            </div>
+                                                        )}
                                                 
                                                 {(msg.fields.attachmentUrl || msg.fields.attachment_url) && (
-                                                    <div className="mt-2">
+                                                            <div className="mb-2">
                                                         {msg.fields.attachmentType?.startsWith('image/') ? (
-                                                            <div className="mt-1 mb-1">
+                                                                    <div className="rounded-lg overflow-hidden border border-slate-200">
                                                                 <img 
                                                                     src={msg.fields.attachmentUrl || msg.fields.attachment_url} 
                                                                     alt={msg.fields.attachmentName || msg.fields.attachment_name || "Attachment"} 
-                                                                    className="max-w-full rounded border border-white/20 cursor-pointer hover:opacity-90"
+                                                                            className="max-w-full cursor-pointer hover:opacity-90 transition-opacity"
                                                                     onClick={() => setPreviewImage(msg.fields.attachmentUrl || msg.fields.attachment_url)}
                                                                 />
                                                             </div>
@@ -1904,9 +2028,13 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                                 href={msg.fields.attachmentUrl || msg.fields.attachment_url} 
                                                                 target="_blank" 
                                                                 rel="noopener noreferrer"
-                                                                className={`flex items-center gap-1 text-xs py-1 px-2 rounded ${isConsultantMessage ? 'bg-slate-300 text-blue-700' : 'bg-blue-600 text-white'} hover:underline`}
-                                                            >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        className={`flex items-center gap-2 text-xs py-2 px-3 rounded-lg transition-colors ${
+                                                                            isConsultant 
+                                                                                ? 'bg-slate-100 text-slate-700 hover:bg-slate-200' 
+                                                                                : 'bg-blue-600 text-white hover:bg-blue-700'
+                                                                        }`}
+                                                                    >
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                                                                 </svg>
                                                                 <span className="truncate max-w-[150px]">{msg.fields.attachmentName || msg.fields.attachment_name || "Download"}</span>
@@ -1915,28 +2043,37 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                     </div>
                                                 )}
                                                 
-                                                <div className="text-xs text-right opacity-75 mt-1 flex items-center justify-end">
+                                                        <div className="text-xs text-right opacity-75 flex items-center justify-end gap-2">
                                                     <span>{new Date(msg.createdTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                                                    {isConsultantMessage && <ReadReceipt isRead={msg.fields.is_read} />}
+                                                            {isConsultant && <ReadReceipt isRead={msg.fields.is_read} />}
                                                 </div>
                                             </div>
+                                                    <div className={`absolute -bottom-1 ${isConsultant ? 'right-4' : 'left-4'} w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent ${
+                                                        isConsultant ? 'border-t-blue-500' : 'border-t-slate-200'
+                                                    }`}></div>
                                         </div>
-                                    )
+                                            </div>
+                                    );
                                 })}
+                                
+                                {/* AI Typing Indicator */}
+                                <AITypingIndicator isTyping={isAITyping} />
                             </div>
-                            <div>
+                            <div className="space-y-3">
                                 {projectChatAttachment && (
-                                    <div className="mb-2 p-2 bg-gray-100 rounded-md flex items-center justify-between">
-                                        <div className="flex items-center gap-2 text-sm text-gray-700 truncate">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl flex items-center justify-between">
+                                        <div className="flex items-center gap-3 text-sm text-blue-700 truncate">
+                                            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                                             </svg>
-                                            <span className="truncate max-w-[200px]">{projectChatAttachment.name}</span>
+                                            </div>
+                                            <span className="truncate max-w-[200px] font-medium">{projectChatAttachment.name}</span>
                                         </div>
                                         <button 
                                             type="button" 
                                             onClick={() => setProjectChatAttachment(null)} 
-                                            className="text-gray-500 hover:text-gray-700"
+                                            className="p-1.5 text-blue-500 hover:text-blue-700 hover:bg-blue-100 rounded-lg transition-colors"
                                         >
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1944,16 +2081,29 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         </button>
                                     </div>
                                 )}
-                                <div className="flex">
-                                    <input 
-                                        type="text" 
+                                <div className="flex items-center gap-2">
+                                    <div className="relative flex-1">
+                                        <textarea
                                         value={newProjectMessage} 
                                         onChange={(e) => setNewProjectMessage(e.target.value)} 
-                                        onKeyPress={(e) => e.key === 'Enter' && !isUploadingProjectChatFile && handleSendProjectMessage()} 
-                                        className="w-full px-3 py-2 border rounded-l-md bg-white text-black text-sm" 
-                                        placeholder="Type a message..." 
-                                        disabled={isUploadingProjectChatFile}
-                                    />
+                                            placeholder={isAIMode ? "Ask Waiverlyn about your project..." : "Type a message..."}
+                                            className={`w-full p-3 border-2 rounded-xl bg-white text-black transition-all duration-200 resize-none ${
+                                                isAIMode ? 'border-purple-200' : 'border-slate-200'
+                                            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                                            rows={3}
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter' && !e.shiftKey) {
+                                                    e.preventDefault();
+                                                    handleSendProjectMessage();
+                                                }
+                                            }}
+                                        />
+                                        {isAIMode && (
+                                            <div className="absolute right-3 top-3">
+                                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                                            </div>
+                                        )}
+                                    </div>
                                     <input 
                                         type="file" 
                                         ref={projectChatFileInputRef} 
@@ -1961,7 +2111,6 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                             if (e.target.files[0]) {
                                                 setProjectChatAttachment(e.target.files[0]);
                                             }
-                                            // Reset the file input value so the same file can be selected again
                                             e.target.value = '';
                                         }}
                                         className="hidden" 
@@ -1969,7 +2118,11 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     <button 
                                         type="button" 
                                         onClick={() => projectChatFileInputRef.current?.click()} 
-                                        className="px-2 py-2 bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                        className={`p-3 rounded-xl transition-all duration-200 ${
+                                            isUploadingProjectChatFile || !!projectChatAttachment
+                                                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                                                : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-800'
+                                        }`}
                                         disabled={isUploadingProjectChatFile || !!projectChatAttachment}
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1979,10 +2132,33 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     <button 
                                         onClick={handleSendProjectMessage} 
                                         type="button" 
-                                        className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700 disabled:bg-blue-400"
-                                        disabled={isUploadingProjectChatFile}
+                                        className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
+                                            isUploadingProjectChatFile || aiRequestInProgress
+                                                ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                                                : isAIMode
+                                                    ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl transform hover:scale-105'
+                                                    : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:scale-105'
+                                        }`}
+                                        disabled={isUploadingProjectChatFile || aiRequestInProgress}
                                     >
-                                        {isUploadingProjectChatFile ? 'Sending...' : 'Send'}
+                                        {isUploadingProjectChatFile ? (
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                                <span>Sending...</span>
+                                            </div>
+                                        ) : aiRequestInProgress ? (
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                                <span>AI Processing...</span>
+                                            </div>
+                                        ) : (
+                                            <div className="flex items-center gap-2">
+                                                <span>Send</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                                </svg>
+                                            </div>
+                                        )}
                                     </button>
                                 </div>
                             </div>

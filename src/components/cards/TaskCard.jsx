@@ -1449,7 +1449,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         <div className="relative max-w-4xl max-h-[90vh] overflow-auto">
                             <button 
                                 onClick={() => setPreviewImage(null)} 
-                                className="absolute top-2 right-2 bg-red-500 rounded-full p-1 shadow-lg hover:bg-gray-200"
+                                className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-lg hover:bg-gray-200"
                                 aria-label="Close image preview"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
