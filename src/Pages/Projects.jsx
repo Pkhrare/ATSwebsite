@@ -75,7 +75,8 @@ function Projects() {
       'collaborator_name',
       'collaborators',
       'task_groups',
-      'projectGeneralChat'
+      'projectGeneralChat',
+      'project_internal_notes',
     ]);
     const filteredColumns = allColumns.filter(column => !unwantedColumns.has(column));
 

@@ -799,7 +799,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         return (
             <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
                 <div className={`${colorClasses.nav.base} rounded-lg shadow-xl w-full max-w-5xl flex flex-col`} style={{ maxHeight: '90vh' }}>
-                    <div className="p-6 border-b">
+                    <div className={`p-6 border-b ${colorClasses.nav.base}`}>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3 min-w-0">
                                 <svg className={`w-6 h-6 ${colorClasses.nav.accent} flex-shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -816,7 +816,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         <form className="flex-grow p-6 overflow-y-auto space-y-6">
                             <div className="space-y-6">
                                 {/* Task Fields Skeleton */}
-                                <div className={`p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500`}>
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <div className="h-4 bg-slate-200 rounded animate-pulse w-1/3"></div>
@@ -838,7 +838,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
 
                                 {/* Description Skeleton */}
-                                <div className={`p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500`}>
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
                                     <div className="h-4 bg-slate-200 rounded animate-pulse w-1/4 mb-4"></div>
                                     <div className="space-y-3">
                                         <div className="h-4 bg-slate-200 rounded animate-pulse"></div>
@@ -849,7 +849,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
 
                                 {/* Additional Sections Skeleton */}
-                                <div className={`p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500`}>
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
                                     <div className="h-4 bg-slate-200 rounded animate-pulse w-1/5 mb-4"></div>
                                     <div className="space-y-2">
                                         <div className="h-6 bg-slate-100 rounded animate-pulse"></div>
@@ -873,7 +873,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
 
                                 {/* Chat Skeleton */}
-                                <div className={`p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500`}>
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
                                     <div className="h-4 bg-slate-200 rounded animate-pulse w-1/4 mb-4"></div>
                                     <div className="h-48 border rounded-md p-2 space-y-2 mb-2 bg-gray-50">
                                         <div className="h-12 bg-slate-200 rounded animate-pulse w-2/3 ml-auto"></div>
@@ -885,7 +885,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             </div>
                         </form>
                         
-                        <div className={`w-64 border-l p-4 ${colorClasses.button.secondary} border-2 border-yellow-500`}>
+                        <div className="w-64 border-l p-4 bg-white border border-gray-200">
                             <div className="h-6 bg-slate-200 rounded animate-pulse w-3/4 mb-4"></div>
                             <div className="space-y-3">
                                 <div className="h-4 bg-slate-200 rounded animate-pulse w-1/2"></div>
@@ -920,7 +920,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     return (
         <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={handleOverlayClick}>
             <div ref={modalContentRef} className={`${colorClasses.nav.base} rounded-lg shadow-xl w-full max-w-5xl flex flex-col`} style={{ maxHeight: '90vh' }} onClick={e => e.stopPropagation()}>
-                <div className="p-6 border-b">
+                <div className={`p-6 border-b ${colorClasses.nav.base}`}>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 min-w-0">
                             <svg className={`w-6 h-6 ${colorClasses.nav.accent} flex-shrink-0`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -937,10 +937,10 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 <div className="flex-grow flex overflow-hidden">
                     <form onSubmit={handleSubmit} className="flex-grow p-6 overflow-y-auto space-y-6 custom-scrollbar">
                         <div className="space-y-6">
-                            <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
+                            <div className="p-4 bg-white rounded-lg border border-gray-200">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Assigned To</label>
+                                        <label className="block text-sm font-medium text-gray-800 mb-1">Assigned To</label>
                                         <div className="flex items-center gap-2">
                                             <div className="relative w-full">
                                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -958,7 +958,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         </div>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Task Status</label>
+                                        <label className="block text-sm font-medium text-gray-800 mb-1">Task Status</label>
                                         <div className="relative">
                                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                                 <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -976,7 +976,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         </div>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Due Date</label>
+                                        <label className="block text-sm font-medium text-gray-800 mb-1">Due Date</label>
                                         <DatePicker
                                             selected={safeNewDate(editedTask.due_date)}
                                             onChange={(date) => handleInputChange('due_date', date ? format(date, 'yyyy-MM-dd') : null)}
@@ -987,7 +987,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Call to action for the assignee</label>
+                                        <label className="block text-sm font-medium text-gray-800 mb-1">Call to action for the assignee</label>
                                         <select
                                             value={editedTask.Action_type || ''}
                                             onChange={(e) => handleInputChange('Action_type', e.target.value)}
@@ -1002,9 +1002,9 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
                             </div>
 
-                            <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
+                            <div className="p-4 bg-white rounded-lg border border-gray-200">
                                 <div className="flex items-center justify-between mb-1">
-                                    <label className="block text-sm font-medium ${colorClasses.text.primary}">Description</label>
+                                    <label className="block text-sm font-medium text-gray-800">Description</label>
                                     {!isClientView && (
                                         <button type="button" onClick={() => setIsEditingDescription(!isEditingDescription)} className="text-gray-400 hover:text-gray-600">
                                             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.5 4.5z" /></svg>
@@ -1024,8 +1024,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             </div>
 
                             {(isChecklistLoading || checklistItems.length > 0) && (
-                                <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
-                                    <h3 className="text-sm font-medium ${colorClasses.text.primary} mb-2">Checklist</h3>
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
+                                    <h3 className="text-sm font-medium text-gray-800 mb-2">Checklist</h3>
                                     {isChecklistLoading ? (
                                         <p className="text-sm text-gray-500">Loading checklist...</p>
                                     ) : (
@@ -1039,7 +1039,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                         className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                                         disabled={!canEdit}
                                                     />
-                                                    <label className={`text-sm flex-1 ${item.completed ? 'line-through text-gray-500' : '${colorClasses.text.primary}'}`}>
+                                                    <label className={`text-sm flex-1 ${item.completed ? 'line-through text-gray-500' : 'text-gray-800'}`}>
                                                         {item.checklist_description}
                                                     </label>
                                                     {!isClientView && (
@@ -1060,9 +1060,9 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             )}
 
                             {(isFormSubmissionsLoading || formSubmissions.length > 0) && (
-                                <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
                                     <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-sm font-medium ${colorClasses.text.primary}">Forms</h3>
+                                        <h3 className="text-sm font-medium text-gray-800">Forms</h3>
                                         <div className="flex items-center gap-2">
                                             {(!isClientView || !isFormLockedForClient) && canEdit &&
                                                 <button type="button" onClick={() => setIsEditingForm(!isEditingForm)} className="text-sm text-blue-600 hover:underline">
@@ -1161,8 +1161,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             )}
 
                             {(isApprovalsLoading || approvals.length > 0) && (
-                                <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
-                                    <h3 className="text-sm font-medium ${colorClasses.text.primary} mb-2">Approvals</h3>
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
+                                    <h3 className="text-sm font-medium text-gray-800 mb-2">Approvals</h3>
                                     {isApprovalsLoading ? (
                                         <p className="text-sm text-gray-500">Loading approvals...</p>
                                     ) : (
@@ -1183,8 +1183,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                             )}
 
                             {(isAttachmentsLoading || attachments.length > 0) && (
-                                <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
-                                    <h3 className="text-sm font-medium ${colorClasses.text.primary} mb-2">Attachments</h3>
+                                <div className="p-4 bg-white rounded-lg border border-gray-200">
+                                    <h3 className="text-sm font-medium text-gray-800 mb-2">Attachments</h3>
                                     {isAttachmentsLoading ? (
                                         <div className="space-y-4">
                                             <div className="animate-pulse flex items-center justify-between"><div className="h-4 bg-gray-200 rounded w-3/5"></div><div className="h-8 bg-gray-200 rounded w-1/5"></div></div>
@@ -1194,7 +1194,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         <div className="space-y-3">
                                             {attachments.map((att) => (
                                                 <div key={att.id} className="group relative grid grid-cols-[1fr,1fr,auto] gap-4 items-center p-3 rounded-lg">
-                                                    <p className="text-sm ${colorClasses.text.primary} truncate">{att.fields.attachment_description}</p>
+                                                    <p className="text-sm text-gray-800 truncate">{att.fields.attachment_description}</p>
                                                     <div>
                                                         {att.fields.Attachments && att.fields.Attachments.length > 0 ? (
                                                             <div className="flex flex-col space-y-1">
@@ -1233,10 +1233,10 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
                             )}
 
-                            <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500 space-y-4">
+                            <div className={`p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500 space-y-4`}>
                                 <div className="flex items-center gap-6">
                                     <div className="flex-1">
-                                        <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Project</label>
+                                        <label className="block text-sm font-medium text-gray-800 mb-1">Project</label>
                                         <input type="text" value={`${editedTask['Project Name (from project_id)']?.[0] || ''} (${editedTask['Project ID (from Project ID)']?.[0] || ''})`} className="w-full px-3 py-2 border rounded-md bg-gray-100 text-black text-sm" disabled />
                                     </div>
                                     <div className="p-3 bg-white rounded-md border w-1/3">
@@ -1248,11 +1248,11 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Progress ({Math.round((editedTask.progress_bar || 0) * 100)}%)</label>
+                                    <label className="block text-sm font-medium text-gray-800 mb-1">Progress ({Math.round((editedTask.progress_bar || 0) * 100)}%)</label>
                                     <input type="range" min="0" max="1" step="0.01" value={editedTask.progress_bar || 0} onChange={(e) => handleInputChange('progress_bar', e.target.value)} className="w-full bg-white" disabled={!canEdit} />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium ${colorClasses.text.primary} mb-1">Tags</label>
+                                    <label className="block text-sm font-medium text-gray-800 mb-1">Tags</label>
                                     <input type="text" value={editedTask.tags || ''} onChange={(e) => handleInputChange('tags', e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white text-black text-sm" placeholder="Tag1,Tag2,..." disabled={!canEdit} />
                                 </div>
                                 <div className="mt-6 pt-6 border-t flex justify-between items-center">
@@ -1264,7 +1264,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         )}
                                     </div>
                                     <div>
-                                        <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 ${colorClasses.text.primary} rounded-md mr-3 hover:bg-gray-300 font-medium" disabled={isLoading}>Cancel</button>
+                                        <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-3 hover:bg-gray-300 font-medium" disabled={isLoading}>Cancel</button>
                                         {canEdit && (
                                             <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-300 font-medium" disabled={isLoading}>
                                                 {isLoading ? 'Updating...' : 'Update Task'}
@@ -1274,8 +1274,8 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
                             </div>
 
-                            <div className="p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500">
-                                <h3 className="text-sm font-medium ${colorClasses.text.primary} mb-2">Task Chat</h3>
+                            <div className="p-4 bg-white rounded-lg border border-gray-200">
+                                <h3 className="text-sm font-medium text-gray-800 mb-2">Task Chat</h3>
                                 <div ref={chatContainerRef} className="h-48 overflow-y-auto custom-scrollbar border rounded-md p-2 space-y-2 mb-2 bg-gray-50">
                                     {messages.map((msg) => {
                                         const mySenderName = isClientView ? task.fields['Project Name (from project_id)'][0] : 'Consultant';
@@ -1393,17 +1393,17 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                     {!isClientView && (
                         <div className={`w-64 border-l p-4 ${colorClasses.button.secondary} border-2 border-yellow-500`}>
                             <h3 className={`font-semibold ${colorClasses.text.primary} mb-4`}>Add Task Fields</h3>
-                            <ul className={`space-y-2 text-sm ${colorClasses.text.primary}`}>
-                                <li onClick={() => setAttachChecklistsFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-white hover:font-semibold">
+                            <ul className="space-y-2 text-sm text-gray-800">
+                                <li onClick={() => setAttachChecklistsFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600 hover:font-semibold">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                     Checklist
                                 </li>
-                                <li onClick={() => setAttachFilesFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-white hover:font-semibold"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg> Attach Files</li>
-                                <li onClick={() => setAttachTaskformsFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-white hover:font-semibold">
+                                <li onClick={() => setAttachFilesFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600 hover:font-semibold"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg> Attach Files</li>
+                                <li onClick={() => setAttachTaskformsFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600 hover:font-semibold">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                                     Complete Form
                                 </li>
-                                <li onClick={() => setAddApprovalFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-white hover:font-semibold">
+                                <li onClick={() => setAddApprovalFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600 hover:font-semibold">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
