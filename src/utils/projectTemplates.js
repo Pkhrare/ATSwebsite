@@ -1057,35 +1057,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Articles of Incorporation/Business Registration",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Articles of Incorporation/Business Registration",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -1093,7 +1080,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -1168,12 +1154,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -1182,35 +1167,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "IRS EIN Confirmation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "IRS EIN Confirmation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -1218,7 +1190,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -1293,12 +1264,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -1307,35 +1277,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Certificate of Good Standing",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Certificate of Good Standing",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -1343,7 +1300,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -1418,12 +1374,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -1432,35 +1387,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bylaws (if Applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bylaws (if Applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -1468,7 +1410,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -1543,12 +1484,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -1557,35 +1497,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Operating Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Operating Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -1593,7 +1520,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -1668,12 +1594,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -1794,35 +1719,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Completed Application Form",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Completed Application Form",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": null,
@@ -1830,7 +1742,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -1905,12 +1816,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -1919,35 +1829,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Licensing Fee Payment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Licensing Fee Payment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -1955,7 +1852,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -2030,12 +1926,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -2044,35 +1939,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Signed Provider Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Signed Provider Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -2080,7 +1962,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -2155,12 +2036,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -2169,35 +2049,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Renewal Application (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Renewal Application (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -2205,7 +2072,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -2280,12 +2146,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -2406,35 +2271,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Policy & Procedure Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Policy & Procedure Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -2442,7 +2294,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -2517,12 +2368,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -2643,35 +2493,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Background Check Clearances (State/FBI)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Background Check Clearances (State/FBI)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -2679,7 +2516,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -2754,12 +2590,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -2768,35 +2603,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "HIPAA Compliance Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "HIPAA Compliance Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -2804,7 +2626,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -2879,12 +2700,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -2893,35 +2713,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "NPI Number",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "NPI Number",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -2929,7 +2736,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3004,12 +2810,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -3018,35 +2823,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -3054,7 +2846,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3129,12 +2920,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -3143,35 +2933,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "OSHA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "OSHA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -3179,7 +2956,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3254,12 +3030,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -3268,35 +3043,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Anti-Kickback Statute Compliance Statement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Anti-Kickback Statute Compliance Statement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -3304,7 +3066,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3379,12 +3140,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -3505,35 +3265,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Proof of Financial Stability (Bank Statements, etc.)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Proof of Financial Stability (Bank Statements, etc.)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -3541,7 +3288,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3616,12 +3362,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -3630,35 +3375,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Liability, Workers’ Comp & Professional Insurance",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Liability, Workers’ Comp & Professional Insurance",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -3666,7 +3398,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3741,12 +3472,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -3755,35 +3485,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Audit Reports (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Audit Reports (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -3791,7 +3508,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3866,12 +3582,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -3880,35 +3595,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bond Requirements (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bond Requirements (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -3916,7 +3618,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -3991,12 +3692,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -4117,35 +3817,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Organizational Chart and Staffing Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Organizational Chart and Staffing Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -4153,7 +3840,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -4228,12 +3914,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -4242,35 +3927,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Employee Licenses, Resumes, and Certifications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Employee Licenses, Resumes, and Certifications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -4278,7 +3950,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -4353,12 +4024,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -4479,35 +4149,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Accreditation & Medical Director Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Accreditation & Medical Director Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -4515,7 +4172,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -4590,12 +4246,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -4604,35 +4259,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Clinical Staff Licenses and Training Certificates",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Clinical Staff Licenses and Training Certificates",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -4640,7 +4282,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -4715,12 +4356,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -4841,35 +4481,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Fire/Health Department Inspection Reports",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Fire/Health Department Inspection Reports",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -4877,7 +4504,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -4952,12 +4578,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -4966,35 +4591,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Lease/Ownership Documentation and Safety Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Lease/Ownership Documentation and Safety Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -5002,7 +4614,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -5077,12 +4688,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -5091,35 +4701,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "ADA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "ADA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -5127,7 +4724,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -5202,12 +4798,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -5216,35 +4811,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": " Emergency Preparedness Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Emergency Preparedness Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -5252,7 +4834,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -5327,12 +4908,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -5453,35 +5033,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Provider Participation & Referral Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provider Participation & Referral Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -5489,7 +5056,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -5564,12 +5130,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -5578,35 +5143,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Vendor/Supplier Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Vendor/Supplier Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -5614,7 +5166,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -5689,12 +5240,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -5703,35 +5253,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Business Associate Agreements (BAA)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Business Associate Agreements (BAA)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -5739,7 +5276,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -5814,12 +5350,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -5940,35 +5475,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Staff Orientation Materials and Training Records",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Staff Orientation Materials and Training Records",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -5976,7 +5498,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -6051,12 +5572,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -6177,35 +5697,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Applications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Applications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -6213,7 +5720,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -6288,12 +5794,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -6302,35 +5807,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "CAQH Enrollment (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "CAQH Enrollment (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -6338,7 +5830,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -6413,12 +5904,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -6427,35 +5917,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare P&P Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare P&P Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -6463,7 +5940,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -6538,12 +6014,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -6552,35 +6027,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Managed Care Organization (MCO) Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Managed Care Organization (MCO) Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -6588,7 +6050,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -6663,12 +6124,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -6767,35 +6227,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Quality Assurance/Risk Management Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Quality Assurance/Risk Management Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -6803,7 +6250,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -6878,12 +6324,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -6892,35 +6337,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Client Satisfaction and Performance Review Forms",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Client Satisfaction and Performance Review Forms",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -6928,7 +6360,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -7003,12 +6434,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -7017,35 +6447,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Root Cause Analysis Reports (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Root Cause Analysis Reports (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -7053,7 +6470,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -7128,12 +6544,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -7232,35 +6647,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "State-Specific Waiver, Special Permits, or Addendums",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "State-Specific Waiver, Special Permits, or Addendums",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -7268,7 +6670,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -7343,12 +6744,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -7357,35 +6757,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Local Health Department Approvals",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Local Health Department Approvals",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -7393,7 +6780,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -7468,12 +6854,11 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -7482,35 +6867,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Environmental Impact Assessments (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Environmental Impact Assessments (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -7518,7 +6890,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -7719,35 +7090,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Cybersecurity Policies",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Cybersecurity Policies",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -7755,7 +7113,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -7844,35 +7201,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Electronic Health Record (EHR) System Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Electronic Health Record (EHR) System Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -7880,7 +7224,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -7969,35 +7312,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Disaster Recovery Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Disaster Recovery Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -8005,7 +7335,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -8184,35 +7513,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Marketing Materials Approval",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Marketing Materials Approval",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -8220,7 +7536,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -8309,35 +7624,22 @@ export const dummyProject = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Advertising Disclosures",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Advertising Disclosures",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -8345,7 +7647,6 @@ export const dummyProject = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -8428,12 +7729,11 @@ export const dummyProject = {
                     "textFormat": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "table",
-                "version": 1,
-                "textFormat": 1
+                "version": 1
               },
               {
                 "children": [],
@@ -8482,7 +7782,7 @@ export const dummyProject = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -8502,7 +7802,7 @@ export const dummyProject = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -8534,7 +7834,7 @@ export const dummyProject = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -8587,8 +7887,7 @@ export const dummyProject = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -29290,35 +28589,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Articles of Incorporation/Business Registration",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Articles of Incorporation/Business Registration",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -29326,7 +28612,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -29401,12 +28686,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -29415,35 +28699,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "IRS EIN Confirmation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "IRS EIN Confirmation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -29451,7 +28722,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -29526,12 +28796,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -29540,35 +28809,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Certificate of Good Standing",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Certificate of Good Standing",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -29576,7 +28832,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -29651,12 +28906,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -29665,35 +28919,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bylaws (if Applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bylaws (if Applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -29701,7 +28942,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -29776,12 +29016,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -29790,35 +29029,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Operating Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Operating Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -29826,7 +29052,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -29901,12 +29126,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -30027,35 +29251,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Completed Application Form",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Completed Application Form",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": null,
@@ -30063,7 +29274,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -30138,12 +29348,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -30152,35 +29361,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Licensing Fee Payment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Licensing Fee Payment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -30188,7 +29384,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -30263,12 +29458,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -30277,35 +29471,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Signed Provider Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Signed Provider Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -30313,7 +29494,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -30388,12 +29568,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -30402,35 +29581,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Renewal Application (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Renewal Application (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -30438,7 +29604,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -30513,12 +29678,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -30639,35 +29803,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Policy & Procedure Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Policy & Procedure Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -30675,7 +29826,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -30750,12 +29900,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -30876,35 +30025,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Background Check Clearances (State/FBI)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Background Check Clearances (State/FBI)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -30912,7 +30048,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -30987,12 +30122,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31001,35 +30135,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "HIPAA Compliance Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "HIPAA Compliance Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -31037,7 +30158,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -31112,12 +30232,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31126,35 +30245,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "NPI Number",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "NPI Number",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -31162,7 +30268,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -31237,12 +30342,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31251,35 +30355,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -31287,7 +30378,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -31362,12 +30452,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31376,35 +30465,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "OSHA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "OSHA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -31412,7 +30488,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -31487,12 +30562,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31501,35 +30575,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Anti-Kickback Statute Compliance Statement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Anti-Kickback Statute Compliance Statement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -31537,7 +30598,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -31612,12 +30672,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31738,35 +30797,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Proof of Financial Stability (Bank Statements, etc.)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Proof of Financial Stability (Bank Statements, etc.)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -31774,7 +30820,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -31849,12 +30894,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31863,35 +30907,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Liability, Workers’ Comp & Professional Insurance",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Liability, Workers’ Comp & Professional Insurance",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -31899,7 +30930,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -31974,12 +31004,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -31988,35 +31017,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Audit Reports (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Audit Reports (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -32024,7 +31040,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -32099,12 +31114,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -32113,35 +31127,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bond Requirements (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bond Requirements (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -32149,7 +31150,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -32224,12 +31224,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -32350,35 +31349,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Organizational Chart and Staffing Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Organizational Chart and Staffing Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -32386,7 +31372,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -32461,12 +31446,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -32475,35 +31459,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Employee Licenses, Resumes, and Certifications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Employee Licenses, Resumes, and Certifications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -32511,7 +31482,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -32586,12 +31556,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -32712,35 +31681,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Accreditation & Medical Director Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Accreditation & Medical Director Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -32748,7 +31704,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -32823,12 +31778,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -32837,35 +31791,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Clinical Staff Licenses and Training Certificates",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Clinical Staff Licenses and Training Certificates",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -32873,7 +31814,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -32948,12 +31888,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -33074,35 +32013,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Fire/Health Department Inspection Reports",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Fire/Health Department Inspection Reports",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -33110,7 +32036,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -33185,12 +32110,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -33199,35 +32123,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Lease/Ownership Documentation and Safety Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Lease/Ownership Documentation and Safety Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -33235,7 +32146,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -33310,12 +32220,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -33324,35 +32233,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "ADA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "ADA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -33360,7 +32256,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -33435,12 +32330,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -33449,35 +32343,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": " Emergency Preparedness Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Emergency Preparedness Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -33485,7 +32366,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -33560,12 +32440,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -33686,35 +32565,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Provider Participation & Referral Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provider Participation & Referral Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -33722,7 +32588,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -33797,12 +32662,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -33811,35 +32675,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Vendor/Supplier Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Vendor/Supplier Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -33847,7 +32698,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -33922,12 +32772,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -33936,35 +32785,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Business Associate Agreements (BAA)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Business Associate Agreements (BAA)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -33972,7 +32808,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -34047,12 +32882,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -34173,35 +33007,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Staff Orientation Materials and Training Records",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Staff Orientation Materials and Training Records",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -34209,7 +33030,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -34284,12 +33104,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -34410,35 +33229,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Applications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Applications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -34446,7 +33252,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -34521,12 +33326,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -34535,35 +33339,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "CAQH Enrollment (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "CAQH Enrollment (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -34571,7 +33362,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -34646,12 +33436,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -34660,35 +33449,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare P&P Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare P&P Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -34696,7 +33472,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -34771,12 +33546,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -34785,35 +33559,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Managed Care Organization (MCO) Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Managed Care Organization (MCO) Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -34821,7 +33582,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -34896,12 +33656,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -35000,35 +33759,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Quality Assurance/Risk Management Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Quality Assurance/Risk Management Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -35036,7 +33782,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -35111,12 +33856,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -35125,35 +33869,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Client Satisfaction and Performance Review Forms",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Client Satisfaction and Performance Review Forms",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -35161,7 +33892,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -35236,12 +33966,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -35250,35 +33979,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Root Cause Analysis Reports (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Root Cause Analysis Reports (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -35286,7 +34002,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -35361,12 +34076,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -35465,35 +34179,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "State-Specific Waiver, Special Permits, or Addendums",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "State-Specific Waiver, Special Permits, or Addendums",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -35501,7 +34202,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -35576,12 +34276,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -35590,35 +34289,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Local Health Department Approvals",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Local Health Department Approvals",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -35626,7 +34312,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -35701,12 +34386,11 @@ export const expansionFranchiseService = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -35715,35 +34399,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Environmental Impact Assessments (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Environmental Impact Assessments (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -35751,7 +34422,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -35952,35 +34622,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Cybersecurity Policies",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Cybersecurity Policies",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -35988,7 +34645,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -36077,35 +34733,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Electronic Health Record (EHR) System Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Electronic Health Record (EHR) System Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -36113,7 +34756,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -36202,35 +34844,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Disaster Recovery Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Disaster Recovery Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -36238,7 +34867,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -36417,35 +35045,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Marketing Materials Approval",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Marketing Materials Approval",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -36453,7 +35068,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -36542,35 +35156,22 @@ export const expansionFranchiseService = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Advertising Disclosures",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Advertising Disclosures",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -36578,7 +35179,6 @@ export const expansionFranchiseService = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -36661,12 +35261,11 @@ export const expansionFranchiseService = {
                     "textFormat": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "table",
-                "version": 1,
-                "textFormat": 1
+                "version": 1
               },
               {
                 "children": [],
@@ -36715,7 +35314,7 @@ export const expansionFranchiseService = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -36735,7 +35334,7 @@ export const expansionFranchiseService = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -36767,7 +35366,7 @@ export const expansionFranchiseService = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -36820,8 +35419,7 @@ export const expansionFranchiseService = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -50795,35 +49393,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Articles of Incorporation/Business Registration",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Articles of Incorporation/Business Registration",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -50831,7 +49416,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -50906,12 +49490,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -50920,35 +49503,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "IRS EIN Confirmation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "IRS EIN Confirmation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -50956,7 +49526,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -51031,12 +49600,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -51045,35 +49613,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Certificate of Good Standing",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Certificate of Good Standing",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -51081,7 +49636,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -51156,12 +49710,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -51170,35 +49723,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bylaws (if Applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bylaws (if Applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -51206,7 +49746,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -51281,12 +49820,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -51295,35 +49833,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Operating Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Operating Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -51331,7 +49856,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -51406,12 +49930,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -51532,35 +50055,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Completed Application Form",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Completed Application Form",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": null,
@@ -51568,7 +50078,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -51643,12 +50152,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -51657,35 +50165,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Licensing Fee Payment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Licensing Fee Payment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -51693,7 +50188,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -51768,12 +50262,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -51782,35 +50275,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Signed Provider Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Signed Provider Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -51818,7 +50298,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -51893,12 +50372,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -51907,35 +50385,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Renewal Application (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Renewal Application (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -51943,7 +50408,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -52018,12 +50482,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -52144,35 +50607,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Policy & Procedure Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Policy & Procedure Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -52180,7 +50630,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -52255,12 +50704,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -52381,35 +50829,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Background Check Clearances (State/FBI)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Background Check Clearances (State/FBI)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -52417,7 +50852,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -52492,12 +50926,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -52506,35 +50939,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "HIPAA Compliance Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "HIPAA Compliance Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -52542,7 +50962,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -52617,12 +51036,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -52631,35 +51049,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "NPI Number",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "NPI Number",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -52667,7 +51072,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -52742,12 +51146,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -52756,35 +51159,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -52792,7 +51182,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -52867,12 +51256,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -52881,35 +51269,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "OSHA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "OSHA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -52917,7 +51292,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -52992,12 +51366,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -53006,35 +51379,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Anti-Kickback Statute Compliance Statement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Anti-Kickback Statute Compliance Statement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -53042,7 +51402,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -53117,12 +51476,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -53243,35 +51601,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Proof of Financial Stability (Bank Statements, etc.)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Proof of Financial Stability (Bank Statements, etc.)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -53279,7 +51624,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -53354,12 +51698,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -53368,35 +51711,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Liability, Workers’ Comp & Professional Insurance",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Liability, Workers’ Comp & Professional Insurance",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -53404,7 +51734,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -53479,12 +51808,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -53493,35 +51821,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Audit Reports (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Audit Reports (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -53529,7 +51844,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -53604,12 +51918,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -53618,35 +51931,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bond Requirements (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bond Requirements (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -53654,7 +51954,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -53729,12 +52028,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -53855,35 +52153,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Organizational Chart and Staffing Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Organizational Chart and Staffing Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -53891,7 +52176,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -53966,12 +52250,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -53980,35 +52263,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Employee Licenses, Resumes, and Certifications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Employee Licenses, Resumes, and Certifications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -54016,7 +52286,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -54091,12 +52360,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -54217,35 +52485,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Accreditation & Medical Director Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Accreditation & Medical Director Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -54253,7 +52508,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -54328,12 +52582,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -54342,35 +52595,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Clinical Staff Licenses and Training Certificates",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Clinical Staff Licenses and Training Certificates",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -54378,7 +52618,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -54453,12 +52692,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -54579,35 +52817,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Fire/Health Department Inspection Reports",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Fire/Health Department Inspection Reports",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -54615,7 +52840,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -54690,12 +52914,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -54704,35 +52927,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Lease/Ownership Documentation and Safety Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Lease/Ownership Documentation and Safety Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -54740,7 +52950,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -54815,12 +53024,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -54829,35 +53037,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "ADA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "ADA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -54865,7 +53060,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -54940,12 +53134,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -54954,35 +53147,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": " Emergency Preparedness Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Emergency Preparedness Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -54990,7 +53170,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -55065,12 +53244,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -55191,35 +53369,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Provider Participation & Referral Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provider Participation & Referral Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -55227,7 +53392,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -55302,12 +53466,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -55316,35 +53479,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Vendor/Supplier Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Vendor/Supplier Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -55352,7 +53502,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -55427,12 +53576,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -55441,35 +53589,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Business Associate Agreements (BAA)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Business Associate Agreements (BAA)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -55477,7 +53612,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -55552,12 +53686,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -55678,35 +53811,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Staff Orientation Materials and Training Records",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Staff Orientation Materials and Training Records",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -55714,7 +53834,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -55789,12 +53908,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -55915,35 +54033,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Applications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Applications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -55951,7 +54056,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -56026,12 +54130,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -56040,35 +54143,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "CAQH Enrollment (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "CAQH Enrollment (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -56076,7 +54166,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -56151,12 +54240,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -56165,35 +54253,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare P&P Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare P&P Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -56201,7 +54276,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -56276,12 +54350,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -56290,35 +54363,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Managed Care Organization (MCO) Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Managed Care Organization (MCO) Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -56326,7 +54386,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -56401,12 +54460,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -56505,35 +54563,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Quality Assurance/Risk Management Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Quality Assurance/Risk Management Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -56541,7 +54586,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -56616,12 +54660,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -56630,35 +54673,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Client Satisfaction and Performance Review Forms",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Client Satisfaction and Performance Review Forms",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -56666,7 +54696,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -56741,12 +54770,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -56755,35 +54783,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Root Cause Analysis Reports (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Root Cause Analysis Reports (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -56791,7 +54806,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -56866,12 +54880,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -56970,35 +54983,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "State-Specific Waiver, Special Permits, or Addendums",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "State-Specific Waiver, Special Permits, or Addendums",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -57006,7 +55006,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -57081,12 +55080,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -57095,35 +55093,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Local Health Department Approvals",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Local Health Department Approvals",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -57131,7 +55116,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -57206,12 +55190,11 @@ export const NEMT = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -57220,35 +55203,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Environmental Impact Assessments (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Environmental Impact Assessments (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -57256,7 +55226,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -57457,35 +55426,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Cybersecurity Policies",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Cybersecurity Policies",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -57493,7 +55449,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -57582,35 +55537,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Electronic Health Record (EHR) System Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Electronic Health Record (EHR) System Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -57618,7 +55560,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -57707,35 +55648,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Disaster Recovery Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Disaster Recovery Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -57743,7 +55671,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -57922,35 +55849,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Marketing Materials Approval",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Marketing Materials Approval",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -57958,7 +55872,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -58047,35 +55960,22 @@ export const NEMT = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Advertising Disclosures",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Advertising Disclosures",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -58083,7 +55983,6 @@ export const NEMT = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -58166,12 +56065,11 @@ export const NEMT = {
                     "textFormat": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "table",
-                "version": 1,
-                "textFormat": 1
+                "version": 1
               },
               {
                 "children": [],
@@ -58220,7 +56118,7 @@ export const NEMT = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -58240,7 +56138,7 @@ export const NEMT = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -58272,7 +56170,7 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -58325,8 +56223,7 @@ export const NEMT = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -64189,35 +62086,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Articles of Incorporation/Business Registration",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Articles of Incorporation/Business Registration",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -64225,7 +62109,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -64300,12 +62183,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -64314,35 +62196,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "IRS EIN Confirmation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "IRS EIN Confirmation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -64350,7 +62219,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -64425,12 +62293,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -64439,35 +62306,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Certificate of Good Standing",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Certificate of Good Standing",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -64475,7 +62329,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -64550,12 +62403,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -64564,35 +62416,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bylaws (if Applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bylaws (if Applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -64600,7 +62439,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -64675,12 +62513,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -64689,35 +62526,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Operating Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Operating Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -64725,7 +62549,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -64800,12 +62623,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -64926,35 +62748,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Completed Application Form",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Completed Application Form",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": null,
@@ -64962,7 +62771,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -65037,12 +62845,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -65051,35 +62858,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Licensing Fee Payment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Licensing Fee Payment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -65087,7 +62881,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -65162,12 +62955,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -65176,35 +62968,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Signed Provider Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Signed Provider Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -65212,7 +62991,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -65287,12 +63065,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -65301,35 +63078,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Renewal Application (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Renewal Application (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -65337,7 +63101,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -65412,12 +63175,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -65538,35 +63300,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Policy & Procedure Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Policy & Procedure Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -65574,7 +63323,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -65649,12 +63397,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -65775,35 +63522,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Background Check Clearances (State/FBI)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Background Check Clearances (State/FBI)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -65811,7 +63545,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -65886,12 +63619,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -65900,35 +63632,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "HIPAA Compliance Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "HIPAA Compliance Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -65936,7 +63655,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66011,12 +63729,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -66025,35 +63742,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "NPI Number",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "NPI Number",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -66061,7 +63765,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66136,12 +63839,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -66150,35 +63852,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -66186,7 +63875,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66261,12 +63949,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -66275,35 +63962,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "OSHA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "OSHA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -66311,7 +63985,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66386,12 +64059,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -66400,35 +64072,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Anti-Kickback Statute Compliance Statement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Anti-Kickback Statute Compliance Statement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -66436,7 +64095,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66511,12 +64169,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -66637,35 +64294,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Proof of Financial Stability (Bank Statements, etc.)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Proof of Financial Stability (Bank Statements, etc.)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -66673,7 +64317,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66748,12 +64391,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -66762,35 +64404,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Liability, Workers’ Comp & Professional Insurance",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Liability, Workers’ Comp & Professional Insurance",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -66798,7 +64427,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66873,12 +64501,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -66887,35 +64514,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Audit Reports (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Audit Reports (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -66923,7 +64537,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -66998,12 +64611,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -67012,35 +64624,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bond Requirements (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bond Requirements (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -67048,7 +64647,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -67123,12 +64721,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -67249,35 +64846,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Organizational Chart and Staffing Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Organizational Chart and Staffing Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -67285,7 +64869,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -67360,12 +64943,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -67374,35 +64956,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Employee Licenses, Resumes, and Certifications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Employee Licenses, Resumes, and Certifications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -67410,7 +64979,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -67485,12 +65053,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -67611,35 +65178,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Accreditation & Medical Director Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Accreditation & Medical Director Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -67647,7 +65201,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -67722,12 +65275,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -67736,35 +65288,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Clinical Staff Licenses and Training Certificates",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Clinical Staff Licenses and Training Certificates",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -67772,7 +65311,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -67847,12 +65385,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -67973,35 +65510,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Fire/Health Department Inspection Reports",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Fire/Health Department Inspection Reports",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -68009,7 +65533,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -68084,12 +65607,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -68098,35 +65620,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Lease/Ownership Documentation and Safety Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Lease/Ownership Documentation and Safety Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -68134,7 +65643,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -68209,12 +65717,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -68223,35 +65730,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "ADA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "ADA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -68259,7 +65753,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -68334,12 +65827,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -68348,35 +65840,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": " Emergency Preparedness Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Emergency Preparedness Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -68384,7 +65863,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -68459,12 +65937,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -68585,35 +66062,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Provider Participation & Referral Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provider Participation & Referral Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -68621,7 +66085,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -68696,12 +66159,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -68710,35 +66172,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Vendor/Supplier Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Vendor/Supplier Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -68746,7 +66195,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -68821,12 +66269,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -68835,35 +66282,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Business Associate Agreements (BAA)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Business Associate Agreements (BAA)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -68871,7 +66305,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -68946,12 +66379,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -69072,35 +66504,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Staff Orientation Materials and Training Records",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Staff Orientation Materials and Training Records",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -69108,7 +66527,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -69183,12 +66601,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -69309,35 +66726,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Applications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Applications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -69345,7 +66749,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -69420,12 +66823,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -69434,35 +66836,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "CAQH Enrollment (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "CAQH Enrollment (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -69470,7 +66859,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -69545,12 +66933,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -69559,35 +66946,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare P&P Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare P&P Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -69595,7 +66969,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -69670,12 +67043,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -69684,35 +67056,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Managed Care Organization (MCO) Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Managed Care Organization (MCO) Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -69720,7 +67079,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -69795,12 +67153,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -69899,35 +67256,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Quality Assurance/Risk Management Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Quality Assurance/Risk Management Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -69935,7 +67279,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -70010,12 +67353,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -70024,35 +67366,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Client Satisfaction and Performance Review Forms",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Client Satisfaction and Performance Review Forms",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -70060,7 +67389,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -70135,12 +67463,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -70149,35 +67476,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Root Cause Analysis Reports (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Root Cause Analysis Reports (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -70185,7 +67499,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -70260,12 +67573,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -70364,35 +67676,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "State-Specific Waiver, Special Permits, or Addendums",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "State-Specific Waiver, Special Permits, or Addendums",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -70400,7 +67699,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -70475,12 +67773,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -70489,35 +67786,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Local Health Department Approvals",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Local Health Department Approvals",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -70525,7 +67809,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -70600,12 +67883,11 @@ export const ProviderEnrollment = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -70614,35 +67896,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Environmental Impact Assessments (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Environmental Impact Assessments (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -70650,7 +67919,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -70851,35 +68119,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Cybersecurity Policies",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Cybersecurity Policies",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -70887,7 +68142,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -70976,35 +68230,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Electronic Health Record (EHR) System Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Electronic Health Record (EHR) System Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -71012,7 +68253,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -71101,35 +68341,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Disaster Recovery Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Disaster Recovery Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -71137,7 +68364,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -71316,35 +68542,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Marketing Materials Approval",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Marketing Materials Approval",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -71352,7 +68565,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -71441,35 +68653,22 @@ export const ProviderEnrollment = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Advertising Disclosures",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Advertising Disclosures",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -71477,7 +68676,6 @@ export const ProviderEnrollment = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -71560,12 +68758,11 @@ export const ProviderEnrollment = {
                     "textFormat": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "table",
-                "version": 1,
-                "textFormat": 1
+                "version": 1
               },
               {
                 "children": [],
@@ -71614,7 +68811,7 @@ export const ProviderEnrollment = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -71634,7 +68831,7 @@ export const ProviderEnrollment = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -71666,7 +68863,7 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -71719,8 +68916,7 @@ export const ProviderEnrollment = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -82687,35 +79883,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Articles of Incorporation/Business Registration",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Articles of Incorporation/Business Registration",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -82723,7 +79906,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -82798,12 +79980,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -82812,35 +79993,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "IRS EIN Confirmation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "IRS EIN Confirmation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -82848,7 +80016,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -82923,12 +80090,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -82937,35 +80103,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Certificate of Good Standing",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Certificate of Good Standing",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -82973,7 +80126,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -83048,12 +80200,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -83062,35 +80213,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bylaws (if Applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bylaws (if Applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -83098,7 +80236,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -83173,12 +80310,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -83187,35 +80323,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Operating Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Operating Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -83223,7 +80346,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -83298,12 +80420,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -83424,35 +80545,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Completed Application Form",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Completed Application Form",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": null,
@@ -83460,7 +80568,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -83535,12 +80642,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -83549,35 +80655,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Licensing Fee Payment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Licensing Fee Payment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -83585,7 +80678,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -83660,12 +80752,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -83674,35 +80765,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Signed Provider Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Signed Provider Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -83710,7 +80788,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -83785,12 +80862,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -83799,35 +80875,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Renewal Application (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Renewal Application (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -83835,7 +80898,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -83910,12 +80972,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -84036,35 +81097,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Policy & Procedure Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Policy & Procedure Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -84072,7 +81120,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -84147,12 +81194,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -84273,35 +81319,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Background Check Clearances (State/FBI)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Background Check Clearances (State/FBI)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -84309,7 +81342,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -84384,12 +81416,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -84398,35 +81429,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "HIPAA Compliance Agreement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "HIPAA Compliance Agreement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -84434,7 +81452,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -84509,12 +81526,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -84523,35 +81539,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "NPI Number",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "NPI Number",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -84559,7 +81562,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -84634,12 +81636,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -84648,35 +81649,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Proof",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Proof",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -84684,7 +81672,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -84759,12 +81746,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -84773,35 +81759,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "OSHA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "OSHA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -84809,7 +81782,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -84884,12 +81856,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -84898,35 +81869,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Anti-Kickback Statute Compliance Statement",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Anti-Kickback Statute Compliance Statement",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -84934,7 +81892,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -85009,12 +81966,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -85135,35 +82091,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Proof of Financial Stability (Bank Statements, etc.)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Proof of Financial Stability (Bank Statements, etc.)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -85171,7 +82114,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -85246,12 +82188,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -85260,35 +82201,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Liability, Workers’ Comp & Professional Insurance",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Liability, Workers’ Comp & Professional Insurance",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -85296,7 +82224,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -85371,12 +82298,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -85385,35 +82311,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Audit Reports (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Audit Reports (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -85421,7 +82334,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -85496,12 +82408,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -85510,35 +82421,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Bond Requirements (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Bond Requirements (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -85546,7 +82444,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -85621,12 +82518,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -85747,35 +82643,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Organizational Chart and Staffing Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Organizational Chart and Staffing Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -85783,7 +82666,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -85858,12 +82740,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -85872,35 +82753,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Employee Licenses, Resumes, and Certifications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Employee Licenses, Resumes, and Certifications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -85908,7 +82776,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -85983,12 +82850,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -86109,35 +82975,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Accreditation & Medical Director Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Accreditation & Medical Director Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -86145,7 +82998,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -86220,12 +83072,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -86234,35 +83085,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Clinical Staff Licenses and Training Certificates",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Clinical Staff Licenses and Training Certificates",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -86270,7 +83108,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -86345,12 +83182,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -86471,35 +83307,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Fire/Health Department Inspection Reports",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Fire/Health Department Inspection Reports",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -86507,7 +83330,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -86582,12 +83404,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -86596,35 +83417,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Lease/Ownership Documentation and Safety Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Lease/Ownership Documentation and Safety Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -86632,7 +83440,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -86707,12 +83514,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -86721,35 +83527,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "ADA Compliance Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "ADA Compliance Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -86757,7 +83550,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -86832,12 +83624,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -86846,35 +83637,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": " Emergency Preparedness Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Emergency Preparedness Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -86882,7 +83660,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -86957,12 +83734,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -87083,35 +83859,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Provider Participation & Referral Agreements",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provider Participation & Referral Agreements",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -87119,7 +83882,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -87194,12 +83956,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -87208,35 +83969,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Vendor/Supplier Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Vendor/Supplier Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -87244,7 +83992,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -87319,12 +84066,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -87333,35 +84079,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Business Associate Agreements (BAA)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Business Associate Agreements (BAA)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -87369,7 +84102,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -87444,12 +84176,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -87570,35 +84301,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Staff Orientation Materials and Training Records",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Staff Orientation Materials and Training Records",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -87606,7 +84324,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -87681,12 +84398,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -87807,35 +84523,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare Enrollment Applications",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare Enrollment Applications",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -87843,7 +84546,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -87918,12 +84620,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -87932,35 +84633,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "CAQH Enrollment (if required)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "CAQH Enrollment (if required)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -87968,7 +84656,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -88043,12 +84730,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -88057,35 +84743,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Medicaid/Medicare P&P Manual",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Medicaid/Medicare P&P Manual",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -88093,7 +84766,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -88168,12 +84840,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -88182,35 +84853,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Managed Care Organization (MCO) Contracts",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Managed Care Organization (MCO) Contracts",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -88218,7 +84876,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -88293,12 +84950,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -88397,35 +85053,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Quality Assurance/Risk Management Plans",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Quality Assurance/Risk Management Plans",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -88433,7 +85076,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -88508,12 +85150,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -88522,35 +85163,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Client Satisfaction and Performance Review Forms",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Client Satisfaction and Performance Review Forms",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -88558,7 +85186,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -88633,12 +85260,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -88647,35 +85273,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Root Cause Analysis Reports (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Root Cause Analysis Reports (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -88683,7 +85296,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -88758,12 +85370,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -88862,35 +85473,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "State-Specific Waiver, Special Permits, or Addendums",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "State-Specific Waiver, Special Permits, or Addendums",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -88898,7 +85496,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -88973,12 +85570,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -88987,35 +85583,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Local Health Department Approvals",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Local Health Department Approvals",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -89023,7 +85606,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -89098,12 +85680,11 @@ export const StartUPAssistance = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1,
-                    "textFormat": 1
+                    "version": 1
                   },
                   {
                     "children": [
@@ -89112,35 +85693,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Environmental Impact Assessments (if applicable)",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Environmental Impact Assessments (if applicable)",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -89148,7 +85716,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -89349,35 +85916,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Cybersecurity Policies",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Cybersecurity Policies",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -89385,7 +85939,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -89474,35 +86027,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Electronic Health Record (EHR) System Documentation",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Electronic Health Record (EHR) System Documentation",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -89510,7 +86050,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -89599,35 +86138,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Disaster Recovery Plan",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Disaster Recovery Plan",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -89635,7 +86161,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -89814,35 +86339,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Marketing Materials Approval",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Marketing Materials Approval",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -89850,7 +86362,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -89939,35 +86450,22 @@ export const StartUPAssistance = {
                           {
                             "children": [
                               {
-                                "children": [
-                                  {
-                                    "detail": 0,
-                                    "format": 1,
-                                    "mode": "normal",
-                                    "style": "",
-                                    "text": "Advertising Disclosures",
-                                    "type": "text",
-                                    "version": 1
-                                  }
-                                ],
-                                "direction": "ltr",
-                                "format": "",
-                                "indent": 0,
-                                "type": "listitem",
-                                "version": 1,
-                                "textFormat": 1,
-                                "value": 1
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Advertising Disclosures",
+                                "type": "text",
+                                "version": 1
                               }
                             ],
                             "direction": "ltr",
                             "format": "",
                             "indent": 0,
-                            "type": "list",
+                            "type": "paragraph",
                             "version": 1,
-                            "textFormat": 1,
-                            "listType": "bullet",
-                            "start": 1,
-                            "tag": "ul"
+                            "textFormat": 0,
+                            "textStyle": ""
                           }
                         ],
                         "direction": "ltr",
@@ -89975,7 +86473,6 @@ export const StartUPAssistance = {
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
-                        "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
                         "headerState": 2,
@@ -90058,12 +86555,11 @@ export const StartUPAssistance = {
                     "textFormat": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "table",
-                "version": 1,
-                "textFormat": 1
+                "version": 1
               },
               {
                 "children": [],
@@ -90112,7 +86608,7 @@ export const StartUPAssistance = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -90132,7 +86628,7 @@ export const StartUPAssistance = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -90164,7 +86660,7 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -90217,8 +86713,7 @@ export const StartUPAssistance = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
