@@ -343,7 +343,7 @@ function ToolbarPlugin({
       const numRows = parseInt(rows, 10);
       const numCols = parseInt(cols, 10);
 
-      if (numRows > 0 && numCols > 0 && numRows <= 60 && numCols <= 10) {
+      if (numRows > 0 && numCols > 0 && numRows <= 100 && numCols <= 15) {
         if (hasTableSupport) {
           try {
             const tableModule = await import('@lexical/table');
@@ -363,7 +363,7 @@ function ToolbarPlugin({
           alert('Basic table inserted. Install @lexical/table for full functionality.');
         }
       } else {
-        alert('Please enter valid numbers (rows: 1-20, columns: 1-10)');
+        alert('Please enter valid numbers (rows: 1-100, columns: 1-15)');
       }
     }
   }, [editor, hasTableSupport]);
