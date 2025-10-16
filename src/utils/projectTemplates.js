@@ -7908,7 +7908,7 @@ export const dummyProject = {
       id: 'template-task-5',
       groupId: 'template-group-1', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #4: REVIEW SERVICES, SCOPE OF WORK & CONFIRM QUOTES",
+        'task_title': "TASK #3: REVIEW SERVICES, SCOPE OF WORK & CONFIRM QUOTES",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -10064,7 +10064,7 @@ export const dummyProject = {
       id: 'template-task-6',
       groupId: 'template-group-1', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #5: REVIEW & PAY INVOICE",
+        'task_title': "TASK #4: REVIEW & PAY INVOICE",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -12286,7 +12286,7 @@ export const dummyProject = {
       id: 'template-task-7',
       groupId: 'template-group-1', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #6: SIGN SERVICE AGREEMENT",
+        'task_title': "TASK #5: SIGN SERVICE AGREEMENT",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -23155,7 +23155,7 @@ export const customizedPolicy = {
             approval_description: 'Please sign the the service agreement'
           }
         }],
-        'order': 2,
+        'order': 5,
         'Action_type': 'Require Approval'
       }
     },
@@ -39754,7 +39754,7 @@ export const expansionFranchiseService = {
           }
         }),
         'assigned_to': 'Client',
-        'order': 0,
+        'order': 3,
         'Action_type': 'Complete Checklist',
         'checklistItems': [
           { 'checklist_description': '1. PREPARATION AND ASSISTANCE WITH BUSINESS FORMATION: COST ($300)' },
@@ -41991,7 +41991,7 @@ export const expansionFranchiseService = {
           }
         }),
         'assigned_to': 'Client',
-        'order': 5,
+        'order': 4,
         'Action_type': 'Default'
       }
     },
@@ -43354,7 +43354,7 @@ export const expansionFranchiseService = {
             approval_description: 'Please sign the the service agreement'
           }
         }],
-        'order': 6,
+        'order': 5,
         'Action_type': 'Require Approval'
       }
     },
@@ -56243,7 +56243,7 @@ export const NEMT = {
       id: 'template-task-4-NEMT',
       groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #4: REVIEW SERVICES, SCOPE OF WORK & CONFIRM QUOTES",
+        'task_title': "TASK #3: REVIEW SERVICES, SCOPE OF WORK & CONFIRM QUOTES",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -58058,7 +58058,7 @@ export const NEMT = {
       id: 'template-task-5-NEMT',
       groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #5: REVIEW & PAY INVOICE",
+        'task_title': "TASK #4: REVIEW & PAY INVOICE",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
@@ -59686,7 +59686,7 @@ export const NEMT = {
       id: 'template-task-6-NEMT',
       groupId: 'template-group-1-NEMT', // Belongs to "Phase 1"
       fields: {
-        'task_title': "TASK #6: SIGN SERVICE AGREEMENT",
+        'task_title': "TASK #5: SIGN SERVICE AGREEMENT",
         'task_status': 'Not Started',
         'description': JSON.stringify({
           "root": {
