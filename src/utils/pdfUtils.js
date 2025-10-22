@@ -52,7 +52,7 @@ const extractTextFromLexical = (lexicalContent) => {
                     return childrenText;
                 case 'youtube':
                 case 'image':
-                    return ''; // Images and videos are excluded from the text PDF.
+                    return '\n'; // Images and videos are excluded from the text PDF, add a newline to preserve structure.
                 default:
                     return childrenText;
             }
@@ -82,23 +82,7 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
     pdf.text(taskTitle, margin, yPosition);
     yPosition += 15;
 
-    // Add date
-    pdf.setFontSize(10);
-    pdf.setFont('helvetica', 'normal');
-    let dateText;
-    if (approval.fields['Last Modified']) {
-        const lastModified = new Date(approval.fields['Last Modified']);
-        dateText = `Last Modified: ${lastModified.toLocaleDateString('en-US', {
-            year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
-        })}`;
-    } else {
-        const currentDate = new Date().toLocaleDateString('en-US', {
-            year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
-        });
-        dateText = `Generated on: ${currentDate}`;
-    }
-    pdf.text(dateText, margin, yPosition);
-    yPosition += 20;
+    // Skip adding date here - will be added next to signature
 
     onProgress(30, 'Processing task description...');
 
@@ -193,13 +177,7 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
     pdf.text('Signature Section:', margin, yPosition);
     yPosition += 15;
 
-    // Add "Please sign here" line
-    pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'normal');
-    pdf.text('Please sign here:', margin, yPosition);
-    yPosition += 15;
-
-    // Add signature image if available
+    // Add signature image and date side by side if available
     if (approval.fields.signature_attachment && approval.fields.signature_attachment.length > 0) {
         onProgress(80, 'Processing signature image...');
         const signatureUrl = approval.fields.signature_attachment[0].url;
@@ -212,7 +190,7 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
             reader.readAsDataURL(blob);
         });
 
-        // Load image to determine original size, then use half the original dimensions (constrained to maximums if desired)
+        // Load image to determine original size, then use half the original dimensions
         const img = new window.Image();
         img.src = base64;
         await new Promise((resolve, reject) => {
@@ -220,28 +198,56 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
             img.onerror = reject;
         });
 
-        // Compute half of original dimensions
+        // Compute dimensions for signature
         let originalWidth = img.width;
         let originalHeight = img.height;
         let signatureWidth = originalWidth / 5;
         let signatureHeight = originalHeight / 5;
 
-        // Optional: Constrain to max values (optional, comment out if not needed)
-        // const maxWidth = 60;
-        // const maxHeight = 30;
-        // if (signatureWidth > maxWidth) {
-        //     signatureHeight = signatureHeight * (maxWidth / signatureWidth);
-        //     signatureWidth = maxWidth;
-        // }
-        // if (signatureHeight > maxHeight) {
-        //     signatureWidth = signatureWidth * (maxHeight / signatureHeight);
-        //     signatureHeight = maxHeight;
-        // }
-
+        // Add "Please sign here" and "Signed on:" labels aligned horizontally
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Please sign here:', margin, yPosition);
+        
+        // Prepare date text
+        let dateText;
+        if (approval.fields['Last Modified']) {
+            const lastModified = new Date(approval.fields['Last Modified']);
+            dateText = lastModified.toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+        } else {
+            const currentDate = new Date().toLocaleDateString('en-US', {
+                year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+            dateText = currentDate;
+        }
+        
+        // Add "Signed on:" label aligned with "Please sign here:"
+        const signatureRightEdge = margin + signatureWidth + 10; // 10 points spacing
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Signed on:', signatureRightEdge, yPosition);
+        
+        yPosition += 15; // Move down for the signature image and date
+        
+        // Add signature image on the left
         pdf.addImage(base64, 'PNG', margin, yPosition, signatureWidth, signatureHeight);
-        yPosition += signatureHeight + 10;
+        
+        // Add date below "Signed on:" label
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text(dateText, signatureRightEdge, yPosition + 5);
+        
+        yPosition += Math.max(signatureHeight, 15) + 10; // Use the larger of signature height or text height
         
     } else {
+        // Add "Please sign here" line when no signature
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('Please sign here:', margin, yPosition);
+        yPosition += 15;
+        
         pdf.setFontSize(11);
         pdf.setFont('helvetica', 'italic');
         pdf.text('No signature provided.', margin, yPosition);
