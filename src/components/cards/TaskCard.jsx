@@ -16,6 +16,8 @@ import { v4 as uuidv4 } from 'uuid'; // Import uuidv4
 import { useAuth } from '../../utils/AuthContext';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { colorClasses } from '../../utils/colorUtils';
+import { downloadSignedPDF, hasSignature } from '../../utils/pdfUtils';
+import PDFProgressIndicator from '../PDFProgressIndicator';
 
 const ReadReceipt = ({ isRead }) => (
     <div className={`relative w-5 h-5 ml-1 inline-block ${isRead ? 'text-blue-400' : 'text-slate-400'}`}>
@@ -72,6 +74,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [isContentLoading, setIsContentLoading] = useState(true);
     const [isUploadingChatFile, setIsUploadingChatFile] = useState(false);
     const [previewImage, setPreviewImage] = useState(null);
+    const [pdfProgress, setPdfProgress] = useState({ isVisible: false, progress: 0, message: '' });
 
     const readOnlyFields = ["id", "project_id", "start_date", "Project Name (from project_id)", "Project ID (from Project ID)"];
 
@@ -618,6 +621,26 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 }
                 : approval
         ));
+    };
+
+    const handleDownloadSignedPDF = async (approval) => {
+        try {
+            setPdfProgress({ isVisible: true, progress: 0, message: 'Starting PDF generation...' });
+            
+            await downloadSignedPDF(task, approval, (progress, message) => {
+                setPdfProgress({ isVisible: true, progress, message });
+            });
+            
+            // Hide progress indicator after a short delay
+            setTimeout(() => {
+                setPdfProgress({ isVisible: false, progress: 0, message: '' });
+            }, 1000);
+            
+        } catch (error) {
+            console.error('Error downloading PDF:', error);
+            setPdfProgress({ isVisible: false, progress: 0, message: '' });
+            alert('Failed to generate PDF. Please try again.');
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -1175,6 +1198,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                     isClientView={isClientView}
                                                     onDelete={handleDeleteApproval}
                                                     onSignatureAdded={handleApprovalSignatureAdded}
+                                                    onDownloadPDF={handleDownloadSignedPDF}
                                                 />
                                             ))}
                                         </div>
@@ -1465,13 +1489,20 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         </div>
                     </div>
                 )}
+
+                {/* PDF Progress Indicator */}
+                <PDFProgressIndicator 
+                    isVisible={pdfProgress.isVisible}
+                    progress={pdfProgress.progress}
+                    message={pdfProgress.message}
+                />
             </div>
         </div>
     );
 };
 
 // ApprovalItem component for individual approval display and signing
-const ApprovalItem = ({ approval, canEdit, isClientView, onDelete, onSignatureAdded }) => {
+const ApprovalItem = ({ approval, canEdit, isClientView, onDelete, onSignatureAdded, onDownloadPDF }) => {
     const [isSigning, setIsSigning] = useState(false);
     const [isDrawing, setIsDrawing] = useState(false);
     const [hasSignature, setHasSignature] = useState(false);
@@ -1571,8 +1602,20 @@ const ApprovalItem = ({ approval, canEdit, isClientView, onDelete, onSignatureAd
             
             {hasExistingSignature ? (
                 <div className="mt-2">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center justify-between mb-2">
                         <span className="text-xs text-green-600 font-medium">✓ Signed</span>
+                        {onDownloadPDF && (
+                            <button
+                                type="button"
+                                onClick={() => onDownloadPDF(approval)}
+                                className="text-xs bg-gray-600 text-white px-3 py-1 rounded hover:bg-gray-700 flex items-center gap-1"
+                            >
+                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Download Signed PDF
+                            </button>
+                        )}
                     </div>
                     <img 
                         src={approval.fields.signature_attachment[0].url} 

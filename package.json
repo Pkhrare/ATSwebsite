@@ -29,6 +29,7 @@
     "date-fns": "^4.1.0",
     "dompurify": "^3.2.7",
     "firebase": "^11.10.0",
+    "jspdf": "^3.0.3",
     "lexical": "^0.34.0",
     "papaparse": "^5.5.3",
     "react": "^19.1.0",
