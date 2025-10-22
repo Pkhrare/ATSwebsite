@@ -1103,10 +1103,10 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                     const lastUpdated = firstField?.fields.last_updated;
                                                     
                                                     return (
-                                                        <div key={submissionId} className="group relative border border-slate-200 rounded-lg p-4 bg-gray-900 text-white">
+                                                        <div key={submissionId} className="group relative border border-slate-200 rounded-lg p-4 bg-gray-50">
                                                             <div className="flex justify-between items-center mb-3">
                                                                 <div className="flex items-center gap-2">
-                                                                    <h4 className="text-sm font-semibold text-white">{formName}</h4>
+                                                                    <h4 className="text-sm font-semibold text-gray-800">{formName}</h4>
                                                                     <span className={`px-2 py-1 text-xs rounded-full ${
                                                                         submissionStatus === 'Completed' ? 'bg-green-500 text-white' :
                                                                         submissionStatus === 'Updated' ? 'bg-blue-500 text-white' :
@@ -1115,7 +1115,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                                         {submissionStatus}
                                                                     </span>
                                                                     {lastUpdated && (submissionStatus === 'Completed' || submissionStatus === 'Updated') && (
-                                                                        <span className="text-xs text-white opacity-75">
+                                                                        <span className="text-xs text-gray-600">
                                                                             {format(new Date(lastUpdated), 'MMM d, yyyy h:mm a')}
                                                                         </span>
                                                                     )}
@@ -1134,7 +1134,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                                             <div className="space-y-3">
                                                                 {formFields.map(field => (
                                                                     <div key={field.id}>
-                                                                        <label className="block text-sm font-medium text-white mb-1">
+                                                                        <label className="block text-sm font-medium text-gray-800 mb-1">
                                                                             {field.fields['field_label (from Notes)']?.[0] || 'Unnamed Field'}
                                                                         </label>
                                                                         <input
@@ -1233,7 +1233,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
                             )}
 
-                            <div className={`p-4 ${colorClasses.button.secondary} rounded-lg border-2 border-yellow-500 space-y-4`}>
+                            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 space-y-4">
                                 <div className="flex items-center gap-6">
                                     <div className="flex-1">
                                         <label className="block text-sm font-medium text-gray-800 mb-1">Project</label>
