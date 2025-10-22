@@ -45,7 +45,7 @@ const extractTextFromLexical = (lexicalContent) => {
                     return childrenText;
                 case 'listitem':
                     // Add a marker for bullet points to be handled later.
-                    return `__BULLET__${childrenText}\n`;
+                    return `• ${childrenText}\n`;
                 case 'linebreak':
                     return '\n';
                 case 'link':
@@ -86,11 +86,7 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
 
     onProgress(30, 'Processing task description...');
 
-    // Add "Task Description" section header
-    pdf.setFontSize(14);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text('Task Description:', margin, yPosition);
-    yPosition += 15;
+    // Skip the "Task Description" header - not necessary
 
     // Load description content
     let descriptionContent = null;
@@ -111,11 +107,11 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
     const cleanedText = rawText
         // 1. Normalize line endings and remove non-printable characters that break wrapping
         .replace(/\r\n/g, '\n')
-        .replace(/[^\x20-\x7E\n]/g, '')
+        .replace(/[^\x20-\x7E\n]/g, '• ')
 
         // 2. Handle list markers and artifacts aggressively
         .replace(/^%Ï\s*\[[\s\S]*?\]/gm, '• ') // Checkbox artifact at the start of a line
-        .replace(/__BULLET__/g, '- ')      // Replace list item marker
+        // .replace(/__BULLET__/g, '• ')      // Replace list item marker
         .replace(/^%Ï/gm, '• ')            // Dangling artifact at the start of a line
         .replace(/•\s*•/g, '•')          // Consolidate double bullets that might result
 
@@ -130,7 +126,7 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
         .replace(/\n\s*\n/g, '\n\n') // Collapse extra newlines
         .replace(/[ \t]+/g, ' ')       // Collapse spaces and tabs
         .replace(/\[\]\[(.*?)\]/g, '$1')
-        .replace(/\[\s\]/g, '• ')
+        .replace(/\[\s\]/g, '')
         .trim();
 
     // Add description content to PDF
@@ -201,9 +197,12 @@ export const downloadSignedPDF = async (task, approval, onProgress) => {
         // Compute dimensions for signature
         let originalWidth = img.width;
         let originalHeight = img.height;
-        let signatureWidth = originalWidth / 5;
-        let signatureHeight = originalHeight / 5;
-
+        let signatureWidth = originalWidth / 6;
+        let signatureHeight = originalHeight / 6;
+        if (signatureWidth > 100 || signatureHeight > 70) {
+            signatureWidth = 60;
+            signatureHeight = 30;
+        }
         // Add "Please sign here" and "Signed on:" labels aligned horizontally
         pdf.setFontSize(12);
         pdf.setFont('helvetica', 'normal');
