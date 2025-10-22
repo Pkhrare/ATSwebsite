@@ -56,7 +56,7 @@ export const dummyProject = {
       id: 'template-group-3',
       name: 'GETTING STARTED',
       order: 0,
-    }
+    },
   ],
 
   // An array of tasks. The `id` is temporary. `groupId` links to a group above.

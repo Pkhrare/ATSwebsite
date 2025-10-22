@@ -4,6 +4,7 @@ import AddTaskToProjectForm from '../forms/AddTaskToProjectForm';
 import AddCollaboratorForm from '../forms/AddCollaboratorForm';
 import AddGroupForm from '../forms/AddGroupForm';
 import InternalNotesSection from './InternalNotesSection';
+import { AboutUsSection } from '../AboutUs';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { parse, format, isValid } from 'date-fns';
@@ -1550,6 +1551,8 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                             )}
                         </section>
 
+                        {/* About Us Section */}
+                        <AboutUsSection />
 
                         {/* Tasks Section */}
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>

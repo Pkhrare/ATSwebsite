@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import TaskCard from './TaskCard';
+import { AboutUsSection } from '../AboutUs';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { parse, format, isValid } from 'date-fns';
@@ -656,6 +657,8 @@ export default function ClientCard() {
                                     />
                                 </section>
 
+                                {/* About Us Section */}
+                                <AboutUsSection />
 
                                 {/* Tasks Section */}
                                 <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
