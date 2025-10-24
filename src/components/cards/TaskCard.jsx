@@ -42,6 +42,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [error, setError] = useState(null);
     const [successMessage, setSuccessMessage] = useState(null);
     const [isEditingDescription, setIsEditingDescription] = useState(false);
+    const [isAddTaskFieldsCollapsed, setIsAddTaskFieldsCollapsed] = useState(false);
     const descriptionRef = useRef(null);
     const [descriptionKey, setDescriptionKey] = useState(0);
     const [attachments, setAttachments] = useState([]);
@@ -942,7 +943,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
 
     return (
         <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={handleOverlayClick}>
-            <div ref={modalContentRef} className="bg-gray-50 text-gray-800 border border-gray-200 rounded-lg shadow-xl w-full max-w-5xl flex flex-col" style={{ maxHeight: '90vh' }} onClick={e => e.stopPropagation()}>
+            <div ref={modalContentRef} className="bg-gray-50 text-gray-800 border border-gray-200 rounded-lg shadow-xl w-full max-w-5xl flex flex-col relative" style={{ maxHeight: '90vh' }} onClick={e => e.stopPropagation()}>
                 <div className="p-6 border-b border-gray-600 bg-gray-800">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 min-w-0">
@@ -1414,9 +1415,27 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         </div>
                     </form>
 
-                    {!isClientView && (
-                        <div className={`w-64 border-l p-4 ${colorClasses.button.secondary} border-2 border-yellow-500`}>
-                            <h3 className={`font-semibold ${colorClasses.text.primary} mb-4`}>Add Task Fields</h3>
+                    {!isClientView && !isAddTaskFieldsCollapsed && (
+                        <div className={`w-80 border-l p-4 ${colorClasses.button.secondary} border-2 border-yellow-500`}>
+                            {/* Collapsible Header */}
+                            <div 
+                                className="mb-4 cursor-pointer hover:bg-yellow-100 transition-colors p-2 rounded"
+                                onClick={() => setIsAddTaskFieldsCollapsed(true)}
+                            >
+                                <div className="flex flex-col items-center gap-1">
+                                    <h3 className={`font-semibold ${colorClasses.text.primary}`}>Add Task Fields</h3>
+                                    <svg 
+                                        className="w-4 h-4 text-gray-500 hover:text-gray-700 transition-colors" 
+                                        fill="none" 
+                                        viewBox="0 0 24 24" 
+                                        stroke="currentColor"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            {/* Task Field Options */}
                             <ul className="space-y-2 text-sm text-gray-800">
                                 <li onClick={() => setAttachChecklistsFormOpen(true)} className="flex items-center gap-2 cursor-pointer hover:text-blue-600 hover:font-semibold">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -1437,6 +1456,25 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         </div>
                     )}
                 </div>
+
+                {/* Floating Add Task Fields Button - Only shows when collapsed */}
+                {!isClientView && isAddTaskFieldsCollapsed && (
+                    <button
+                        onClick={() => setIsAddTaskFieldsCollapsed(false)}
+                        className="absolute top-20 right-4 bg-yellow-400 hover:bg-yellow-500 text-black text-sm font-medium px-3 py-2 rounded-md shadow-md transition-all duration-200 hover:shadow-lg z-10 flex flex-col items-center gap-1"
+                        aria-label="Expand Add Task Fields"
+                    >
+                        <span>Add Task Fields</span>
+                        <svg 
+                            className="w-4 h-4" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                )}
 
                 {/* Modals are now inside the main content ref to prevent click-outside issues */}
                 {isAttachFilesFormOpen && (
