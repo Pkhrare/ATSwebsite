@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import '../Pages/All.css';
 import Card from '../components/cards/ProjectCard';
 import AddProjectCard from '../components/cards/AddProjectCard';
@@ -57,6 +57,11 @@ function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterField, setFilterField] = useState('Project Name');
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [searchParams] = useSearchParams();
+  
+  // Initialize activeTab based on URL parameter
+  const initialTab = searchParams.get('tab') === 'deactivated' ? 'deactivated' : 'active';
+  const [activeTab, setActiveTab] = useState(initialTab); // 'active', 'deactivated', 'templates'
 
   const columnHeaders = React.useMemo(() => {
     const set = new Set();
@@ -116,10 +121,22 @@ function Projects() {
   }, [data]);
 
   const filteredData = React.useMemo(() => {
-    if (!searchQuery) {
-      return data;
+    // First filter by operation status based on active tab
+    let operationFilteredData = data;
+    if (activeTab === 'active') {
+      operationFilteredData = data.filter(record => 
+        record.fields['Operation'] === 'Active' || !record.fields['Operation']
+      );
+    } else if (activeTab === 'deactivated') {
+      operationFilteredData = data.filter(record => 
+        record.fields['Operation'] === 'Deactivated'
+      );
     }
-    return data.filter(record => {
+    // Then apply search filter
+    if (!searchQuery) {
+      return operationFilteredData;
+    }
+    return operationFilteredData.filter(record => {
       const fieldValue = record.fields[filterField];
       if (typeof fieldValue === 'string') {
         return fieldValue.toLowerCase().includes(searchQuery.toLowerCase());
@@ -129,7 +146,7 @@ function Projects() {
       }
       return false;
     });
-  }, [data, searchQuery, filterField]);
+  }, [data, searchQuery, filterField, activeTab]);
 
   const loadData = useCallback(async () => {
     setLoading(true);
@@ -147,6 +164,16 @@ function Projects() {
   useEffect(() => {
     loadData();
   }, [loadData]);
+
+  // Handle URL parameter changes
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam === 'deactivated') {
+      setActiveTab('deactivated');
+    } else {
+      setActiveTab('active');
+    }
+  }, [searchParams]);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -239,6 +266,37 @@ function Projects() {
     );
   };
 
+  const handleProjectDelete = (deletedProjectId) => {
+    // Remove the deleted project from the data array
+    setData(currentData =>
+      currentData.filter(record => record.id !== deletedProjectId)
+    );
+    
+    // Close the project card if it's currently open
+    setIsCardVisible(false);
+    setSelectedProject(null);
+  };
+
+  const handleProjectOperationChange = (projectId, newOperation) => {
+    // Update the project's operation status in the data array
+    setData(currentData =>
+      currentData.map(record =>
+        record.id === projectId 
+          ? { ...record, fields: { ...record.fields, 'Operation': newOperation } }
+          : record
+      )
+    );
+    
+    // If reactivating a project, switch to the active tab
+    if (newOperation === 'Active') {
+      setActiveTab('active');
+    }
+    
+    // Close the project card if it's currently open
+    setIsCardVisible(false);
+    setSelectedProject(null);
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -254,25 +312,46 @@ function Projects() {
           {/* Tab Navigation */}
           <div className="border-b border-slate-200">
             <nav className="-mb-px flex space-x-6" aria-label="Tabs">
-              <Link to="/projects" className="shrink-0 border-b-2 border-blue-600 px-1 pb-4 text-sm font-medium text-blue-600">
+              <button 
+                onClick={() => setActiveTab('active')}
+                className={`shrink-0 border-b-2 px-1 pb-4 text-sm font-medium ${
+                  activeTab === 'active' 
+                    ? 'border-blue-600 text-blue-600' 
+                    : 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700'
+                }`}
+              >
                 Projects Dashboard
-              </Link>
+              </button>
               <Link to="/templates" className="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-slate-500 hover:border-slate-300 hover:text-slate-700">
                 Projects Template
               </Link>
+              <button 
+                onClick={() => setActiveTab('deactivated')}
+                className={`shrink-0 border-b-2 px-1 pb-4 text-sm font-medium ${
+                  activeTab === 'deactivated' 
+                    ? 'border-blue-600 text-blue-600' 
+                    : 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700'
+                }`}
+              >
+                Deactivated Projects
+              </button>
             </nav>
           </div>
           <div className="mt-4">
-            <p className="mt-2 text-sm text-slate-600">View, edit, and manage all client projects.</p>
+            <p className="mt-2 text-sm text-slate-600">
+              {activeTab === 'active' && "View, edit, and manage all active client projects."}
+              {activeTab === 'deactivated' && "View and manage deactivated client projects."}
+            </p>
           </div>
         </header>
 
         <div className="flex justify-between items-center mb-6">
           <div className="text-lg font-medium text-blue-600">
-            {searchQuery ? `Total Projects: ${filteredData.length}` : `Total Projects: ${data.length}`}
+            {activeTab === 'active' && (searchQuery ? `Active Projects: ${filteredData.length}` : `Active Projects: ${data.filter(record => record.fields['Operation'] === 'Active' || !record.fields['Operation']).length}`)}
+            {activeTab === 'deactivated' && (searchQuery ? `Deactivated Projects: ${filteredData.length}` : `Deactivated Projects: ${data.filter(record => record.fields['Operation'] === 'Deactivated').length}`)}
           </div>
           <div className="flex items-center space-x-2">
-            {!isEditing && (
+            {!isEditing && activeTab === 'active' && (
               <>
                 <button
                   onClick={() => setIsAddCardVisible(true)}
@@ -281,13 +360,15 @@ function Projects() {
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                   Add Project
                 </button>
-                <button
-                  onClick={handleEditClick}
-                  className="flex items-center gap-2 text-sm text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg shadow-sm transition-all"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
-                  Edit
-                </button>
+                {activeTab === 'active' && (
+                  <button
+                    onClick={handleEditClick}
+                    className="flex items-center gap-2 text-sm text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg shadow-sm transition-all"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
+                    Edit
+                  </button>
+                )}
                 <button
                   onClick={() => setIsDownloadModalOpen(true)}
                   className="flex items-center gap-2 text-sm text-white bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg shadow-sm transition-all"
@@ -375,7 +456,11 @@ function Projects() {
                   {filteredData.map((record) => (
                     <tr
                       key={record.id}
-                      className="hover:bg-slate-50 cursor-pointer transition-colors"
+                      className={`cursor-pointer transition-colors ${
+                        record.fields['Operation'] === 'Deactivated' 
+                          ? 'bg-gray-50 hover:bg-gray-100 opacity-75' 
+                          : 'hover:bg-slate-50'
+                      }`}
                       onClick={() => handleProjectClick(record)}
                     >
                       {columnHeaders.map((header) => {
@@ -461,6 +546,8 @@ function Projects() {
           data={selectedProject}
           onClose={() => setIsCardVisible(false)}
           onProjectUpdate={handleProjectUpdate}
+          onProjectDelete={handleProjectDelete}
+          onProjectOperationChange={handleProjectOperationChange}
         />
       )}
 

@@ -52,6 +52,7 @@ const STATUS_OPTIONS = [
   'Completed'
 ];
 const YES_NO_OPTIONS = ['Yes', 'No'];
+const OPERATION_OPTIONS = ['Active', 'Deactivated'];
 function isValidEmail(email) {
     return /.+@.+\..+/.test(email);
 }
@@ -122,6 +123,10 @@ export const dropdownFields = {
         "Yes",
         "No"
     ],
+    "Operation": [
+        "Active",
+        "Deactivated"
+    ],
     "Action_type": [
         "Attach Files",
         "Complete Form",
@@ -151,6 +156,7 @@ export const validateRow = (fields) => {
     if (!PROJECT_MANAGERS.includes(fields['Project Manager'])) rowErrors['Project Manager'] = 'Invalid';
     if (!STATUS_OPTIONS.includes(fields['Status'])) rowErrors['Status'] = 'Invalid';
     if (!YES_NO_OPTIONS.includes(fields['Submitted (Y/N)'])) rowErrors['Submitted (Y/N)'] = 'Must be Yes or No';
+    if (fields['Operation'] && !OPERATION_OPTIONS.includes(fields['Operation'])) rowErrors['Operation'] = 'Must be Active or Deactivated';
     if (fields['Full Cost'] !== undefined && isNaN(fields['Full Cost'])) rowErrors['Full Cost'] = 'Must be a number';
     if (fields['Paid'] !== undefined && isNaN(fields['Paid'])) rowErrors['Paid'] = 'Must be a number';
     const startDate = new Date(fields['Start date']);

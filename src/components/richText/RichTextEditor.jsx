@@ -846,7 +846,7 @@ const editorTheme = {
   tableCell: 'border border-slate-400 p-3 min-w-[100px] relative bg-white',
   tableCellHeader: 'border border-slate-400 p-3 min-w-[100px] bg-slate-100 font-semibold relative',
   youtube: 'my-4 w-full max-w-4xl mx-auto',
-  image: 'inline-block align-middle', // Add image theme
+  image: 'block w-full h-auto', // Full-width responsive images
   list: {
     ul: 'list-[disc] ml-6 pl-2',
     ol: 'list-[decimal] ml-6 pl-2',

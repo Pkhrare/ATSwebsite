@@ -17,6 +17,9 @@ const Templates = () => {
                     <Link to="/templates" className="shrink-0 border-b-2 border-blue-600 px-1 pb-4 text-sm font-medium text-blue-600">
                         Projects Template
                     </Link>
+                    <Link to="/projects?tab=deactivated" className="shrink-0 border-b-2 border-transparent px-1 pb-4 text-sm font-medium text-slate-500 hover:border-slate-300 hover:text-slate-700">
+                        Deactivated Projects
+                    </Link>
                 </nav>
             </div>
             

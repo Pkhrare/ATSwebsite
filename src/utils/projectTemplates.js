@@ -859,7 +859,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 3,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -971,24 +971,14 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
                         "children": [
                           {
-                            "children": [
-                              {
-                                "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "          ",
-                                "type": "text",
-                                "version": 1
-                              }
-                            ],
-                            "direction": null,
+                            "children": [],
+                            "direction": "ltr",
                             "format": "",
                             "indent": 0,
                             "type": "paragraph",
@@ -997,7 +987,7 @@ export const dummyProject = {
                             "textStyle": ""
                           }
                         ],
-                        "direction": null,
+                        "direction": "ltr",
                         "format": "",
                         "indent": 0,
                         "type": "tablecell",
@@ -1061,7 +1051,27 @@ export const dummyProject = {
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": "Articles of Incorporation/Business Registration",
+                                "text": "Articles of Incorporation/Business",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 0,
+                            "type": "paragraph",
+                            "version": 1,
+                            "textFormat": 0,
+                            "textStyle": ""
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Registration",
                                 "type": "text",
                                 "version": 1
                               }
@@ -1082,7 +1092,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1154,7 +1164,7 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
@@ -1192,7 +1202,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1264,11 +1274,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -1302,7 +1313,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1374,11 +1385,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -1412,7 +1424,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1484,11 +1496,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -1522,7 +1535,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1594,11 +1607,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -1633,7 +1647,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1737,14 +1751,14 @@ export const dummyProject = {
                             "textStyle": ""
                           }
                         ],
-                        "direction": null,
+                        "direction": "ltr",
                         "format": "",
                         "indent": 0,
                         "type": "tablecell",
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1816,11 +1830,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -1854,7 +1869,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -1926,11 +1941,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -1964,7 +1980,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2036,11 +2052,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -2074,7 +2091,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2146,11 +2163,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -2185,7 +2203,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2296,7 +2314,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2368,11 +2386,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -2407,7 +2426,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2518,7 +2537,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2590,11 +2609,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -2628,7 +2648,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2700,11 +2720,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -2738,7 +2759,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2810,11 +2831,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -2848,7 +2870,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -2920,11 +2942,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -2958,7 +2981,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3030,11 +3053,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -3068,7 +3092,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3140,11 +3164,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -3179,7 +3204,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3290,7 +3315,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3362,11 +3387,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -3400,7 +3426,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3472,11 +3498,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -3510,7 +3537,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3582,11 +3609,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -3620,7 +3648,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3692,11 +3720,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -3731,7 +3760,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3842,7 +3871,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -3914,11 +3943,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -3952,7 +3982,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4024,11 +4054,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -4063,7 +4094,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4174,7 +4205,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4246,11 +4277,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -4284,7 +4316,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4356,11 +4388,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -4395,7 +4428,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4506,7 +4539,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4578,11 +4611,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -4616,7 +4650,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4688,11 +4722,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -4726,7 +4761,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4798,11 +4833,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -4836,7 +4872,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -4908,11 +4944,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -4947,7 +4984,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5058,7 +5095,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5130,11 +5167,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -5168,7 +5206,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5240,11 +5278,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -5278,7 +5317,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5350,11 +5389,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -5389,7 +5429,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5500,7 +5540,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5572,11 +5612,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -5611,7 +5652,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5722,7 +5763,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5794,11 +5835,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -5832,7 +5874,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -5904,11 +5946,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -5942,7 +5985,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6014,11 +6057,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -6052,7 +6096,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6124,11 +6168,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -6163,7 +6208,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6252,7 +6297,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6324,11 +6369,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -6362,7 +6408,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6434,11 +6480,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -6472,7 +6519,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6544,11 +6591,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -6583,7 +6631,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6672,7 +6720,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6744,11 +6792,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -6782,7 +6831,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -6854,11 +6903,12 @@ export const dummyProject = {
                         "rowSpan": 1
                       }
                     ],
-                    "direction": "ltr",
+                    "direction": null,
                     "format": "",
                     "indent": 0,
                     "type": "tablerow",
-                    "version": 1
+                    "version": 1,
+                    "textFormat": 1
                   },
                   {
                     "children": [
@@ -6892,7 +6942,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7004,7 +7054,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7115,7 +7165,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7226,7 +7276,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7337,7 +7387,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7449,7 +7499,7 @@ export const dummyProject = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7538,7 +7588,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7649,7 +7699,7 @@ export const dummyProject = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -7729,7 +7779,7 @@ export const dummyProject = {
                     "textFormat": 1
                   }
                 ],
-                "direction": "ltr",
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "table",
@@ -7889,7 +7939,10 @@ export const dummyProject = {
             "type": "root",
             "version": 1
           }
-        }),
+        }
+        
+        
+        ),
         'assigned_to': 'Client',
         'order': 2,
         'attachments': [
@@ -12336,6 +12389,7 @@ export const dummyProject = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h1"
               },
               {
@@ -12350,6 +12404,16 @@ export const dummyProject = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -12375,6 +12439,7 @@ export const dummyProject = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h2"
               },
               {
@@ -12398,17 +12463,7 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "● [ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -12424,12 +12479,22 @@ export const dummyProject = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                    "text": "● START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12444,12 +12509,22 @@ export const dummyProject = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "text": "● PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12464,12 +12539,22 @@ export const dummyProject = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                    "text": "● STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12484,12 +12569,22 @@ export const dummyProject = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                    "text": "● MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12504,12 +12599,22 @@ export const dummyProject = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+                    "text": "● CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12524,11 +12629,51 @@ export const dummyProject = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                    "text": "● COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -12550,6 +12695,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12597,6 +12752,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12609,6 +12774,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12637,6 +12812,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12649,6 +12834,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12677,6 +12872,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12688,6 +12893,16 @@ export const dummyProject = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -12736,6 +12951,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12748,6 +12973,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12836,6 +13071,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12847,6 +13092,16 @@ export const dummyProject = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -12876,6 +13131,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12896,6 +13161,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12908,6 +13183,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -12955,6 +13240,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12975,6 +13270,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -12987,6 +13292,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13034,6 +13349,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13046,6 +13371,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13074,6 +13409,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13086,6 +13431,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13133,6 +13488,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13145,6 +13510,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13173,6 +13548,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13185,6 +13570,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13232,6 +13627,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13252,6 +13657,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13264,6 +13679,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13303,6 +13728,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13371,6 +13806,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13383,6 +13828,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13430,6 +13885,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13469,6 +13934,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13486,6 +13961,16 @@ export const dummyProject = {
                 "type": "heading",
                 "version": 1,
                 "tag": "h2"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
                 "children": [
@@ -13508,6 +13993,16 @@ export const dummyProject = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -13520,6 +14015,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13560,6 +14065,16 @@ export const dummyProject = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13618,7 +14133,7 @@ export const dummyProject = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -13631,8 +14146,7 @@ export const dummyProject = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -15710,23 +16224,13 @@ export const dummyProject = {
           "root": {
             "children": [
               {
-                "type": "heading",
-                "tag": "h1",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "Service Package: Managed Care Organization (MCO) Enrollment",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "heading",
+                "version": 1,
+                "tag": "h1"
               },
               {
                 "type": "image",
@@ -15737,94 +16241,288 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Fee: $350 per application",
-                    "format": 0,
                     "detail": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "version": 1
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "Objective: We will manage the complete MCO Enrollment Process for your agency, from determining eligibility and gathering documentation to submitting credentialing applications and finalizing agreements. Our goal is to ensure your agency is credentialed with the relevant Managed Care Organizations (MCOs), allowing you to participate in their networks and serve patients covered under their plans.",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "version": 1
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "STEP 1: INITIAL CONSULTATION AND MCO IDENTIFICATION",
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 23px;",
+                    "text": "Service Package: Managed Care Organization (MCO) Enrollment",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "heading",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 23px;",
+                "tag": "h1"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Timeline: 0 Days",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Fee: ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "$350 per application",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables: A list of target MCOs and strategic recommendations on which networks to prioritize.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ": ",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "We will manage the complete MCO Enrollment Process for your agency, from determining eligibility and gathering documentation to submitting credentialing applications and finalizing agreements. Our goal is to ensure your agency is credentialed with the relevant Managed Care Organizations (MCOs), allowing you to participate in their networks and serve patients covered under their plans.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 18px;",
+                    "text": "STEP 1: INITIAL CONSULTATION AND MCO IDENTIFICATION",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Timeline",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ": 0 Days",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "We will begin by conducting an initial consultation to understand your agency’s service area, patient demographics, and payer needs. Based on this information, we will identify the most relevant ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Managed Care Organizations (MCOs)",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " in your state and region, ensuring that your agency is targeting the appropriate networks.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "A list of target ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "MCOs",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " based on your agency’s geographic and service focus.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Strategic recommendations on which MCO networks to prioritize for enrollment.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "type": "image",
@@ -15835,58 +16533,225 @@ export const dummyProject = {
                 "version": 1
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
-                    "text": "STEP 2: REVIEW OF MCO-SPECIFIC REQUIREMENTS",
+                    "detail": 0,
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 18px;",
+                    "text": "STEP 2: REVIEW OF MCO-SPECIFIC REQUIREMENTS",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Timeline: 1-2 Days",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Timeline",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ": 1-2 Days",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables: Detailed breakdown of each MCO's credentialing requirements and a tailored checklist of documents.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "We will contact the identified MCOs to determine their specific ",
+                    "type": "text",
                     "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "enrollment requirements",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ". Each MCO may have unique documentation requirements, and we will gather the details to ensure that the enrollment process is as smooth as possible. This may include gathering information about credentialing platforms such as ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "CAQH",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ", the Medicaid enrollment verification process, and other required documentation.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Detailed breakdown of each MCO’s ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "credentialing requirements",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": ".",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "A tailored checklist of ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "documents",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " needed for submission.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "type": "image",
@@ -15897,58 +16762,326 @@ export const dummyProject = {
                 "version": 1
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
-                    "text": "STEP 3: DOCUMENTATION GATHERING AND PREPARATION",
+                    "detail": 0,
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 18px;",
+                    "text": "STEP 3: DOCUMENTATION GATHERING AND PREPARATION",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Timeline: 3-7 Days",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Timeline",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ": 3-7 Days",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables: Complete and reviewed credentialing documentation, including Medicaid enrollment verification.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": " We will work with you to collect all required documentation for each MCO’s credentialing process, including:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "State licenses",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " and certifications.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Proof of ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Medicaid enrollment",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": ".",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Any additional documents requested by the MCO (e.g., business registration, insurance certificates).",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Our team will carefully review all documentation to ensure it meets the necessary standards before submitting to the MCOs.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Complete and thoroughly reviewed ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "credentialing documentation",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " ready for submission.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Verification of ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Medicaid enrollment",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " and other mandatory credentials.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "type": "image",
@@ -15959,58 +17092,207 @@ export const dummyProject = {
                 "version": 1
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
-                    "text": "STEP 4: CREDENTIALING SUBMISSION VIA CAQH OR MCO PLATFORMS",
+                    "detail": 0,
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 18px;",
+                    "text": "STEP 4: CREDENTIALING SUBMISSION VIA CAQH OR MCO PLATFORMS",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Timeline: 5-7 Days",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Timeline",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ": 5-7 Days",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables: Credentialing applications submitted to MCOs with confirmation and tracking.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "We will submit your agency’s ",
+                    "type": "text",
                     "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "credentialing applications",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " to each MCO through the appropriate platform, whether it’s ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "CAQH",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " or the MCO’s proprietary system. We will ensure that all documents are uploaded correctly and that every section of the application is completed without errors, reducing the risk of delays.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Credentialing applications submitted to each target MCO.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Confirmation and ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "tracking",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " of all submissions for easy monitoring.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "type": "image",
@@ -16021,58 +17303,207 @@ export const dummyProject = {
                 "version": 1
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
-                    "text": "STEP 5: MCO APPLICATION TRACKING AND UPDATES",
+                    "detail": 0,
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 18px;",
+                    "text": "STEP 5: MCO APPLICATION TRACKING AND UPDATES",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Timeline: Ongoing",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Timeline",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ": Ongoing",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables: Regular updates on credentialing status and handling follow-up requests from MCOs.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "After submitting the credentialing applications, we will actively monitor the ",
+                    "type": "text",
                     "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "status",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " of each submission. We will track your applications through the MCO systems and keep you informed of any additional requests for documentation or clarifications from the MCO. We will respond promptly to any inquiries to prevent unnecessary delays in processing.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Regular ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "status updates",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " on your MCO credentialing applications.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Resolution of any ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "follow-up requests",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " from MCOs.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "type": "image",
@@ -16083,58 +17514,243 @@ export const dummyProject = {
                 "version": 1
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
-                    "text": "STEP 6: PARTICIPATING PROVIDER AGREEMENTS",
+                    "detail": 0,
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 18px;",
+                    "text": "STEP 6: PARTICIPATING PROVIDER AGREEMENTS",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Timeline: 5-7 Days",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Timeline",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ": 5-7 Days",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables: Signed Participating Provider Agreements and confirmation of service location registration.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "Once credentialing is approved, we will handle the completion and submission of the ",
+                    "type": "text",
                     "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Participating Provider Agreements",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " with each MCO. This includes ensuring that all of your ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "service locations",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " are correctly registered with the ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Department of Human Services (DHS)",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " or the appropriate state agency, as required. We will also assist in reviewing and negotiating any key terms of the agreement to ensure favorable conditions for your agency.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Signed ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Participating Provider Agreements",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " with each MCO.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Confirmation of registration for all ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "service locations",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " with the appropriate state agencies.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               },
               {
                 "type": "image",
@@ -16145,83 +17761,466 @@ export const dummyProject = {
                 "version": 1
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
-                    "text": "STEP 7: FINAL MCO ENROLLMENT APPROVAL AND CONFIRMATION",
+                    "detail": 0,
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 18px;",
+                    "text": "STEP 7: FINAL MCO ENROLLMENT APPROVAL AND CONFIRMATION",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables: Final confirmation of MCO enrollment and summary report with billing steps.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Timeline:",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " Dependent on MCO processing time",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 18px;"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PROJECT TIMELINE: The process typically takes 30-60 days depending on MCO requirements and processing times.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "Once all credentialing and agreements are finalized, we will confirm your ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "MCO network participation",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ". We will ensure that your agency is officially listed as a participating provider, allowing you to begin serving patients covered under each MCO.",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
-                "format": "",
+                "format": "left",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "KEY BENEFITS: Comprehensive MCO enrollment management, tailored documentation approach, favorable agreement negotiation, and ongoing tracking for timely approvals.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Final ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "confirmation of MCO enrollment",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " and participation status.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Summary report outlining next steps for ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "billing and claims submission",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " with each MCO.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "PROJECT TIMELINE:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "The MCO enrollment process typically takes ",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "30-60 days",
+                    "type": "text",
+                    "version": 1
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": ", depending on the specific requirements and processing times of each MCO. We will provide regular updates to keep you informed throughout the process.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "KEY BENEFITS:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Comprehensive management of the entire ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "MCO enrollment and credentialing process",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": ".",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Tailored approach for gathering documentation and ensuring compliance with ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "MCO-specific requirements",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": ".",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Coordination and negotiation",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " of Participating Provider Agreements to secure favorable terms.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Ongoing ",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "tracking and monitoring",
+                        "type": "text",
+                        "version": 1
+                      },
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": " of application statuses to ensure timely approvals.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul"
               }
             ],
             "direction": "ltr",
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1
+            "version": 1,
+            "textFormat": 1,
+            "textStyle": "font-size: 18px;"
           }
         }),
         'approvals': [{
@@ -16252,58 +18251,466 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "font-size: 25px;",
                     "text": "ACCREDITATION SUPPORT SERVICES - $5,000",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": "font-size: 25px;"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "PHASE 1: INITIAL ASSESSMENT AND READINESS EVALUATION",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Assess current compliance with Joint Commission standards and identify gaps.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To assess your organization's current state of compliance with Joint Commission standards and identify areas requiring improvement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Kickoff Meeting:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Conduct an introductory meeting with leadership and key stakeholders to align on goals, timelines, and expectations.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Define roles and responsibilities for both Waiver Consulting Group and your internal team.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Comprehensive Gap Analysis:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Review existing policies, procedures, workflows, and documentation against Joint Commission standards.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Identify gaps in compliance, including high-risk or frequently cited areas (e.g., patient safety, infection control).",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Readiness Evaluation:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Assess staff awareness of Joint Commission requirements through interviews and surveys.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Evaluate resource availability (staff, technology, training materials) to support accreditation efforts.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Develop a Customized Roadmap:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 4
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Create a detailed project plan with milestones, deadlines, and deliverables.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Prioritize areas for immediate action based on risk and complexity.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 5
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
               },
               {
                 "type": "image",
@@ -16314,40 +18721,515 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PHASE 2: EDUCATION AND TRAINING",
-                    "format": 1,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "PHASE 2: EDUCATION AND TRAINING",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Equip your team with knowledge and tools to meet Joint Commission standards.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To equip your team with the knowledge and tools necessary to meet Joint Commission standards.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Leadership Training:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Educate executive leadership on their role in fostering a culture of safety, quality, and compliance.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provide an overview of the Joint Commission survey process and expectations.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Staff Training Programs:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Conduct interactive workshops and webinars tailored to different departments (e.g., clinical staff, administrative teams).",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Focus on critical topics such as:",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [
+                                  {
+                                    "children": [
+                                      {
+                                        "detail": 0,
+                                        "format": 0,
+                                        "mode": "normal",
+                                        "style": "",
+                                        "text": "Patient safety and rights",
+                                        "type": "text",
+                                        "version": 1
+                                      }
+                                    ],
+                                    "direction": "ltr",
+                                    "format": "",
+                                    "indent": 2,
+                                    "type": "listitem",
+                                    "version": 1,
+                                    "value": 1
+                                  },
+                                  {
+                                    "children": [
+                                      {
+                                        "detail": 0,
+                                        "format": 0,
+                                        "mode": "normal",
+                                        "style": "",
+                                        "text": "Infection prevention and control",
+                                        "type": "text",
+                                        "version": 1
+                                      }
+                                    ],
+                                    "direction": "ltr",
+                                    "format": "",
+                                    "indent": 2,
+                                    "type": "listitem",
+                                    "version": 1,
+                                    "value": 2
+                                  },
+                                  {
+                                    "children": [
+                                      {
+                                        "detail": 0,
+                                        "format": 0,
+                                        "mode": "normal",
+                                        "style": "",
+                                        "text": "Medication management",
+                                        "type": "text",
+                                        "version": 1
+                                      }
+                                    ],
+                                    "direction": "ltr",
+                                    "format": "",
+                                    "indent": 2,
+                                    "type": "listitem",
+                                    "version": 1,
+                                    "value": 3
+                                  },
+                                  {
+                                    "children": [
+                                      {
+                                        "detail": 0,
+                                        "format": 0,
+                                        "mode": "normal",
+                                        "style": "",
+                                        "text": "Tracer methodology",
+                                        "type": "text",
+                                        "version": 1
+                                      }
+                                    ],
+                                    "direction": "ltr",
+                                    "format": "",
+                                    "indent": 2,
+                                    "type": "listitem",
+                                    "version": 1,
+                                    "value": 4
+                                  }
+                                ],
+                                "direction": "ltr",
+                                "format": "",
+                                "indent": 0,
+                                "type": "list",
+                                "version": 1,
+                                "listType": "bullet",
+                                "start": 1,
+                                "tag": "ul"
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 3
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Role-Specific Coaching:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Train designated accreditation coordinators and department leads on managing compliance and preparing for surveys.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provide scripts and practice scenarios for staff interactions with surveyors.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Ongoing Support:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 4
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Offer access to online resources, FAQs, and a dedicated consultant for real-time questions.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 5
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
               },
               {
                 "type": "image",
@@ -16358,40 +19240,356 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PHASE 3: POLICY AND PROCEDURE DEVELOPMENT",
-                    "format": 1,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "PHASE 3: POLICY AND PROCEDURE DEVELOPMENT",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Ensure policies align with Joint Commission standards and are implemented effectively.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To ensure all policies and procedures align with Joint Commission standards and are effectively implemented.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Policy Review and Updates:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Collaborate with your team to review and revise existing policies.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Draft new policies where needed, ensuring they are clear, actionable, and compliant.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Standardization of Processes:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Implement standardized workflows for key operational areas (e.g., patient assessment, care planning, discharge processes).",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Develop checklists and templates to streamline implementation.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Documentation Organization:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Create a centralized repository for all policies, procedures, and compliance documents.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Ensure documents are easily accessible and regularly updated.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
               },
               {
                 "type": "image",
@@ -16402,40 +19600,347 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PHASE 4: DATA COLLECTION AND PERFORMANCE IMPROVEMENT",
-                    "format": 1,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "PHASE 4: DATA COLLECTION AND PERFORMANCE IMPROVEMENT",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Establish systems for monitoring and continuous improvement.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To establish a robust system for monitoring performance and driving continuous improvement.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Define Key Metrics:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Work with your team to identify KPIs that align with Joint Commission standards (e.g., patient satisfaction scores, infection rates).",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Implement a Quality Improvement Program:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Guide your team in setting up processes for data collection, analysis, and reporting.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Facilitate regular audits to identify trends and areas for improvement.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Mock Surveys and Tracers:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Conduct internal mock surveys using tracer methodology to evaluate compliance across departments.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Provide detailed feedback reports and corrective action plans.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
                 "type": "image",
@@ -16446,40 +19951,318 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PHASE 5: ENVIRONMENT OF CARE AND SAFETY STANDARDS",
-                    "format": 1,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "PHASE 5: ENVIRONMENT OF CARE AND SAFETY STANDARDS",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Ensure facilities and environment meet Joint Commission safety requirements.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To ensure physical and environmental compliance with Joint Commission requirements.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Facility Inspections:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Perform a thorough inspection of your facilities to ensure compliance with safety standards (e.g., fire safety, electrical systems, hazardous materials).",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Infection Control Protocols:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Review and enhance infection prevention practices, including hand hygiene, sterilization, and outbreak management.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Safety Drills and Training:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Assist in organizing and documenting safety drills (e.g., fire, emergency preparedness).",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Train staff on proper responses to emergencies.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
               },
               {
                 "type": "image",
@@ -16490,40 +20273,257 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PHASE 6: DOCUMENTATION AND RECORD KEEPING",
-                    "format": 1,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "PHASE 6: DOCUMENTATION AND RECORD KEEPING",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Maintain accurate and accessible accreditation documentation.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To maintain accurate, complete, and accessible documentation required for accreditation.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Document Review and Organization:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Audit existing records to ensure completeness and accuracy.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Organize documents in a way that allows quick retrieval during the survey.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Prepare for Surveyor Requests:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Develop a system for efficiently responding to document requests during the survey.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
               },
               {
                 "type": "image",
@@ -16534,40 +20534,337 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PHASE 7: FINAL PREPARATIONS FOR THE SURVEY",
-                    "format": 1,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "PHASE 7: FINAL PREPARATIONS FOR THE SURVEY",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Ensure full readiness for the Joint Commission survey.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To ensure your organization is fully prepared for the Joint Commission survey.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Final Mock Survey:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Conduct a comprehensive mock survey to simulate the actual Joint Commission experience.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Address any remaining deficiencies and refine processes.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Survey Coordination Planning:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Assign roles for managing logistics during the survey (e.g., escorts, document retrieval).",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          },
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Prepare staff for interviews with surveyors.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 2
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Confidence-Building Sessions:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Host final coaching sessions to boost staff confidence and readiness.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
               },
               {
                 "type": "image",
@@ -16578,55 +20875,324 @@ export const dummyProject = {
                 "version": 1
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "PHASE 8: POST-SURVEY FOLLOW-UP",
+                    "detail": 0,
                     "format": 1,
-                    "detail": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "PHASE 8: POST-SURVEY FOLLOW-UP",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Objective: Address survey findings and sustain ongoing compliance.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 1,
                     "mode": "normal",
                     "style": "",
+                    "text": "Objective:",
+                    "type": "text",
                     "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 2,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "To address survey findings and maintain ongoing compliance.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": " ",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Steps We Will Take:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Address Deficiencies:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Collaborate with your team to develop and implement corrective action plans for any identified deficiencies.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Continuous Monitoring:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 2
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Establish a system for ongoing monitoring and improvement to sustain accreditation.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 1,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Celebrate Success:",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "textFormat": 1,
+                    "value": 3
+                  },
+                  {
+                    "children": [
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "detail": 0,
+                                "format": 0,
+                                "mode": "normal",
+                                "style": "",
+                                "text": "Recognize the hard work and dedication of your team in achieving accreditation.",
+                                "type": "text",
+                                "version": 1
+                              }
+                            ],
+                            "direction": "ltr",
+                            "format": "",
+                            "indent": 1,
+                            "type": "listitem",
+                            "version": 1,
+                            "value": 1
+                          }
+                        ],
+                        "direction": "ltr",
+                        "format": "",
+                        "indent": 0,
+                        "type": "list",
+                        "version": 1,
+                        "listType": "bullet",
+                        "start": 1,
+                        "tag": "ul"
+                      }
+                    ],
+                    "direction": null,
+                    "format": "left",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": 4
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "number",
+                "start": 1,
+                "tag": "ol"
               },
               {
-                "type": "image",
-                "src": "https://storage.googleapis.com/waivergroup_uploads/phase1.png",
-                "altText": "Phase 8 follow-up illustration",
-                "width": 600,
-                "height": 400,
-                "version": 1
+                "children": [
+                  {
+                    "type": "image",
+                    "src": "https://storage.googleapis.com/waivergroup_uploads/1761369408135-image.png",
+                    "altText": "image.png",
+                    "version": 1
+                  }
+                ],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               }
             ],
             "direction": "ltr",
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1
+            "version": 1,
+            "textStyle": "font-size: 25px;"
           }
         }),
         'approvals': [{
@@ -17214,170 +21780,202 @@ export const dummyProject = {
                 "version": 1
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Service Package: Private Pay and Referral Network Enrollment",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Fee: Customized based on network and service needs",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Objective: We will manage the entire Private Pay and Referral Network Enrollment process for your agency. Our goal is to help you build a robust referral network and attract private pay clients by establishing partnerships with healthcare professionals, local organizations, and community services. We will ensure your agency is positioned as a trusted provider for private pay clients, with systems in place for smooth referral processes and payment collection.",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "STEP 1: INITIAL CONSULTATION AND MARKET ANALYSIS",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Timeline: 3-5 Days",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "We will begin by conducting a thorough consultation to understand your agency's services, target clientele, and geographic service area. Based on this information, we will perform a market analysis to identify key referral sources, potential private pay clients, and competitors in your local market. This will help us tailor the referral and private pay strategy to your specific needs.",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "version": 1
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
                     "type": "text",
-                    "text": "Deliverables:",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "A detailed market analysis report including potential referral sources, private pay opportunities, and competitive landscape.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Customized recommendations for building a referral network and attracting private pay clients.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   }
@@ -17385,120 +21983,137 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "STEP 2: IDENTIFICATION OF REFERRAL NETWORK OPPORTUNITIES",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Timeline: 5-7 Days",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "We will identify key healthcare professionals, organizations, and community partners that are potential referral sources for private pay clients. This may include:",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Physicians, hospitals, and clinics.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Senior centers, rehabilitation centers, and assisted living facilities.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Insurance brokers, attorneys, and other professionals involved in elder care or home health referrals.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   }
@@ -17506,65 +22121,68 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables:",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "A target list of potential referral partners including contact information and relevant connections.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "A referral network strategy that outlines how to build relationships with these partners.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   }
@@ -17572,120 +22190,137 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "STEP 3: DOCUMENTATION AND MARKETING MATERIALS DEVELOPMENT",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Timeline: 7-10 Days",
+                    "detail": 0,
                     "format": 0,
-                    "detail": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "Timeline: 7-10 Days",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "We will help you create compelling marketing materials and documentation that communicate the value of your services to referral sources and private pay clients. This may include:",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Brochures and service guides highlighting your agency's unique offerings.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Client intake forms and contracts tailored for private pay clients.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "A referral process outline that explains how referring partners can seamlessly refer clients to your agency.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   }
@@ -17693,65 +22328,68 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables:",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Professionally designed marketing materials and client documentation.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "A streamlined referral process guide for your partners.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   }
@@ -17759,139 +22397,156 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "STEP 4: OUTREACH AND PARTNERSHIP BUILDING",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Timeline: 7-14 Days",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "We will initiate contact with the identified referral sources and set up partnership discussions on your behalf. This involves:",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Introducing your agency to potential referral partners.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Sharing marketing materials and explaining the referral process.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Establishing ongoing referral agreements and partnerships, where applicable.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Provider a monthly referral of ten (10) private pay clients for three months.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 4
                   }
@@ -17899,84 +22554,87 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables:",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Outreach communication with potential referral partners.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Secured referral agreements or partnerships with key organizations or professionals.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Regular updates on outreach progress and new partnership opportunities.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   }
@@ -17984,120 +22642,137 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "STEP 5: DEVELOPMENT OF PRIVATE PAY SYSTEMS",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Timeline: 7-10 Days",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "We will help you set up internal systems to manage private pay clients. This includes:",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Payment processing systems for collecting private pay fees (e.g., credit card payments, direct deposits).",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Creation of private pay client contracts outlining service terms, pricing, and payment schedules.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "A client management system to track private pay client interactions, services provided, and payment history.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   }
@@ -18105,84 +22780,87 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "Deliverables:",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "Deliverables:",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Fully implemented payment processing system for private pay clients.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Standardized client contracts and documentation for private pay clients.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Setup of client management tools to monitor private pay service delivery and payments.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   }
@@ -18190,120 +22868,137 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
                 "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
                     "text": "STEP 6: ONGOING RELATIONSHIP MANAGEMENT AND REFERRALS",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Timeline: Ongoing",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Once your referral network and private pay systems are established, we will provide ongoing support to help manage relationships with referral sources and ensure smooth client onboarding. This includes:",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Maintaining communication with referral partners to strengthen relationships.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Assisting with client referrals, ensuring they are processed efficiently.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Monitoring the performance of the referral network and identifying opportunities for expansion.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   }
@@ -18311,84 +23006,87 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
                     "text": "Deliverables:",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
-                "type": "list",
-                "listType": "bullet",
                 "children": [
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Ongoing support with referral management and private pay client onboarding.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 1
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Regular relationship check-ins with referral partners.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 2
                   },
                   {
-                    "type": "listitem",
                     "children": [
                       {
-                        "type": "text",
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
                         "text": "Quarterly review of referral network performance and potential growth areas.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
+                        "type": "text",
                         "version": 1
                       }
                     ],
                     "direction": "ltr",
                     "format": "",
                     "indent": 0,
+                    "type": "listitem",
                     "version": 1,
                     "value": 3
                   }
@@ -18396,147 +23094,176 @@ export const dummyProject = {
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "PROJECT TIMELINE: The full Private Pay and Referral Network Enrollment Process typically takes 30-60 days, depending on the number of referral partners and the complexity of setting up private pay systems. We will provide regular updates throughout the process and ensure that each step is completed in a timely manner.",
-                    "format": 0,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "version": 1
-              },
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "text": "KEY BENEFITS:",
-                    "format": 1,
-                    "detail": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "version": 1
-              },
-              {
                 "type": "list",
+                "version": 1,
                 "listType": "bullet",
-                "children": [
-                  {
-                    "type": "listitem",
-                    "children": [
-                      {
-                        "type": "text",
-                        "text": "Comprehensive management of referral network development and private pay client enrollment, reducing the burden on your agency.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "version": 1
-                      }
-                    ],
-                    "direction": "ltr",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "value": 1
-                  },
-                  {
-                    "type": "listitem",
-                    "children": [
-                      {
-                        "type": "text",
-                        "text": "A tailored strategy to attract private pay clients and build lasting partnerships with referral sources.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "version": 1
-                      }
-                    ],
-                    "direction": "ltr",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "value": 2
-                  },
-                  {
-                    "type": "listitem",
-                    "children": [
-                      {
-                        "type": "text",
-                        "text": "Fully developed systems for private pay processing, client management, and referrals.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "version": 1
-                      }
-                    ],
-                    "direction": "ltr",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "value": 3
-                  },
-                  {
-                    "type": "listitem",
-                    "children": [
-                      {
-                        "type": "text",
-                        "text": "Ongoing support to ensure your referral network continues to grow and attract new clients.",
-                        "format": 0,
-                        "detail": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "version": 1
-                      }
-                    ],
-                    "direction": "ltr",
-                    "format": "",
-                    "indent": 0,
-                    "version": 1,
-                    "value": 4
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "version": 1
+                "tag": "ul"
               },
               {
-                "type": "paragraph",
                 "children": [
                   {
-                    "type": "text",
-                    "text": "NEXT STEPS: Once you approve this proposal, we will schedule an initial consultation to begin developing your referral network and setting up your private pay systems.",
-                    "format": 0,
                     "detail": 0,
+                    "format": 0,
                     "mode": "normal",
                     "style": "",
+                    "text": "PROJECT TIMELINE: The full Private Pay and Referral Network Enrollment Process typically takes 30-60 days, depending on the number of referral partners and the complexity of setting up private pay systems. We will provide regular updates throughout the process and ensure that each step is completed in a timely manner.",
+                    "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
-                "version": 1
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 1,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "KEY BENEFITS:",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Comprehensive management of referral network development and private pay client enrollment, reducing the burden on your agency.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "A tailored strategy to attract private pay clients and build lasting partnerships with referral sources.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": null
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Fully developed systems for private pay processing, client management, and referrals.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": null
+                  },
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Ongoing support to ensure your referral network continues to grow and attract new clients.",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "listitem",
+                    "version": 1,
+                    "value": null
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "list",
+                "version": 1,
+                "listType": "bullet",
+                "tag": "ul"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "NEXT STEPS: Once you approve this proposal, we will schedule an initial consultation to begin developing your referral network and setting up your private pay systems.",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               }
             ],
             "direction": "ltr",
@@ -21656,7 +26383,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -21681,6 +26408,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -21704,6 +26432,16 @@ export const customizedPolicy = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "children": [
@@ -21712,7 +26450,7 @@ export const customizedPolicy = {
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "[ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
+                        "text": "START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
                         "type": "text",
                         "version": 1
                       }
@@ -21731,7 +26469,7 @@ export const customizedPolicy = {
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "[ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                        "text": "PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
                         "type": "text",
                         "version": 1
                       }
@@ -21750,7 +26488,7 @@ export const customizedPolicy = {
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "[ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                        "text": "STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
                         "type": "text",
                         "version": 1
                       }
@@ -21769,7 +26507,7 @@ export const customizedPolicy = {
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "[ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                        "text": "MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
                         "type": "text",
                         "version": 1
                       }
@@ -21788,7 +26526,7 @@ export const customizedPolicy = {
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "[ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                        "text": "CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
                         "type": "text",
                         "version": 1
                       }
@@ -21807,7 +26545,7 @@ export const customizedPolicy = {
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "[ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+                        "text": "COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
                         "type": "text",
                         "version": 1
                       }
@@ -21826,7 +26564,7 @@ export const customizedPolicy = {
                         "format": 0,
                         "mode": "normal",
                         "style": "",
-                        "text": "[ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                        "text": "PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
                         "type": "text",
                         "version": 1
                       }
@@ -21847,6 +26585,16 @@ export const customizedPolicy = {
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
                 "children": [
@@ -21870,7 +26618,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -21895,6 +26643,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22006,6 +26755,16 @@ export const customizedPolicy = {
                 "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -22027,7 +26786,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22052,6 +26811,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22066,6 +26826,16 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "left",
                 "indent": 0,
@@ -22123,6 +26893,16 @@ export const customizedPolicy = {
                 "listType": "number",
                 "start": 1,
                 "tag": "ol"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
                 "children": [
@@ -22195,7 +26975,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "left",
                 "indent": 0,
                 "type": "paragraph",
@@ -22294,7 +27074,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22319,6 +27099,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22333,6 +27114,16 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "left",
                 "indent": 0,
@@ -22393,7 +27184,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22418,6 +27209,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22432,6 +27224,16 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "left",
                 "indent": 0,
@@ -22491,6 +27293,16 @@ export const customizedPolicy = {
                 "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -22512,7 +27324,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22537,6 +27349,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22551,6 +27364,16 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "left",
                 "indent": 0,
@@ -22630,7 +27453,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22655,6 +27478,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22669,6 +27493,16 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "left",
                 "indent": 0,
@@ -22743,13 +27577,14 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
+                "textFormat": 1,
                 "listType": "number",
                 "start": 1,
                 "tag": "ol"
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22774,6 +27609,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22788,6 +27624,16 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "left",
                 "indent": 0,
@@ -22866,6 +27712,16 @@ export const customizedPolicy = {
                 "tag": "ul"
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -22887,7 +27743,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22912,6 +27768,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22936,7 +27793,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -22961,6 +27818,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -22985,7 +27843,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -23010,6 +27868,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -23033,6 +27892,16 @@ export const customizedPolicy = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -23045,6 +27914,16 @@ export const customizedPolicy = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "left",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "left",
                 "indent": 0,
                 "type": "paragraph",
@@ -23094,7 +27973,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -23119,6 +27998,7 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h3"
               },
               {
@@ -23302,7 +28182,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "1. PREPARATION AND ASSISTANCE WITH BUSINESS FORMATION: COST ($300)",
                     "type": "text",
                     "version": 1
@@ -23314,7 +28194,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -23375,19 +28255,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Assistance with determining the best legal structure (LLC, Corporation, Sole Proprietorship) for the healthcare business based on state regulations and liability protection.",
+                                "text": "Assistance with determining the best legal structure (LLC, Corporation, Sole Proprietorship) for the healthcare business based on state regulations and liability protection.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23397,20 +28268,10 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
-                              {
-                                "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
                               {
                                 "detail": 0,
                                 "format": 0,
@@ -23426,26 +28287,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Legal consultation on best practices for tax efficiency and personal asset protection.",
+                                "text": "Legal consultation on best practices for tax efficiency and personal asset protection.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23455,7 +28306,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 3
                           }
                         ],
@@ -23464,7 +28314,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -23475,7 +28324,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   },
                   {
@@ -23515,19 +28363,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Assistance with applying for an Employer Identification Number (EIN) through the IRS for tax purposes.",
+                                "text": "Assistance with applying for an Employer Identification Number (EIN) through the IRS for tax purposes.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23537,26 +28376,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Registration for a National Provider Identifier (NPI) through the National Plan and Provider Enumeration System (NPPES), which is essential for billing Medicaid/Medicare.",
+                                "text": "Registration for a National Provider Identifier (NPI) through the National Plan and Provider Enumeration System (NPPES), which is essential for billing Medicaid/Medicare.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23566,7 +28395,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -23575,7 +28403,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -23586,7 +28413,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 3
                   },
                   {
@@ -23626,19 +28452,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Help you create a comprehensive business plan that addresses market analysis, service offerings, operational structure, and financial projections specific to their state's Medicaid Waiver Program.",
+                                "text": "Help you create a comprehensive business plan that addresses market analysis, service offerings, operational structure, and financial projections specific to their state's Medicaid Waiver Program.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23648,26 +28465,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide insights into state Medicaid program nuances, competitive landscape, and potential growth opportunities.",
+                                "text": "Provide insights into state Medicaid program nuances, competitive landscape, and potential growth opportunities.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23677,7 +28484,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -23686,7 +28492,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -23697,7 +28502,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 4
                   },
                   {
@@ -23737,19 +28541,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide customizable templates for essential committee meetings such as governing board meetings, quality assurance committees, and employee evaluations to ensure compliance with regulatory standards.",
+                                "text": "Provide customizable templates for essential committee meetings such as governing board meetings, quality assurance committees, and employee evaluations to ensure compliance with regulatory standards.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23759,26 +28554,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Offer agendas, minutes templates, and policy development forms that meet Medicaid waiver program requirements.",
+                                "text": "Offer agendas, minutes templates, and policy development forms that meet Medicaid waiver program requirements.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -23788,7 +28573,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -23797,7 +28581,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -23808,7 +28591,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 5
                   }
                 ],
@@ -23817,7 +28599,6 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
@@ -23874,7 +28655,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "2. CERTIFICATE OF NEEDS DEVELOPMENT",
                     "type": "text",
                     "version": 1
@@ -23883,7 +28664,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": ": COST ",
                     "type": "text",
                     "version": 1
@@ -23892,7 +28673,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "($6,000)",
                     "type": "text",
                     "version": 1
@@ -23901,7 +28682,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": " ",
                     "type": "text",
                     "version": 1
@@ -23935,7 +28716,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [],
@@ -23973,7 +28754,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "3. COMPLETION OF STATE LICENSE APPLICATION PACKAGE: COST ($850)",
                     "type": "text",
                     "version": 1
@@ -23985,7 +28766,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -24046,19 +28827,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Maintain direct contact with your state in relations to your application and other submissions to the state’s health department or relevant licensing authority.",
+                                "text": "Maintain direct contact with your state in relations to your application and other submissions to the state’s health department or relevant licensing authority.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24068,26 +28840,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Help you establish relationships with key regulatory contacts for future supports during your operations.",
+                                "text": "Help you establish relationships with key regulatory contacts for future supports during your operations.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24097,7 +28859,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -24106,7 +28867,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -24117,7 +28877,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   },
                   {
@@ -24157,19 +28916,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Create the forms & templates for operational infrastructure, such as health records compliance tools and care coordination tools for managing waiver services.",
+                                "text": "Create the forms & templates for operational infrastructure, such as health records compliance tools and care coordination tools for managing waiver services.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24179,26 +28929,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide forms and templates to track services delivered, ensure proper documentation for audits, and facilitate reporting to Medicaid.",
+                                "text": "Provide forms and templates to track services delivered, ensure proper documentation for audits, and facilitate reporting to Medicaid.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24208,7 +28948,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -24217,7 +28956,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -24228,7 +28966,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 3
                   },
                   {
@@ -24268,19 +29005,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide a checklist for compliance with state and federal Medicaid regulations, covering patient rights, service delivery, documentation, and billing protocols.",
+                                "text": "Provide a checklist for compliance with state and federal Medicaid regulations, covering patient rights, service delivery, documentation, and billing protocols.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24290,26 +29018,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Offer ongoing compliance monitoring for the 12 months of signing up for this package to ensure your agency meets and stay compliance with all state-specific Medicaid requirements and avoid penalties.",
+                                "text": "Offer ongoing compliance monitoring for the 12 months of signing up for this package to ensure your agency meets and stay compliance with all state-specific Medicaid requirements and avoid penalties.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24319,7 +29037,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -24328,7 +29045,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -24339,7 +29055,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 4
                   }
                 ],
@@ -24348,7 +29063,6 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
@@ -24416,7 +29130,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "4. CUSTOMIZED, STATE-SPECIFIC POLICIES AND PROCEDURES:",
                     "type": "text",
                     "version": 1
@@ -24425,7 +29139,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": " COST ",
                     "type": "text",
                     "version": 1
@@ -24434,7 +29148,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "($4,200)",
                     "type": "text",
                     "version": 1
@@ -24446,7 +29160,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -24507,19 +29221,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Create custom mission statements and operational policies that align with Medicaid’s goals for service quality and patient care.",
+                                "text": "Create custom mission statements and operational policies that align with Medicaid’s goals for service quality and patient care.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24529,26 +29234,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Develop organizational charts and job descriptions that clearly define the roles and responsibilities within the agency.",
+                                "text": "Develop organizational charts and job descriptions that clearly define the roles and responsibilities within the agency.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24558,7 +29253,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -24567,7 +29261,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -24578,7 +29271,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   },
                   {
@@ -24618,19 +29310,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Assistance in setting up HR systems that ensure compliance with state requirements for employee licensure, background checks, drug testing, and continuing education.",
+                                "text": "Assistance in setting up HR systems that ensure compliance with state requirements for employee licensure, background checks, drug testing, and continuing education.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24640,26 +29323,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide templates for employee records, credential verification, and annual evaluations.",
+                                "text": "Provide templates for employee records, credential verification, and annual evaluations.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24669,7 +29342,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -24678,7 +29350,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -24689,7 +29360,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 3
                   },
                   {
@@ -24738,19 +29408,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide a comprehensive set of clinical policies and procedures that meet state and federal Medicaid guidelines, covering areas like patient admissions, care coordination, and physician communication.",
+                                "text": "Provide a comprehensive set of clinical policies and procedures that meet state and federal Medicaid guidelines, covering areas like patient admissions, care coordination, and physician communication.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24760,26 +29421,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Help set up secure systems for medical record protection, HIPAA compliance, and documentation retention.",
+                                "text": "Help set up secure systems for medical record protection, HIPAA compliance, and documentation retention.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24789,7 +29440,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -24798,7 +29448,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -24809,7 +29458,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 4
                   },
                   {
@@ -24849,19 +29497,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Develop quality improvement frameworks, including patient satisfaction surveys, staff feedback mechanisms, and quarterly reviews of agency performance.",
+                                "text": "Develop quality improvement frameworks, including patient satisfaction surveys, staff feedback mechanisms, and quarterly reviews of agency performance.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24871,26 +29510,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Offer tools to track and analyze patient outcomes to continually improve care quality.",
+                                "text": "Offer tools to track and analyze patient outcomes to continually improve care quality.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -24900,7 +29529,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -24909,7 +29537,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -24920,7 +29547,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 5
                   }
                 ],
@@ -24929,7 +29555,6 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
@@ -24997,7 +29622,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "5. COMPLETE CLIENT ADMISSION PACKET:",
                     "type": "text",
                     "version": 1
@@ -25006,7 +29631,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 25px;",
                     "text": " ",
                     "type": "text",
                     "version": 1
@@ -25018,7 +29643,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -25108,19 +29733,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Create a customizable client admission packet that includes essential forms such as client rights, HIPAA disclosures, consent forms, and advanced directives specific to state requirements.",
+                                "text": "Create a customizable client admission packet that includes essential forms such as client rights, HIPAA disclosures, consent forms, and advanced directives specific to state requirements.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -25130,26 +29746,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide guidance on state-specific content that must be included, such as information on covered and non-covered services, eligibility criteria, and discharge policies.",
+                                "text": "Provide guidance on state-specific content that must be included, such as information on covered and non-covered services, eligibility criteria, and discharge policies.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -25159,7 +29765,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -25168,7 +29773,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -25179,7 +29783,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   }
                 ],
@@ -25188,7 +29791,6 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
@@ -25256,7 +29858,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "6. STATE LICENSURE INSPECTION ASSURANCE:",
                     "type": "text",
                     "version": 1
@@ -25265,7 +29867,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": " ",
                     "type": "text",
                     "version": 1
@@ -25277,7 +29879,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -25339,7 +29941,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "7. COMPANY WEBSITE, DOMAIN, AND EMAIL:",
                     "type": "text",
                     "version": 1
@@ -25348,7 +29950,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 25px;",
                     "text": " ",
                     "type": "text",
                     "version": 1
@@ -25360,7 +29962,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -25459,19 +30061,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Design a professional, mobile-responsive website that highlights the agency’s services, mission, and contact information.",
+                                "text": "Design a professional, mobile-responsive website that highlights the agency’s services, mission, and contact information.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -25481,26 +30074,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Implement search engine optimization (SEO) strategies to ensure the website ranks well for Medicaid waiver services and local healthcare searches.",
+                                "text": "Implement search engine optimization (SEO) strategies to ensure the website ranks well for Medicaid waiver services and local healthcare searches.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -25510,26 +30093,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Assist in setting up secure email domains and accounts, ensuring compliance with HIPAA and other data protection regulations.",
+                                "text": "Assist in setting up secure email domains and accounts, ensuring compliance with HIPAA and other data protection regulations.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -25539,7 +30112,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 3
                           }
                         ],
@@ -25548,7 +30120,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -25559,7 +30130,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   }
                 ],
@@ -25568,7 +30138,6 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
@@ -25636,7 +30205,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "8. CONTINUED ACCESS TO OUR INTRANET NETWORK PORTAL:",
                     "type": "text",
                     "version": 1
@@ -25645,7 +30214,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": " ",
                     "type": "text",
                     "version": 1
@@ -25679,7 +30248,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [],
@@ -25701,7 +30270,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "9. MARKETING & ADVERTISING MATERIALS:",
                     "type": "text",
                     "version": 1
@@ -25710,7 +30279,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": " COST ",
                     "type": "text",
                     "version": 1
@@ -25719,7 +30288,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "($700)",
                     "type": "text",
                     "version": 1
@@ -25744,7 +30313,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -25785,19 +30354,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Design high-quality brochures, business cards, and promotional videos tailored to the healthcare agency’s services and the needs of local Medicaid populations.",
+                                "text": "Design high-quality brochures, business cards, and promotional videos tailored to the healthcare agency’s services and the needs of local Medicaid populations.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -25807,26 +30367,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Ensure all marketing materials comply with state regulations regarding Medicaid advertising and patient engagement.",
+                                "text": "Ensure all marketing materials comply with state regulations regarding Medicaid advertising and patient engagement.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -25836,7 +30386,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           }
                         ],
@@ -25845,7 +30394,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -25856,7 +30404,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   }
                 ],
@@ -25865,7 +30412,6 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
@@ -25933,7 +30479,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "10. OPERATIONAL TRAINING:",
                     "type": "text",
                     "version": 1
@@ -25942,7 +30488,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 25px;",
                     "text": " ",
                     "type": "text",
                     "version": 1
@@ -25954,7 +30500,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -26033,19 +30579,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Offer training sessions to administrators and agency owners covering office administration, record-keeping, human resource management, and marketing strategies.",
+                                "text": "Offer training sessions to administrators and agency owners covering office administration, record-keeping, human resource management, and marketing strategies.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26055,26 +30592,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide specialized training on healthcare software such as Electronic Health Records (EHR), Medicaid billing systems, and compliance tracking tools.",
+                                "text": "Provide specialized training on healthcare software such as Electronic Health Records (EHR), Medicaid billing systems, and compliance tracking tools.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26084,26 +30611,16 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 2
                           },
                           {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " For direct support training for your staff, sign up here at our training academy: ",
+                                "text": "For direct support training for your staff, sign up here at our training academy: ",
                                 "type": "text",
                                 "version": 1
                               },
@@ -26149,7 +30666,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 3
                           }
                         ],
@@ -26158,7 +30674,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -26169,7 +30684,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   }
                 ],
@@ -26178,14 +30692,13 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26195,7 +30708,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26205,7 +30718,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26219,7 +30732,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "11. COMPLIANCE AND REGULATORY SUPPORT ",
                     "type": "text",
                     "version": 1
@@ -26228,7 +30741,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 3,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "(complimentary service)",
                     "type": "text",
                     "version": 1
@@ -26240,7 +30753,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -26281,19 +30794,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Offer step-by-step guidance maintaining necessary state-specific licenses and staying in compliance.",
+                                "text": "Offer step-by-step guidance maintaining necessary state-specific licenses and staying in compliance.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26303,7 +30807,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -26312,7 +30815,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -26323,7 +30825,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   },
                   {
@@ -26363,19 +30864,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Perform periodic compliance audits to ensure the agency remains in good standing with Medicaid and state regulatory authorities free of charge in the first 12 months of signing up for these services.",
+                                "text": "Perform periodic compliance audits to ensure the agency remains in good standing with Medicaid and state regulatory authorities free of charge in the first 12 months of signing up for these services.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26385,7 +30877,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -26394,7 +30885,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -26405,7 +30895,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 3
                   },
                   {
@@ -26445,19 +30934,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide education and tools to help you and your agency manage and protect patient information in compliance with HIPAA rules.",
+                                "text": "Provide education and tools to help you and your agency manage and protect patient information in compliance with HIPAA rules.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26467,7 +30947,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -26476,7 +30955,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -26487,7 +30965,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 4
                   }
                 ],
@@ -26496,14 +30973,13 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26520,7 +30996,7 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26530,7 +31006,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26540,7 +31016,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26550,7 +31026,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26568,7 +31044,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "",
+                    "style": "font-size: 25px;",
                     "text": "12. MARKETING AND CLIENT ACQUISITION STRATEGIES - COST $650",
                     "type": "text",
                     "version": 1
@@ -26579,8 +31055,8 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
+                "textFormat": 1,
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -26621,19 +31097,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Help you and your agency build referral networks by creating partnerships with hospitals, clinics, and social service organizations.",
+                                "text": "Help you and your agency build referral networks by creating partnerships with hospitals, clinics, and social service organizations.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26643,7 +31110,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -26652,7 +31118,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -26663,7 +31128,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   },
                   {
@@ -26703,19 +31167,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Offer ongoing support for managing social media platforms and running digital advertising campaigns tailored to Medicaid patients and caregivers.",
+                                "text": "Offer ongoing support for managing social media platforms and running digital advertising campaigns tailored to Medicaid patients and caregivers.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26725,7 +31180,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -26734,7 +31188,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -26745,7 +31198,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 3
                   },
                   {
@@ -26785,19 +31237,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide strategies and materials to engage local communities, such as free health screenings, informational seminars, and partnerships with local organizations.",
+                                "text": "Provide strategies and materials to engage local communities, such as free health screenings, informational seminars, and partnerships with local organizations.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -26807,7 +31250,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -26816,18 +31258,16 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "left",
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 4
                   }
                 ],
@@ -26836,14 +31276,13 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26860,7 +31299,7 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26870,7 +31309,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26880,7 +31319,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26890,7 +31329,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -26904,7 +31343,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "13. ACCREDITATION SUPPORT ",
                     "type": "text",
                     "version": 1
@@ -26913,7 +31352,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 3,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "(Complimentary service)",
                     "type": "text",
                     "version": 1
@@ -26925,7 +31364,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -26966,15 +31405,6 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
@@ -26988,7 +31418,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -26997,7 +31426,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -27008,7 +31436,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   },
                   {
@@ -27048,19 +31475,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Conduct mock surveys and readiness assessments to identify areas of non-compliance before state or federal inspections.",
+                                "text": "Conduct mock surveys and readiness assessments to identify areas of non-compliance before state or federal inspections.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -27070,7 +31488,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -27079,18 +31496,16 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "left",
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 3
                   }
                 ],
@@ -27099,7 +31514,6 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
@@ -27123,7 +31537,7 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -27133,7 +31547,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -27143,7 +31557,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -27153,7 +31567,7 @@ export const customizedPolicy = {
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -27167,7 +31581,7 @@ export const customizedPolicy = {
                     "detail": 0,
                     "format": 1,
                     "mode": "normal",
-                    "style": "font-size: 18px;",
+                    "style": "font-size: 25px;",
                     "text": "14. QUALITY ASSURANCE PROGRAMS",
                     "type": "text",
                     "version": 1
@@ -27179,7 +31593,7 @@ export const customizedPolicy = {
                 "type": "paragraph",
                 "version": 1,
                 "textFormat": 1,
-                "textStyle": "font-size: 18px;"
+                "textStyle": "font-size: 25px;"
               },
               {
                 "children": [
@@ -27220,19 +31634,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Provide tools to track and measure client/patient outcomes, helping your agency identify areas of improvement in care delivery.",
+                                "text": "Provide tools to track and measure client/patient outcomes, helping your agency identify areas of improvement in care delivery.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -27242,7 +31647,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -27251,7 +31655,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -27262,7 +31665,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 2
                   },
                   {
@@ -27302,19 +31704,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Develop performance management systems to track employee productivity, job satisfaction, and training needs.",
+                                "text": "Develop performance management systems to track employee productivity, job satisfaction, and training needs.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -27324,7 +31717,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -27333,7 +31725,6 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
@@ -27344,7 +31735,6 @@ export const customizedPolicy = {
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 3
                   },
                   {
@@ -27384,19 +31774,10 @@ export const customizedPolicy = {
                             "children": [
                               {
                                 "detail": 0,
-                                "format": 1,
-                                "mode": "normal",
-                                "style": "",
-                                "text": "●",
-                                "type": "text",
-                                "version": 1
-                              },
-                              {
-                                "detail": 0,
                                 "format": 0,
                                 "mode": "normal",
                                 "style": "",
-                                "text": " Set up care coordination processes that improve communication between caregivers, healthcare providers, and patients to enhance patient outcomes.",
+                                "text": "Set up care coordination processes that improve communication between caregivers, healthcare providers, and patients to enhance patient outcomes.",
                                 "type": "text",
                                 "version": 1
                               }
@@ -27406,7 +31787,6 @@ export const customizedPolicy = {
                             "indent": 1,
                             "type": "listitem",
                             "version": 1,
-                            "textFormat": 1,
                             "value": 1
                           }
                         ],
@@ -27415,18 +31795,16 @@ export const customizedPolicy = {
                         "indent": 0,
                         "type": "list",
                         "version": 1,
-                        "textFormat": 1,
                         "listType": "bullet",
                         "start": 1,
                         "tag": "ul"
                       }
                     ],
-                    "direction": null,
+                    "direction": "ltr",
                     "format": "left",
                     "indent": 0,
                     "type": "listitem",
                     "version": 1,
-                    "textFormat": 1,
                     "value": 4
                   }
                 ],
@@ -27435,14 +31813,13 @@ export const customizedPolicy = {
                 "indent": 0,
                 "type": "list",
                 "version": 1,
-                "textFormat": 1,
                 "listType": "bullet",
                 "start": 1,
                 "tag": "ul"
               },
               {
                 "children": [],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -27459,7 +31836,7 @@ export const customizedPolicy = {
                     "version": 1
                   }
                 ],
-                "direction": null,
+                "direction": "ltr",
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -27474,7 +31851,7 @@ export const customizedPolicy = {
             "type": "root",
             "version": 1,
             "textFormat": 1,
-            "textStyle": "font-size: 18px;"
+            "textStyle": "font-size: 25px;"
           }
         }),
         'assigned_to': 'Client',
@@ -28503,7 +32880,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -28614,7 +32991,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -28724,7 +33101,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -28834,7 +33211,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -28944,7 +33321,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29054,7 +33431,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29165,7 +33542,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29276,7 +33653,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29386,7 +33763,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29496,7 +33873,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29606,7 +33983,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29717,7 +34094,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29828,7 +34205,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -29939,7 +34316,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30050,7 +34427,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30160,7 +34537,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30270,7 +34647,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30380,7 +34757,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30490,7 +34867,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30600,7 +34977,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30711,7 +35088,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30822,7 +35199,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -30932,7 +35309,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31042,7 +35419,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31152,7 +35529,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31263,7 +35640,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31374,7 +35751,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31484,7 +35861,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31595,7 +35972,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31706,7 +36083,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31816,7 +36193,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -31927,7 +36304,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32038,7 +36415,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32148,7 +36525,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32258,7 +36635,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32368,7 +36745,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32479,7 +36856,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32590,7 +36967,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32700,7 +37077,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32810,7 +37187,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -32921,7 +37298,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33032,7 +37409,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33143,7 +37520,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33254,7 +37631,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33364,7 +37741,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33474,7 +37851,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33584,7 +37961,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33695,7 +38072,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33784,7 +38161,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -33894,7 +38271,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34004,7 +38381,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34115,7 +38492,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34204,7 +38581,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34314,7 +38691,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34424,7 +38801,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34536,7 +38913,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34647,7 +39024,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34758,7 +39135,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34869,7 +39246,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -34981,7 +39358,7 @@ export const expansionFranchiseService = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -35070,7 +39447,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -35181,7 +39558,7 @@ export const expansionFranchiseService = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -35421,7 +39798,12 @@ export const expansionFranchiseService = {
             "type": "root",
             "version": 1
           }
-        }),
+        }
+
+
+
+
+),
         'assigned_to': 'Client',
         'order': 2,
         'attachments': [
@@ -42072,6 +46454,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42111,17 +46503,97 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
+                    "text": "● START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -42137,11 +46609,21 @@ export const expansionFranchiseService = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                    "text": "● MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -42157,11 +46639,21 @@ export const expansionFranchiseService = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "text": "● CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -42177,11 +46669,21 @@ export const expansionFranchiseService = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                    "text": "● COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -42197,7 +46699,7 @@ export const expansionFranchiseService = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                    "text": "● PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
                     "type": "text",
                     "version": 1
                   }
@@ -42211,37 +46713,7 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "● [ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "paragraph",
-                "version": 1,
-                "textFormat": 0,
-                "textStyle": ""
-              },
-              {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "● [ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -42262,6 +46734,16 @@ export const expansionFranchiseService = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -42310,6 +46792,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42322,6 +46814,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42350,6 +46852,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42362,6 +46874,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42390,6 +46912,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42402,6 +46934,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42449,6 +46991,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42461,6 +47013,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42549,6 +47111,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42561,6 +47133,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42589,6 +47171,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42609,6 +47201,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42621,6 +47223,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42668,6 +47280,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42688,6 +47310,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42700,6 +47332,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42747,6 +47389,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42759,6 +47411,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42787,6 +47449,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42798,6 +47470,16 @@ export const expansionFranchiseService = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -42846,6 +47528,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42858,6 +47550,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42886,6 +47588,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42898,6 +47610,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -42945,6 +47667,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42965,6 +47697,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -42977,6 +47719,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -43024,6 +47776,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -43044,6 +47806,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -43056,6 +47828,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -43104,6 +47886,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -43135,6 +47927,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -43182,6 +47984,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -43199,6 +48011,16 @@ export const expansionFranchiseService = {
                 "type": "heading",
                 "version": 1,
                 "tag": "h2"
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
                 "children": [
@@ -43221,6 +48043,16 @@ export const expansionFranchiseService = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -43233,6 +48065,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -43273,6 +48115,16 @@ export const expansionFranchiseService = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -43344,8 +48196,7 @@ export const expansionFranchiseService = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -49307,7 +54158,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -49418,7 +54269,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -49528,7 +54379,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -49638,7 +54489,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -49748,7 +54599,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -49858,7 +54709,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -49969,7 +54820,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50080,7 +54931,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50190,7 +55041,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50300,7 +55151,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50410,7 +55261,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50521,7 +55372,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50632,7 +55483,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50743,7 +55594,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50854,7 +55705,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -50964,7 +55815,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51074,7 +55925,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51184,7 +56035,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51294,7 +56145,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51404,7 +56255,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51515,7 +56366,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51626,7 +56477,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51736,7 +56587,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51846,7 +56697,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -51956,7 +56807,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52067,7 +56918,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52178,7 +57029,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52288,7 +57139,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52399,7 +57250,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52510,7 +57361,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52620,7 +57471,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52731,7 +57582,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52842,7 +57693,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -52952,7 +57803,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53062,7 +57913,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53172,7 +58023,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53283,7 +58134,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53394,7 +58245,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53504,7 +58355,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53614,7 +58465,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53725,7 +58576,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53836,7 +58687,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -53947,7 +58798,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54058,7 +58909,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54168,7 +59019,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54278,7 +59129,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54388,7 +59239,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54499,7 +59350,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54588,7 +59439,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54698,7 +59549,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54808,7 +59659,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -54919,7 +59770,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55008,7 +59859,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55118,7 +59969,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55228,7 +60079,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55340,7 +60191,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55451,7 +60302,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55562,7 +60413,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55673,7 +60524,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55785,7 +60636,7 @@ export const NEMT = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55874,7 +60725,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -55985,7 +60836,7 @@ export const NEMT = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -56225,7 +61076,12 @@ export const NEMT = {
             "type": "root",
             "version": 1
           }
-        }),
+        }
+
+
+
+
+        ),
         'assigned_to': 'Client',
         'order': 2,
         'attachments': [
@@ -59759,6 +64615,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -59798,13 +64664,23 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
+                    "text": "● START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
                     "type": "text",
                     "version": 1
                   }
@@ -59824,11 +64700,51 @@ export const NEMT = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                    "text": "● PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -59844,11 +64760,21 @@ export const NEMT = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "text": "● MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -59864,11 +64790,21 @@ export const NEMT = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                    "text": "● CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
                     "type": "text",
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -59884,12 +64820,22 @@ export const NEMT = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                    "text": "● COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -59904,7 +64850,7 @@ export const NEMT = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+                    "text": "● PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
                     "type": "text",
                     "version": 1
                   }
@@ -59918,17 +64864,7 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "● [ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -59949,6 +64885,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -59997,6 +64943,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60008,6 +64964,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60037,6 +65003,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60048,6 +65024,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60077,6 +65063,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60088,6 +65084,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60136,6 +65142,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60147,6 +65163,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60236,6 +65262,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60248,6 +65284,16 @@ export const NEMT = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 1,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -60267,6 +65313,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60296,6 +65352,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60307,6 +65373,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60355,6 +65431,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60375,6 +65461,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60386,6 +65482,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60434,6 +65540,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60445,6 +65561,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60494,6 +65620,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60533,6 +65669,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60545,6 +65691,16 @@ export const NEMT = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -60573,6 +65729,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60584,6 +65750,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60632,6 +65808,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60652,6 +65838,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60663,6 +65859,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60711,6 +65917,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60731,6 +65947,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60742,6 +65968,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60791,6 +66027,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60822,6 +66068,16 @@ export const NEMT = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -60869,6 +66125,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60886,6 +66152,16 @@ export const NEMT = {
                 "type": "heading",
                 "version": 1,
                 "tag": "h2"
+              },
+              {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
               },
               {
                 "children": [
@@ -60908,6 +66184,16 @@ export const NEMT = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -60919,6 +66205,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -60959,6 +66255,16 @@ export const NEMT = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -61031,8 +66337,7 @@ export const NEMT = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -62000,7 +67305,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62111,7 +67416,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62221,7 +67526,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62331,7 +67636,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62441,7 +67746,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62551,7 +67856,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62662,7 +67967,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62773,7 +68078,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62883,7 +68188,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -62993,7 +68298,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63103,7 +68408,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63214,7 +68519,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63325,7 +68630,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63436,7 +68741,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63547,7 +68852,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63657,7 +68962,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63767,7 +69072,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63877,7 +69182,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -63987,7 +69292,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64097,7 +69402,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64208,7 +69513,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64319,7 +69624,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64429,7 +69734,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64539,7 +69844,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64649,7 +69954,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64760,7 +70065,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64871,7 +70176,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -64981,7 +70286,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65092,7 +70397,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65203,7 +70508,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65313,7 +70618,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65424,7 +70729,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65535,7 +70840,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65645,7 +70950,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65755,7 +71060,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65865,7 +71170,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -65976,7 +71281,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66087,7 +71392,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66197,7 +71502,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66307,7 +71612,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66418,7 +71723,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66529,7 +71834,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66640,7 +71945,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66751,7 +72056,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66861,7 +72166,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -66971,7 +72276,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67081,7 +72386,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67192,7 +72497,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67281,7 +72586,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67391,7 +72696,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67501,7 +72806,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67612,7 +72917,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67701,7 +73006,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67811,7 +73116,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -67921,7 +73226,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -68033,7 +73338,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -68144,7 +73449,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -68255,7 +73560,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -68366,7 +73671,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -68478,7 +73783,7 @@ export const ProviderEnrollment = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -68567,7 +73872,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -68678,7 +73983,7 @@ export const ProviderEnrollment = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -72610,6 +77915,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -72649,18 +77964,8 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
-                "children": [
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "normal",
-                    "style": "",
-                    "text": "● [ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
-                    "type": "text",
-                    "version": 1
-                  }
-                ],
-                "direction": "ltr",
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72675,12 +77980,22 @@ export const ProviderEnrollment = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                    "text": "● START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72695,12 +78010,22 @@ export const ProviderEnrollment = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "text": "● PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72715,12 +78040,22 @@ export const ProviderEnrollment = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                    "text": "● STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72735,12 +78070,22 @@ export const ProviderEnrollment = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                    "text": "● MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72755,12 +78100,22 @@ export const ProviderEnrollment = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+                    "text": "● CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72775,12 +78130,52 @@ export const ProviderEnrollment = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                    "text": "● COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "● PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72800,6 +78195,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -72848,6 +78253,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -72860,6 +78275,16 @@ export const ProviderEnrollment = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72888,6 +78313,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -72900,6 +78335,16 @@ export const ProviderEnrollment = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -72928,6 +78373,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -72939,6 +78394,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -72987,6 +78452,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -72998,6 +78473,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73087,6 +78572,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73103,7 +78598,7 @@ export const ProviderEnrollment = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -73118,6 +78613,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73147,6 +78652,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73158,6 +78673,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73206,6 +78731,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73226,6 +78761,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73237,6 +78782,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73285,6 +78840,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73296,6 +78861,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73345,6 +78920,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73384,6 +78969,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73395,6 +78990,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73424,6 +79029,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73435,6 +79050,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73483,6 +79108,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73503,6 +79138,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73514,6 +79159,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73562,6 +79217,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73582,6 +79247,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73594,6 +79269,16 @@ export const ProviderEnrollment = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -73642,6 +79327,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73673,6 +79368,16 @@ export const ProviderEnrollment = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -73720,6 +79425,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73759,6 +79474,16 @@ export const ProviderEnrollment = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -73770,6 +79495,16 @@ export const ProviderEnrollment = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -73811,6 +79546,16 @@ export const ProviderEnrollment = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -73882,8 +79627,7 @@ export const ProviderEnrollment = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',
@@ -79797,7 +85541,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -79908,7 +85652,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80018,7 +85762,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80128,7 +85872,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80238,7 +85982,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80348,7 +86092,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80459,7 +86203,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80570,7 +86314,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80680,7 +86424,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80790,7 +86534,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -80900,7 +86644,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81011,7 +86755,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81122,7 +86866,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81233,7 +86977,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81344,7 +87088,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81454,7 +87198,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81564,7 +87308,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81674,7 +87418,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81784,7 +87528,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -81894,7 +87638,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82005,7 +87749,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82116,7 +87860,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82226,7 +87970,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82336,7 +88080,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82446,7 +88190,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82557,7 +88301,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82668,7 +88412,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82778,7 +88522,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -82889,7 +88633,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83000,7 +88744,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83110,7 +88854,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83221,7 +88965,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83332,7 +89076,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83442,7 +89186,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83552,7 +89296,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83662,7 +89406,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83773,7 +89517,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83884,7 +89628,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -83994,7 +89738,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84104,7 +89848,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84215,7 +89959,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84326,7 +90070,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84437,7 +90181,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84548,7 +90292,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84658,7 +90402,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84768,7 +90512,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84878,7 +90622,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -84989,7 +90733,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85078,7 +90822,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85188,7 +90932,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85298,7 +91042,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85409,7 +91153,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85498,7 +91242,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85608,7 +91352,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85718,7 +91462,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85830,7 +91574,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -85941,7 +91685,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -86052,7 +91796,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -86163,7 +91907,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -86275,7 +92019,7 @@ export const StartUPAssistance = {
                         "textFormat": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -86364,7 +92108,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -86475,7 +92219,7 @@ export const StartUPAssistance = {
                         "version": 1,
                         "backgroundColor": null,
                         "colSpan": 1,
-                        "headerState": 2,
+                        "headerState": 0,
                         "rowSpan": 1
                       },
                       {
@@ -86715,7 +92459,12 @@ export const StartUPAssistance = {
             "type": "root",
             "version": 1
           }
-        }),
+        }
+
+
+
+
+),
         'assigned_to': 'Client',
         'order': 2,
         'attachments': [
@@ -90769,6 +96518,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -90814,7 +96573,7 @@ export const StartUPAssistance = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
+                    "text": "● START UP ASSISTANCE: Comprehensive Assistance with New Program Set Up",
                     "type": "text",
                     "version": 1
                   }
@@ -90834,7 +96593,7 @@ export const StartUPAssistance = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
+                    "text": "● PROVIDER ENROLLMENT & CREDENTIALING: Enrolling/credentialing an already licensed or approved provider with insurance payers like Medicaid or Medicare; and other insurance companies including MCOs",
                     "type": "text",
                     "version": 1
                   }
@@ -90854,7 +96613,7 @@ export const StartUPAssistance = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
+                    "text": "● STAFF TRAINING: Training & Professional Development Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
@@ -90874,7 +96633,7 @@ export const StartUPAssistance = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
+                    "text": "● MARKETING & BRANDING: Marketing & Branding Service for Medicaid Waiver Providers",
                     "type": "text",
                     "version": 1
                   }
@@ -90894,7 +96653,7 @@ export const StartUPAssistance = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
+                    "text": "● CUSTOMIZED POLICY & PROCEDURE MANUAL (Standalone Service): Tailored Policies & Procedures to obtain state business license and pass accreditation and/or site audits",
                     "type": "text",
                     "version": 1
                   }
@@ -90914,7 +96673,7 @@ export const StartUPAssistance = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
+                    "text": "● COMPLIANCE ADVISORY: Technical regulatory support to owners, managers, and agencies in navigating the complex regulatory landscape",
                     "type": "text",
                     "version": 1
                   }
@@ -90934,12 +96693,22 @@ export const StartUPAssistance = {
                     "format": 0,
                     "mode": "normal",
                     "style": "",
-                    "text": "● [ ] PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
+                    "text": "● PROGRAM DEVELOPMENT: Expanding and optimizing an existing program/service covering licensing, credentialing, policies, branding, regulatory guidance, and enrollment",
                     "type": "text",
                     "version": 1
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -90959,6 +96728,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91007,6 +96786,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91018,6 +96807,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91047,6 +96846,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91058,6 +96867,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91087,6 +96906,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91098,6 +96927,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91146,6 +96985,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91157,6 +97006,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91246,6 +97105,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91262,7 +97131,7 @@ export const StartUPAssistance = {
                 "indent": 0,
                 "type": "paragraph",
                 "version": 1,
-                "textFormat": 0,
+                "textFormat": 1,
                 "textStyle": ""
               },
               {
@@ -91277,6 +97146,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91306,6 +97185,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91317,6 +97206,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91365,6 +97264,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91385,6 +97294,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91396,6 +97315,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91444,6 +97373,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91455,6 +97394,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91504,6 +97453,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91543,6 +97502,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91554,6 +97523,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91583,6 +97562,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91594,6 +97583,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91642,6 +97641,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91662,6 +97671,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91673,6 +97692,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91721,6 +97750,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91741,6 +97780,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91752,6 +97801,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91801,6 +97860,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91832,6 +97901,16 @@ export const StartUPAssistance = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -91879,6 +97958,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": null,
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91895,6 +97984,7 @@ export const StartUPAssistance = {
                 "indent": 0,
                 "type": "heading",
                 "version": 1,
+                "textFormat": 1,
                 "tag": "h2"
               },
               {
@@ -91918,6 +98008,16 @@ export const StartUPAssistance = {
                 "textStyle": ""
               },
               {
+                "children": [],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
                 "children": [
                   {
                     "detail": 0,
@@ -91929,6 +98029,16 @@ export const StartUPAssistance = {
                     "version": 1
                   }
                 ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
                 "direction": "ltr",
                 "format": "",
                 "indent": 0,
@@ -91970,6 +98080,16 @@ export const StartUPAssistance = {
                   }
                 ],
                 "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1,
+                "textFormat": 0,
+                "textStyle": ""
+              },
+              {
+                "children": [],
+                "direction": null,
                 "format": "",
                 "indent": 0,
                 "type": "paragraph",
@@ -92041,8 +98161,7 @@ export const StartUPAssistance = {
             "format": "",
             "indent": 0,
             "type": "root",
-            "version": 1,
-            "textFormat": 1
+            "version": 1
           }
         }),
         'assigned_to': 'Client',

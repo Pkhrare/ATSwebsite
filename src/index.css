@@ -132,3 +132,13 @@
   color: #f9a8d4 !important; /* Tailwind pink-300 */
 }
 
+/* Ensure images in rich text content are always responsive */
+.prose img,
+[data-lexical-editor] img,
+.rich-text-content img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 8px 0 !important;
+}
+

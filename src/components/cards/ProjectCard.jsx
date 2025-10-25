@@ -114,6 +114,12 @@ const TrashIcon = () => (
     </svg>
 );
 
+const DeleteIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+    </svg>
+);
+
 const ReadReceipt = ({ isRead }) => (
     <div className={`relative w-5 h-5 ml-1 inline-block ${isRead ? 'text-blue-400' : 'text-slate-400'}`}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 absolute" style={{ right: '6px' }}>
@@ -126,7 +132,7 @@ const ReadReceipt = ({ isRead }) => (
 );
 
 // --- Main Card Component ---
-export default function Card({ data, onClose, onProjectUpdate }) {
+export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, onProjectOperationChange }) {
     const { userRole, currentUser } = useAuth();
     const [projectData, setProjectData] = useState(data);
     const [copied, setCopied] = useState(false);
@@ -149,6 +155,32 @@ export default function Card({ data, onClose, onProjectUpdate }) {
     const notesEditorRef = useRef(null); // For the editor INSTANCE
     const [notesContent, setNotesContent] = useState(null); // For the editor CONTENT
     const [isEditingDetails, setIsEditingDetails] = useState(false);
+    const isDeactivated = projectData.fields['Operation'] === 'Deactivated';
+
+    // Generate colors for task group titles
+    const getGroupTitleColor = (index) => {
+        const colors = [
+            'text-blue-600',      // Blue
+            'text-green-600',     // Green
+            'text-purple-600',    // Purple
+            'text-orange-600',    // Orange
+            'text-pink-600',      // Pink
+            'text-indigo-600',    // Indigo
+            'text-yellow-600',    // Yellow
+            'text-red-600',       // Red
+        ];
+        return colors[index % colors.length];
+    };
+
+    // Get initials from assignee name
+    const getAssigneeInitials = (assigneeName) => {
+        if (!assigneeName) return '?';
+        const names = assigneeName.trim().split(' ');
+        if (names.length === 1) {
+            return names[0].substring(0, 2).toUpperCase();
+        }
+        return (names[0][0] + names[names.length - 1][0]).toUpperCase();
+    };
     const [editedDetails, setEditedDetails] = useState({});
     const [isAddCollaboratorVisible, setIsAddCollaboratorVisible] = useState(false);
     const [isEditingStatus, setIsEditingStatus] = useState(false);
@@ -1160,6 +1192,77 @@ export default function Card({ data, onClose, onProjectUpdate }) {
         }
     };
 
+    const handleDeleteProject = async () => {
+        const projectName = projectData.fields['Project Name'];
+        const projectId = projectData.fields['Project ID'];
+        
+        if (window.confirm(`Are you sure you want to delete the project "${projectName}" (${projectId})? This action cannot be undone.`)) {
+            try {
+                await apiFetch('/records/projects', {
+                    method: 'DELETE',
+                    body: JSON.stringify({ recordIds: [projectData.id] })
+                });
+                
+                // Notify parent component about the deletion
+                if (onProjectDelete) {
+                    onProjectDelete(projectData.id);
+                }
+                
+                // Close the project card and navigate back to projects page
+                onClose();
+                
+                // Show success message
+                alert(`Project "${projectName}" has been successfully deleted.`);
+                
+            } catch (error) {
+                console.error("Failed to delete project:", error);
+                alert("There was an error deleting the project. Please try again.");
+            }
+        }
+    };
+
+    const handleOperationChange = async (newOperation) => {
+        const projectName = projectData.fields['Project Name'];
+        const projectId = projectData.fields['Project ID'];
+        const action = newOperation === 'Deactivated' ? 'deactivate' : 'reactivate';
+        
+        if (window.confirm(`Are you sure you want to ${action} the project "${projectName}" (${projectId})?`)) {
+            try {
+                await apiFetch('/records', {
+                    method: 'PATCH',
+                    body: JSON.stringify({ 
+                        recordsToUpdate: [{ 
+                            id: projectData.id, 
+                            fields: { 'Operation': newOperation } 
+                        }],
+                        tableName: 'projects'
+                    })
+                });
+                
+                // Update local state
+                setProjectData(prev => ({
+                    ...prev,
+                    fields: { ...prev.fields, 'Operation': newOperation }
+                }));
+                
+                // Notify parent component about the operation change
+                if (onProjectOperationChange) {
+                    onProjectOperationChange(projectData.id, newOperation);
+                }
+                
+                // Close the project card and navigate back to projects page
+                onClose();
+                
+                // Show success message
+                alert(`Project "${projectName}" has been successfully ${action}d.`);
+                
+            } catch (error) {
+                console.error(`Failed to ${action} project:`, error);
+                alert(`There was an error ${action}ing the project. Please try again.`);
+            }
+        }
+    };
+
     // Debounced AI request handler
     const debouncedAIRequest = useCallback(
         debounce(async (projectId, message, sender) => {
@@ -1361,10 +1464,53 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                     <span className="hidden sm:inline">Back</span>
                 </button>
                 <div className="text-center">
+                    <div className="flex items-center justify-center gap-3">
                     <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
+                        {isDeactivated && (
+                            <span className="px-2 py-1 text-xs font-medium bg-gray-500 text-white rounded-full">
+                                DEACTIVATED
+                            </span>
+                        )}
+                    </div>
                     <p className={`text-xs ${colorClasses.text.secondary} font-mono`}>ID: {projectData.fields['Project ID']}</p>
                 </div>
-                <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
+                <div className="flex items-center gap-2">
+                    {userRole === 'consultant' && (
+                        <>
+                            {projectData.fields['Operation'] === 'Active' || !projectData.fields['Operation'] ? (
+                                <button 
+                                    onClick={() => handleOperationChange('Deactivated')} 
+                                    className={`flex items-center gap-2 ${colorClasses.button.accent} px-4 py-2 rounded-lg shadow-sm transition-all duration-200 hover:bg-gray-600`} 
+                                    aria-label="Deactivate Project"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728" />
+                                    </svg>
+                                    <span className="hidden sm:inline">Deactivate</span>
+                                </button>
+                            ) : (
+                                <button 
+                                    onClick={() => handleOperationChange('Active')} 
+                                    className={`flex items-center gap-2 ${colorClasses.button.success} px-4 py-2 rounded-lg shadow-sm transition-all duration-200 hover:bg-emerald-600`} 
+                                    aria-label="Reactivate Project"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                    </svg>
+                                    <span className="hidden sm:inline">Reactivate</span>
+                                </button>
+                            )}
+                            <button 
+                                onClick={handleDeleteProject} 
+                                className={`flex items-center gap-2 ${colorClasses.button.danger} px-4 py-2 rounded-lg shadow-sm transition-all duration-200 hover:bg-red-600`} 
+                                aria-label="Delete Project"
+                            >
+                                <DeleteIcon />
+                                <span className="hidden sm:inline">Delete</span>
+                            </button>
+                        </>
+                    )}
+                </div>
             </header>
 
             <div className="flex flex-1 overflow-hidden">
@@ -1384,16 +1530,18 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                         <button onClick={handleSaveDetails} className={`px-4 py-2 ${colorClasses.button.success} rounded-md text-sm font-medium`}>Save</button>
                                     </div>
                                 ) : (
+                                    !isDeactivated && (
                                     <button onClick={() => setIsEditingDetails(true)} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
                                     </button>
+                                    )
                                 )}
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                                 {/* Assigned Consultant */}
                                 <div>
                                     <span className={`font-medium ${colorClasses.form.label}`}>Assigned Consultant:</span>
-                                    {isEditingDetails ? (
+                                    {isEditingDetails && !isDeactivated ? (
                                         <select value={editedDetails['Assigned Consultant'] || ''} onChange={(e) => handleDetailChange('Assigned Consultant', e.target.value)} className={`w-full mt-1 p-2 ${colorClasses.form.input} rounded-md`}>
                                             {dropdownFields['Assigned Consultant'].map(c => <option key={c} value={c}>{c}</option>)}
                                         </select>
@@ -1404,7 +1552,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                 {/* Project Manager */}
                                 <div>
                                     <span className={`font-medium ${colorClasses.form.label}`}>Project Manager:</span>
-                                    {isEditingDetails ? (
+                                    {isEditingDetails && !isDeactivated ? (
                                         <select value={editedDetails['Project Manager'] || ''} onChange={(e) => handleDetailChange('Project Manager', e.target.value)} className={`w-full mt-1 p-2 ${colorClasses.form.input} rounded-md`}>
                                             {dropdownFields['Project Manager'].map(c => <option key={c} value={c}>{c}</option>)}
                                         </select>
@@ -1500,7 +1648,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                         <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
                             <div className="flex justify-between items-center mb-2">
                                 <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📝 Notes</h2>
-                                {userRole !== 'client' && !isEditingNotes && (
+                                {userRole !== 'client' && !isEditingNotes && !isDeactivated && (
                                     <button onClick={() => {
                                         // Save the current state before entering edit mode
                                         if (notesEditorRef.current) {
@@ -1512,7 +1660,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                     </button>
                                 )}
                             </div>
-                            {isEditingNotes && userRole !== 'client' ? (
+                            {isEditingNotes && userRole !== 'client' && !isDeactivated ? (
                                 <div className="space-y-3">
                                     <RichTextEditor
                                         isEditable={true}
@@ -1578,7 +1726,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                     <Draggable key={group.id} draggableId={group.id} index={index}>
                                                         {(provided) => (
                                                             <div ref={provided.innerRef} {...provided.draggableProps}>
-                                                                <div className="p-2 rounded-lg bg-slate-100 border border-slate-200 group relative">
+                                                                <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 group relative">
                                                                     <div {...provided.dragHandleProps} className="flex justify-between items-center p-2 cursor-grab">
                                                                         {editingGroupId === group.id ? (
                                                                             <input
@@ -1596,7 +1744,7 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                                             />
                                                                         ) : (
                                                                             <h4
-                                                                                className="font-bold text-slate-700"
+                                                                                className={`font-bold ${getGroupTitleColor(index)}`}
                                                                                 onClick={() => {
                                                                                     setEditingGroupId(group.id);
                                                                                     setEditingGroupName(group.name);
@@ -1626,7 +1774,15 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                                                             >
                                                                                                 <div className="flex justify-between items-center">
                                                                                                     <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                                                    {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                                                    {task.fields.task_status === 'Completed' ? (
+                                                                                                        <CompletedIcon />
+                                                                                                    ) : (
+                                                                                                        <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
+                                                                                                            <span className="text-xs font-medium text-slate-600">
+                                                                                                                {getAssigneeInitials(task.fields.assigned_to)}
+                                                                                                            </span>
+                                                                                                        </div>
+                                                                                                    )}
                                                                                                 </div>
                                                                                                 <div className="flex justify-end items-center mt-2">
                                                                                                     <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
@@ -1664,7 +1820,15 @@ export default function Card({ data, onClose, onProjectUpdate }) {
                                                                 >
                                                                     <div className="flex justify-between items-center">
                                                                         <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                        {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                        {task.fields.task_status === 'Completed' ? (
+                                                                            <CompletedIcon />
+                                                                        ) : (
+                                                                            <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
+                                                                                <span className="text-xs font-medium text-slate-600">
+                                                                                    {getAssigneeInitials(task.fields.assigned_to)}
+                                                                                </span>
+                                                                            </div>
+                                                                        )}
                                                                     </div>
                                                                     <div className="flex justify-end items-center mt-2">
                                                                         <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>

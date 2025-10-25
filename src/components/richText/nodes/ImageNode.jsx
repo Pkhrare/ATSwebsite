@@ -17,17 +17,16 @@ const ImageComponent = ({ src, altText, width, height, href }) => {
         <img 
             src={src} 
             alt={altText} 
-            width={width} 
-            height={height} 
-            className={`inline rounded-md shadow-sm max-w-full h-auto ${
+            className={`block rounded-md shadow-sm w-full h-auto ${
                 href ? 'cursor-pointer hover:opacity-90 transition-opacity duration-200' : 'cursor-default'
             }`}
             onClick={handleImageClick}
             draggable={false}
             style={{
-                margin: '0 4px', // Restore normal horizontal margin
+                margin: '8px 0', // Vertical margin for better spacing
                 verticalAlign: 'middle',
-                display: 'inline'
+                display: 'block',
+                maxWidth: '100%'
             }}
         />
     );
@@ -38,7 +37,7 @@ const ImageComponent = ({ src, altText, width, height, href }) => {
                 href={href} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-block"
+                className="block"
                 onClick={handleImageClick}
             >
                 {imageElement}

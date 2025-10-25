@@ -19,6 +19,7 @@ export const colorClasses = {
     accent: "bg-gray-500 hover:bg-gray-600 text-white border border-gray-500",
     danger: "bg-red-500 hover:bg-red-600 text-white border border-red-500",
     success: "bg-emerald-500 hover:bg-emerald-600 text-white border border-emerald-500",
+    neutral: "bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-300",
   },
   
   // Card classes
