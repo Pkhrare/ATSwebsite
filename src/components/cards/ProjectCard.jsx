@@ -172,6 +172,24 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
         return colors[index % colors.length];
     };
 
+    // Get section background color
+    const getSectionColor = (sectionName) => {
+        const sectionColors = {
+            'Project Details': 'bg-blue-100',
+            'Notes': 'bg-yellow-100',
+            'Tasks': 'bg-green-100',
+            'Documents': 'bg-purple-100',
+            'Activities': 'bg-orange-100',
+            'Project Status': 'bg-indigo-100',
+            'Key Dates': 'bg-pink-100',
+            'General Discussion': 'bg-cyan-100',
+            'Actions': 'bg-amber-100',
+            'Collaborators': 'bg-slate-100',
+            'About Us': 'bg-teal-100'
+        };
+        return sectionColors[sectionName] || 'bg-white';
+    };
+
     // Get initials from assignee name
     const getAssigneeInitials = (assigneeName) => {
         if (!assigneeName) return '?';
@@ -422,8 +440,50 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
         projectSocketRef.current.on('connect', () => {
             console.log('Connected to project socket server');
             if (projectData?.id) {
+                console.log(`Joining project room: ${projectData.id}`);
                 projectSocketRef.current.emit('joinProjectRoom', projectData.id);
             }
+        });
+
+        // Always try to join the room when component mounts or project data changes
+        const joinRoom = () => {
+            if (projectData?.id && projectSocketRef.current) {
+                console.log(`Joining project room: ${projectData.id}`);
+                projectSocketRef.current.emit('joinProjectRoom', projectData.id);
+            }
+        };
+
+        // Join room immediately if already connected
+        if (projectSocketRef.current.connected) {
+            joinRoom();
+        }
+
+        // Also join room when project data changes
+        joinRoom();
+
+        // Set up a retry mechanism for room joining
+        const retryJoinRoom = () => {
+            if (projectData?.id && projectSocketRef.current?.connected) {
+                joinRoom();
+            }
+        };
+
+        // Retry joining room every 2 seconds until successful
+        const joinRoomInterval = setInterval(retryJoinRoom, 2000);
+
+        // Clear interval after 10 seconds (should be enough time)
+        setTimeout(() => {
+            clearInterval(joinRoomInterval);
+        }, 10000);
+
+        projectSocketRef.current.on('joinedProjectRoom', (data) => {
+            console.log('Successfully joined project room:', data);
+        });
+
+        // Test real-time connection
+        projectSocketRef.current.on('testRealtimeResponse', (data) => {
+            console.log('Real-time test response:', data);
+            alert('Real-time connection is working!');
         });
 
         projectSocketRef.current.on('receiveProjectMessage', (message) => {
@@ -493,7 +553,170 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
             alert(`AI Error: ${data.error}`);
         });
 
+        // ===================================
+        // REAL-TIME UPDATE LISTENERS
+        // ===================================
+
+        // Project Details Update Listener
+        projectSocketRef.current.on('projectUpdated', (data) => {
+            console.log('Project updated received:', data);
+            console.log('Current project ID:', projectData.id);
+            if (data.projectId === projectData.id) {
+                console.log('Updating local project data with:', data.data);
+                // Update local project data
+                setProjectData(prevData => ({
+                    ...prevData,
+                    fields: { ...prevData.fields, ...data.data }
+                }));
+                
+                // Notify parent component
+                if (onProjectUpdate) {
+                    onProjectUpdate({
+                        ...projectData,
+                        fields: { ...projectData.fields, ...data.data }
+                    });
+                }
+            } else {
+                console.log('Project ID mismatch - ignoring update');
+            }
+        });
+
+        // Task Update Listener
+        projectSocketRef.current.on('taskUpdated', (data) => {
+            console.log('Task updated:', data);
+            if (data.projectId === projectData.id) {
+                // Refresh tasks to get updated data
+                fetchTasksForProject();
+                
+                // If a specific task is being viewed, refresh its data
+                if (data.taskId && selectedTask && selectedTask.id === data.taskId) {
+                    console.log('Refreshing selected task data due to real-time update');
+                    // Update the selected task with the new data
+                    setSelectedTask(prevTask => ({
+                        ...prevTask,
+                        fields: { ...prevTask.fields, ...data.data }
+                    }));
+                }
+            }
+        });
+
+        // Activity Update Listener
+        projectSocketRef.current.on('activityUpdated', (data) => {
+            console.log('Activity updated received:', data);
+            console.log('Current project ID:', projectData.id);
+            if (data.projectId === projectData.id) {
+                console.log('Refreshing activities due to real-time update');
+                // Refresh activities to get updated data
+                fetchAndProcessActivities();
+            } else {
+                console.log('Project ID mismatch - ignoring activity update');
+            }
+        });
+
+        // Document Upload Listener
+        projectSocketRef.current.on('documentAdded', (data) => {
+            console.log('Document added:', data);
+            if (data.projectId === projectData.id) {
+                // Update local documents list
+                setProjectData(prevData => ({
+                    ...prevData,
+                    fields: {
+                        ...prevData.fields,
+                        Documents: [...(prevData.fields.Documents || []), data.document]
+                    }
+                }));
+                
+                // Notify parent component
+                if (onProjectUpdate) {
+                    onProjectUpdate({
+                        ...projectData,
+                        fields: {
+                            ...projectData.fields,
+                            Documents: [...(projectData.fields.Documents || []), data.document]
+                        }
+                    });
+                }
+            }
+        });
+
+        // Collaborator Change Listener
+        projectSocketRef.current.on('collaboratorUpdated', (data) => {
+            console.log('Collaborator updated:', data);
+            if (data.projectId === projectData.id) {
+                // Refresh project data to get updated collaborators
+                const refreshProjectData = async () => {
+                    try {
+                        const refreshedData = await apiFetch(`/records/projects/${projectData.id}`);
+                        setProjectData(refreshedData);
+                        if (onProjectUpdate) {
+                            onProjectUpdate(refreshedData);
+                        }
+                    } catch (error) {
+                        console.error('Failed to refresh project data:', error);
+                    }
+                };
+                refreshProjectData();
+            }
+        });
+
+        // Notes Update Listener
+        projectSocketRef.current.on('notesUpdated', (data) => {
+            console.log('Notes updated:', data);
+            if (data.projectId === projectData.id) {
+                // Update local notes content
+                setNotesContent(data.content);
+                
+                // Update project data
+                setProjectData(prevData => ({
+                    ...prevData,
+                    fields: { ...prevData.fields, Notes: data.content }
+                }));
+                
+                // Notify parent component
+                if (onProjectUpdate) {
+                    onProjectUpdate({
+                        ...projectData,
+                        fields: { ...projectData.fields, Notes: data.content }
+                    });
+                }
+            }
+        });
+
+        // Error Listeners for Real-Time Updates
+        projectSocketRef.current.on('projectUpdateError', (error) => {
+            console.error('Project update error:', error);
+            alert(`Project Update Error: ${error.error}`);
+        });
+
+        projectSocketRef.current.on('taskUpdateError', (error) => {
+            console.error('Task update error:', error);
+            alert(`Task Update Error: ${error.error}`);
+        });
+
+        projectSocketRef.current.on('activityUpdateError', (error) => {
+            console.error('Activity update error:', error);
+            alert(`Activity Update Error: ${error.error}`);
+        });
+
+        projectSocketRef.current.on('documentUploadError', (error) => {
+            console.error('Document upload error:', error);
+            alert(`Document Upload Error: ${error.error}`);
+        });
+
+        projectSocketRef.current.on('collaboratorChangeError', (error) => {
+            console.error('Collaborator change error:', error);
+            alert(`Collaborator Change Error: ${error.error}`);
+        });
+
+        projectSocketRef.current.on('notesUpdateError', (error) => {
+            console.error('Notes update error:', error);
+            alert(`Notes Update Error: ${error.error}`);
+        });
+
         return () => {
+            // Clear the retry interval
+            clearInterval(joinRoomInterval);
+            
             if (projectData?.id) {
                 projectSocketRef.current.emit('leaveProjectRoom', projectData.id);
             }
@@ -606,6 +829,17 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
             await Promise.all(promises);
             await fetchAndProcessActivities();
 
+            // Emit real-time update to other users
+            if (projectSocketRef.current) {
+                projectSocketRef.current.emit('activityUpdate', {
+                    projectId: projectData.id,
+                    activityId: 'bulk_update',
+                    updateType: 'bulk_update',
+                    data: { recordsToCreate, recordsToUpdate },
+                    userId: currentUser?.id || 'unknown'
+                });
+            }
+
         } catch (error) {
             console.error("Failed to save activities:", error);
             alert("There was an error saving the activities.");
@@ -717,6 +951,15 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
             }
             setIsEditingNotes(false);
 
+            // Emit real-time update to other users
+            if (projectSocketRef.current) {
+                projectSocketRef.current.emit('notesUpdate', {
+                    projectId: projectData.id,
+                    notesContent: contentString,
+                    userId: currentUser?.id || 'unknown'
+                });
+            }
+
         } catch (error) {
             console.error("Failed to update notes:", error);
             alert("There was an error saving the notes.");
@@ -746,6 +989,16 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
             setProjectData(updatedProjectData);
             if (onProjectUpdate) {
                 onProjectUpdate(updatedProjectData);
+            }
+
+            // Emit real-time update to other users
+            if (projectSocketRef.current) {
+                const newDocument = updatedDocuments[updatedDocuments.length - 1]; // Get the newly added document
+                projectSocketRef.current.emit('documentUploaded', {
+                    projectId: projectData.id,
+                    documentData: newDocument,
+                    userId: currentUser?.id || 'unknown'
+                });
             }
 
         } catch (error) {
@@ -887,6 +1140,16 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
             if (onProjectUpdate) {
                 onProjectUpdate(refreshedProjectData);
             }
+
+            // Emit real-time update to other users
+            if (projectSocketRef.current) {
+                projectSocketRef.current.emit('projectUpdate', {
+                    projectId: projectData.id,
+                    updateType: 'details',
+                    data: updatedFields,
+                    userId: currentUser?.id || 'unknown'
+                });
+            }
         } catch (error) {
             console.error('Failed to save details:', error);
             alert('Failed to save project details.');
@@ -968,6 +1231,20 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         method: 'PATCH',
                         body: JSON.stringify({ recordsToUpdate, tableName: 'tasks' })
                     });
+
+                    // Emit real-time update to other users
+                    if (projectSocketRef.current) {
+                        projectSocketRef.current.emit('taskUpdate', {
+                            projectId: projectData.id,
+                            taskId: movedTask.id,
+                            updateType: 'reorder',
+                            data: { 
+                                task_groups: movedTaskUpdate.fields.task_groups,
+                                order: movedTaskUpdate.fields.order || 0
+                            },
+                            userId: currentUser?.id || 'unknown'
+                        });
+                    }
                 }
             } catch (error) {
                 console.error("Failed to update task order/group:", error);
@@ -1049,11 +1326,32 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
         if (onProjectUpdate) {
             onProjectUpdate(updatedProjectData);
         }
+
+        // Emit real-time update to other users
+        if (projectSocketRef.current) {
+            projectSocketRef.current.emit('collaboratorChanged', {
+                projectId: projectData.id,
+                changeType: 'added',
+                collaboratorData: newCollaborator,
+                userId: currentUser?.id || 'unknown'
+            });
+        }
     };
 
     const handleGroupAdded = (newGroup) => {
         // Refresh the tasks to show the new group
         fetchTasksForProject();
+
+        // Emit real-time update to other users
+        if (projectSocketRef.current) {
+            projectSocketRef.current.emit('taskUpdate', {
+                projectId: projectData.id,
+                taskId: newGroup.id,
+                updateType: 'group_created',
+                data: newGroup,
+                userId: currentUser?.id || 'unknown'
+            });
+        }
     };
 
     const handleDeleteAction = async (actionId) => {
@@ -1083,20 +1381,31 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
         setTaskData(prev => ({ ...prev, groups: updatedGroups }));
         setEditingGroupId(null);
 
-        try {
-            await apiFetch('/records', {
-                method: 'PATCH',
-                body: JSON.stringify({
-                    recordsToUpdate: [{ id: groupId, fields: { group_name: editingGroupName } }],
-                    tableName: 'task_groups'
-                })
-            });
-        } catch (error) {
-            console.error("Failed to update group name:", error);
-            alert("There was an error updating the group name.");
-            const revertedGroups = taskData.groups.map(g => g.id === groupId ? { ...g, name: originalName } : g);
-            setTaskData(prev => ({ ...prev, groups: revertedGroups }));
-        }
+            try {
+                await apiFetch('/records', {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        recordsToUpdate: [{ id: groupId, fields: { group_name: editingGroupName } }],
+                        tableName: 'task_groups'
+                    })
+                });
+
+                // Emit real-time update to other users
+                if (projectSocketRef.current) {
+                    projectSocketRef.current.emit('taskUpdate', {
+                        projectId: projectData.id,
+                        taskId: groupId,
+                        updateType: 'group_name',
+                        data: { group_name: editingGroupName },
+                        userId: currentUser?.id || 'unknown'
+                    });
+                }
+            } catch (error) {
+                console.error("Failed to update group name:", error);
+                alert("There was an error updating the group name.");
+                const revertedGroups = taskData.groups.map(g => g.id === groupId ? { ...g, name: originalName } : g);
+                setTaskData(prev => ({ ...prev, groups: revertedGroups }));
+            }
     };
 
     const handleDeleteGroup = async (groupId, tasksInGroup) => {
@@ -1117,6 +1426,17 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                     method: 'DELETE',
                     body: JSON.stringify({ recordIds: [groupId] })
                 });
+
+                // Emit real-time update to other users
+                if (projectSocketRef.current) {
+                    projectSocketRef.current.emit('taskUpdate', {
+                        projectId: projectData.id,
+                        taskId: groupId,
+                        updateType: 'group_deleted',
+                        data: { groupId },
+                        userId: currentUser?.id || 'unknown'
+                    });
+                }
 
                 fetchTasksForProject();
             } catch (error) {
@@ -1183,6 +1503,16 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
 
                 if (onProjectUpdate) {
                     onProjectUpdate(updatedProject);
+                }
+
+                // Emit real-time update to other users
+                if (projectSocketRef.current) {
+                    projectSocketRef.current.emit('collaboratorChanged', {
+                        projectId: projectData.id,
+                        changeType: 'removed',
+                        collaboratorData: { name: collaboratorNameToDelete },
+                        userId: currentUser?.id || 'unknown'
+                    });
                 }
 
             } catch (error) {
@@ -1474,8 +1804,8 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                     </div>
                     <p className={`text-xs ${colorClasses.text.secondary} font-mono`}>ID: {projectData.fields['Project ID']}</p>
                 </div>
-                <div className="flex items-center gap-2">
-                    {userRole === 'consultant' && (
+                    <div className="flex items-center gap-2">
+                        {userRole === 'consultant' && (
                         <>
                             {projectData.fields['Operation'] === 'Active' || !projectData.fields['Operation'] ? (
                                 <button 
@@ -1521,9 +1851,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
 
                     <div className="lg:col-span-3 space-y-6">
                         {/* Project Details Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Project Details</h2>
+                                <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
                                 {isEditingDetails ? (
                                     <div className="flex items-center gap-2">
                                         <button onClick={() => { setIsEditingDetails(false); setEditedDetails(projectData.fields); }} className={`px-4 py-2 ${colorClasses.button.neutral} rounded-md text-sm font-medium`}>Cancel</button>
@@ -1645,9 +1975,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Notes Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                             <div className="flex justify-between items-center mb-2">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📝 Notes</h2>
+                                <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
                                 {userRole !== 'client' && !isEditingNotes && !isDeactivated && (
                                     <button onClick={() => {
                                         // Save the current state before entering edit mode
@@ -1703,9 +2033,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         <AboutUsSection />
 
                         {/* Tasks Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className={`text-lg font-semibold ${colorClasses.card.header}`}>Tasks</h3>
+                                <h3 className="text-lg font-semibold text-slate-700">Tasks</h3>
                                 <div className="flex items-center gap-2">
                                     <button onClick={() => setIsAddGroupFormVisible(true)} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.secondary} rounded-md text-sm`}>
                                         <AddIcon /> Add Group
@@ -1847,9 +2177,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Documents Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                             <div className="flex justify-between items-center mb-3">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>📎 Documents</h2>
+                                <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
                                 <label className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer`}>
                                     <UploadIcon />
                                     Upload File
@@ -1893,11 +2223,11 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Activities Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                             <div className="flex justify-between items-center mb-4">
                                 <div className="flex items-center gap-3">
                                     <CalendarIcon />
-                                    <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Activities</h2>
+                                    <h2 className="text-lg font-semibold text-slate-700">Activities</h2>
                                 </div>
                                 {(changedActivities.toCreate.size > 0 || changedActivities.toUpdate.size > 0) && (
                                     <button
@@ -1923,8 +2253,8 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                         {isLoadingActivities ? (
                                             <tr><td colSpan="4" className="text-center p-4 text-slate-500">Loading activities...</td></tr>
                                         ) : activities.map((activity, index) => (
-                                            <tr key={activity.id} className={`border-b ${index === activities.length - 1 ? 'border-transparent' : 'border-slate-200'} hover:bg-slate-50 h-16 align-middle`}>
-                                                <td className="px-6 py-4 font-medium text-slate-800 whitespace-nowrap overflow-hidden text-ellipsis" title={activity.fields.name}>
+                                            <tr key={activity.id} className={`border-b ${index === activities.length - 1 ? 'border-transparent' : 'border-slate-200'} hover:bg-slate-50 min-h-16 align-top`}>
+                                                <td className="px-6 py-4 font-medium text-slate-800 break-words" title={activity.fields.name}>
                                                     {activity.fields.name}
                                                 </td>
                                                 <td className="px-6 py-4 text-slate-600 whitespace-nowrap" onClick={() => handleDateCellClick(activity)}>
@@ -2004,9 +2334,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
 
                     <div className="lg:col-span-2 space-y-6">
                         {/* Project Status Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm text-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 text-sm">
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header} text-center`}>Project Status</h2>
+                                <h2 className="text-lg font-semibold text-slate-700 text-center">Project Status</h2>
                                 {userRole === 'consultant' && !isEditingDetails && !isEditingStatus && (
                                     <button onClick={() => { setEditedDetails(projectData.fields); setIsEditingStatus(true); }} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
@@ -2070,9 +2400,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Key Dates Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm text-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 text-sm">
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Key Dates</h2>
+                                <h2 className="text-lg font-semibold text-slate-700">Key Dates</h2>
                                 {userRole === 'consultant' && !isEditingDetails && !isEditingKeyDates && (
                                     <button onClick={() => { setEditedDetails(projectData.fields); setIsEditingKeyDates(true); }} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
@@ -2127,9 +2457,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* General Discussion Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                             <div className="flex justify-between items-center mb-3">
-                                <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>💬 General Discussion</h2>
+                                <h2 className="text-lg font-semibold text-slate-700">💬 General Discussion</h2>
                                 <AIDropdown 
                                     isAIMode={isAIMode}
                                     onToggle={setIsAIMode}
@@ -2332,9 +2662,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Actions Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                                 <div className="flex justify-between items-center mb-3">
-                                    <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>⚡️ Actions</h2>
+                                    <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
                                     {!isAddingAction && (
                                         <button onClick={() => setIsAddingAction(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
                                             <AddIcon />
@@ -2494,11 +2824,11 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         />
 
                         {/* Collaborators Section */}
-                        <section className={`${colorClasses.card.base} p-5 rounded-xl shadow-sm`}>
+                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                             <div className="flex justify-between items-center mb-3">
                                 <div className="flex items-center gap-3">
                                     <CollaboratorIcon />
-                                    <h2 className={`text-lg font-semibold ${colorClasses.card.header}`}>Collaborators</h2>
+                                    <h2 className="text-lg font-semibold text-slate-700">Collaborators</h2>
                                 </div>
                                 <button onClick={() => setIsAddCollaboratorVisible(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
                                     <AddIcon />
@@ -2535,7 +2865,21 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                 <TaskCard
                     task={selectedTask}
                     onClose={() => setIsTaskCardVisible(false)}
-                    onTaskUpdate={() => { fetchTasksForProject(); setIsTaskCardVisible(false); }}
+                    onTaskUpdate={(updatedTask) => { 
+                        fetchTasksForProject(); 
+                        setIsTaskCardVisible(false);
+                        
+                        // Emit real-time update to other users
+                        if (projectSocketRef.current) {
+                            projectSocketRef.current.emit('taskUpdate', {
+                                projectId: projectData.id,
+                                taskId: updatedTask.id,
+                                updateType: 'task_updated',
+                                data: updatedTask.fields,
+                                userId: currentUser?.id || 'unknown'
+                            });
+                        }
+                    }}
                     assigneeOptions={assigneeOptions}
                 />
             )}
@@ -2545,7 +2889,21 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                     projectId={projectData.id}
                     projectName={projectData.fields['Project Name']}
                     onClose={() => setIsAddTaskFormVisible(false)}
-                    onTaskAdded={() => { fetchTasksForProject(); setIsAddTaskFormVisible(false); }}
+                    onTaskAdded={(newTask) => { 
+                        fetchTasksForProject(); 
+                        setIsAddTaskFormVisible(false);
+                        
+                        // Emit real-time update to other users
+                        if (projectSocketRef.current) {
+                            projectSocketRef.current.emit('taskUpdate', {
+                                projectId: projectData.id,
+                                taskId: newTask.id,
+                                updateType: 'task_created',
+                                data: newTask,
+                                userId: currentUser?.id || 'unknown'
+                            });
+                        }
+                    }}
                     assigneeOptions={assigneeOptions}
                     nextTaskOrder={taskData.ungroupedTasks.length}
                 />

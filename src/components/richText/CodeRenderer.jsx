@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import DOMPurify from 'dompurify';
 import { colorClasses } from '../../utils/colorUtils';
 
-const CodeRenderer = ({ content, onEdit, showEditButton = true }) => {
+const CodeRenderer = ({ content, onEdit, showEditButton = true, isEditable = false }) => {
   const containerRef = useRef(null);
-  const [useSandbox, setUseSandbox] = useState(true); // Default to sandbox mode
+  const [useSandbox] = useState(true); // Always use sandbox mode
   const iframeRef = useRef(null);
   
   // Extract code from wrapper helper function
@@ -129,8 +129,8 @@ const CodeRenderer = ({ content, onEdit, showEditButton = true }) => {
   
   return (
     <div className="relative">
-      {/* Edit button - only show if showEditButton is true */}
-      {showEditButton && (
+      {/* Edit button - only show when in edit mode */}
+      {showEditButton && isEditable && (
         <button
           onClick={onEdit}
           className={`absolute top-2 right-2 z-10 px-2 py-1 rounded-md text-xs font-medium ${colorClasses.button.secondary} opacity-50 hover:opacity-100 transition-opacity`}
@@ -144,20 +144,6 @@ const CodeRenderer = ({ content, onEdit, showEditButton = true }) => {
           </span>
         </button>
       )}
-      
-      {/* Mode toggle button */}
-      <button
-        onClick={() => setUseSandbox(!useSandbox)}
-        className={`absolute top-2 right-16 z-10 px-2 py-1 rounded-md text-xs font-medium ${useSandbox ? colorClasses.button.success : colorClasses.button.accent} opacity-50 hover:opacity-100 transition-opacity`}
-        title={useSandbox ? "Currently in sandbox mode (recommended)" : "Switch to direct mode"}
-      >
-        <span className="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-          </svg>
-          {useSandbox ? "Sandbox" : "Direct"}
-        </span>
-      </button>
       
       {/* Conditional rendering based on sandbox mode */}
       {useSandbox ? (

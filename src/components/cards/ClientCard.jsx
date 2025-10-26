@@ -334,9 +334,41 @@ export default function ClientCard() {
         projectSocketRef.current.on('connect', () => {
             console.log('Connected to project socket server');
             if (projectData?.id) {
+                console.log(`Joining project room: ${projectData.id}`);
                 projectSocketRef.current.emit('joinProjectRoom', projectData.id);
             }
         });
+
+        // Always try to join the room when component mounts or project data changes
+        const joinRoom = () => {
+            if (projectData?.id && projectSocketRef.current) {
+                console.log(`Joining project room: ${projectData.id}`);
+                projectSocketRef.current.emit('joinProjectRoom', projectData.id);
+            }
+        };
+
+        // Join room immediately if already connected
+        if (projectSocketRef.current.connected) {
+            joinRoom();
+        }
+
+        // Also join room when project data changes
+        joinRoom();
+
+        // Set up a retry mechanism for room joining
+        const retryJoinRoom = () => {
+            if (projectData?.id && projectSocketRef.current?.connected) {
+                joinRoom();
+            }
+        };
+
+        // Retry joining room every 2 seconds until successful
+        const joinRoomInterval = setInterval(retryJoinRoom, 2000);
+
+        // Clear interval after 10 seconds (should be enough time)
+        setTimeout(() => {
+            clearInterval(joinRoomInterval);
+        }, 10000);
 
         projectSocketRef.current.on('receiveProjectMessage', (message) => {
             setProjectMessages(prevMessages => {
@@ -397,7 +429,119 @@ export default function ClientCard() {
             alert(`AI Error: ${data.error}`);
         });
 
+        // ===================================
+        // REAL-TIME UPDATE LISTENERS
+        // ===================================
+
+        // Project Details Update Listener
+        projectSocketRef.current.on('projectUpdated', (data) => {
+            console.log('Project updated received:', data);
+            console.log('Current project ID:', projectData.id);
+            if (data.projectId === projectData.id) {
+                console.log('Updating local project data with:', data.data);
+                // Update local project data
+                setProjectData(prevData => ({
+                    ...prevData,
+                    fields: { ...prevData.fields, ...data.data }
+                }));
+            } else {
+                console.log('Project ID mismatch - ignoring update');
+            }
+        });
+
+        // Task Update Listener
+        projectSocketRef.current.on('taskUpdated', (data) => {
+            console.log('Task updated:', data);
+            if (data.projectId === projectData.id) {
+                // Refresh tasks to get updated data
+                fetchTasksForProject();
+                
+                // If a specific task is being viewed, refresh its data
+                if (data.taskId && selectedTask && selectedTask.id === data.taskId) {
+                    console.log('Refreshing selected task data due to real-time update');
+                    // Update the selected task with the new data
+                    setSelectedTask(prevTask => ({
+                        ...prevTask,
+                        fields: { ...prevTask.fields, ...data.data }
+                    }));
+                }
+            }
+        });
+
+        // Activity Update Listener
+        projectSocketRef.current.on('activityUpdated', (data) => {
+            console.log('Activity updated received:', data);
+            console.log('Current project ID:', projectData.id);
+            if (data.projectId === projectData.id) {
+                console.log('Refreshing activities due to real-time update');
+                // Refresh activities to get updated data
+                fetchAndProcessActivities();
+            } else {
+                console.log('Project ID mismatch - ignoring activity update');
+            }
+        });
+
+        // Document Upload Listener
+        projectSocketRef.current.on('documentAdded', (data) => {
+            console.log('Document added:', data);
+            if (data.projectId === projectData.id) {
+                // Update local documents list
+                setProjectData(prevData => ({
+                    ...prevData,
+                    fields: {
+                        ...prevData.fields,
+                        Documents: [...(prevData.fields.Documents || []), data.document]
+                    }
+                }));
+            }
+        });
+
+        // Collaborator Change Listener
+        projectSocketRef.current.on('collaboratorUpdated', (data) => {
+            console.log('Collaborator updated:', data);
+            if (data.projectId === projectData.id) {
+                // Refresh project data to get updated collaborators
+                const refreshProjectData = async () => {
+                    try {
+                        const refreshedData = await apiFetch(`/records/projects/${projectData.id}`);
+                        setProjectData(refreshedData);
+                    } catch (error) {
+                        console.error('Failed to refresh project data:', error);
+                    }
+                };
+                refreshProjectData();
+            }
+        });
+
+        // Notes Update Listener
+        projectSocketRef.current.on('notesUpdated', (data) => {
+            console.log('Notes updated:', data);
+            if (data.projectId === projectData.id) {
+                // Update local notes content
+                setNotesContent(data.content);
+                
+                // Update project data
+                setProjectData(prevData => ({
+                    ...prevData,
+                    fields: { ...prevData.fields, Notes: data.content }
+                }));
+            }
+        });
+
+        // Test real-time connection
+        projectSocketRef.current.on('testRealtimeResponse', (data) => {
+            console.log('Real-time test response:', data);
+            alert('Real-time connection is working!');
+        });
+
+        projectSocketRef.current.on('joinedProjectRoom', (data) => {
+            console.log('Successfully joined project room:', data);
+        });
+
         return () => {
+            // Clear the retry interval
+            clearInterval(joinRoomInterval);
+            
             if (projectData?.id) {
                 projectSocketRef.current.emit('leaveProjectRoom', projectData.id);
             }
@@ -548,6 +692,49 @@ export default function ClientCard() {
         return new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     };
 
+    // Generate colors for task group titles
+    const getGroupTitleColor = (index) => {
+        const colors = [
+            'text-blue-600',      // Blue
+            'text-green-600',     // Green
+            'text-purple-600',    // Purple
+            'text-orange-600',    // Orange
+            'text-pink-600',      // Pink
+            'text-indigo-600',    // Indigo
+            'text-yellow-600',    // Yellow
+            'text-red-600',       // Red
+        ];
+        return colors[index % colors.length];
+    };
+
+    // Get section background color
+    const getSectionColor = (sectionName) => {
+        const sectionColors = {
+            'Project Details': 'bg-blue-100',
+            'Notes': 'bg-yellow-100',
+            'Tasks': 'bg-green-100',
+            'Documents': 'bg-purple-100',
+            'Activities': 'bg-orange-100',
+            'Project Status': 'bg-indigo-100',
+            'Key Dates': 'bg-pink-100',
+            'General Discussion': 'bg-cyan-100',
+            'Actions': 'bg-amber-100',
+            'Collaborators': 'bg-slate-100',
+            'About Us': 'bg-teal-100'
+        };
+        return sectionColors[sectionName] || 'bg-white';
+    };
+
+    // Get initials from assignee name
+    const getAssigneeInitials = (assigneeName) => {
+        if (!assigneeName) return '?';
+        const names = assigneeName.trim().split(' ');
+        if (names.length === 1) {
+            return names[0].substring(0, 2).toUpperCase();
+        }
+        return (names[0][0] + names[names.length - 1][0]).toUpperCase();
+    };
+
     const assigneeOptions = useMemo(() => {
         if (!projectData?.fields) return [];
         const {
@@ -588,7 +775,27 @@ export default function ClientCard() {
                         <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
                         <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
                     </div>
-                    <div className="w-24 h-10"></div> {/* Placeholder for alignment */}
+                    <div className="flex items-center gap-2">
+                        {/* Test Real-time Connection Button */}
+                        <button 
+                            onClick={() => {
+                                if (projectSocketRef.current) {
+                                    projectSocketRef.current.emit('testRealtime', { 
+                                        projectId: projectData.id, 
+                                        message: 'Testing real-time connection' 
+                                    });
+                                }
+                            }}
+                            className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded-lg shadow-sm transition-all duration-200"
+                            title="Test Real-time Connection"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                            </svg>
+                            <span className="hidden sm:inline">Test RT</span>
+                        </button>
+
+                    </div>
                 </header>
 
                 <div className="flex flex-1 overflow-hidden">
@@ -663,17 +870,17 @@ export default function ClientCard() {
                                 {/* Tasks Section */}
                                 <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                     <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
+                                        <h3 className="text-lg font-semibold text-slate-700">Tasks</h3>
                                     </div>
                                     {isLoadingTasks ? (
                                         <p className="text-slate-500">Loading tasks...</p>
                                     ) : (
                                         <div className="space-y-4">
-                                            {taskData.groups.map((group) => (
+                                            {taskData.groups.map((group, index) => (
                                                 <div key={group.id}>
                                                     <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
                                                         <div className="flex justify-between items-center p-2">
-                                                            <h4 className="font-bold text-slate-700">{group.name}</h4>
+                                                            <h4 className={`font-bold ${getGroupTitleColor(index)}`}>{group.name}</h4>
                                                         </div>
                                                         <ul className="space-y-2 p-2 min-h-[50px]">
                                                             {group.tasks.map((task) => (
@@ -684,7 +891,15 @@ export default function ClientCard() {
                                                                 >
                                                                     <div className="flex justify-between items-center">
                                                                         <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                        {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                        {task.fields.task_status === 'Completed' ? (
+                                                                            <CompletedIcon />
+                                                                        ) : (
+                                                                            <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
+                                                                                <span className="text-xs font-medium text-slate-600">
+                                                                                    {getAssigneeInitials(task.fields.assigned_to)}
+                                                                                </span>
+                                                                            </div>
+                                                                        )}
                                                             </div>
                                                                     <div className="flex justify-end items-center mt-2">
                                                                         <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
@@ -706,7 +921,15 @@ export default function ClientCard() {
                                                     >
                                                         <div className="flex justify-between items-center">
                                                             <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                            {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                            {task.fields.task_status === 'Completed' ? (
+                                                                <CompletedIcon />
+                                                            ) : (
+                                                                <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
+                                                                    <span className="text-xs font-medium text-slate-600">
+                                                                        {getAssigneeInitials(task.fields.assigned_to)}
+                                                                    </span>
+                                                                </div>
+                                                            )}
                                                         </div>
                                                         <div className="flex justify-end items-center mt-2">
                                                             <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
@@ -767,8 +990,8 @@ export default function ClientCard() {
                                             {isLoadingActivities ? (
                                                 <tr><td colSpan="4" className="text-center p-4 text-slate-500">Loading activities...</td></tr>
                                             ) : activities.map((activity, index) => (
-                                                <tr key={activity.id} className={`border-b ${index === activities.length - 1 ? 'border-transparent' : 'border-slate-200'} h-16 align-middle`}>
-                                                    <td className="px-6 py-4 font-medium text-slate-800 whitespace-nowrap overflow-hidden text-ellipsis" title={activity.fields.name}>
+                                                <tr key={activity.id} className={`border-b ${index === activities.length - 1 ? 'border-transparent' : 'border-slate-200'} min-h-16 align-top`}>
+                                                    <td className="px-6 py-4 font-medium text-slate-800 break-words" title={activity.fields.name}>
                                                         {activity.fields.name}
                                                     </td>
                                                     <td className="px-6 py-4 text-slate-600 whitespace-nowrap">

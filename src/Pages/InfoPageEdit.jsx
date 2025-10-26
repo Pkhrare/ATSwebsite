@@ -25,6 +25,7 @@ const InfoPageEdit = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
     const [error, setError] = useState(null);
+    const [currentContent, setCurrentContent] = useState(null);
 
     const editorRef = useRef(null);
     
@@ -38,12 +39,15 @@ const InfoPageEdit = () => {
                     // Parse the JSON string back to an object for the editor
                     const parsedContent = JSON.parse(content);
                     setPage({ ...data, content: parsedContent });
+                    setCurrentContent(content); // Store the original content string
                 } catch (error) {
                     console.warn('Failed to parse page content, treating as plain text:', error);
                     setPage({ ...data, content: content });
+                    setCurrentContent(content); // Store the original content string
                 }
             } else {
                 setPage({ ...data, content: '' });
+                setCurrentContent('');
             }
             setTitle(data.title);
             setIcon(data.icon || '');
@@ -64,8 +68,27 @@ const InfoPageEdit = () => {
         setIsSaving(true);
         setError(null);
         try {
-            const editorState = editorRef.current.getEditorState();
-            const content = JSON.stringify(editorState.toJSON());
+            let content;
+            
+            // Check if we're dealing with code content or rich text content
+            if (currentContent && typeof currentContent === 'string' && currentContent.includes('code-content')) {
+                // This is code content, use it directly
+                content = currentContent;
+                console.log('Saving code content:', content);
+            } else {
+                // This is rich text content, get it from the editor
+                if (!editorRef.current) {
+                    console.error("Editor reference is null");
+                    setError("Cannot save: Editor not initialized. Please try again.");
+                    return;
+                }
+                
+                // Extract the current content from the editor
+                const editorState = editorRef.current.getEditorState();
+                content = JSON.stringify(editorState.toJSON());
+                console.log('Saving rich text content:', content);
+            }
+            
             await saveContent('informational_pages', pageId, 'pageContent', content);
             
             if (title !== page?.title || icon !== (page?.icon || '')) {
@@ -165,9 +188,9 @@ const InfoPageEdit = () => {
                     isEditable={true}
                     initialContent={page?.content}
                     onChange={(content) => {
-                        // Update the local content state as the user types
-                        // This is optional since we're using editorRef for saving
+                        // Update the current content state as the user types
                         console.log('Content changed:', content);
+                        setCurrentContent(content);
                     }}
                     editorRef={editorRef}
                     sourceTable="image_assets" 

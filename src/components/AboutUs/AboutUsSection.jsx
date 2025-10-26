@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { about_task_group } from '../../utils/AboutContent';
 import AboutUsCard from './AboutUsCard';
 
-const AboutUsSection = () => {
+const AboutUsSection = ({ getSectionColor }) => {
     const [selectedTask, setSelectedTask] = useState(null);
     const [isCardVisible, setIsCardVisible] = useState(false);
 
@@ -18,14 +18,14 @@ const AboutUsSection = () => {
 
     return (
         <>
-            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+            <section className={`${getSectionColor ? getSectionColor('About Us') : 'bg-white'} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                 <div className="flex items-center gap-3 mb-4">
                     <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
                         <svg className="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <h2 className="text-lg font-semibold text-slate-700">WAIVER CONSULTING GROUP</h2>
+                    <h2 className={`text-lg font-semibold ${getSectionColor ? `${getSectionColor('About Us')} px-3 py-2 rounded-lg text-slate-700` : 'text-slate-700'}`}>WAIVER CONSULTING GROUP</h2>
                 </div>
                 
                 <div className="space-y-2">

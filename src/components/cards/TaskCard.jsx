@@ -94,6 +94,44 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             }
         });
 
+        // Always try to join the room when component mounts or task data changes
+        const joinRoom = () => {
+            if (task?.id && socketRef.current) {
+                console.log(`Joining task room: ${task.id}`);
+                console.log('Socket connected:', socketRef.current.connected);
+                socketRef.current.emit('joinTaskRoom', task.id);
+            } else {
+                console.log('Cannot join room - missing task ID or socket:', { taskId: task?.id, socket: !!socketRef.current });
+            }
+        };
+
+        // Join room immediately if already connected
+        if (socketRef.current.connected) {
+            joinRoom();
+        }
+
+        // Also join room when task data changes
+        joinRoom();
+
+        // Set up a retry mechanism for room joining
+        const retryJoinRoom = () => {
+            if (task?.id && socketRef.current?.connected) {
+                joinRoom();
+            }
+        };
+
+        // Retry joining room every 2 seconds until successful
+        const joinRoomInterval = setInterval(retryJoinRoom, 2000);
+
+        // Clear interval after 10 seconds (should be enough time)
+        setTimeout(() => {
+            clearInterval(joinRoomInterval);
+        }, 10000);
+
+        socketRef.current.on('joinedTaskRoom', (data) => {
+            console.log('Successfully joined task room:', data);
+        });
+
         socketRef.current.on('receiveMessage', (message) => {
             console.log('Received message:', message);
             console.log('Message fields:', message.fields);
@@ -129,7 +167,132 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             // You could set an error state here to show in the UI
         });
 
+        // ===================================
+        // REAL-TIME UPDATE LISTENERS
+        // ===================================
+
+        // Task Update Listener
+        socketRef.current.on('taskUpdated', (data) => {
+            console.log('Task updated received:', data);
+            if (data.taskId === task.id) {
+                console.log('Refreshing task data due to real-time update');
+                // Refresh the task data by calling onTaskUpdate
+                if (onTaskUpdate) {
+                    onTaskUpdate();
+                }
+            }
+        });
+
+        // Signature Update Listener
+        socketRef.current.on('signatureAdded', (data) => {
+            console.log('Signature added received:', data);
+            if (data.taskId === task.id) {
+                console.log('Updating approvals due to signature change');
+                // Update the specific approval with the new signature
+                setApprovals(prev => prev.map(approval => 
+                    approval.id === data.approvalId 
+                        ? { 
+                            ...approval, 
+                            fields: { 
+                                ...approval.fields, 
+                                signature_attachment: [{ url: data.signatureUrl, filename: 'signature.png' }] 
+                            } 
+                        }
+                        : approval
+                ));
+            }
+        });
+
+        // Checklist Update Listener
+        socketRef.current.on('checklistUpdated', (data) => {
+            console.log('Checklist updated received:', data);
+            if (data.taskId === task.id) {
+                console.log('Updating checklist due to real-time change');
+                setChecklistItems(prev =>
+                    prev.map(item => (item.id === data.itemId ? { ...item, completed: data.completed } : item))
+                );
+            }
+        });
+
+        // Form Update Listener
+        socketRef.current.on('formUpdated', (data) => {
+            console.log('Form updated received:', data);
+            if (data.taskId === task.id) {
+                console.log('Updating form submissions due to real-time change');
+                setFormSubmissions(prev =>
+                    prev.map(submission =>
+                        submission.id === data.submissionId 
+                            ? { ...submission, fields: { ...submission.fields, value: data.value } } 
+                            : submission
+                    )
+                );
+            }
+        });
+
+        // Attachment Update Listener
+        socketRef.current.on('attachmentUpdated', (data) => {
+            console.log('Attachment updated received:', data);
+            console.log('Current task ID:', task.id);
+            if (data.taskId === task.id) {
+                console.log('Updating attachments due to real-time change');
+                if (data.attachmentId === 'new_attachments') {
+                    // New attachments added
+                    console.log('Adding new attachments:', data.attachmentData);
+                    setAttachments(prev => [...prev, ...data.attachmentData]);
+                } else if (data.attachmentData?.uploaded) {
+                    // File was uploaded - trigger a refetch to get the latest data
+                    console.log('File upload detected, refetching attachments for attachment:', data.attachmentId);
+                    forceRefetch();
+                } else {
+                    // Specific attachment updated
+                    console.log('Updating specific attachment:', data.attachmentId);
+                    setAttachments(prev => prev.map(att => 
+                        att.id === data.attachmentId 
+                            ? { ...att, ...data.attachmentData }
+                            : att
+                    ));
+                }
+            } else {
+                console.log('Task ID mismatch - ignoring attachment update');
+            }
+        });
+
+        // Test real-time connection
+        socketRef.current.on('testRealtimeResponse', (data) => {
+            console.log('Real-time test response:', data);
+            alert('Real-time connection is working!');
+        });
+
+        // Error Listeners for Real-Time Updates
+        socketRef.current.on('taskUpdateError', (error) => {
+            console.error('Task update error:', error);
+            alert(`Task Update Error: ${error.error}`);
+        });
+
+        socketRef.current.on('signatureUpdateError', (error) => {
+            console.error('Signature update error:', error);
+            alert(`Signature Update Error: ${error.error}`);
+        });
+
+        socketRef.current.on('checklistUpdateError', (error) => {
+            console.error('Checklist update error:', error);
+            alert(`Checklist Update Error: ${error.error}`);
+        });
+
+        socketRef.current.on('formUpdateError', (error) => {
+            console.error('Form update error:', error);
+            alert(`Form Update Error: ${error.error}`);
+        });
+
+        socketRef.current.on('attachmentUpdateError', (error) => {
+            console.error('Attachment update error:', error);
+            alert(`Attachment Update Error: ${error.error}`);
+        });
+
         return () => {
+            // Clear the retry interval
+            clearInterval(joinRoomInterval);
+            
             if (task?.id) {
                 socketRef.current.emit('leaveTaskRoom', task.id);
             }
@@ -359,6 +522,16 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 }
             };
         });
+        
+        // Emit real-time update for new attachments
+        if (socketRef.current) {
+            socketRef.current.emit('attachmentUpdated', {
+                taskId: task.id,
+                attachmentId: 'new_attachments',
+                attachmentData: newAttachments,
+                userId: 'unknown'
+            });
+        }
     };
 
     const handleUploadClick = (attachment) => {
@@ -389,10 +562,33 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             : `/upload/task_attachments/${attachment.id}/Attachments`;
 
         try {
-            await ApiCaller(endpoint, {
+            const response = await ApiCaller(endpoint, {
                 method: 'POST',
                 body: formData,
             });
+
+            // Emit real-time update for file upload
+            if (socketRef.current) {
+                console.log('Emitting attachmentUpdated for file upload:', {
+                    taskId: task.id,
+                    attachmentId: attachment.id,
+                    filename: file.name
+                });
+                socketRef.current.emit('attachmentUpdated', {
+                    taskId: task.id,
+                    attachmentId: attachment.id,
+                    attachmentData: { 
+                        uploaded: true, 
+                        timestamp: new Date().toISOString(),
+                        filename: file.name,
+                        fileSize: file.size,
+                        fileType: file.type
+                    },
+                    userId: 'unknown'
+                });
+            } else {
+                console.log('Socket not available for real-time update');
+            }
 
             forceRefetch();
         } catch (err) {
@@ -501,6 +697,16 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         setChecklistItems(prev =>
             prev.map(item => (item.id === itemId ? { ...item, completed } : item))
         );
+        
+        // Emit real-time update for checklist changes
+        if (socketRef.current) {
+            socketRef.current.emit('checklistUpdated', {
+                taskId: task.id,
+                itemId: itemId,
+                completed: completed,
+                userId: 'unknown'
+            });
+        }
     };
 
     const handleFormAttached = async (form) => {
@@ -586,10 +792,30 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 submission.id === submissionId ? { ...submission, fields: { ...submission.fields, value } } : submission
             )
         );
+        
+        // Emit real-time update for form submission changes
+        if (socketRef.current) {
+            socketRef.current.emit('formUpdated', {
+                taskId: task.id,
+                submissionId: submissionId,
+                value: value,
+                userId: 'unknown'
+            });
+        }
     };
 
     const handleApprovalAdded = (newApproval) => {
         setApprovals(prev => [...prev, newApproval]);
+        
+        // Emit real-time update for new approval
+        if (socketRef.current) {
+            socketRef.current.emit('taskUpdate', {
+                taskId: task.id,
+                updateType: 'approval_added',
+                data: newApproval,
+                userId: 'unknown'
+            });
+        }
     };
 
     const handleDeleteApproval = async (approvalId) => {
@@ -622,6 +848,16 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 }
                 : approval
         ));
+        
+        // Emit real-time update for signature added
+        if (socketRef.current) {
+            socketRef.current.emit('signatureAdded', {
+                taskId: task.id,
+                approvalId: approvalId,
+                signatureUrl: signatureUrl,
+                userId: 'unknown'
+            });
+        }
     };
 
     const handleDownloadSignedPDF = async (approval) => {
@@ -728,6 +964,25 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             }
 
             setSuccessMessage('Task updated successfully!');
+            
+            // Emit real-time update to other users
+            if (socketRef.current) {
+                // Get the project ID from the task data
+                const projectId = task.fields['Project ID (from project_id)']?.[0] || task.fields.project_id?.[0];
+                if (projectId) {
+                    console.log('Emitting taskUpdate to project room:', projectId);
+                    socketRef.current.emit('taskUpdate', {
+                        projectId: projectId,
+                        taskId: task.id,
+                        updateType: 'task_updated',
+                        data: updatableFields,
+                        userId: 'unknown'
+                    });
+                } else {
+                    console.log('No project ID found for task, cannot emit real-time update');
+                }
+            }
+            
             onTaskUpdate();
         } catch (err) {
             setError(err.message || 'An error occurred');
@@ -952,9 +1207,11 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 {`TASK #${editedTask.id}: ${editedTask.task_title}`}
                             </h2>
                         </div>
-                        <button onClick={onClose} className="text-gray-300 hover:text-yellow-400" aria-label="Close">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <button onClick={onClose} className="text-gray-300 hover:text-yellow-400" aria-label="Close">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
 

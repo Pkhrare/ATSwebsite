@@ -1017,17 +1017,11 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
     if (isCodeMode && !isCodeEditorOpen) {
         return (
             <div className={`relative border border-slate-300 rounded-md ${!isEditable ? 'bg-slate-50/50' : 'bg-white'}`}>
-                {isEditable ? (
-                    <CodeRenderer 
-                        content={codeContent} 
-                        onEdit={handleEditCode} 
-                    />
-                ) : (
-                    <CodeRenderer 
-                        content={codeContent} 
-                        onEdit={() => {}} 
-                    />
-                )}
+                <CodeRenderer 
+                    content={codeContent} 
+                    onEdit={handleEditCode}
+                    isEditable={isEditable}
+                />
                 
                 {/* Code Editor Modal */}
                 <CodeEditorModal
@@ -1112,7 +1106,7 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 isOpen={isCodeEditorOpen}
                 onClose={() => setIsCodeEditorOpen(false)}
                 onSave={handleCodeSave}
-                initialContent=""
+                initialContent={codeContent}
             />
             
             {/* Confirmation Dialog */}
