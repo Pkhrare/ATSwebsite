@@ -707,6 +707,8 @@ export default function ClientCard() {
         return colors[index % colors.length];
     };
 
+
+
     // Get section background color
     const getSectionColor = (sectionName) => {
         const sectionColors = {
@@ -788,9 +790,9 @@ export default function ClientCard() {
 
                             <div className="lg:col-span-3 space-y-6">
                                 {/* Project Details Section */}
-                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <section className={`${getSectionColor('Project Details')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
-                                        <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
+                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                                         <div>
@@ -833,9 +835,9 @@ export default function ClientCard() {
                                 </section>
 
                                 {/* Notes Section */}
-                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <section className={`${getSectionColor('Notes')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-2">
-                                        <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
+                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Notes')}`}>📝 Notes</h2>
                                     </div>
                                     <RichTextEditor
                                         isEditable={false}
@@ -847,29 +849,29 @@ export default function ClientCard() {
                                 </section>
 
                                 {/* About Us Section */}
-                                <AboutUsSection />
+                                <AboutUsSection getSectionColor={getSectionColor} />
 
                                 {/* Tasks Section */}
-                                <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                                <section className={`${getSectionColor('Tasks')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-lg font-semibold text-slate-700">Tasks</h3>
+                                        <h3 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
                                     </div>
                                     {isLoadingTasks ? (
                                         <p className="text-slate-500">Loading tasks...</p>
                                     ) : (
-                                        <div className="space-y-4">
+                                        <div className="space-y-6">
                                             {taskData.groups.map((group, index) => (
                                                 <div key={group.id}>
-                                                    <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
-                                                        <div className="flex justify-between items-center p-2">
-                                                            <h4 className={`font-bold ${getGroupTitleColor(index)}`}>{group.name}</h4>
+                                                    <div className={`p-3 rounded-xl ${getSectionColor('Tasks')} border-2 border-slate-300 shadow-md`}>
+                                                        <div className="flex justify-between items-center p-3 border-b border-slate-200 mb-3">
+                                                            <h4 className={`font-bold text-lg ${getGroupTitleColor(index)}`}>{group.name}</h4>
                                                         </div>
-                                                        <ul className="space-y-2 p-2 min-h-[50px]">
-                                                            {group.tasks.map((task) => (
+                                                        <ul className="space-y-3 p-3 min-h-[60px]">
+                                                            {group.tasks.map((task, taskIndex) => (
                                                                 <li
                                                                     key={task.id}
                                                                     onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                                    className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                                    className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer`}
                                                                 >
                                                                     <div className="flex justify-between items-center">
                                                                         <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
@@ -893,13 +895,13 @@ export default function ClientCard() {
                                             </div>
                                         ))}
                                         <div className="mt-4">
-                                            <h4 className="font-bold text-slate-700 mb-2 p-2">Ungrouped Tasks</h4>
-                                            <ul className="space-y-2 p-2 min-h-[50px] bg-slate-50 rounded-lg border">
-                                                {taskData.ungroupedTasks.map((task) => (
+                                            <h4 className={`font-bold text-lg text-slate-700 mb-3 p-3 ${getSectionColor('Tasks')} rounded-lg border border-slate-200`}>Ungrouped Tasks</h4>
+                                            <ul className={`space-y-3 p-4 min-h-[60px] ${getSectionColor('Tasks')} rounded-xl border-2 border-slate-300 shadow-sm`}>
+                                                {taskData.ungroupedTasks.map((task, index) => (
                                                     <li
                                                         key={task.id}
                                                         onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                        className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                        className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer`}
                                                     >
                                                         <div className="flex justify-between items-center">
                                                             <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
@@ -925,9 +927,9 @@ export default function ClientCard() {
                             </section>
 
                             {/* Documents Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <section className={`${getSectionColor('Documents')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
+                                    <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Documents')}`}>📎 Documents</h2>
                                     {/* Upload removed for clients - they can only upload to assigned tasks */}
                                 </div>
                                 <ul className="space-y-2">
@@ -951,16 +953,16 @@ export default function ClientCard() {
                             </section>
 
                             {/* Activities Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <section className={`${getSectionColor('Activities')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-4">
                                     <div className="flex items-center gap-3">
                                         <CalendarIcon />
-                                        <h2 className="text-lg font-semibold text-slate-700">Activities</h2>
+                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
                                     </div>
                                 </div>
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-sm text-left table-fixed">
-                                        <thead className="text-xs text-slate-700 uppercase bg-slate-100 rounded-t-lg">
+                                        <thead className={`text-xs text-slate-700 uppercase ${getSectionColor('Activities')} rounded-t-lg`}>
                                             <tr>
                                                 <th scope="col" className="px-6 py-3 w-1/2">Name</th>
                                                 <th scope="col" className="px-6 py-3 w-40">Due Date</th>
@@ -1015,9 +1017,9 @@ export default function ClientCard() {
 
                         <div className="lg:col-span-2 space-y-6">
                             {/* Project Status Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
+                            <section className={`${getSectionColor('Project Status')} p-5 rounded-xl border border-slate-200 shadow-sm text-sm`}>
                                 <div className="flex justify-between items-center mb-4">
-                                    <h2 className="text-lg font-semibold text-slate-700 text-center">Project Status</h2>
+                                    <h2 className={`text-lg font-semibold text-slate-700 text-center px-3 py-2 rounded-lg ${getSectionColor('Project Status')}`}>Project Status</h2>
                                 </div>
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Current Status:</span><StatusBadge status={projectData.fields['Status']} /></div>
@@ -1027,8 +1029,8 @@ export default function ClientCard() {
                             </section>
 
                             {/* Key Dates Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-sm">
-                                <h2 className="text-lg font-semibold text-slate-700 mb-4 text-center">Key Dates</h2>
+                            <section className={`${getSectionColor('Key Dates')} p-5 rounded-xl border border-slate-200 shadow-sm text-sm`}>
+                                <h2 className={`text-lg font-semibold text-slate-700 mb-4 text-center px-3 py-2 rounded-lg ${getSectionColor('Key Dates')}`}>Key Dates</h2>
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Submission Date:</span><span className="font-semibold text-slate-800">{projectData.fields['Date of Submission']}</span></div>
@@ -1037,9 +1039,9 @@ export default function ClientCard() {
                             </section>
 
                             {/* General Discussion Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <section className={`${getSectionColor('General Discussion')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-lg font-semibold text-slate-700">💬 General Discussion</h2>
+                                    <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('General Discussion')}`}>💬 General Discussion</h2>
                                     <AIDropdown 
                                         isAIMode={isAIMode}
                                         onToggle={setIsAIMode}
@@ -1242,9 +1244,9 @@ export default function ClientCard() {
                             </section>
 
                             {/* Actions Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <section className={`${getSectionColor('Actions')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
+                                    <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Actions')}`}>⚡️ Actions</h2>
                                 </div>
                                 {isLoadingActions ? (
                                     <p className="text-sm text-slate-500 text-center py-4">Loading actions...</p>
@@ -1326,17 +1328,17 @@ export default function ClientCard() {
                             </section>
 
                             {/* Collaborators Section */}
-                            <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <section className={`${getSectionColor('Collaborators')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-3">
                                     <div className="flex items-center gap-3">
                                         <CollaboratorIcon />
-                                        <h2 className="text-lg font-semibold text-slate-700">Collaborators</h2>
+                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Collaborators')}`}>Collaborators</h2>
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     {projectData.fields['collaborator_name'] && projectData.fields['collaborator_name'].length > 0 ? (
                                         projectData.fields['collaborator_name'].map((name, index) => (
-                                            <div key={index} className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-sm font-medium text-slate-800">
+                                            <div key={index} className="p-2.5 bg-slate-200 rounded-lg border border-slate-300 text-sm font-medium text-slate-800">
                                                 {name}
                                             </div>
                                         ))

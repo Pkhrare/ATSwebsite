@@ -9,6 +9,7 @@ import AttachFilesForm from '../forms/taskActionForms/AttachFilesForm';
 import AttachChecklistsForm from '../forms/taskActionForms/AttachChecklistsForm';
 import AttachTaskformsForm from '../forms/taskActionForms/AttachTaskformsForm';
 import AddApprovalForm from '../forms/taskActionForms/AddApprovalForm';
+import AddAttachmentModal from '../forms/taskActionForms/AddAttachmentModal';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import ApiCaller from '../apiCall/ApiCaller';
@@ -50,6 +51,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
     const [isAttachChecklistsFormOpen, setAttachChecklistsFormOpen] = useState(false);
     const [isAttachTaskformsFormOpen, setAttachTaskformsFormOpen] = useState(false);
     const [isAddApprovalFormOpen, setAddApprovalFormOpen] = useState(false);
+    const [isAddAttachmentModalOpen, setIsAddAttachmentModalOpen] = useState(false);
     const [isAttachmentsLoading, setIsAttachmentsLoading] = useState(false);
     const [checklistItems, setChecklistItems] = useState([]);
     const [initialChecklistItems, setInitialChecklistItems] = useState([]); // For locking
@@ -529,6 +531,32 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 taskId: task.id,
                 attachmentId: 'new_attachments',
                 attachmentData: newAttachments,
+                userId: 'unknown'
+            });
+        }
+    };
+
+    const handleNewAttachmentAdded = (newAttachment) => {
+        setAttachments(prev => [...prev, newAttachment]);
+        
+        // Update the parent task
+        onTaskUpdate(prevTask => {
+            const existingAttachmentIds = prevTask.fields.task_attachments || [];
+            return {
+                ...prevTask,
+                fields: {
+                    ...prevTask.fields,
+                    task_attachments: [...existingAttachmentIds, newAttachment.id]
+                }
+            };
+        });
+        
+        // Emit real-time update for new attachment
+        if (socketRef.current) {
+            socketRef.current.emit('attachmentUpdated', {
+                taskId: task.id,
+                attachmentId: 'new_attachments',
+                attachmentData: [newAttachment],
                 userId: 'unknown'
             });
         }
@@ -1464,7 +1492,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                 </div>
                             )}
 
-                            {(isAttachmentsLoading || attachments.length > 0) && (
+                            {(isAttachmentsLoading || attachments.length > 0 || canEdit) && (
                                 <div className="p-4 bg-white rounded-lg border border-gray-200">
                                     <h3 className="text-sm font-medium text-gray-800 mb-2">Attachments</h3>
                                     {isAttachmentsLoading ? (
@@ -1474,42 +1502,79 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         </div>
                                     ) : (
                                         <div className="space-y-3">
-                                            {attachments.map((att) => (
-                                                <div key={att.id} className="group relative grid grid-cols-[1fr,1fr,auto] gap-4 items-center p-3 rounded-lg">
-                                                    <p className="text-sm text-gray-800 truncate">{att.fields.attachment_description}</p>
-                                                    <div>
-                                                        {att.fields.Attachments && att.fields.Attachments.length > 0 ? (
-                                                            <div className="flex flex-col space-y-1">
-                                                                {att.fields.Attachments.map((file, index) => (
-                                                                    <a key={index} href={file.url} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline flex items-center gap-1">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
-                                                        {file.filename}
-                                                                    </a>
-                                                                ))}
+                                            {attachments.length > 0 ? (
+                                                <>
+                                                    {attachments.map((att) => (
+                                                        <div key={att.id} className="group relative grid grid-cols-[1fr,1fr,auto] gap-4 items-center p-3 rounded-lg">
+                                                            <p className="text-sm text-gray-800 truncate">{att.fields.attachment_description}</p>
+                                                            <div>
+                                                                {att.fields.Attachments && att.fields.Attachments.length > 0 ? (
+                                                                    <div className="flex flex-col space-y-1">
+                                                                        {att.fields.Attachments.map((file, index) => (
+                                                                            <a key={index} href={file.url} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline flex items-center gap-1">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
+                                                                            {file.filename}
+                                                                            </a>
+                                                                        ))}
+                                                                    </div>
+                                                                ) : (
+                                                                    <p className="text-sm text-gray-500 italic">No file uploaded</p>
+                                                                )}
                                                             </div>
-                                                        ) : (
-                                                            <p className="text-sm text-gray-500 italic">No file uploaded</p>
-                                                        )}
-                                                    </div>
-                                                    <div className="flex items-center gap-2">
-                                                        <input type="file" className="hidden" ref={el => (fileInputRefs.current[att.id] = el)} onChange={(e) => handleFileChange(e, att)} disabled={!canEdit} />
-                                                        <button type="button" onClick={() => handleUploadClick(att)} className="text-sm bg-white border border-gray-300 text-black rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 flex items-center justify-center disabled:opacity-100" disabled={!canEdit}>
-                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
-                                                            {isClientView ? (att.fields.Attachments?.length ? 'Add File' : 'Upload') : (att.fields.Attachments?.length ? 'Replace' : 'Upload')}
-                                                        </button>
-                                                        {!isClientView && (
+                                                            <div className="flex items-center gap-2">
+                                                                <input type="file" className="hidden" ref={el => (fileInputRefs.current[att.id] = el)} onChange={(e) => handleFileChange(e, att)} disabled={!canEdit} />
+                                                                <button type="button" onClick={() => handleUploadClick(att)} className="text-sm bg-white border border-gray-300 text-black rounded-md px-3 py-1.5 cursor-pointer hover:bg-gray-50 flex items-center justify-center disabled:opacity-100" disabled={!canEdit}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+                                                                    {isClientView ? (att.fields.Attachments?.length ? 'Add File' : 'Upload') : (att.fields.Attachments?.length ? 'Replace' : 'Upload')}
+                                                                </button>
+                                                                {!isClientView && (
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={() => handleDeleteAttachment(att.id)}
+                                                                        className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                                                        title="Delete Attachment"
+                                                                    >
+                                                                        <TrashIcon className="h-4 w-4" />
+                                                                    </button>
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                    
+                                                    {/* Add New Attachment Button */}
+                                                    {canEdit && (
+                                                        <div className="pt-3 border-t border-gray-200">
                                                             <button
                                                                 type="button"
-                                                                onClick={() => handleDeleteAttachment(att.id)}
-                                                                className="p-1 rounded-full text-slate-400 hover:bg-red-500 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
-                                                                title="Delete Attachment"
+                                                                onClick={() => setIsAddAttachmentModalOpen(true)}
+                                                                className="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 hover:text-blue-700 transition-colors"
                                                             >
-                                                                <TrashIcon className="h-4 w-4" />
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                                                </svg>
+                                                                Add New Attachment
                                                             </button>
-                                                        )}
+                                                        </div>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                /* No attachments yet - show only the Add New Attachment button */
+                                                canEdit && (
+                                                    <div className="text-center py-6">
+                                                        <p className="text-sm text-gray-500 mb-4">No attachments yet</p>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setIsAddAttachmentModalOpen(true)}
+                                                            className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 hover:text-blue-700 transition-colors mx-auto"
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                                            </svg>
+                                                            Add New Attachment
+                                                        </button>
                                                     </div>
-                                                </div>
-                                            ))}
+                                                )
+                                            )}
                                         </div>
                                     )}
                                 </div>
@@ -1761,6 +1826,13 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                         onApprovalAdded={handleApprovalAdded}
                     />
                 )}
+                
+                <AddAttachmentModal
+                    isOpen={isAddAttachmentModalOpen}
+                    onClose={() => setIsAddAttachmentModalOpen(false)}
+                    taskId={task.id}
+                    onAttachmentAdded={handleNewAttachmentAdded}
+                />
                 
                 {/* Image Preview Modal */}
                 {previewImage && (

@@ -172,6 +172,8 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
         return colors[index % colors.length];
     };
 
+
+
     // Get section background color
     const getSectionColor = (sectionName) => {
         const sectionColors = {
@@ -1851,9 +1853,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
 
                     <div className="lg:col-span-3 space-y-6">
                         {/* Project Details Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('Project Details')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
+                                <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
                                 {isEditingDetails ? (
                                     <div className="flex items-center gap-2">
                                         <button onClick={() => { setIsEditingDetails(false); setEditedDetails(projectData.fields); }} className={`px-4 py-2 ${colorClasses.button.neutral} rounded-md text-sm font-medium`}>Cancel</button>
@@ -1975,9 +1977,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Notes Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('Notes')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-2">
-                                <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
+                                <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Notes')}`}>📝 Notes</h2>
                                 {userRole !== 'client' && !isEditingNotes && !isDeactivated && (
                                     <button onClick={() => {
                                         // Save the current state before entering edit mode
@@ -2030,12 +2032,12 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* About Us Section */}
-                        <AboutUsSection />
+                        <AboutUsSection getSectionColor={getSectionColor} />
 
                         {/* Tasks Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('Tasks')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className="text-lg font-semibold text-slate-700">Tasks</h3>
+                                <h3 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
                                 <div className="flex items-center gap-2">
                                     <button onClick={() => setIsAddGroupFormVisible(true)} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.secondary} rounded-md text-sm`}>
                                         <AddIcon /> Add Group
@@ -2051,13 +2053,13 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                 <div>
                                     <Droppable droppableId="all-groups" type="GROUP">
                                         {(provided) => (
-                                            <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-4">
+                                            <div {...provided.droppableProps} ref={provided.innerRef} className="space-y-6">
                                                 {taskData.groups.map((group, index) => (
                                                     <Draggable key={group.id} draggableId={group.id} index={index}>
                                                         {(provided) => (
                                                             <div ref={provided.innerRef} {...provided.draggableProps}>
-                                                                <div className="p-2 rounded-lg bg-slate-50 border border-slate-200 group relative">
-                                                                    <div {...provided.dragHandleProps} className="flex justify-between items-center p-2 cursor-grab">
+                                                                <div className={`p-3 rounded-xl ${getSectionColor('Tasks')} border-2 border-slate-300 shadow-md group relative`}>
+                                                                    <div {...provided.dragHandleProps} className="flex justify-between items-center p-3 cursor-grab border-b border-slate-200 mb-3">
                                                                         {editingGroupId === group.id ? (
                                                                             <input
                                                                                 type="text"
@@ -2074,7 +2076,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                                                             />
                                                                         ) : (
                                                                             <h4
-                                                                                className={`font-bold ${getGroupTitleColor(index)}`}
+                                                                                className={`font-bold text-lg ${getGroupTitleColor(index)}`}
                                                                                 onClick={() => {
                                                                                     setEditingGroupId(group.id);
                                                                                     setEditingGroupName(group.name);
@@ -2093,14 +2095,14 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                                                     </div>
                                                                     <Droppable droppableId={group.id} type="TASK">
                                                                         {(provided) => (
-                                                                            <ul className="space-y-2 p-2 min-h-[50px]" {...provided.droppableProps} ref={provided.innerRef}>
-                                                                                {group.tasks.map((task, index) => (
-                                                                                    <Draggable key={task.id} draggableId={task.id} index={index}>
+                                                                            <ul className="space-y-3 p-3 min-h-[60px]" {...provided.droppableProps} ref={provided.innerRef}>
+                                                                                {group.tasks.map((task, taskIndex) => (
+                                                                                    <Draggable key={task.id} draggableId={task.id} index={taskIndex}>
                                                                                         {(provided) => (
                                                                                             <li
                                                                                                 ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                                                                                 onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                                                                className="p-3 bg-white rounded-md shadow-sm border border-slate-200"
+                                                                                                className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200`}
                                                                                             >
                                                                                                 <div className="flex justify-between items-center">
                                                                                                     <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
@@ -2136,17 +2138,17 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                     </Droppable>
 
                                     <div className="mt-4">
-                                        <h4 className="font-bold text-slate-700 mb-2 p-2">Ungrouped Tasks</h4>
+                                        <h4 className={`font-bold text-lg text-slate-700 mb-3 p-3 ${getSectionColor('Tasks')} rounded-lg border border-slate-200`}>Ungrouped Tasks</h4>
                                         <Droppable droppableId="ungrouped-tasks" type="TASK">
                                             {(provided) => (
-                                                <ul className="space-y-2 p-2 min-h-[50px] bg-slate-50 rounded-lg border" {...provided.droppableProps} ref={provided.innerRef}>
+                                                <ul className={`space-y-3 p-4 min-h-[60px] ${getSectionColor('Tasks')} rounded-xl border-2 border-slate-300 shadow-sm`} {...provided.droppableProps} ref={provided.innerRef}>
                                                     {taskData.ungroupedTasks.map((task, index) => (
                                                         <Draggable key={task.id} draggableId={task.id} index={index}>
                                                             {(provided) => (
                                                                 <li
                                                                     ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                                                     onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                                    className="p-3 bg-white rounded-md shadow-sm border border-slate-200"
+                                                                    className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200`}
                                                                 >
                                                                     <div className="flex justify-between items-center">
                                                                         <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
@@ -2177,9 +2179,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Documents Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('Documents')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-3">
-                                <h2 className="text-lg font-semibold text-slate-700">📎 Documents</h2>
+                                <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Documents')}`}>📎 Documents</h2>
                                 <label className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all cursor-pointer`}>
                                     <UploadIcon />
                                     Upload File
@@ -2223,11 +2225,11 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Activities Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('Activities')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-4">
                                 <div className="flex items-center gap-3">
                                     <CalendarIcon />
-                                    <h2 className="text-lg font-semibold text-slate-700">Activities</h2>
+                                    <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
                                 </div>
                                 {(changedActivities.toCreate.size > 0 || changedActivities.toUpdate.size > 0) && (
                                     <button
@@ -2241,7 +2243,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                             </div>
                             <div className="overflow-x-auto">
                                 <table className="w-full text-sm text-left table-fixed">
-                                    <thead className="text-xs text-slate-700 uppercase bg-slate-100 rounded-t-lg">
+                                    <thead className={`text-xs text-slate-700 uppercase ${getSectionColor('Activities')} rounded-t-lg`}>
                                         <tr>
                                             <th scope="col" className="px-6 py-3 w-1/2">Name</th>
                                             <th scope="col" className="px-6 py-3 w-40">Due Date</th>
@@ -2334,9 +2336,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
 
                     <div className="lg:col-span-2 space-y-6">
                         {/* Project Status Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 text-sm">
+                        <section className={`${getSectionColor('Project Status')} p-5 rounded-xl shadow-sm border border-slate-200 text-sm`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold text-slate-700 text-center">Project Status</h2>
+                                <h2 className={`text-lg font-semibold text-slate-700 text-center px-3 py-2 rounded-lg ${getSectionColor('Project Status')}`}>Project Status</h2>
                                 {userRole === 'consultant' && !isEditingDetails && !isEditingStatus && (
                                     <button onClick={() => { setEditedDetails(projectData.fields); setIsEditingStatus(true); }} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
@@ -2400,9 +2402,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Key Dates Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 text-sm">
+                        <section className={`${getSectionColor('Key Dates')} p-5 rounded-xl shadow-sm border border-slate-200 text-sm`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-lg font-semibold text-slate-700">Key Dates</h2>
+                                <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Key Dates')}`}>Key Dates</h2>
                                 {userRole === 'consultant' && !isEditingDetails && !isEditingKeyDates && (
                                     <button onClick={() => { setEditedDetails(projectData.fields); setIsEditingKeyDates(true); }} className={`flex items-center gap-2 text-sm ${colorClasses.text.link} font-medium`}>
                                         <EditIcon />
@@ -2457,9 +2459,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* General Discussion Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('General Discussion')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-3">
-                                <h2 className="text-lg font-semibold text-slate-700">💬 General Discussion</h2>
+                                <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('General Discussion')}`}>💬 General Discussion</h2>
                                 <AIDropdown 
                                     isAIMode={isAIMode}
                                     onToggle={setIsAIMode}
@@ -2662,9 +2664,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Actions Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('Actions')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                                 <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-lg font-semibold text-slate-700">⚡️ Actions</h2>
+                                    <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Actions')}`}>⚡️ Actions</h2>
                                     {!isAddingAction && (
                                         <button onClick={() => setIsAddingAction(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
                                             <AddIcon />
@@ -2821,14 +2823,15 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                             currentUser={currentUser}
                             userRole={userRole}
                             projectIDReadable={projectData.fields['Project ID']}
+                            getSectionColor={getSectionColor}
                         />
 
                         {/* Collaborators Section */}
-                        <section className="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <section className={`${getSectionColor('Collaborators')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-3">
                                 <div className="flex items-center gap-3">
                                     <CollaboratorIcon />
-                                    <h2 className="text-lg font-semibold text-slate-700">Collaborators</h2>
+                                    <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Collaborators')}`}>Collaborators</h2>
                                 </div>
                                 <button onClick={() => setIsAddCollaboratorVisible(true)} className={`flex items-center gap-2 text-sm ${colorClasses.button.secondary} px-3 py-1.5 rounded-lg shadow-sm transition-all`}>
                                     <AddIcon />
@@ -2838,7 +2841,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                             <div className="space-y-2">
                                 {projectData.fields['collaborator_name'] && projectData.fields['collaborator_name'].length > 0 ? (
                                     projectData.fields['collaborator_name'].map((name, index) => (
-                                        <div key={index} className="group relative flex items-center justify-between p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-sm font-medium text-slate-800">
+                                        <div key={index} className="group relative flex items-center justify-between p-2.5 bg-slate-200 rounded-lg border border-slate-300 text-sm font-medium text-slate-800">
                                             <span>{name}</span>
                                             <button
                                                 onClick={() => handleDeleteCollaborator(name)}
@@ -2869,16 +2872,8 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         fetchTasksForProject(); 
                         setIsTaskCardVisible(false);
                         
-                        // Emit real-time update to other users
-                        if (projectSocketRef.current) {
-                            projectSocketRef.current.emit('taskUpdate', {
-                                projectId: projectData.id,
-                                taskId: updatedTask.id,
-                                updateType: 'task_updated',
-                                data: updatedTask.fields,
-                                userId: currentUser?.id || 'unknown'
-                            });
-                        }
+                        // Note: Real-time updates for task changes are handled by the TaskCard component itself
+                        // No need to emit taskUpdate here as it was causing 422 errors
                     }}
                     assigneeOptions={assigneeOptions}
                 />
@@ -2893,16 +2888,8 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         fetchTasksForProject(); 
                         setIsAddTaskFormVisible(false);
                         
-                        // Emit real-time update to other users
-                        if (projectSocketRef.current) {
-                            projectSocketRef.current.emit('taskUpdate', {
-                                projectId: projectData.id,
-                                taskId: newTask.id,
-                                updateType: 'task_created',
-                                data: newTask,
-                                userId: currentUser?.id || 'unknown'
-                            });
-                        }
+                        // Note: Real-time updates for new tasks are handled by the form component itself
+                        // No need to emit taskUpdate here as it was causing 422 errors
                     }}
                     assigneeOptions={assigneeOptions}
                     nextTaskOrder={taskData.ungroupedTasks.length}
