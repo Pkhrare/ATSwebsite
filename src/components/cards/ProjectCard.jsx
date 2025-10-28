@@ -1796,9 +1796,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                     <BackIcon />
                     <span className="hidden sm:inline">Back</span>
                 </button>
-                <div className="text-center">
-                    <div className="flex items-center justify-center gap-3">
-                    <h1 className={`text-lg md:text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
+                        <div className="text-center">
+                            <div className="flex items-center justify-center gap-3">
+                                <h1 className={`text-base md:text-xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
                         {isDeactivated && (
                             <span className="px-2 py-1 text-xs font-medium bg-gray-500 text-white rounded-full">
                                 DEACTIVATED

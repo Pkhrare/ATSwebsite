@@ -47,7 +47,7 @@ async function globalProjectCounter() {
 
 
 const StatusBadge = ({ status }) => {
-    const baseStyle = "px-2.5 py-0.5 text-xs font-medium rounded-full inline-block";
+    const baseStyle = "px-2.5 py-0.5 text-xs font-medium rounded-full inline-block text-center";
     let colorStyle = "bg-slate-100 text-slate-700";
     if (status) {
         switch (status.toLowerCase()) {
@@ -558,7 +558,7 @@ function Projects() {
                 className="bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer hover:shadow-lg transition-shadow"
               >
                 <div className="flex justify-between items-start">
-                  <h3 className="font-bold text-lg text-slate-800">{record.fields['Project Name']}</h3>
+                  <h3 className="font-bold text-base text-slate-800">{record.fields['Project Name']}</h3>
                   <StatusBadge status={record.fields['Status']} />
                 </div>
                 <p className="text-sm text-slate-500 font-mono">{record.fields['Project ID']}</p>
