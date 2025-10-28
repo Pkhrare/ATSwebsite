@@ -19,7 +19,12 @@ export default function ClientLogin() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        if (!projectName || !projectId) {
+        
+        // Trim inputs to handle potential whitespace issues
+        const trimmedProjectName = projectName.trim();
+        const trimmedProjectId = projectId.trim();
+        
+        if (!trimmedProjectName || !trimmedProjectId) {
             setError('Both fields are required.');
             return;
         }
@@ -27,7 +32,23 @@ export default function ClientLogin() {
         setError('');
 
         try {
-            const data = await ApiCaller(`/authenticate/${encodeURIComponent(projectName)}/${encodeURIComponent(projectId)}`);
+            // Debug logging for mobile issues
+            console.log('Login attempt:', {
+                originalProjectName: projectName,
+                originalProjectId: projectId,
+                trimmedProjectName: trimmedProjectName,
+                trimmedProjectId: trimmedProjectId,
+                projectNameLength: projectName.length,
+                projectIdLength: projectId.length,
+                trimmedProjectNameLength: trimmedProjectName.length,
+                trimmedProjectIdLength: trimmedProjectId.length,
+                userAgent: navigator.userAgent,
+                isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+            });
+
+            const data = await ApiCaller(`/authenticate/${encodeURIComponent(trimmedProjectName)}/${encodeURIComponent(trimmedProjectId)}`);
+
+            console.log('API Response:', data);
 
             if (data.records.length === 0) {
                 throw new Error('Invalid Project Name or Project ID.');
