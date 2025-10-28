@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import ApiCaller from '../components/apiCall/ApiCaller';
 import { useAuth } from '../utils/AuthContext';
+import companyLogo from '../assets/companyLogo2.avif'; // Import the logo
 
 const Logo = () => (
-    <svg className="w-20 h-20 text-slate-700 mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-    </svg>
+    <img src={companyLogo} alt="Company Logo" className="w-65 mx-auto mb-6" />
 );
-
 
 
 export default function ClientLogin() {
@@ -35,10 +33,16 @@ export default function ClientLogin() {
                 throw new Error('Invalid Project Name or Project ID.');
             }
             
+            const projectData = data.records[0];
+
+            if (projectData.fields['Operation'] === 'Deactivated') {
+                navigate('/project-deactivated');
+                return;
+            }
+            
             // If authentication is successful, start the client session
             startClientSession();
 
-            const projectData = data.records[0];
             navigate(`/client/project/${projectData.id}`, { state: { project: projectData } });
 
         } catch (err) {

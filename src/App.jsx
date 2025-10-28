@@ -8,6 +8,7 @@ import Projects from './Pages/Projects';
 import Landing from './Pages/Landing';
 import ConsultantLogin from './Pages/ConsultantLogin';
 import ClientLogin from './Pages/ClientLogin';
+import ProjectDeactivated from './Pages/ProjectDeactivated';
 import ClientCard from './components/cards/ClientCard';
 import ProtectedRoute from './utils/ProtectedRoute';
 import { useAuth } from './utils/AuthContext';
@@ -36,6 +37,7 @@ function App() {
           currentUser ? <Navigate to="/dashboard" replace /> : <ConsultantLogin />
         } />
         <Route path='/client-login' element={<ClientLogin />} />
+        <Route path='/project-deactivated' element={<ProjectDeactivated />} />
         <Route path='/client/project/:projectId' element={<ClientCard />} />
         <Route path="/combined-license-form" element={<CombinedLicenseIntroPage />} />
         <Route path="/enrollment-form" element={<EnrollmentIntroPage />} />

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from '../utils/AuthContext';
 import { Link } from 'react-router-dom';
+import companyLogo from '../assets/companyLogo2.avif'; // Import the logo
 
 const Logo = () => (
-    <svg className="w-20 h-20 text-blue-600 mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
+    <img src={companyLogo} alt="Company Logo" className="w-65 mx-auto mb-6" />
 );
 
 const ConsultantLogin = () => {
