@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Nav from './Nav';
+import Sidebar from './Sidebar'; // Import the new Sidebar
 import InfoSidebar from './InfoSidebar';
 import { colorClasses } from '../../utils/colorUtils';
 import { InfoPageProvider } from '../../utils/InfoPageContext';
@@ -16,8 +17,11 @@ const Layout = () => {
         <InfoPageProvider>
             <div className={`min-h-screen ${colorClasses.bg.secondary} flex flex-col`}>
                 <Nav onToggleSidebar={toggleSidebar} />
+                <Sidebar /> {/* Add the new Sidebar */}
                 <div className="flex flex-1 overflow-hidden">
-                    <InfoSidebar isCollapsed={isSidebarCollapsed} />
+                    <div className="hidden md:block"> {/* Hide InfoSidebar on small screens */}
+                        <InfoSidebar isCollapsed={isSidebarCollapsed} />
+                    </div>
                     <div className="flex-1 overflow-y-auto">
                         <Outlet />
                     </div>

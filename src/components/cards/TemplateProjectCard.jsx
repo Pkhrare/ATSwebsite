@@ -579,43 +579,44 @@ export default function TemplateProjectCard({ template, onClose }) {
     
     return (
         <div className="h-full flex flex-col">
-            <div className="flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 bg-white mb-6">
-                <button onClick={onClose} className="flex items-center gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg border border-slate-300 shadow-sm transition-all duration-200" aria-label="Back">
+            <div className="flex items-center justify-between p-3 md:p-4 border-b border-slate-200 flex-shrink-0 bg-white mb-4 md:mb-6 gap-2">
+                <button onClick={onClose} className="flex items-center gap-1 md:gap-2 text-slate-600 hover:text-blue-600 bg-slate-100 hover:bg-slate-200 px-2 py-2 md:px-4 rounded-lg border border-slate-300 shadow-sm transition-all duration-200 flex-shrink-0" aria-label="Back">
                     <BackIcon />
                     <span className="hidden sm:inline">Back to Templates</span>
                 </button>
-                <div className="text-center">
-                    <h1 className="text-2xl font-bold text-slate-800">{projectData['Project Name']}</h1>
+                <div className="text-center flex-1 px-2 min-w-0">
+                    <h1 className="text-lg md:text-2xl font-bold text-slate-800 break-words leading-tight" title={projectData['Project Name']}>{projectData['Project Name']}</h1>
                     <p className="text-xs text-slate-500 font-mono">Template Preview</p>
                 </div>
                 <button 
                     onClick={handleCreateProject} 
                     disabled={isCreatingProject}
-                    className="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 text-sm font-medium disabled:bg-emerald-400"
+                    className="px-2 py-2 md:px-4 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 text-xs md:text-sm font-medium disabled:bg-emerald-400 whitespace-nowrap flex-shrink-0"
                 >
-                    {isCreatingProject ? 'Creating...' : 'Create Project'}
+                    {isCreatingProject ? 'Creating...' : 'Create'}
                 </button>
             </div>
 
             <main className="flex-grow overflow-y-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                    <div className="lg:col-span-3 space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6">
+                    <div className="lg:col-span-3 space-y-4 md:space-y-6">
                         {/* Project Details Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-4">
+                        <section className="bg-white p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2">
                                 <h2 className="text-lg font-semibold text-slate-700">Project Details</h2>
                                 {isEditingDetails ? (
                                     <div className="flex items-center gap-2">
-                                        <button onClick={() => { setIsEditingDetails(false); setProjectData(template.projectData); }} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 text-sm font-medium">Cancel</button>
-                                        <button onClick={handleSaveDetails} className="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 text-sm font-medium">Save</button>
+                                        <button onClick={() => { setIsEditingDetails(false); setProjectData(template.projectData); }} className="px-3 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 text-sm font-medium">Cancel</button>
+                                        <button onClick={handleSaveDetails} className="px-3 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 text-sm font-medium">Save</button>
                                     </div>
                                 ) : (
-                                    <button onClick={() => setIsEditingDetails(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                                    <button onClick={() => setIsEditingDetails(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium self-start sm:self-auto">
                                         <EditIcon />
+                                        <span className="hidden sm:inline">Edit</span>
                                     </button>
                                 )}
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                            <div className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm">
                                 {/* Project Name */}
                                 <div className="md:col-span-2">
                                     <span className="font-medium text-slate-500">Project Name:</span>
@@ -768,12 +769,13 @@ export default function TemplateProjectCard({ template, onClose }) {
                         </section>
 
                         {/* Notes Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                            <div className="flex justify-between items-center mb-2">
+                        <section className="bg-white p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm">
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-2">
                                 <h2 className="text-lg font-semibold text-slate-700">📝 Notes</h2>
                                 {!isEditingNotes && (
-                                    <button onClick={() => setIsEditingNotes(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium">
+                                    <button onClick={() => setIsEditingNotes(true)} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium self-start sm:self-auto">
                                         <EditIcon />
+                                        <span className="hidden sm:inline">Edit</span>
                                     </button>
                                 )}
                             </div>
@@ -800,7 +802,7 @@ export default function TemplateProjectCard({ template, onClose }) {
                         </section>
                         
                         {/* Tasks Section */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className="bg-white p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm">
                             <div className="flex justify-between items-center mb-4">
                                 <h3 className="text-lg font-semibold text-slate-800">Tasks</h3>
                                 {/* Add Task/Group functionality can be added later if needed */}
@@ -813,9 +815,9 @@ export default function TemplateProjectCard({ template, onClose }) {
                                                 <Draggable key={group.id} draggableId={group.id} index={index}>
                                                     {(provided) => (
                                                         <div ref={provided.innerRef} {...provided.draggableProps}>
-                                                            <div className="p-2 rounded-lg bg-slate-100 border border-slate-200">
+                                                            <div className="p-3 md:p-2 rounded-lg bg-slate-100 border border-slate-200">
                                                                 <div {...provided.dragHandleProps} className="flex justify-between items-center p-2 cursor-grab">
-                                                                    <h4 className="font-bold text-slate-700">{group.name}</h4>
+                                                                    <h4 className="font-bold text-slate-700 text-sm md:text-base">{group.name}</h4>
                                                                 </div>
                                                                 <Droppable droppableId={group.id} type="TASK">
                                                                     {(provided) => (
@@ -826,11 +828,13 @@ export default function TemplateProjectCard({ template, onClose }) {
                                                                                         <li
                                                                                             ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                                                                             onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }} // Re-enable when TemplateTaskCard is built
-                                                                                            className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                                                            className="p-3 md:p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer hover:shadow-md transition-shadow min-h-[60px] flex items-center"
                                                                                         >
-                                                                                            <div className="flex justify-between items-center">
-                                                                                                <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                                                {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                                            <div className="flex justify-between items-center w-full">
+                                                                                                <h5 className="font-medium text-sm text-slate-800 flex-1 pr-2">{task.fields.task_title}</h5>
+                                                                                                <div className="flex-shrink-0">
+                                                                                                    {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                                                </div>
                                                                                             </div>
                                                                                         </li>
                                                                                     )}
@@ -850,7 +854,7 @@ export default function TemplateProjectCard({ template, onClose }) {
                                     )}
                                 </Droppable>
                                 <div className="mt-4">
-                                    <h4 className="font-bold text-slate-700 mb-2 p-2">Ungrouped Tasks</h4>
+                                    <h4 className="font-bold text-slate-700 mb-2 p-2 text-sm md:text-base">Ungrouped Tasks</h4>
                                     <Droppable droppableId="ungrouped-tasks" type="TASK">
                                         {(provided) => (
                                             <ul className="space-y-2 p-2 min-h-[50px] bg-slate-50 rounded-lg border" {...provided.droppableProps} ref={provided.innerRef}>
@@ -860,11 +864,13 @@ export default function TemplateProjectCard({ template, onClose }) {
                                                             <li
                                                                 ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
                                                                 onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }} // Re-enable when TemplateTaskCard is built
-                                                                className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer"
+                                                                className="p-3 bg-white rounded-md shadow-sm border border-slate-200 cursor-pointer hover:shadow-md transition-shadow min-h-[60px] flex items-center"
                                                             >
-                                                                <div className="flex justify-between items-center">
-                                                                    <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                    {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                <div className="flex justify-between items-center w-full">
+                                                                    <h5 className="font-medium text-sm text-slate-800 flex-1 pr-2">{task.fields.task_title}</h5>
+                                                                    <div className="flex-shrink-0">
+                                                                        {task.fields.task_status === 'Completed' ? <CompletedIcon /> : <IncompleteIcon />}
+                                                                    </div>
                                                                 </div>
                                                             </li>
                                                         )}
@@ -878,13 +884,13 @@ export default function TemplateProjectCard({ template, onClose }) {
                             </DragDropContext>
                         </section>
                     </div>
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-2 space-y-4 md:space-y-6">
                         {/* Right column can be used for template instructions or other info */}
-                        <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                        <section className="bg-white p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm">
                             <h2 className="text-lg font-semibold text-slate-700 mb-2">Using This Template</h2>
-                            <p className="text-sm text-slate-600">
+                            <p className="text-sm text-slate-600 leading-relaxed">
                                 You are currently viewing a project template. You can edit the project details, notes, and re-order tasks and groups. 
-                                When you're ready, click the "Create Project" button in the top right. 
+                                When you're ready, click the "Create" button in the top right. 
                                 This will create a new project with your customizations, and the original template will remain unchanged.
                             </p>
                         </section>

@@ -46,6 +46,24 @@ async function globalProjectCounter() {
 // };
 
 
+const StatusBadge = ({ status }) => {
+    const baseStyle = "px-2.5 py-0.5 text-xs font-medium rounded-full inline-block";
+    let colorStyle = "bg-slate-100 text-slate-700";
+    if (status) {
+        switch (status.toLowerCase()) {
+            case 'completed':
+            case 'finalized':
+                colorStyle = "bg-emerald-100 text-emerald-800"; break;
+            case 'in progress': colorStyle = "bg-amber-100 text-amber-800"; break;
+            case 'not started': colorStyle = "bg-slate-100 text-slate-700"; break;
+            case 'pending': colorStyle = "bg-rose-100 text-rose-800"; break;
+            default: break;
+        }
+    }
+    return <span className={`${baseStyle} ${colorStyle}`}>{status || 'N/A'}</span>;
+};
+
+
 function Projects() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -310,7 +328,7 @@ function Projects() {
       <div>
         <header className="mb-6">
           {/* Tab Navigation */}
-          <div className="border-b border-slate-200">
+          <div className="hidden md:block border-b border-slate-200">
             <nav className="-mb-px flex space-x-6" aria-label="Tabs">
               <button 
                 onClick={() => setActiveTab('active')}
@@ -337,20 +355,20 @@ function Projects() {
               </button>
             </nav>
           </div>
-          <div className="mt-4">
-            <p className="mt-2 text-sm text-slate-600">
+          <div className="text-center sm:text-left">
+            <h1 className="text-xl font-bold text-slate-800">
+              {activeTab === 'active' && (searchQuery ? `Active Projects: ${filteredData.length}` : `Active Projects: ${data.filter(record => record.fields['Operation'] === 'Active' || !record.fields['Operation']).length}`)}
+              {activeTab === 'deactivated' && (searchQuery ? `Deactivated Projects: ${filteredData.length}` : `Deactivated Projects: ${data.filter(record => record.fields['Operation'] === 'Deactivated').length}`)}
+            </h1>
+            <p className="mt-1 text-sm text-slate-600">
               {activeTab === 'active' && "View, edit, and manage all active client projects."}
               {activeTab === 'deactivated' && "View and manage deactivated client projects."}
             </p>
           </div>
         </header>
 
-        <div className="flex justify-between items-center mb-6">
-          <div className="text-lg font-medium text-blue-600">
-            {activeTab === 'active' && (searchQuery ? `Active Projects: ${filteredData.length}` : `Active Projects: ${data.filter(record => record.fields['Operation'] === 'Active' || !record.fields['Operation']).length}`)}
-            {activeTab === 'deactivated' && (searchQuery ? `Deactivated Projects: ${filteredData.length}` : `Deactivated Projects: ${data.filter(record => record.fields['Operation'] === 'Deactivated').length}`)}
-          </div>
-          <div className="flex items-center space-x-2">
+        <div className="flex flex-col sm:flex-row sm:justify-end sm:items-center mb-6 gap-4">
+          <div className="flex items-center justify-center flex-wrap gap-2">
             {!isEditing && activeTab === 'active' && (
               <>
                 <button
@@ -363,7 +381,7 @@ function Projects() {
                 {activeTab === 'active' && (
                   <button
                     onClick={handleEditClick}
-                    className="flex items-center gap-2 text-sm text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg shadow-sm transition-all"
+                    className="hidden md:flex items-center gap-2 text-sm text-white bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg shadow-sm transition-all"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>
                     Edit
@@ -399,7 +417,7 @@ function Projects() {
         </div>
 
         <div className="mb-6">
-          <div className="flex items-center max-w-lg">
+          <div className="flex flex-col sm:flex-row items-center max-w-lg gap-2 sm:gap-0 mx-auto sm:mx-0">
             <div className="relative w-full">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -409,13 +427,13 @@ function Projects() {
                   placeholder={`Search by ${filterField}...`}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="block w-full p-3 pl-10 text-sm text-slate-900 border border-slate-300 rounded-l-lg bg-white focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full p-3 pl-10 text-sm text-slate-900 border border-slate-300 rounded-lg sm:rounded-r-none bg-white focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
               <select
                 value={filterField}
                 onChange={(e) => setFilterField(e.target.value)}
-                className="p-3 text-sm text-slate-700 bg-slate-100 border-l-0 border border-slate-300 rounded-r-lg hover:bg-slate-200 focus:ring-blue-500 focus:border-blue-500"
+                className="p-3 text-sm text-slate-700 bg-slate-100 border border-slate-300 rounded-lg sm:rounded-l-none sm:border-l-0 hover:bg-slate-200 focus:ring-blue-500 focus:border-blue-500 w-full sm:w-auto"
               >
                 {columnHeaders.map(header => (
                   <option key={header} value={header}>{header}</option>
@@ -424,7 +442,8 @@ function Projects() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          {/* Desktop Table View */}
+          <div className="hidden md:block bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-slate-200">
                 <thead className={colorClasses.button.secondary}>
@@ -528,6 +547,54 @@ function Projects() {
                 </tbody>
               </table>
             </div>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="block md:hidden space-y-4">
+            {filteredData.map((record) => (
+              <div
+                key={record.id}
+                onClick={() => handleProjectClick(record)}
+                className="bg-white p-4 rounded-lg shadow-md border border-slate-200 cursor-pointer hover:shadow-lg transition-shadow"
+              >
+                <div className="flex justify-between items-start">
+                  <h3 className="font-bold text-lg text-slate-800">{record.fields['Project Name']}</h3>
+                  <StatusBadge status={record.fields['Status']} />
+                </div>
+                <p className="text-sm text-slate-500 font-mono">{record.fields['Project ID']}</p>
+                <div className="mt-4 pt-4 border-t border-slate-100 space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="font-medium text-slate-600">Client:</span>
+                    <span className="text-slate-800 truncate">{record.fields['Client Email']}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-slate-600">Consultant:</span>
+                    <span className="text-slate-800">{record.fields['Assigned Consultant']}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-medium text-slate-600">Start Date:</span>
+                    <span className="text-slate-800">{record.fields['Start Date'] ? format(safeNewDate(record.fields['Start Date']), 'MM/dd/yyyy') : '-'}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium text-slate-600">Balance:</span>
+                    <span className="text-emerald-600 font-bold text-base">
+                      {typeof record.fields['Balance'] === 'number'
+                        ? `$${record.fields['Balance'].toLocaleString()}`
+                        : '-'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {filteredData.length === 0 && (
+              <div className="text-center py-12">
+                <div className="text-slate-500">
+                  <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  <h3 className="mt-2 text-lg font-medium">No Projects Found</h3>
+                  <p className="mt-1 text-sm">Try adjusting your search or filter.</p>
+                </div>
+              </div>
+            )}
           </div>
       </div>
 

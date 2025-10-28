@@ -121,23 +121,35 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
 
     return (
         <>
-            <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
-                <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl flex flex-col" style={{ maxHeight: '90vh' }}>
-                    <div className="p-6 border-b flex justify-between items-center">
-                        <h2 className="text-xl font-bold text-gray-800">Edit Template Task</h2>
-                        <div className="flex items-center gap-2">
-                            {/* Add Field Buttons */}
-                            <button type="button" onClick={() => setIsChecklistVisible(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Checklist</button>
-                            <button type="button" onClick={() => setIsAttachFormOpen(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Form</button>
-                            <button type="button" onClick={() => setIsAttachmentsVisible(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Attachment</button>
-                            <button type="button" onClick={() => setIsAddApprovalFormOpen(true)} className="text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-md">Add Approval</button>
-                            <button onClick={onClose} className="text-gray-500 hover:text-gray-700 ml-4" aria-label="Close">
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                            </button>
+            <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-[60] p-2 md:p-4">
+                <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl flex flex-col" style={{ maxHeight: '95vh' }}>
+                    <div className="relative p-4 md:p-6 border-b">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                            <h2 className="text-lg md:text-xl font-bold text-gray-800">Edit Template Task</h2>
+                            <div className="flex flex-wrap items-center gap-2">
+                                {/* Add Field Buttons - Stack on mobile */}
+                                <button type="button" onClick={() => setIsChecklistVisible(true)} className="text-xs md:text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-2 py-1 md:px-3 rounded-md">Add Checklist</button>
+                                <button type="button" onClick={() => setIsAttachFormOpen(true)} className="text-xs md:text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-2 py-1 md:px-3 rounded-md">Add Form</button>
+                                <button type="button" onClick={() => setIsAttachmentsVisible(true)} className="text-xs md:text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-2 py-1 md:px-3 rounded-md">Add Attachment</button>
+                                <button type="button" onClick={() => setIsAddApprovalFormOpen(true)} className="text-xs md:text-sm text-gray-600 bg-gray-100 hover:bg-gray-200 px-2 py-1 md:px-3 rounded-md">Add Approval</button>
+                                <button onClick={onClose} className="text-gray-500 hover:text-gray-700 p-1 hidden sm:block" aria-label="Close">
+                                    <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                            </div>
                         </div>
+                        {/* Mobile-only close button in top right */}
+                        <button 
+                            onClick={onClose} 
+                            className="absolute top-4 right-4 sm:hidden text-gray-500 hover:text-gray-700 p-2 bg-white rounded-full shadow-md" 
+                            aria-label="Close"
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="flex-grow p-6 overflow-y-auto space-y-6">
+                    <form onSubmit={handleSubmit} className="flex-grow p-4 md:p-6 overflow-y-auto space-y-4 md:space-y-6">
                         {/* Task Title */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Task Title</label>
@@ -150,7 +162,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                         </div>
 
                         {/* Assigned To & Status */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Assigned To (Optional)</label>
                                 <select value={editedTask.assigned_to || ''} onChange={(e) => handleInputChange('assigned_to', e.target.value)} className="w-full p-2 border rounded-md text-black text-sm">
@@ -187,10 +199,10 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                         </div>
 
                         {/* Description */}
-                        <div className="p-4 border border-gray-200 rounded-lg">
-                            <div className="flex items-center justify-between mb-1">
+                        <div className="p-3 md:p-4 border border-gray-200 rounded-lg">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
                                 <label className="block text-sm font-medium text-gray-700">Description</label>
-                                <button type="button" onClick={() => setIsEditingDescription(!isEditingDescription)} className="text-sm text-blue-600 hover:underline">
+                                <button type="button" onClick={() => setIsEditingDescription(!isEditingDescription)} className="text-sm text-blue-600 hover:underline self-start sm:self-auto">
                                     {isEditingDescription ? 'Done' : 'Edit'}
                                 </button>
                             </div>
@@ -205,20 +217,20 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
 
                         {/* Attached Form Section */}
                         {attachedForm && (
-                            <div className="p-4 border border-gray-200 rounded-lg">
-                                <div className="flex justify-between items-center">
-                                    <div>
+                            <div className="p-3 md:p-4 border border-gray-200 rounded-lg">
+                                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                                    <div className="flex-1 min-w-0">
                                         <h3 className="text-sm font-medium text-gray-700">Attached Form</h3>
-                                        <p className="text-sm text-gray-800 font-semibold mt-1">{attachedForm.fields.form_name}</p>
+                                        <p className="text-sm text-gray-800 font-semibold mt-1 break-words">{attachedForm.fields.form_name}</p>
                                     </div>
-                                    <button type="button" onClick={() => setAttachedForm(null)} className="text-red-500 hover:text-red-700 text-sm font-medium">Remove</button>
+                                    <button type="button" onClick={() => setAttachedForm(null)} className="text-red-500 hover:text-red-700 text-sm font-medium self-start sm:self-auto">Remove</button>
                                 </div>
                             </div>
                         )}
 
                         {/* Attachments Section */}
                         {isAttachmentsVisible && (
-                            <div className="p-4 border border-gray-200 rounded-lg">
+                            <div className="p-3 md:p-4 border border-gray-200 rounded-lg">
                                 <h3 className="text-sm font-medium text-gray-700 mb-2">Attachment Placeholders</h3>
                                 <div className="space-y-2">
                                     {attachments.map((att) => (
@@ -230,7 +242,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                                                 className="w-full px-2 py-1 border rounded-md text-black text-sm"
                                                 placeholder="File description..."
                                             />
-                                            <button type="button" onClick={() => handleRemoveAttachment(att.id)} className="text-red-500 hover:text-red-700 p-1">
+                                            <button type="button" onClick={() => handleRemoveAttachment(att.id)} className="text-red-500 hover:text-red-700 p-1 flex-shrink-0">
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                                             </button>
                                         </div>
@@ -242,7 +254,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
 
                         {/* Checklist Section */}
                         {isChecklistVisible && (
-                            <div className="p-4 border border-gray-200 rounded-lg">
+                            <div className="p-3 md:p-4 border border-gray-200 rounded-lg">
                                 <h3 className="text-sm font-medium text-gray-700 mb-2">Checklist</h3>
                                 <div className="space-y-2">
                                     {checklistItems.map((item) => (
@@ -253,7 +265,7 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                                                 onChange={(e) => handleChecklistItemChange(item.id, e.target.value)}
                                                 className="w-full px-2 py-1 border rounded-md text-black text-sm"
                                             />
-                                            <button type="button" onClick={() => handleRemoveChecklistItem(item.id)} className="text-red-500 hover:text-red-700 p-1">
+                                            <button type="button" onClick={() => handleRemoveChecklistItem(item.id)} className="text-red-500 hover:text-red-700 p-1 flex-shrink-0">
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                                             </button>
                                         </div>
@@ -265,18 +277,18 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
 
                         {/* Approvals Section */}
                         {approvals.length > 0 && (
-                            <div className="p-4 border border-gray-200 rounded-lg">
+                            <div className="p-3 md:p-4 border border-gray-200 rounded-lg">
                                 <h3 className="text-sm font-medium text-gray-700 mb-2">Approvals</h3>
                                 <div className="space-y-2">
                                     {approvals.map((approval) => (
                                         <div key={approval.id} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-                                            <span className="text-sm text-gray-800 flex-1">
+                                            <span className="text-sm text-gray-800 flex-1 break-words">
                                                 {approval.fields?.approval_description || approval.approval_description}
                                             </span>
                                             <button 
                                                 type="button" 
                                                 onClick={() => handleRemoveApproval(approval.id)} 
-                                                className="text-red-500 hover:text-red-700 p-1"
+                                                className="text-red-500 hover:text-red-700 p-1 flex-shrink-0"
                                             >
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -289,9 +301,9 @@ const TemplateTaskCard = ({ task, onClose, onTaskUpdate, assigneeOptions = [] })
                         )}
 
                         {/* Action Buttons */}
-                        <div className="mt-6 pt-6 border-t flex justify-end items-center">
-                            <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-3 hover:bg-gray-300 font-medium">Cancel</button>
-                            <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium">Update Task</button>
+                        <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t flex flex-col sm:flex-row sm:justify-end items-stretch sm:items-center gap-3">
+                            <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 font-medium order-2 sm:order-1">Cancel</button>
+                            <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium order-1 sm:order-2">Update Task</button>
                         </div>
                     </form>
                 </div>
@@ -322,7 +334,7 @@ const ChecklistItemInput = ({ onAdd }) => {
         setText('');
     };
     return (
-        <div className="flex items-center gap-2 mt-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mt-3">
             <input
                 type="text"
                 value={text}
@@ -331,7 +343,7 @@ const ChecklistItemInput = ({ onAdd }) => {
                 placeholder="Add a new item..."
                 className="w-full px-3 py-2 border rounded-md text-black text-sm"
             />
-            <button type="button" onClick={handleAdd} className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 text-sm font-medium">Add</button>
+            <button type="button" onClick={handleAdd} className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 text-sm font-medium whitespace-nowrap">Add</button>
         </div>
     );
 };
@@ -343,7 +355,7 @@ const AttachmentInput = ({ onAdd }) => {
         setText('');
     };
     return (
-        <div className="flex items-center gap-2 mt-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mt-3">
             <input
                 type="text"
                 value={text}
@@ -352,7 +364,7 @@ const AttachmentInput = ({ onAdd }) => {
                 placeholder="Add a file description..."
                 className="w-full px-3 py-2 border rounded-md text-black text-sm"
             />
-            <button type="button" onClick={handleAdd} className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 text-sm font-medium">Add</button>
+            <button type="button" onClick={handleAdd} className="px-4 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 text-sm font-medium whitespace-nowrap">Add</button>
         </div>
     );
 };

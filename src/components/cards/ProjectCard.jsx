@@ -155,6 +155,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
     const notesEditorRef = useRef(null); // For the editor INSTANCE
     const [notesContent, setNotesContent] = useState(null); // For the editor CONTENT
     const [isEditingDetails, setIsEditingDetails] = useState(false);
+    const [isActivitiesModalVisible, setIsActivitiesModalVisible] = useState(false);
     const isDeactivated = projectData.fields['Operation'] === 'Deactivated';
 
     // Generate colors for task group titles
@@ -1713,7 +1714,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         <span className="hidden sm:inline">Back</span>
                     </button>
                     <div className="text-center">
-                        <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{data.fields['Project Name']}</h1>
+                        <h1 className={`text-lg md:text-2xl font-bold ${colorClasses.text.inverse}`}>{data.fields['Project Name']}</h1>
                         <p className={`text-xs ${colorClasses.text.secondary} font-mono`}>ID: {data.fields['Project ID']}</p>
                     </div>
                     <div className="w-24 h-10"></div>
@@ -1797,7 +1798,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                 </button>
                 <div className="text-center">
                     <div className="flex items-center justify-center gap-3">
-                    <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
+                    <h1 className={`text-lg md:text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
                         {isDeactivated && (
                             <span className="px-2 py-1 text-xs font-medium bg-gray-500 text-white rounded-full">
                                 DEACTIVATED
@@ -1846,15 +1847,17 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
             </header>
 
             <div className="flex flex-1 overflow-hidden">
-                <InfoSidebar />
-                <main className="flex-1 p-6 overflow-y-auto">
+                <div className="hidden md:block">
+                    <InfoSidebar />
+                </div>
+                <main className="flex-1 p-3 md:p-6 overflow-y-auto">
                 <DragDropContext onDragEnd={onDragEnd}>
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6">
 
-                    <div className="lg:col-span-3 space-y-6">
+                    <div className="lg:col-span-3 space-y-4 md:space-y-6">
                         {/* Project Details Section */}
-                        <section className={`${getSectionColor('Project Details')} p-5 rounded-xl shadow-sm border border-slate-200`}>
-                            <div className="flex justify-between items-center mb-4">
+                        <section className={`${getSectionColor('Project Details')} p-4 md:p-5 rounded-xl shadow-sm border border-slate-200`}>
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2">
                                 <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
                                 {isEditingDetails ? (
                                     <div className="flex items-center gap-2">
@@ -1869,7 +1872,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                     )
                                 )}
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                            <div className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm">
                                 {/* Assigned Consultant */}
                                 <div>
                                     <span className={`font-medium ${colorClasses.form.label}`}>Assigned Consultant:</span>
@@ -2225,8 +2228,8 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         </section>
 
                         {/* Activities Section */}
-                        <section className={`${getSectionColor('Activities')} p-5 rounded-xl shadow-sm border border-slate-200`}>
-                            <div className="flex justify-between items-center mb-4">
+                        <section className={`${getSectionColor('Activities')} p-4 md:p-5 rounded-xl shadow-sm border border-slate-200`}>
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2">
                                 <div className="flex items-center gap-3">
                                     <CalendarIcon />
                                     <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
@@ -2241,7 +2244,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                     </button>
                                 )}
                             </div>
-                            <div className="overflow-x-auto">
+                            
+                            {/* Desktop Table View */}
+                            <div className="hidden md:block overflow-x-auto">
                                 <table className="w-full text-sm text-left table-fixed">
                                     <thead className={`text-xs text-slate-700 uppercase ${getSectionColor('Activities')} rounded-t-lg`}>
                                         <tr>
@@ -2315,6 +2320,39 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                         ))}
                                     </tbody>
                                 </table>
+                            </div>
+
+                            {/* Mobile Summary View */}
+                            <div className="block md:hidden">
+                                {isLoadingActivities ? (
+                                    <div className="text-center p-4 text-slate-500">Loading activities...</div>
+                                ) : (
+                                    <div 
+                                        onClick={() => setIsActivitiesModalVisible(true)}
+                                        className="cursor-pointer p-4 bg-white rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors"
+                                    >
+                                        <div className="flex justify-between items-center mb-2">
+                                            <h3 className="font-semibold text-slate-800">View All Activities</h3>
+                                            <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                        <div className="text-sm text-slate-600">
+                                            <div className="flex justify-between mb-1">
+                                                <span>Total Activities:</span>
+                                                <span className="font-medium">{activities.length}</span>
+                                            </div>
+                                            <div className="flex justify-between mb-1">
+                                                <span>Completed:</span>
+                                                <span className="font-medium text-green-600">{activities.filter(a => a.fields.completed).length}</span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                <span>In Progress:</span>
+                                                <span className="font-medium text-blue-600">{activities.filter(a => a.fields.status === 'In progress').length}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </section>
 
@@ -2913,6 +2951,97 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                 />
             )}
             
+            {/* Activities Modal */}
+            {isActivitiesModalVisible && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
+                    <div className="relative max-w-4xl max-h-[90vh] w-full bg-white rounded-xl shadow-xl overflow-hidden">
+                        <div className="flex items-center justify-between p-4 border-b border-slate-200">
+                            <h2 className="text-xl font-semibold text-slate-800">Activities</h2>
+                            <button 
+                                onClick={() => setIsActivitiesModalVisible(false)} 
+                                className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors"
+                                aria-label="Close activities modal"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="p-4 overflow-y-auto max-h-[calc(90vh-80px)]">
+                            {isLoadingActivities ? (
+                                <div className="text-center p-8 text-slate-500">Loading activities...</div>
+                            ) : (
+                                <div className="space-y-4">
+                                    {activities.map((activity) => (
+                                        <div key={activity.id} className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                            <div className="flex justify-between items-start mb-3">
+                                                <h3 className="font-semibold text-slate-800 text-lg">{activity.fields.name}</h3>
+                                                <div className="flex items-center gap-2">
+                                                    <select
+                                                        value={activity.fields.status}
+                                                        onChange={(e) => handleActivityChange(activity.id, 'status', e.target.value)}
+                                                        className="px-2 py-1 text-xs border border-slate-300 rounded-md bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                    >
+                                                        <option value="Not started">Not started</option>
+                                                        <option value="In progress">In progress</option>
+                                                        <option value="Finalized">Finalized</option>
+                                                        <option value="Not Applicable">Not Applicable</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                                <div>
+                                                    <span className="font-medium text-slate-600 block mb-1">Due Date:</span>
+                                                    <DatePicker
+                                                        selected={activity.fields.dueDate && activity.fields.dueDate !== 'Not set' ? parse(activity.fields.dueDate, 'yyyy-MM-dd', new Date()) : null}
+                                                        onChange={(date) => {
+                                                            const formattedDate = date ? format(date, 'yyyy-MM-dd') : 'Not set';
+                                                            handleActivityChange(activity.id, 'dueDate', formattedDate);
+                                                        }}
+                                                        dateFormat="yyyy-MM-dd"
+                                                        className="w-full p-2 border border-slate-300 rounded-md text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                        placeholderText="Select date"
+                                                        isClearable
+                                                    />
+                                                </div>
+                                                <div className="flex items-center justify-between">
+                                                    <span className="font-medium text-slate-600">Completed:</span>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={activity.fields.completed || false}
+                                                        onChange={(e) => handleActivityChange(activity.id, 'completed', e.target.checked)}
+                                                        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0 cursor-pointer"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {activities.length === 0 && (
+                                        <div className="text-center p-8 text-slate-500">
+                                            <svg className="mx-auto h-12 w-12 text-slate-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                            </svg>
+                                            <p>No activities found</p>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                        {(changedActivities.toCreate.size > 0 || changedActivities.toUpdate.size > 0) && (
+                            <div className="p-4 border-t border-slate-200 bg-slate-50">
+                                <button
+                                    onClick={handleSaveActivities}
+                                    disabled={isUpdatingActivities}
+                                    className={`w-full flex items-center justify-center gap-2 text-sm ${colorClasses.button.success} disabled:opacity-50 px-4 py-2 rounded-lg shadow-sm transition-all`}
+                                >
+                                    {isUpdatingActivities ? 'Updating...' : 'Update Activities'}
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
+
             {/* Image Preview Modal */}
             {previewImage && (
                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
