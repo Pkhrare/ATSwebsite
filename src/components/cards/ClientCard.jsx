@@ -13,6 +13,7 @@ import { toLexical, fromLexical } from '../../utils/lexicalUtils';
 import { $getRoot, $createParagraphNode } from 'lexical';
 import RichTextEditor from '../richText/RichTextEditor';
 import InfoSidebar from '../layout/InfoSidebar';
+import Sidebar from '../layout/Sidebar';
 import { loadContent } from '../../utils/contentUtils';
 import { InfoPageProvider } from '../../utils/InfoPageContext';
 import { colorClasses } from '../../utils/colorUtils';
@@ -133,6 +134,7 @@ export default function ClientCard() {
     // isUploading removed - clients can't upload project documents
     const [activities, setActivities] = useState([]);
     const [isLoadingActivities, setIsLoadingActivities] = useState(true);
+    const [isActivitiesModalVisible, setIsActivitiesModalVisible] = useState(false);
     const notesEditorRef = useRef(null);
     const [notesContent, setNotesContent] = useState(null);
     const [projectMessages, setProjectMessages] = useState([]);
@@ -761,7 +763,7 @@ export default function ClientCard() {
 
     return (
         <InfoPageProvider>
-            
+            <Sidebar />
             <div className="fixed inset-0 z-50 bg-slate-50 flex flex-col">
                 <header className={`flex items-center justify-between p-4 border-b border-slate-200 flex-shrink-0 ${colorClasses.nav.base}`}>
                     <Link
@@ -774,7 +776,7 @@ export default function ClientCard() {
                         <span className="hidden sm:inline">Exit Portal</span>
                     </Link>
                     <div className="text-center">
-                        <h1 className={`text-2xl font-bold ${colorClasses.text.inverse}`}>{projectData.fields['Project Name']}</h1>
+                        <h1 className={`text-lg md:text-2xl font-bold ${colorClasses.text.inverse} break-words leading-tight`} title={projectData.fields['Project Name']}>{projectData.fields['Project Name']}</h1>
                         <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
                     </div>
                     <div className="flex items-center gap-2">
@@ -783,18 +785,20 @@ export default function ClientCard() {
                 </header>
 
                 <div className="flex flex-1 overflow-hidden">
-                    <InfoSidebar />
+                    <div className="hidden md:block">
+                        <InfoSidebar />
+                    </div>
                     <div className="flex-1 flex flex-col overflow-hidden">
-                        <main className="flex-grow p-6 overflow-y-auto">
-                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                        <main className="flex-grow p-3 md:p-6 overflow-y-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-6">
 
-                            <div className="lg:col-span-3 space-y-6">
+                            <div className="lg:col-span-3 space-y-4 md:space-y-6">
                                 {/* Project Details Section */}
-                                <section className={`${getSectionColor('Project Details')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section className={`${getSectionColor('Project Details')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
                                         <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
                                     </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                    <div className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm">
                                         <div>
                                             <span className="font-medium text-slate-500">Assigned Consultant:</span>
                                             <span className="text-slate-800 ml-2">{projectData.fields['Assigned Consultant']}</span>
@@ -835,7 +839,7 @@ export default function ClientCard() {
                                 </section>
 
                                 {/* Notes Section */}
-                                <section className={`${getSectionColor('Notes')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section className={`${getSectionColor('Notes')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-2">
                                         <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Notes')}`}>📝 Notes</h2>
                                     </div>
@@ -852,7 +856,7 @@ export default function ClientCard() {
                                 <AboutUsSection getSectionColor={getSectionColor} />
 
                                 {/* Tasks Section */}
-                                <section className={`${getSectionColor('Tasks')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section className={`${getSectionColor('Tasks')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
                                         <h3 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
                                     </div>
@@ -862,29 +866,31 @@ export default function ClientCard() {
                                         <div className="space-y-6">
                                             {taskData.groups.map((group, index) => (
                                                 <div key={group.id}>
-                                                    <div className={`p-3 rounded-xl ${getSectionColor('Tasks')} border-2 border-slate-300 shadow-md`}>
+                                                    <div className={`p-3 md:p-3 rounded-xl ${getSectionColor('Tasks')} border-2 border-slate-300 shadow-md`}>
                                                         <div className="flex justify-between items-center p-3 border-b border-slate-200 mb-3">
-                                                            <h4 className={`font-bold text-lg ${getGroupTitleColor(index)}`}>{group.name}</h4>
+                                                            <h4 className={`font-bold text-base md:text-lg ${getGroupTitleColor(index)}`}>{group.name}</h4>
                                                         </div>
                                                         <ul className="space-y-3 p-3 min-h-[60px]">
                                                             {group.tasks.map((task, taskIndex) => (
                                                                 <li
                                                                     key={task.id}
                                                                     onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                                    className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer`}
+                                                                    className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer min-h-[60px] flex items-center`}
                                                                 >
-                                                                    <div className="flex justify-between items-center">
-                                                                        <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                                        {task.fields.task_status === 'Completed' ? (
-                                                                            <CompletedIcon />
-                                                                        ) : (
-                                                                            <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
-                                                                                <span className="text-xs font-medium text-slate-600">
-                                                                                    {getAssigneeInitials(task.fields.assigned_to)}
-                                                                                </span>
-                                                                            </div>
-                                                                        )}
-                                                            </div>
+                                                                    <div className="flex justify-between items-center w-full">
+                                                                        <h5 className="font-medium text-sm text-slate-800 flex-1 pr-2">{task.fields.task_title}</h5>
+                                                                        <div className="flex-shrink-0">
+                                                                            {task.fields.task_status === 'Completed' ? (
+                                                                                <CompletedIcon />
+                                                                            ) : (
+                                                                                <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
+                                                                                    <span className="text-xs font-medium text-slate-600">
+                                                                                        {getAssigneeInitials(task.fields.assigned_to)}
+                                                                                    </span>
+                                                                                </div>
+                                                                            )}
+                                                                        </div>
+                                                                    </div>
                                                                     <div className="flex justify-end items-center mt-2">
                                                                         <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
                                                 </div>
@@ -895,25 +901,27 @@ export default function ClientCard() {
                                             </div>
                                         ))}
                                         <div className="mt-4">
-                                            <h4 className={`font-bold text-lg text-slate-700 mb-3 p-3 ${getSectionColor('Tasks')} rounded-lg border border-slate-200`}>Ungrouped Tasks</h4>
+                                            <h4 className={`font-bold text-base md:text-lg text-slate-700 mb-3 p-3 ${getSectionColor('Tasks')} rounded-lg border border-slate-200`}>Ungrouped Tasks</h4>
                                             <ul className={`space-y-3 p-4 min-h-[60px] ${getSectionColor('Tasks')} rounded-xl border-2 border-slate-300 shadow-sm`}>
                                                 {taskData.ungroupedTasks.map((task, index) => (
                                                     <li
                                                         key={task.id}
                                                         onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                        className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer`}
+                                                        className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer min-h-[60px] flex items-center`}
                                                     >
-                                                        <div className="flex justify-between items-center">
-                                                            <h5 className="font-medium text-sm text-slate-800">{task.fields.task_title}</h5>
-                                                            {task.fields.task_status === 'Completed' ? (
-                                                                <CompletedIcon />
-                                                            ) : (
-                                                                <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
-                                                                    <span className="text-xs font-medium text-slate-600">
-                                                                        {getAssigneeInitials(task.fields.assigned_to)}
-                                                                    </span>
-                                                                </div>
-                                                            )}
+                                                        <div className="flex justify-between items-center w-full">
+                                                            <h5 className="font-medium text-sm text-slate-800 flex-1 pr-2">{task.fields.task_title}</h5>
+                                                            <div className="flex-shrink-0">
+                                                                {task.fields.task_status === 'Completed' ? (
+                                                                    <CompletedIcon />
+                                                                ) : (
+                                                                    <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
+                                                                        <span className="text-xs font-medium text-slate-600">
+                                                                            {getAssigneeInitials(task.fields.assigned_to)}
+                                                                        </span>
+                                                                    </div>
+                                                                )}
+                                                            </div>
                                                         </div>
                                                         <div className="flex justify-end items-center mt-2">
                                                             <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
@@ -952,8 +960,8 @@ export default function ClientCard() {
                                 </ul>
                             </section>
 
-                            {/* Activities Section */}
-                            <section className={`${getSectionColor('Activities')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                            {/* Activities Section - Desktop Table View */}
+                            <section className={`${getSectionColor('Activities')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm hidden md:block`}>
                                 <div className="flex justify-between items-center mb-4">
                                     <div className="flex items-center gap-3">
                                         <CalendarIcon />
@@ -999,6 +1007,45 @@ export default function ClientCard() {
                                 </div>
                             </section>
 
+                            {/* Activities Section - Mobile Summary View */}
+                            <section className={`${getSectionColor('Activities')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm block md:hidden`}>
+                                <div className="flex justify-between items-center mb-4">
+                                    <div className="flex items-center gap-3">
+                                        <CalendarIcon />
+                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
+                                    </div>
+                                </div>
+                                {isLoadingActivities ? (
+                                    <div className="text-center p-4 text-slate-500">Loading activities...</div>
+                                ) : (
+                                    <div
+                                        onClick={() => setIsActivitiesModalVisible(true)}
+                                        className="cursor-pointer p-4 bg-white rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors"
+                                    >
+                                        <div className="flex justify-between items-center mb-2">
+                                            <h3 className="font-semibold text-slate-800">View All Activities</h3>
+                                            <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                        <div className="text-sm text-slate-600">
+                                            <div className="flex justify-between mb-1">
+                                                <span>Total Activities:</span>
+                                                <span className="font-medium">{activities.length}</span>
+                                            </div>
+                                            <div className="flex justify-between mb-1">
+                                                <span>Completed:</span>
+                                                <span className="font-medium text-green-600">{activities.filter(a => a.fields.completed).length}</span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                <span>In Progress:</span>
+                                                <span className="font-medium text-blue-600">{activities.filter(a => a.fields.status === 'In progress').length}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </section>
+
                             {/* Document Viewer Section */}
                             {selectedDocument && (
                                 <section className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
@@ -1015,9 +1062,9 @@ export default function ClientCard() {
                             )}
                         </div>
 
-                        <div className="lg:col-span-2 space-y-6">
+                        <div className="lg:col-span-2 space-y-4 md:space-y-6">
                             {/* Project Status Section */}
-                            <section className={`${getSectionColor('Project Status')} p-5 rounded-xl border border-slate-200 shadow-sm text-sm`}>
+                            <section className={`${getSectionColor('Project Status')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm text-sm`}>
                                 <div className="flex justify-between items-center mb-4">
                                     <h2 className={`text-lg font-semibold text-slate-700 text-center px-3 py-2 rounded-lg ${getSectionColor('Project Status')}`}>Project Status</h2>
                                 </div>
@@ -1029,7 +1076,7 @@ export default function ClientCard() {
                             </section>
 
                             {/* Key Dates Section */}
-                            <section className={`${getSectionColor('Key Dates')} p-5 rounded-xl border border-slate-200 shadow-sm text-sm`}>
+                            <section className={`${getSectionColor('Key Dates')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm text-sm`}>
                                 <h2 className={`text-lg font-semibold text-slate-700 mb-4 text-center px-3 py-2 rounded-lg ${getSectionColor('Key Dates')}`}>Key Dates</h2>
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center"><span className="font-medium text-slate-500">Last Updated:</span><span className="font-semibold text-slate-800">{format(new Date(projectData.fields['Last Updated']), 'MM/dd/yyyy h:mm a')}</span></div>
@@ -1039,8 +1086,8 @@ export default function ClientCard() {
                             </section>
 
                             {/* General Discussion Section */}
-                            <section className={`${getSectionColor('General Discussion')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
-                                <div className="flex justify-between items-center mb-3">
+                            <section className={`${getSectionColor('General Discussion')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
                                     <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('General Discussion')}`}>💬 General Discussion</h2>
                                     <AIDropdown 
                                         isAIMode={isAIMode}
@@ -1244,7 +1291,7 @@ export default function ClientCard() {
                             </section>
 
                             {/* Actions Section */}
-                            <section className={`${getSectionColor('Actions')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                            <section className={`${getSectionColor('Actions')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-3">
                                     <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Actions')}`}>⚡️ Actions</h2>
                                 </div>
@@ -1328,7 +1375,7 @@ export default function ClientCard() {
                             </section>
 
                             {/* Collaborators Section */}
-                            <section className={`${getSectionColor('Collaborators')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                            <section className={`${getSectionColor('Collaborators')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-3">
                                     <div className="flex items-center gap-3">
                                         <CollaboratorIcon />
@@ -1366,6 +1413,72 @@ export default function ClientCard() {
                 />
             )}
             
+            {/* Activities Modal */}
+            {isActivitiesModalVisible && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">
+                    <div className="relative max-w-4xl max-h-[90vh] w-full bg-white rounded-xl shadow-xl overflow-hidden">
+                        <div className="flex items-center justify-between p-4 border-b border-slate-200">
+                            <h2 className="text-xl font-semibold text-slate-800">Activities</h2>
+                            <button
+                                onClick={() => setIsActivitiesModalVisible(false)}
+                                className="p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors"
+                                aria-label="Close activities modal"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="p-4 overflow-y-auto max-h-[calc(90vh-80px)]">
+                            {isLoadingActivities ? (
+                                <div className="text-center p-8 text-slate-500">Loading activities...</div>
+                            ) : (
+                                <div className="space-y-4">
+                                    {activities.map((activity) => (
+                                        <div key={activity.id} className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                            <div className="flex justify-between items-start mb-3">
+                                                <h3 className="font-semibold text-slate-800 text-lg">{activity.fields.name}</h3>
+                                                <div className="flex items-center gap-2">
+                                                    <StatusBadge status={activity.fields.status} />
+                                                </div>
+                                            </div>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                                <div>
+                                                    <span className="font-medium text-slate-600 block mb-1">Due Date:</span>
+                                                    <span className="text-slate-800">{activity.fields.dueDate}</span>
+                                                </div>
+                                                <div className="flex items-center justify-between">
+                                                    <span className="font-medium text-slate-600">Completed:</span>
+                                                    <div className="flex items-center gap-2">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={activity.fields.completed || false}
+                                                            disabled={true}
+                                                            className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-0 cursor-not-allowed"
+                                                        />
+                                                        <span className="text-slate-600 text-sm">
+                                                            {activity.fields.completed ? 'Yes' : 'No'}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {activities.length === 0 && (
+                                        <div className="text-center p-8 text-slate-500">
+                                            <svg className="mx-auto h-12 w-12 text-slate-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                            </svg>
+                                            <p>No activities found</p>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Image Preview Modal */}
             {previewImage && (
                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[60] p-4">

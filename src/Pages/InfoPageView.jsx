@@ -85,34 +85,34 @@ const InfoPageView = () => {
     }
 
     return (
-        <main className="flex-grow p-6">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-                <header className="flex justify-between items-center mb-6 border-b pb-4">
-                    <h1 className="text-3xl font-bold text-slate-800 flex items-center">
-                        <IconRenderer icon={page.icon} className="w-8 h-8 mr-4 text-slate-600" />
-                        {page.title}
+        <main className="flex-grow p-3 md:p-6">
+            <div className="bg-white p-4 md:p-8 rounded-lg shadow-md">
+                <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 md:mb-6 border-b pb-4 gap-4">
+                    <h1 className="text-xl md:text-3xl font-bold text-slate-800 flex items-center">
+                        <IconRenderer icon={page.icon} className="w-6 h-6 md:w-8 md:h-8 mr-3 md:mr-4 text-slate-600" />
+                        <span className="break-words">{page.title}</span>
                     </h1>
                     {userRole === 'consultant' && (
-                        <div className="flex items-center gap-3">
+                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
                             <button
                                 onClick={handleDelete}
-                                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700"
+                                className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors"
                             >
                                 <DeleteIcon />
-                                Delete
+                                <span className="hidden sm:inline">Delete</span>
                             </button>
                             <Link
                                 to={`/info/edit/${pageId}`}
-                                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                                className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors"
                             >
                                 <EditIcon />
-                                Edit Page
+                                <span className="hidden sm:inline">Edit Page</span>
                             </Link>
                         </div>
                     )}
                 </header>
 
-                <div className="prose max-w-none">
+                <div className="prose max-w-none prose-sm md:prose-base">
                     <RichTextEditor
                         isEditable={false}
                         initialContent={page.content}

@@ -130,14 +130,14 @@ const InfoPageEdit = () => {
         );
     }
     
-    if (isLoading) return <div className="p-8"><p>Loading page for editing...</p></div>;
-    if (error) return <div className="p-8"><p className="text-red-500">{error}</p></div>;
+    if (isLoading) return <div className="p-3 md:p-8"><p>Loading page for editing...</p></div>;
+    if (error) return <div className="p-3 md:p-8"><p className="text-red-500">{error}</p></div>;
 
     return (
-        <div className="p-6 bg-white rounded-lg shadow-md">
-            <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-200">
-                <div className="flex items-center w-full gap-4">
-                    <div className="w-48">
+        <div className="p-3 md:p-6 bg-white rounded-lg shadow-md">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-4 md:mb-6 pb-4 border-b border-slate-200 gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center w-full gap-4">
+                    <div className="w-full sm:w-48">
                         <label className="block text-sm font-medium text-slate-700 mb-1">Icon</label>
                         <IconPicker
                             selectedIcon={icon}
@@ -151,29 +151,29 @@ const InfoPageEdit = () => {
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            className="text-2xl font-bold text-slate-800 w-full p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="text-lg md:text-2xl font-bold text-slate-800 w-full p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter Page Title"
                         />
                     </div>
                 </div>
-                <div className="flex gap-3 ml-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full lg:w-auto">
                     <button
                         onClick={() => navigate(`/info/${pageId}`)}
-                        className="px-6 py-2 text-slate-700 bg-slate-100 rounded-md hover:bg-slate-200"
+                        className="px-4 md:px-6 py-2 text-slate-700 bg-slate-100 rounded-md hover:bg-slate-200 transition-colors"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleDelete}
-                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700"
+                        className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors"
                     >
                         <DeleteIcon />
-                        Delete
+                        <span className="hidden sm:inline">Delete</span>
                     </button>
                     <button
                         onClick={handleSave}
                         disabled={isSaving}
-                        className="px-6 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-blue-400"
+                        className="px-4 md:px-6 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-blue-400 transition-colors"
                     >
                         {isSaving ? 'Saving...' : 'Save Changes'}
                     </button>
@@ -181,7 +181,7 @@ const InfoPageEdit = () => {
             </div>
             
             <div className="max-w-none">
-                <label className="block text-lg font-semibold text-slate-700 mb-2">
+                <label className="block text-base md:text-lg font-semibold text-slate-700 mb-2">
                     Content
                 </label>
                 <RichTextEditor
