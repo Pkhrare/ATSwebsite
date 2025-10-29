@@ -1856,9 +1856,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
 
                     <div className="lg:col-span-3 space-y-4 md:space-y-6">
                         {/* Project Details Section */}
-                        <section className={`${getSectionColor('Project Details')} p-4 md:p-5 rounded-xl shadow-sm border border-slate-200`}>
+                        <section className={`${getSectionColor('Project Details')} p-3 md:p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2">
-                                <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
+                                <h2 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
                                 {isEditingDetails ? (
                                     <div className="flex items-center gap-2">
                                         <button onClick={() => { setIsEditingDetails(false); setEditedDetails(projectData.fields); }} className={`px-4 py-2 ${colorClasses.button.neutral} rounded-md text-sm font-medium`}>Cancel</button>
@@ -2038,9 +2038,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         <AboutUsSection getSectionColor={getSectionColor} />
 
                         {/* Tasks Section */}
-                        <section className={`${getSectionColor('Tasks')} p-5 rounded-xl shadow-sm border border-slate-200`}>
+                        <section className={`${getSectionColor('Tasks')} p-4 md:p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-4">
-                                <h3 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
+                                <h3 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
                                 <div className="flex items-center gap-2">
                                     <button onClick={() => setIsAddGroupFormVisible(true)} className={`flex items-center gap-2 px-3 py-1 ${colorClasses.button.secondary} rounded-md text-sm`}>
                                         <AddIcon /> Add Group

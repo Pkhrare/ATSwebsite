@@ -776,7 +776,7 @@ export default function ClientCard() {
                         <span className="hidden sm:inline">Exit Portal</span>
                     </Link>
                     <div className="text-center">
-                        <h1 className={`text-lg md:text-2xl font-bold ${colorClasses.text.inverse} break-words leading-tight`} title={projectData.fields['Project Name']}>{projectData.fields['Project Name']}</h1>
+                        <h1 className={`text-base md:text-2xl font-bold ${colorClasses.text.inverse} break-words leading-tight`} title={projectData.fields['Project Name']}>{projectData.fields['Project Name']}</h1>
                         <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
                     </div>
                     <div className="flex items-center gap-2">
@@ -794,9 +794,9 @@ export default function ClientCard() {
 
                             <div className="lg:col-span-3 space-y-4 md:space-y-6">
                                 {/* Project Details Section */}
-                                <section className={`${getSectionColor('Project Details')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section className={`${getSectionColor('Project Details')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
-                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
+                                        <h2 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
                                     </div>
                                     <div className="grid grid-cols-1 gap-x-6 gap-y-4 text-sm">
                                         <div>
@@ -839,9 +839,9 @@ export default function ClientCard() {
                                 </section>
 
                                 {/* Notes Section */}
-                                <section className={`${getSectionColor('Notes')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section className={`${getSectionColor('Notes')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-2">
-                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Notes')}`}>📝 Notes</h2>
+                                        <h2 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Notes')}`}>📝 Notes</h2>
                                     </div>
                                     <RichTextEditor
                                         isEditable={false}
@@ -856,9 +856,9 @@ export default function ClientCard() {
                                 <AboutUsSection getSectionColor={getSectionColor} />
 
                                 {/* Tasks Section */}
-                                <section className={`${getSectionColor('Tasks')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section className={`${getSectionColor('Tasks')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
-                                        <h3 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
+                                        <h3 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
                                     </div>
                                     {isLoadingTasks ? (
                                         <p className="text-slate-500">Loading tasks...</p>
@@ -935,9 +935,9 @@ export default function ClientCard() {
                             </section>
 
                             {/* Documents Section */}
-                            <section className={`${getSectionColor('Documents')} p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                            <section className={`${getSectionColor('Documents')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex justify-between items-center mb-3">
-                                    <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Documents')}`}>📎 Documents</h2>
+                                    <h2 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Documents')}`}>📎 Documents</h2>
                                     {/* Upload removed for clients - they can only upload to assigned tasks */}
                                 </div>
                                 <ul className="space-y-2">
@@ -961,11 +961,11 @@ export default function ClientCard() {
                             </section>
 
                             {/* Activities Section - Desktop Table View */}
-                            <section className={`${getSectionColor('Activities')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm hidden md:block`}>
+                            <section className={`${getSectionColor('Activities')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm hidden md:block`}>
                                 <div className="flex justify-between items-center mb-4">
                                     <div className="flex items-center gap-3">
                                         <CalendarIcon />
-                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
+                                        <h2 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
                                     </div>
                                 </div>
                                 <div className="overflow-x-auto">
@@ -1008,11 +1008,11 @@ export default function ClientCard() {
                             </section>
 
                             {/* Activities Section - Mobile Summary View */}
-                            <section className={`${getSectionColor('Activities')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm block md:hidden`}>
+                            <section className={`${getSectionColor('Activities')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm block md:hidden`}>
                                 <div className="flex justify-between items-center mb-4">
                                     <div className="flex items-center gap-3">
                                         <CalendarIcon />
-                                        <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
+                                        <h2 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Activities')}`}>Activities</h2>
                                     </div>
                                 </div>
                                 {isLoadingActivities ? (

@@ -841,10 +841,10 @@ function NestedListPlugin() {
 
 const editorTheme = {
   link: 'text-blue-600 underline hover:text-blue-800 cursor-pointer',
-  table: 'border-collapse my-4 w-full border border-slate-400',
+  table: 'mobile-table-wrapper border-collapse my-4 w-full border border-slate-400 overflow-hidden',
   tableRow: 'border-b border-slate-300',
-  tableCell: 'border border-slate-400 p-3 min-w-[100px] relative bg-white',
-  tableCellHeader: 'border border-slate-400 p-3 min-w-[100px] bg-slate-100 font-semibold relative',
+  tableCell: 'border border-slate-400 p-2 md:p-3 min-w-[150px] relative bg-white text-sm md:text-sm break-words',
+  tableCellHeader: 'border border-slate-400 p-2 md:p-3 min-w-[150px] bg-slate-100 font-semibold relative text-sm md:text-sm break-words',
   youtube: 'my-4 w-full max-w-4xl mx-auto',
   image: 'block w-full h-auto', // Full-width responsive images
   list: {
@@ -909,6 +909,157 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
     const [isCodeMode, setIsCodeMode] = useState(false);
     const [codeContent, setCodeContent] = useState('');
     const [richTextBackup, setRichTextBackup] = useState(null);
+
+    // Add mobile table styles
+    useEffect(() => {
+        const style = document.createElement('style');
+        style.textContent = `
+            .mobile-table-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0.375rem;
+                box-shadow: inset 0 0 0 1px #e2e8f0;
+            }
+            .mobile-table-wrapper table {
+                min-width: 100%;
+                table-layout: auto;
+                width: 100%;
+            }
+            @media (max-width: 768px) {
+                /* Ensure the rich text editor content area constrains tables but allows table scrolling */
+                .prose {
+                    overflow-x: visible;
+                    max-width: 100%;
+                }
+                /* Target the ContentEditable area specifically - allow table scrolling */
+                [contenteditable="true"] {
+                    overflow-x: visible;
+                    max-width: 100%;
+                }
+                /* Only prevent overflow for non-table content */
+                .prose > *:not(.mobile-table-wrapper) {
+                    overflow-x: hidden;
+                    max-width: 100%;
+                }
+                .mobile-table-wrapper {
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    -webkit-overflow-scrolling: touch;
+                    max-width: 100%;
+                    width: 100%;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 0.375rem;
+                    background: white;
+                    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+                    position: relative;
+                    margin: 0;
+                    box-sizing: border-box;
+                    /* Ensure scrolling works properly */
+                    display: block;
+                    white-space: nowrap;
+                }
+                .mobile-table-wrapper table {
+                    font-size: 0.75rem; /* 12px - slightly larger for better readability */
+                    min-width: 800px; /* Wider minimum width for better column display */
+                    table-layout: fixed; /* Fixed layout for consistent column widths */
+                    width: 100%;
+                    max-width: none; /* Allow table to be wider than container */
+                    display: table; /* Ensure proper table display */
+                    white-space: normal; /* Allow text wrapping within cells */
+                }
+                .mobile-table-wrapper table td,
+                .mobile-table-wrapper table th {
+                    padding: 0.75rem 1rem; /* Even more generous padding */
+                    word-wrap: break-word;
+                    word-break: break-word;
+                    hyphens: auto;
+                    line-height: 1.4; /* Better line height for readability */
+                    white-space: normal;
+                    font-size: 0.875rem; /* 14px - larger, more readable text */
+                    overflow-wrap: break-word;
+                    vertical-align: top;
+                    border-right: 1px solid #e2e8f0;
+                    min-width: 150px; /* Wider minimum column width */
+                }
+                .mobile-table-wrapper table th {
+                    font-size: 0.8rem; /* 12.8px - larger header text */
+                    font-weight: 600;
+                    background-color: #f8fafc;
+                    text-transform: uppercase;
+                    letter-spacing: 0.025em;
+                    min-height: 3rem;
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+                .mobile-table-wrapper table td {
+                    background-color: white;
+                    font-size: 0.875rem; /* 14px - larger cell text */
+                    min-height: 2.5rem;
+                }
+                .mobile-table-wrapper table td strong,
+                .mobile-table-wrapper table td b {
+                    font-weight: 600;
+                    font-size: 0.9rem; /* Larger for bold text like $Amount */
+                }
+                /* Better word breaking for readability */
+                .mobile-table-wrapper table td *,
+                .mobile-table-wrapper table th * {
+                    word-break: break-word;
+                    overflow-wrap: break-word;
+                }
+                /* Scrollbar styling for better UX */
+                .mobile-table-wrapper::-webkit-scrollbar {
+                    height: 8px;
+                }
+                .mobile-table-wrapper::-webkit-scrollbar-track {
+                    background: #f1f5f9;
+                    border-radius: 4px;
+                }
+                .mobile-table-wrapper::-webkit-scrollbar-thumb {
+                    background: #cbd5e1;
+                    border-radius: 4px;
+                }
+                .mobile-table-wrapper::-webkit-scrollbar-thumb:hover {
+                    background: #94a3b8;
+                }
+                /* Ensure the table doesn't break out of its container */
+                .mobile-table-wrapper {
+                    contain: layout;
+                }
+                /* Add a subtle indicator that content is scrollable */
+                .mobile-table-wrapper::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 20px;
+                    background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+                    pointer-events: none;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                .mobile-table-wrapper:hover::after {
+                    opacity: 1;
+                }
+            }
+            @media (min-width: 769px) {
+                .mobile-table-wrapper table {
+                    table-layout: fixed;
+                }
+                .mobile-table-wrapper table td,
+                .mobile-table-wrapper table th {
+                    word-wrap: break-word;
+                    word-break: break-word;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        return () => document.head.removeChild(style);
+    }, []);
 
     // Detect if content is code or rich text
     const detectContentType = useCallback((content) => {
