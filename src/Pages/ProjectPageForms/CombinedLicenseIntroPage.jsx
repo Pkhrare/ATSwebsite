@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import '../All.css';
 import { STATES, HELP_TYPES, AGENCY_SERVICES, POPULATIONS_SERVED, SCENARIOS, START_TIMES } from '../../utils/FormUtils/formConstants';
-import { dummyProject } from '../../utils/projectTemplates'; // Import dummyProject directly
+import { dummyProject } from '../../utils/projectTemplates';
 import { generateProjectID } from '../../utils/projectUtils';
 import { assignedConsultants_record_ids } from '../../utils/validations';
 import { saveContent } from '../../utils/contentUtils';
@@ -18,6 +18,9 @@ const FormComponent = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [currentStep, setCurrentStep] = useState(1);
+    const totalSteps = 7;
+    const [wantsToSchedule, setWantsToSchedule] = useState(''); // Local state, not sent to backend
     const [formData, setFormData] = useState({
         programService: '',
         yourEmail: '',
@@ -38,7 +41,6 @@ const FormComponent = () => {
         reasonForThisMeeting: '',
     });
 
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -48,11 +50,69 @@ const FormComponent = () => {
         setFormData(prev => ({ ...prev, meetingDate: date }));
     };
 
+    const validateStep = (step) => {
+        switch (step) {
+            case 1:
+                return formData.stateOfProgram !== '';
+            case 2:
+                return formData.typeOfHelp !== '';
+            case 3:
+                return formData.agencyServices !== '';
+            case 4:
+                return formData.populationToServe !== '';
+            case 5:
+                return formData.agencyName !== '' && formData.agencyPlans !== '' && 
+                       formData.fullName !== '' && formData.phone !== '' && 
+                       formData.yourEmail !== '' && formData.confirmEmail !== '' &&
+                       formData.yourEmail === formData.confirmEmail;
+            case 6:
+                // Only require meeting fields if they want to schedule
+                if (wantsToSchedule === 'yes') {
+                    return formData.meetingDate !== null && formData.reasonForThisMeeting !== '';
+                } else if (wantsToSchedule === 'no') {
+                    return true; // No meeting required
+                }
+                return false; // Must select Yes or No
+            case 7:
+                return formData.scenario !== '' && formData.howSoon !== '' && formData.consentName !== '';
+            default:
+                return true;
+        }
+    };
+
+    const handleNext = () => {
+        if (validateStep(currentStep)) {
+            if (currentStep < totalSteps) {
+                setCurrentStep(currentStep + 1);
+            }
+        } else {
+            alert('Please fill in all required fields before proceeding.');
+        }
+    };
+
+    const handlePrevious = () => {
+        if (currentStep > 1) {
+            setCurrentStep(currentStep - 1);
+        }
+    };
+
+    const getStepStatus = (step) => {
+        if (step < currentStep) return 'completed';
+        if (step === currentStep) return 'current';
+        return 'upcoming';
+    };
+
     const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
+        
+        if (!validateStep(currentStep)) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
         setIsSubmitting(true);
 
-        // --- Step 1: Basic Form Validation ---
+        // Basic Form Validation
         if (formData.yourEmail !== formData.confirmEmail) {
             alert("The email addresses you entered do not match. Please correct them and try again.");
             setIsSubmitting(false);
@@ -66,7 +126,7 @@ const FormComponent = () => {
             return;
         }
 
-        // --- Step 2: reCAPTCHA Verification ---
+        // reCAPTCHA Verification
         const recaptchaAction = 'submitIntroForm';
         const token = await executeRecaptcha(recaptchaAction);
 
@@ -80,12 +140,12 @@ const FormComponent = () => {
                 })
             });
 
-            // --- Step 3: Fetch supplemental data (like task forms) ---
+            // Fetch supplemental data (like task forms)
             const allForms = await ApiCaller('/all/task_forms');
 
             // Create a map for quick lookup
             const formsMap = new Map();
-            const fieldDetailsMap = new Map(); // New map for field details
+            const fieldDetailsMap = new Map();
 
             if (allForms && Array.isArray(allForms)) {
                 allForms.forEach(form => {
@@ -117,7 +177,7 @@ const FormComponent = () => {
                 }
             }
 
-            // --- Step 4: Select Template and Enrich Tasks ---
+            // Select Template and Enrich Tasks
             const template = dummyProject;
             if (!template) {
                 throw new Error(`The project template could not be loaded.`);
@@ -130,8 +190,7 @@ const FormComponent = () => {
                 }
             });
 
-
-            // --- Step 5: Prepare Project Data ---
+            // Prepare Project Data
             const projectData = {
                 'Project Name': `${formData.fullName} - ${formData.agencyName}`,
                 'Client Email': formData.yourEmail,
@@ -142,12 +201,11 @@ const FormComponent = () => {
                 'Project Type': 'Licensing & Medicaid',
                 'Status': 'Preparatory Stage with Consultant',
                 'Project Manager': 'Dave Logan',
-                'Full Cost': 0, // Defaulting cost fields to 0
+                'Full Cost': 0,
                 'Paid': 0,
             };
 
-
-            // --- Step 6: Execute Project Creation Logic (adapted from TemplateProjectCard) ---
+            // Execute Project Creation Logic
             const projectID = await generateProjectID(projectData['States'], projectData['Project Type'], projectData['Start Date']);
             if (!projectID) {
                 throw new Error("Failed to generate a Project ID.");
@@ -191,7 +249,6 @@ const FormComponent = () => {
                     tableName: 'collaborators'
                 })
             });
-
 
             // Create task groups
             const groupsToCreate = (template.taskGroups || []).map(group => ({
@@ -243,7 +300,6 @@ const FormComponent = () => {
                 };
             });
 
-
             const createTasksResponse = await ApiCaller('/records', {
                 method: 'POST',
                 body: JSON.stringify({ recordsToCreate: tasksToCreatePayload, tableName: 'tasks' })
@@ -264,7 +320,7 @@ const FormComponent = () => {
             });
             await Promise.all(updateAndSavePromises);
 
-            // --- Step 7: Create all task sub-items (checklists, attachments, etc.) ---
+            // Create all task sub-items
             const formSubmissionsToCreate = [];
             const checklistsToCreate = [];
             const attachmentsToCreate = [];
@@ -278,7 +334,6 @@ const FormComponent = () => {
                     templateTask.fields.attachedForm.fields.task_forms_fields.forEach(fieldId => {
                         if (templateTask.fields.preAttachedFormName === 'Combined_license_getting_started') {
                             const fieldLabel = fieldDetailsMap.get(fieldId)?.label || fieldId;
-                            console.log(`Processing field: ${fieldLabel} (ID: ${fieldId})`);
 
                             let value;
                             switch (fieldLabel) {
@@ -342,7 +397,6 @@ const FormComponent = () => {
                                     submission: 'Completed'
                                 }
                             });
-
                         } else {
                             formSubmissionsToCreate.push({
                                 fields: {
@@ -448,17 +502,15 @@ const FormComponent = () => {
                 );
             }
 
-            // --- Step 8: Create Calendar Event ---
+            // Create Calendar Event
             if (formData.meetingDate) {
                 try {
                     await ApiCaller('/calendar/create-event', {
                         method: 'POST',
-                        body: JSON.stringify(formData) // Send the whole form data
+                        body: JSON.stringify(formData)
                     });
                 } catch (calendarError) {
                     console.error('Failed to create calendar event:', calendarError);
-                    // Decide if this should be a fatal error or just a warning
-                    // For now, we'll log it and continue
                 }
             }
 
@@ -473,8 +525,7 @@ const FormComponent = () => {
             console.log(formData)
             await Promise.all(createPromises);
 
-
-            // --- Step 9: Navigate to Success Page ---
+            // Navigate to Success Page
             navigate('/submission-success', {
                 state: {
                     projectId: newProjectIdentifier,
@@ -488,7 +539,7 @@ const FormComponent = () => {
         } finally {
             setIsSubmitting(false);
         }
-    }, [executeRecaptcha, formData, navigate]);
+    }, [executeRecaptcha, formData, navigate, currentStep]);
 
     return (
         <div className="min-h-screen bg-slate-100 text-gray-800">
@@ -514,18 +565,50 @@ const FormComponent = () => {
                     </section>
 
                     <div className="bg-gray-800 p-8 rounded-lg">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-
-                            <div>
-                                <label htmlFor="programService" className="block text-sm font-medium text-gray-300 mb-1">What Program/Service Would You Like To Get Started On? <span className="text-red-500">*</span></label>
-                                <input type="text" name="programService" id="programService" value={formData.programService} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
+                        {/* Progress Tabs */}
+                        <div className="flex justify-between items-start mb-8 pb-4 border-b border-gray-600 overflow-x-auto">
+                            {[1, 2, 3, 4, 5, 6, 7].map((step) => {
+                                const status = getStepStatus(step);
+                                const stepNames = ['Welcome', 'Services', 'Program Type', 'Populations', 'Contact', 'Scheduling', 'Final Details'];
+                                return (
+                                    <div key={step} className={`flex flex-col items-center text-center flex-1 min-w-[60px] md:min-w-[80px] relative ${step < 7 ? 'pr-2 md:pr-4' : ''}`}>
+                                        <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-semibold mb-2 transition-colors ${
+                                            status === 'completed' ? 'bg-yellow-400 text-gray-900 border-2 border-yellow-400' :
+                                            status === 'current' ? 'bg-transparent text-yellow-400 border-2 border-yellow-400' :
+                                            'bg-gray-700 text-gray-300 border-2 border-gray-500'
+                                        }`}>
+                                            {step}
+                                        </div>
+                                        <div className={`text-xs md:text-sm font-medium hidden md:block ${
+                                            status === 'completed' ? 'text-yellow-400' :
+                                            status === 'current' ? 'text-yellow-400 font-semibold' :
+                                            'text-gray-400'
+                                        }`}>
+                                            {stepNames[step - 1]}
+                                        </div>
+                                        {step < 7 && (
+                                            <div className={`absolute top-4 md:top-5 left-1/2 w-full h-0.5 ${
+                                                status === 'completed' ? 'bg-yellow-400' : 'bg-gray-600'
+                                            }`} style={{ width: 'calc(100% - 2rem)', marginLeft: 'calc(50% + 1rem)' }}></div>
+                                        )}
+                                    </div>
+                                );
+                            })}
                             </div>
 
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        {/* Step 1: Welcome & State */}
+                        {currentStep === 1 && (
+                            <div className="space-y-6">
+                                <p className="text-gray-300 mb-4 text-sm">
+                                    Our Getting Started form is the first and most important step in beginning your journey with Waiver Consulting Group LLC. Completing the form accurately is essential—it enables us to provide custom-tailored support, expedite your onboarding, assign your project internally, and load the appropriate tasks into your Client Portal.
+                                </p>
+                                <p className="text-gray-300 mb-6 text-sm">
+                                    Accurate entries also help avoid delays and redundant questions, improve the quality of your intake consultation, and ensure that all regulatory and waiver-specific requirements are identified early. Whether you're launching a new agency, enrolling in Medicaid, or expanding across states, this form sets the foundation for a smooth and strategic collaboration.
+                                </p>
                             <div>
-                                <label htmlFor="yourEmail" className="block text-sm font-medium text-gray-300 mb-1">Your Email <span className="text-red-500">*</span></label>
-                                <input type="email" name="yourEmail" id="yourEmail" value={formData.yourEmail} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
-                            </div>
-
+                                    
+                                    <p className="text-gray-400 mb-2 text-sm">Please select only one state. If expanding, note additional states later.</p>
                             <CustomSelect
                                 label="SELECT STATE OF YOUR PROGRAM"
                                 options={STATES}
@@ -533,7 +616,16 @@ const FormComponent = () => {
                                 setSelected={(value) => setFormData(prev => ({ ...prev, stateOfProgram: value }))}
                                 required
                             />
+                                </div>
+                            </div>
+                        )}
 
+                        {/* Step 2: Type of Help */}
+                        {currentStep === 2 && (
+                            <div className="space-y-6">
+                                <p className="text-gray-300 mb-6 text-sm">
+                                    Please select the type of assistance you need from Waiver Consulting Group. This helps us understand how we can best support your agency's goals and customize our services to meet your specific needs.
+                                </p>
                             <CustomSelect
                                 label="WHAT TYPE OF HELP ARE YOU LOOKING FOR FROM WAIVER CONSULTING GROUP? (e.g., licensing, Medicaid enrollment, policy manual, waiver consulting, etc.)."
                                 options={HELP_TYPES}
@@ -541,7 +633,15 @@ const FormComponent = () => {
                                 setSelected={(value) => setFormData(prev => ({ ...prev, typeOfHelp: value }))}
                                 required
                             />
+                            </div>
+                        )}
 
+                        {/* Step 3: Program/Service Type */}
+                        {currentStep === 3 && (
+                            <div className="space-y-6">
+                                <p className="text-gray-300 mb-6 text-sm">
+                                    Please select the type of program or services your agency offers or will offer. This information helps us understand the scope of your operations and tailor our support accordingly.
+                                </p>
                             <CustomSelect
                                 label="WHAT TYPE OF PROGRAM OR SERVICES WILL YOUR AGENCY OFFER? For example: Home Care, Skilled Nursing, Adult Day Program, Behavioral Health, Group Home, Therapy Services, etc."
                                 options={AGENCY_SERVICES}
@@ -549,70 +649,144 @@ const FormComponent = () => {
                                 setSelected={(value) => setFormData(prev => ({ ...prev, agencyServices: value }))}
                                 required
                             />
-
-                            <CustomSelect
-                                label="WHO DO YOU PLAN TO SERVE? Describe the primary population(s) your agency will support (e.g., seniors, individuals with disabilities, children, veterans, Medicaid recipients, mental health clients, etc.)."
-                                options={POPULATIONS_SERVED}
-                                selected={formData.populationToServe}
-                                setSelected={(value) => setFormData(prev => ({ ...prev, populationToServe: value }))}
-                                required
-                            />
-
-                            <div>
-                                <label htmlFor="agencyName" className="block text-sm font-medium text-gray-300 mb-1">Agency Name (Registered Or Proposed) <span className="text-red-500">*</span></label>
-                                <input type="text" name="agencyName" id="agencyName" value={formData.agencyName} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
                             </div>
+                        )}
 
-                            <fieldset className="space-y-2">
-                                <div className="flex items-center">
-                                    <input id="agencyRegistered" name="agencyStatus" type="radio" value="registered" onChange={handleInputChange} className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300" />
-                                    <label htmlFor="agencyRegistered" className="ml-3 block text-sm font-medium text-gray-300">My Agency is Registered</label>
-                                </div>
-                                <div className="flex items-center">
-                                    <input id="agencyNotRegistered" name="agencyStatus" type="radio" value="not_registered" onChange={handleInputChange} className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300" />
-                                    <label htmlFor="agencyNotRegistered" className="ml-3 block text-sm font-medium text-gray-300">My Agency is Not Yet Registered</label>
-                                </div>
-                            </fieldset>
-
-                            <div>
-                                <label htmlFor="agencyPlans" className="block text-sm font-medium text-gray-300 mb-1">Tell us more about your agency or plans. Share anything else you think we should know—whether you're just getting started, already operating, expanding to a new state, recovering from an audit, or need help with a returned application. IN <span className="text-red-500">*</span></label>
-                                <textarea name="agencyPlans" id="agencyPlans" rows="4" value={formData.agencyPlans} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white"></textarea>
-                            </div>
-
-                            <CustomSelect
-                                label="WHICH OF THE FOLLOWING SCENARIOS APPLY TO YOU?"
-                                options={SCENARIOS}
-                                selected={formData.scenario}
-                                setSelected={(value) => setFormData(prev => ({ ...prev, scenario: value }))}
-                                required
-                            />
-
-                            <div>
-                                <label htmlFor="fullName" className="block text-sm font-medium text-gray-300 mb-1">FIRST & LAST NAME <span className="text-red-500">*</span></label>
-                                <input type="text" name="fullName" id="fullName" value={formData.fullName} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
-                            </div>
-
-                            <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">PHONE # <span className="text-red-500">*</span></label>
-                                <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
-                            </div>
-
-                            <div>
-                                <label htmlFor="confirmEmail" className="block text-sm font-medium text-gray-300 mb-1">CONFIRM YOUR EMAIL <span className="text-red-500">*</span></label>
-                                <input type="email" name="confirmEmail" id="confirmEmail" value={formData.confirmEmail} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">The Next Step After Submitting This Form May Be An Initial Google Meet/Zoom Meeting. Please select a date and time that works for you <span className="text-red-500">*</span></label>
-                                <CalendarAvailability
-                                    onTimeSlotSelect={(slot) => handleDateChange(slot)}
+                        {/* Step 4: Populations Served */}
+                        {currentStep === 4 && (
+                            <div className="space-y-6">
+                                <p className="text-gray-300 mb-4 text-sm">
+                                    At Waiver Consulting Group LLC, we support provider agencies that deliver essential care and services to a diverse range of vulnerable, medically complex, and underserved populations. The agencies we work with operate across all 50 states and are dedicated to improving quality of life through Medicaid Waiver, home- and community-based services (HCBS), and related healthcare programs.
+                                </p>
+                                <p className="text-gray-300 mb-6 text-sm">
+                                    Understanding the primary populations your agency serves helps us align our support with the specific regulatory requirements, compliance needs, and service delivery models relevant to your client base.
+                                </p>
+                                <CustomSelect
+                                    label="WHO DO YOU PLAN TO SERVE? Describe the primary population(s) your agency will support (e.g., seniors, individuals with disabilities, children, veterans, Medicaid recipients, mental health clients, etc.)."
+                                    options={POPULATIONS_SERVED}
+                                    selected={formData.populationToServe}
+                                    setSelected={(value) => setFormData(prev => ({ ...prev, populationToServe: value }))}
+                                    required
                                 />
                             </div>
+                        )}
 
-                            <div>
-                                <label htmlFor="reasonForThisMeeting" className="block text-sm font-medium text-gray-300 mb-1">What do you hope to accomplish through this meeting? <span className="text-red-500">*</span></label>
-                                <textarea name="reasonForThisMeeting" id="reasonForThisMeeting" rows="4" value={formData.reasonForThisMeeting} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white"></textarea>
+                        {/* Step 5: Agency & Contact Information */}
+                        {currentStep === 5 && (
+                            <div className="space-y-6">
+                                <p className="text-gray-300 mb-6 text-sm">
+                                    Provide your agency's name (or proposed name) and any relevant details about your organization. Your contact information allows us to follow up with you, schedule consultations, and send important updates about your project.
+                                </p>
+                                <div>
+                                    <label htmlFor="agencyName" className="block text-sm font-medium text-gray-300 mb-1">Agency Name (Registered Or Proposed) <span className="text-red-500">*</span></label>
+                                    <input type="text" name="agencyName" id="agencyName" value={formData.agencyName} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
+                                </div>
+
+                                <fieldset className="space-y-2">
+                                    <div className="flex items-center">
+                                        <input id="agencyRegistered" name="agencyStatus" type="radio" value="registered" onChange={handleInputChange} className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300" />
+                                        <label htmlFor="agencyRegistered" className="ml-3 block text-sm font-medium text-gray-300">My Agency is Registered</label>
+                                    </div>
+                                    <div className="flex items-center">
+                                        <input id="agencyNotRegistered" name="agencyStatus" type="radio" value="not_registered" onChange={handleInputChange} className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300" />
+                                        <label htmlFor="agencyNotRegistered" className="ml-3 block text-sm font-medium text-gray-300">My Agency is Not Yet Registered</label>
+                                    </div>
+                                </fieldset>
+
+                                <div>
+                                    <label htmlFor="agencyPlans" className="block text-sm font-medium text-gray-300 mb-1">Tell us more about your agency or plans. Share anything else you think we should know—whether you're just getting started, already operating, expanding to a new state, recovering from an audit, or need help with a returned application. IN <span className="text-red-500">*</span></label>
+                                    <textarea name="agencyPlans" id="agencyPlans" rows="4" value={formData.agencyPlans} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required></textarea>
+                                </div>
+
+                                <h3 className="uppercase font-bold text-yellow-400 text-base md:text-lg mt-6 mb-4">Your Contact Information</h3>
+
+                                <div>
+                                    <label htmlFor="fullName" className="block text-sm font-medium text-gray-300 mb-1">FIRST & LAST NAME <span className="text-red-500">*</span></label>
+                                    <input type="text" name="fullName" id="fullName" value={formData.fullName} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-1">PHONE # <span className="text-red-500">*</span></label>
+                                    <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="yourEmail" className="block text-sm font-medium text-gray-300 mb-1">Your Email <span className="text-red-500">*</span></label>
+                                    <input type="email" name="yourEmail" id="yourEmail" value={formData.yourEmail} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="confirmEmail" className="block text-sm font-medium text-gray-300 mb-1">CONFIRM YOUR EMAIL <span className="text-red-500">*</span></label>
+                                    <input type="email" name="confirmEmail" id="confirmEmail" value={formData.confirmEmail} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
+                                </div>
                             </div>
+                        )}
+
+                        {/* Step 6: Scheduling */}
+                        {currentStep === 6 && (
+                            <div className="space-y-6">
+                                <p className="text-gray-300 mb-6 text-sm">
+                                    Would you like to schedule your free complimentary intake consultation now? You can choose a time that works best for you via our online calendar. This initial meeting allows us to discuss your specific needs, answer questions, and outline the next steps in your journey with Waiver Consulting Group.
+                                </p>
+                                
+                                <div>
+                                    <label htmlFor="wantsToSchedule" className="block text-sm font-medium text-gray-300 mb-1">Would you like to schedule an appointment with a Consultant to get started? <span className="text-red-500">*</span></label>
+                                    <select 
+                                        id="wantsToSchedule" 
+                                        name="wantsToSchedule"
+                                        value={wantsToSchedule} 
+                                        onChange={(e) => {
+                                            setWantsToSchedule(e.target.value);
+                                            // Clear meeting data if they select "No"
+                                            if (e.target.value === 'no') {
+                                                setFormData(prev => ({ ...prev, meetingDate: null, reasonForThisMeeting: '' }));
+                                            }
+                                        }}
+                                        className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white"
+                                        required
+                                    >
+                                        <option value="">-- Select an option --</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+
+                                {wantsToSchedule === 'yes' && (
+                                    <>
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-300 mb-1">Please select a date and time that works for you <span className="text-red-500">*</span></label>
+                                            <CalendarAvailability
+                                                onTimeSlotSelect={(slot) => handleDateChange(slot)}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="reasonForThisMeeting" className="block text-sm font-medium text-gray-300 mb-1">What do you hope to accomplish through this meeting? <span className="text-red-500">*</span></label>
+                                            <textarea name="reasonForThisMeeting" id="reasonForThisMeeting" rows="4" value={formData.reasonForThisMeeting} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required></textarea>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Step 7: Final Details */}
+                        {currentStep === 7 && (
+                            <div className="space-y-6">
+                                <p className="text-gray-300 mb-6 text-sm">
+                                    Just a few final questions to help us better understand your timeline, experience level, and ensure we have your consent to communicate with you. This information helps us match your needs with our support capacity and provide the most appropriate level of assistance.
+                                </p>
+                                <div>
+                                    <label htmlFor="programService" className="block text-sm font-medium text-gray-300 mb-1">What Program/Service Would You Like To Get Started On? <span className="text-red-500">*</span></label>
+                                    <input type="text" name="programService" id="programService" value={formData.programService} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
+                                </div>
+
+                                <CustomSelect
+                                    label="WHICH OF THE FOLLOWING SCENARIOS APPLY TO YOU?"
+                                    options={SCENARIOS}
+                                    selected={formData.scenario}
+                                    setSelected={(value) => setFormData(prev => ({ ...prev, scenario: value }))}
+                                    required
+                                />
 
                             <CustomSelect
                                 label="How Soon Are You Looking Start?"
@@ -624,10 +798,34 @@ const FormComponent = () => {
 
                             <div>
                                 <label htmlFor="consentName" className="block text-sm font-medium text-gray-300 mb-1">CONSENT: I consent to being contacted via phone calls, texts or emails by Waiver Consulting Group for further discussion or consultation. (Enter Your Name Below To Contact From Waiver Group) <span className="text-red-500">*</span></label>
-                                <input type="text" name="consentName" id="consentName" value={formData.consentName} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" />
+                                    <input type="text" name="consentName" id="consentName" value={formData.consentName} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
+                                </div>
                             </div>
+                        )}
 
-                            <div className="flex justify-center pt-4">
+                        {/* Navigation Buttons */}
+                        <div className="flex justify-between mt-8 pt-6 border-t border-gray-600">
+                            <button
+                                type="button"
+                                onClick={handlePrevious}
+                                disabled={currentStep === 1}
+                                className={`px-6 py-3 rounded-md font-semibold transition-colors ${
+                                    currentStep === 1
+                                        ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                                        : 'bg-gray-600 text-gray-200 hover:bg-gray-500'
+                                }`}
+                            >
+                                Previous
+                            </button>
+                            {currentStep < totalSteps ? (
+                                <button
+                                    type="button"
+                                    onClick={handleNext}
+                                    className="px-6 py-3 bg-yellow-400 text-gray-800 rounded-md font-bold hover:bg-yellow-500 transition-colors"
+                                >
+                                    Next
+                                </button>
+                            ) : (
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
@@ -635,6 +833,7 @@ const FormComponent = () => {
                                 >
                                     {isSubmitting ? 'Submitting...' : 'Submit Form'}
                                 </button>
+                            )}
                             </div>
                         </form>
                     </div>
@@ -648,7 +847,6 @@ const FormComponent = () => {
 };
 
 const CombinedLicenseIntroPage = () => {
-    // Wrap the form component with the reCAPTCHA provider
     return (
         <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}>
             <FormComponent />

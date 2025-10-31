@@ -1253,11 +1253,11 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                         <div className="flex items-center gap-2">
                                             <div className="relative w-full">
                                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
-                                                    <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-blue-600 text-white text-xs font-bold">
-                                                        {editedTask.assigned_to ? editedTask.assigned_to.substring(0, 2).toUpperCase() : '?'}
-                                                    </span>
+                                                    <span className="inline-flex items-center justify-center h-5 w-5 md:h-6 md:w-6 rounded-full bg-blue-600 text-white text-[10px] md:text-xs font-bold">
+                                                         {editedTask.assigned_to ? editedTask.assigned_to.substring(0, 2).toUpperCase() : '?'}
+                                                     </span>
                                                 </div>
-                                                <select value={editedTask.assigned_to || ''} onChange={(e) => handleInputChange('assigned_to', e.target.value)} className="w-full pl-12 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black text-sm" disabled={!canEdit}>
+                                                <select value={editedTask.assigned_to || ''} onChange={(e) => handleInputChange('assigned_to', e.target.value)} className="w-full pl-16 md:pl-12 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black text-sm appearance-none" disabled={!canEdit}>
                                                     <option value="">Unassigned</option>
                                                     {assigneeOptions.map(name => (
                                                         <option key={name} value={name}>{name}</option>
