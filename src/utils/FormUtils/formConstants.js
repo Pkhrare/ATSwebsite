@@ -8,6 +8,8 @@ export const STATES = [
 
 export const HELP_TYPES = [
     'New agency formation',
+    'State licensing navigation',
+    'Starting A New Agency',
     'Accreditation & Certification Guidance',
     'Assistance With an Application Already Started',
     'Assistance with Health Plans/Private Insurance Enrollment',
@@ -19,6 +21,7 @@ export const HELP_TYPES = [
     'Compliance & Regulatory Assistance',
     'Credentialing With Payers & MCOs',
     'Custom QA/QAPI programs',
+    'Custom, state-specific, waiver-specific policy manuals',
     'Development of a Certificate Of Need (CON) Document',
     'Fee-For-Service (Medicaid) and Managed Care Enrollment',
     'Licensing and Certification Support (Ongoing or Project Specific)',
@@ -43,10 +46,24 @@ export const HELP_TYPES = [
     'Risk and Incident Management Advisory',
     'Service Expansion of Additional Services in the Same State',
     'Service Expansion to Additional States',
+    'Service Expansion Adding Service in the Same State',
     'Starting A New Provider Agency',
     'State License Applications',
     'State Licensure & Certification Application Only',
-    'Strategic Planning & Growth Strategies for Healthcare Businesses'
+    'Strategic Planning & Growth Strategies for Healthcare Businesses',
+    'Assistance With an Application You\'ve Already Started',
+    'Setting Up Agency Phone Answering & Greeting Systems',
+    'Website Development Services for Healthcare Agencies',
+    'Administrator/DON changes',
+    'Competitor research Expansion readiness Demographic & reimbursement analysis',
+    'Assistance with Government Contracts & Bidding Processes',
+    'Waiver Academy & Educational Services',
+    'On-demand compliance training',
+    'Staff onboarding & waiver orientation',
+    'SOP tutorials',
+    'Training & Education Services for Healthcare Staff',
+    'Operational Efficiency and Process Improvement Consultation',
+    'Technology Integration and Solutions for Healthcare'
 ];
 
 export const AGENCY_SERVICES = [
@@ -109,7 +126,10 @@ export const AGENCY_SERVICES = [
     'Therapeutic Services',
     'Therapies (Speech, OT, PT)',
     'Transitional Case Management',
-    'Other (provide description under agency details)'
+    // Added missing options based on previous chat:
+    'Behavioral Health',
+    'Group Home',
+    'Other (provide description under agency details)',
 ];
 
 export const POPULATIONS_SERVED = [

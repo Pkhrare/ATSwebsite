@@ -21,11 +21,13 @@ const FormComponent = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const totalSteps = 7;
     const [wantsToSchedule, setWantsToSchedule] = useState(''); // Local state, not sent to backend
+    const [openAccordions, setOpenAccordions] = useState({}); // Track which accordions are open
+    const [validationAttempted, setValidationAttempted] = useState(false); // Track if user tried to proceed
     const [formData, setFormData] = useState({
         programService: '',
         yourEmail: '',
         stateOfProgram: '',
-        typeOfHelp: '',
+        typeOfHelp: [], // Changed to array for multiple selections
         agencyServices: '',
         populationToServe: '',
         agencyName: '',
@@ -46,6 +48,25 @@ const FormComponent = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    const handleCheckboxChange = (option) => {
+        setValidationAttempted(false); // Reset validation when user makes a selection
+        setFormData(prev => {
+            const currentHelp = prev.typeOfHelp || [];
+            if (currentHelp.includes(option)) {
+                return { ...prev, typeOfHelp: currentHelp.filter(item => item !== option) };
+            } else {
+                return { ...prev, typeOfHelp: [...currentHelp, option] };
+            }
+        });
+    };
+
+    const toggleAccordion = (section) => {
+        setOpenAccordions(prev => ({
+            ...prev,
+            [section]: !prev[section]
+        }));
+    };
+
     const handleDateChange = (date) => {
         setFormData(prev => ({ ...prev, meetingDate: date }));
     };
@@ -55,7 +76,7 @@ const FormComponent = () => {
             case 1:
                 return formData.stateOfProgram !== '';
             case 2:
-                return formData.typeOfHelp !== '';
+                return formData.typeOfHelp.length > 0;
             case 3:
                 return formData.agencyServices !== '';
             case 4:
@@ -81,7 +102,9 @@ const FormComponent = () => {
     };
 
     const handleNext = () => {
+        setValidationAttempted(true);
         if (validateStep(currentStep)) {
+            setValidationAttempted(false); // Reset when valid
             if (currentStep < totalSteps) {
                 setCurrentStep(currentStep + 1);
             }
@@ -350,7 +373,7 @@ const FormComponent = () => {
                                     value = formData.stateOfProgram;
                                     break;
                                 case 'WHAT TYPE OF HELP ARE YOU LOOKING FOR FROM WAIVER CONSULTING GROUP? (e.g., licensing, Medicaid enrollment, policy manual, waiver consulting, etc.).':
-                                    value = formData.typeOfHelp;
+                                    value = Array.isArray(formData.typeOfHelp) ? formData.typeOfHelp.join(', ') : formData.typeOfHelp;
                                     break;
                                 case 'WHAT TYPE OF PROGRAM OR SERVICES WILL YOUR AGENCY OFFER? For example: Home Care, Skilled Nursing, Adult Day Program, Behavioral Health, Group Home, Therapy Services, etc.':
                                     value = formData.agencyServices;
@@ -514,11 +537,24 @@ const FormComponent = () => {
                 }
             }
 
+            // Convert typeOfHelp array to string for backend compatibility
+            // Remove meetingDate and reasonForThisMeeting if meetingDate is null (user chose not to schedule)
+            const formDataForSubmission = {
+                ...formData,
+                typeOfHelp: Array.isArray(formData.typeOfHelp) ? formData.typeOfHelp.join(', ') : formData.typeOfHelp
+            };
+            
+            // Remove meeting-related fields if no meeting is scheduled
+            if (!formDataForSubmission.meetingDate) {
+                delete formDataForSubmission.meetingDate;
+                delete formDataForSubmission.reasonForThisMeeting;
+            }
+
             createPromises.push(
                 ApiCaller('/submit-CombinedLicenseintro-form', {
                     method: 'POST',
                     body: JSON.stringify({
-                        formData: formData
+                        formData: formDataForSubmission
                     })
                 })
             );
@@ -623,16 +659,184 @@ const FormComponent = () => {
                         {/* Step 2: Type of Help */}
                         {currentStep === 2 && (
                             <div className="space-y-6">
-                                <p className="text-gray-300 mb-6 text-sm">
+                                <p className="text-gray-300 mb-4 text-sm">
                                     Please select the type of assistance you need from Waiver Consulting Group. This helps us understand how we can best support your agency's goals and customize our services to meet your specific needs.
                                 </p>
-                            <CustomSelect
-                                label="WHAT TYPE OF HELP ARE YOU LOOKING FOR FROM WAIVER CONSULTING GROUP? (e.g., licensing, Medicaid enrollment, policy manual, waiver consulting, etc.)."
-                                options={HELP_TYPES}
-                                selected={formData.typeOfHelp}
-                                setSelected={(value) => setFormData(prev => ({ ...prev, typeOfHelp: value }))}
-                                required
-                            />
+                                <p className="text-gray-400 mb-4 text-sm">Please select all services you are interested in. Click on a category title to see the options.</p>
+                                
+                                <div className="space-y-1 text-gray-200 text-sm">
+                                    {/* Provider Agency Startup Support */}
+                                    <fieldset className="border border-gray-600 rounded-lg p-4">
+                                        <legend 
+                                            className="cursor-pointer flex justify-between items-center w-full px-2 py-1 font-bold text-yellow-400 text-xs uppercase"
+                                            onClick={() => toggleAccordion('startup')}
+                                        >
+                                            <span>Provider Agency Startup Support</span>
+                                            <span className="text-yellow-400 text-lg leading-none">{openAccordions['startup'] ? '-' : '+'}</span>
+                                        </legend>
+                                        <div className={`space-y-3 mt-3 ${openAccordions['startup'] ? 'block' : 'hidden'}`}>
+                                            {['New agency formation', 'Out-of-State Business registration', 'State licensing navigation', 'Starting A New Agency', 'Service Expansion to Additional States', 'Service Expansion Adding Service in the Same State', 'Development of a Certificate Of Need (CON) Document', 'Responding To an Audit', 'Billing Issues/Reimbursement Denied/Rejected', 'Assistance With an Application You\'ve Already Started', 'Strategic Planning & Growth Strategies for Healthcare Businesses'].map(option => (
+                                                <label key={option} className="flex items-center cursor-pointer hover:text-yellow-300">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={(formData.typeOfHelp || []).includes(option)}
+                                                        onChange={() => handleCheckboxChange(option)}
+                                                        className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-400 rounded bg-gray-700"
+                                                    />
+                                                    <span className="ml-2 text-sm">{option}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </fieldset>
+
+                                    {/* Provider Licensing & Certification */}
+                                    <fieldset className="border border-gray-600 rounded-lg p-4">
+                                        <legend 
+                                            className="cursor-pointer flex justify-between items-center w-full px-2 py-1 font-bold text-yellow-400 text-xs uppercase"
+                                            onClick={() => toggleAccordion('licensing')}
+                                        >
+                                            <span>Provider Licensing & Certification</span>
+                                            <span className="text-yellow-400 text-lg leading-none">{openAccordions['licensing'] ? '-' : '+'}</span>
+                                        </legend>
+                                        <div className={`space-y-3 mt-3 ${openAccordions['licensing'] ? 'block' : 'hidden'}`}>
+                                            {['State License Applications', 'Ongoing License Renewal and Compliance Filings', 'Licensing and Certification Support (Ongoing or Project Specific)', 'Recertification Support Services', 'Accreditation & Certification Guidance'].map(option => (
+                                                <label key={option} className="flex items-center cursor-pointer hover:text-yellow-300">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={(formData.typeOfHelp || []).includes(option)}
+                                                        onChange={() => handleCheckboxChange(option)}
+                                                        className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-400 rounded bg-gray-700"
+                                                    />
+                                                    <span className="ml-2 text-sm">{option}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </fieldset>
+
+                                    {/* Medicaid Provider Enrollment */}
+                                    <fieldset className="border border-gray-600 rounded-lg p-4">
+                                        <legend 
+                                            className="cursor-pointer flex justify-between items-center w-full px-2 py-1 font-bold text-yellow-400 text-xs uppercase"
+                                            onClick={() => toggleAccordion('medicaid')}
+                                        >
+                                            <span>Medicaid Provider Enrollment</span>
+                                            <span className="text-yellow-400 text-lg leading-none">{openAccordions['medicaid'] ? '-' : '+'}</span>
+                                        </legend>
+                                        <div className={`space-y-3 mt-3 ${openAccordions['medicaid'] ? 'block' : 'hidden'}`}>
+                                            {['Fee-For-Service (Medicaid) and Managed Care Enrollment', 'NPI, CAQH registration and revalidation', 'Medicare Certification - PECOS and CMS 855 applications', 'MCO/MCE Enrollment Applications', 'Medicaid Provider Enrollment'].map(option => (
+                                                <label key={option} className="flex items-center cursor-pointer hover:text-yellow-300">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={(formData.typeOfHelp || []).includes(option)}
+                                                        onChange={() => handleCheckboxChange(option)}
+                                                        className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-400 rounded bg-gray-700"
+                                                    />
+                                                    <span className="ml-2 text-sm">{option}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </fieldset>
+
+                                    {/* Compliance & Documentation Services */}
+                                    <fieldset className="border border-gray-600 rounded-lg p-4">
+                                        <legend 
+                                            className="cursor-pointer flex justify-between items-center w-full px-2 py-1 font-bold text-yellow-400 text-xs uppercase"
+                                            onClick={() => toggleAccordion('compliance')}
+                                        >
+                                            <span>Compliance & Documentation Services</span>
+                                            <span className="text-yellow-400 text-lg leading-none">{openAccordions['compliance'] ? '-' : '+'}</span>
+                                        </legend>
+                                        <div className={`space-y-3 mt-3 ${openAccordions['compliance'] ? 'block' : 'hidden'}`}>
+                                            {['Policy and Procedure Manual Development (ONLY)', 'Custom, state-specific, waiver-specific policy manuals', 'Setting Up Agency Phone Answering & Greeting Systems', 'Website Development Services for Healthcare Agencies', 'Quality Assurance & Performance Improvement (QAPI)', 'Custom QA/QAPI programs', 'Risk and Incident Management Advisory', 'Audit Preparation (State or Accrediting Bodies)', 'Post-State Audit or Onsite Inspection Support', 'Pre-State Audit or Onsite Inspection Support', 'Compliance & Regulatory Assistance'].map(option => (
+                                                <label key={option} className="flex items-center cursor-pointer hover:text-yellow-300">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={(formData.typeOfHelp || []).includes(option)}
+                                                        onChange={() => handleCheckboxChange(option)}
+                                                        className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-400 rounded bg-gray-700"
+                                                    />
+                                                    <span className="ml-2 text-sm">{option}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </fieldset>
+
+                                    {/* Ongoing Support & Strategic Services */}
+                                    <fieldset className="border border-gray-600 rounded-lg p-4">
+                                        <legend 
+                                            className="cursor-pointer flex justify-between items-center w-full px-2 py-1 font-bold text-yellow-400 text-xs uppercase"
+                                            onClick={() => toggleAccordion('ongoing')}
+                                        >
+                                            <span>Ongoing Support & Strategic Services</span>
+                                            <span className="text-yellow-400 text-lg leading-none">{openAccordions['ongoing'] ? '-' : '+'}</span>
+                                        </legend>
+                                        <div className={`space-y-3 mt-3 ${openAccordions['ongoing'] ? 'block' : 'hidden'}`}>
+                                            {['Post-Startup Regulatory & Compliance Support', 'Change of ownership (CHOW)', 'Administrator/DON changes', 'CLIA, OSHA, DEA Coordination and Registration/Certification', 'Medicare CMS Compliance & Capitalization Guidance', 'Assistance with Medicare Provider Enrollment', 'Credentialing With Payers & MCOs', 'Medicaid Managed Care Organization (MCO) credentialing', 'Private insurance credentialing', 'Recredentialing services', 'Payor/Private Health Plans Credentialing Support Services'].map(option => (
+                                                <label key={option} className="flex items-center cursor-pointer hover:text-yellow-300">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={(formData.typeOfHelp || []).includes(option)}
+                                                        onChange={() => handleCheckboxChange(option)}
+                                                        className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-400 rounded bg-gray-700"
+                                                    />
+                                                    <span className="ml-2 text-sm">{option}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </fieldset>
+
+                                    {/* Market Research & Expansion Feasibility */}
+                                    <fieldset className="border border-gray-600 rounded-lg p-4">
+                                        <legend 
+                                            className="cursor-pointer flex justify-between items-center w-full px-2 py-1 font-bold text-yellow-400 text-xs uppercase"
+                                            onClick={() => toggleAccordion('market')}
+                                        >
+                                            <span>Market Research & Expansion Feasibility</span>
+                                            <span className="text-yellow-400 text-lg leading-none">{openAccordions['market'] ? '-' : '+'}</span>
+                                        </legend>
+                                        <div className={`space-y-3 mt-3 ${openAccordions['market'] ? 'block' : 'hidden'}`}>
+                                            {['Competitor research Expansion readiness Demographic & reimbursement analysis', 'Assistance with Government Contracts & Bidding Processes'].map(option => (
+                                                <label key={option} className="flex items-center cursor-pointer hover:text-yellow-300">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={(formData.typeOfHelp || []).includes(option)}
+                                                        onChange={() => handleCheckboxChange(option)}
+                                                        className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-400 rounded bg-gray-700"
+                                                    />
+                                                    <span className="ml-2 text-sm">{option}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </fieldset>
+
+                                    {/* Training & Capacity Building */}
+                                    <fieldset className="border border-gray-600 rounded-lg p-4">
+                                        <legend 
+                                            className="cursor-pointer flex justify-between items-center w-full px-2 py-1 font-bold text-yellow-400 text-xs uppercase"
+                                            onClick={() => toggleAccordion('training')}
+                                        >
+                                            <span>Training & Capacity Building</span>
+                                            <span className="text-yellow-400 text-lg leading-none">{openAccordions['training'] ? '-' : '+'}</span>
+                                        </legend>
+                                        <div className={`space-y-3 mt-3 ${openAccordions['training'] ? 'block' : 'hidden'}`}>
+                                            {['Waiver Academy & Educational Services', 'On-demand compliance training', 'Staff onboarding & waiver orientation', 'SOP tutorials', 'Training & Education Services for Healthcare Staff', 'Operational Efficiency and Process Improvement Consultation', 'Technology Integration and Solutions for Healthcare'].map(option => (
+                                                <label key={option} className="flex items-center cursor-pointer hover:text-yellow-300">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={(formData.typeOfHelp || []).includes(option)}
+                                                        onChange={() => handleCheckboxChange(option)}
+                                                        className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-400 rounded bg-gray-700"
+                                                    />
+                                                    <span className="ml-2 text-sm">{option}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                {validationAttempted && formData.typeOfHelp.length === 0 && (
+                                    <p className="text-red-400 text-sm mt-2">Please select at least one service.</p>
+                                )}
                             </div>
                         )}
 

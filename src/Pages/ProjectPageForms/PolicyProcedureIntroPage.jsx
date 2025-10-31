@@ -37,7 +37,10 @@ const FormComponent = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData(prev => ({
+            ...prev,
+            [name]: typeof value === 'string' ? value.trim() : value
+        }));
     };
 
     const handleDateChange = (date) => {
