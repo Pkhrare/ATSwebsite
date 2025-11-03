@@ -105,7 +105,7 @@ const FormComponent = () => {
 
             // --- Step 5: Prepare Project Data ---
             const projectData = {
-                'Project Name': `${formData.fullName} - ${formData.agencyName}`,
+                'Project Name': `${formData.fullName}`,
                 'Client Email': formData.email,
                 'States': formData.stateOfOperation,
                 'Assigned Consultant': 'Amara M Kamara',
