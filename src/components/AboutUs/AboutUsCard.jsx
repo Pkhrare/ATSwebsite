@@ -1,30 +1,70 @@
 import React, { useRef, useEffect, useState } from 'react';
 import RichTextEditor from '../richText/RichTextEditor';
-import { toLexical } from '../../utils/lexicalUtils';
+import { toLexical, fromLexical } from '../../utils/lexicalUtils';
+import { useAIAssistant } from '../../utils/AIAssistantContext';
+import { loadContent } from '../../utils/contentUtils';
 
 const AboutUsCard = ({ task, onClose }) => {
     const [isContentLoading, setIsContentLoading] = useState(true);
     const descriptionRef = useRef(null);
     const modalContentRef = useRef(null);
+    const { registerContext } = useAIAssistant();
 
     useEffect(() => {
         // Initialize the description content
         const initializeDescription = async () => {
-            if (task.fields.description) {
+            let descriptionContent = null;
+            
+            // Try to load from attachments first
+            if (task.id) {
+                try {
+                    descriptionContent = await loadContent('about_us', task.id, 'description');
+                } catch (error) {
+                    console.error('Error loading description from attachments:', error);
+                }
+            }
+            
+            // Fallback to task.fields.description
+            if (!descriptionContent && task.fields.description) {
                 try {
                     // Parse the JSON string if it's a string, otherwise use as is
-                    const descriptionContent = typeof task.fields.description === 'string' 
+                    descriptionContent = typeof task.fields.description === 'string' 
                         ? JSON.parse(task.fields.description)
                         : task.fields.description;
-                    
-                    descriptionRef.current = descriptionContent;
                 } catch (error) {
                     console.error('Error parsing description:', error);
-                    descriptionRef.current = toLexical(task.fields.description || '');
+                    descriptionContent = toLexical(task.fields.description || '');
                 }
-            } else {
-                descriptionRef.current = toLexical('');
             }
+            
+            if (!descriptionContent) {
+                descriptionContent = toLexical('');
+            }
+            
+            descriptionRef.current = descriptionContent;
+            
+            // Convert to plain text for AI context
+            let descriptionText = '';
+            try {
+                if (typeof descriptionContent === 'string') {
+                    descriptionText = fromLexical(descriptionContent);
+                } else {
+                    descriptionText = fromLexical(JSON.stringify(descriptionContent));
+                }
+            } catch (error) {
+                console.error('Error converting description to text:', error);
+                descriptionText = '';
+            }
+            
+            // Register context with AI assistant
+            registerContext({
+                currentAboutUsCard: task.id,
+                aboutUsCardData: {
+                    id: task.id,
+                    title: task.fields.task_title,
+                    content: descriptionText
+                }
+            });
             
             // Wait a bit to ensure content is properly initialized
             setTimeout(() => {
@@ -33,7 +73,7 @@ const AboutUsCard = ({ task, onClose }) => {
         };
         
         initializeDescription();
-    }, [task]);
+    }, [task, registerContext]);
 
     // Handle click outside to close modal
     useEffect(() => {

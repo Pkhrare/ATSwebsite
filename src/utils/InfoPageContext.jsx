@@ -12,12 +12,15 @@ export const InfoPageProvider = ({ children }) => {
 
     const fetchInfoPages = useCallback(async () => {
         setIsLoading(true);
+        setError(null);
         try {
             const data = await ApiCaller('/info-pages');
             setPages(data || []);
         } catch (err) {
-            setError('Failed to load informational pages.');
-            console.error(err);
+            const errorMessage = err.message || 'Failed to load informational pages.';
+            setError(errorMessage);
+            console.error('Error fetching info pages:', errorMessage);
+            // Don't throw - let the component handle the error state
         } finally {
             setIsLoading(false);
         }

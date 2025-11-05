@@ -15,9 +15,11 @@ const Home = () => {
         setActionsLoading(true);
         try {
             const data = await ApiCaller('/actions/incomplete');
-            setIncompleteActions(data);
+            setIncompleteActions(data || []);
         } catch (error) {
-            console.error("Error fetching incomplete actions:", error);
+            console.error("Error fetching incomplete actions:", error.message || error);
+            // Set empty array on error so UI doesn't break
+            setIncompleteActions([]);
         } finally {
             setActionsLoading(false);
         }

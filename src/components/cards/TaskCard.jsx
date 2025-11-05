@@ -19,6 +19,8 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { colorClasses } from '../../utils/colorUtils';
 import { downloadSignedPDF, hasSignature } from '../../utils/pdfUtils';
 import PDFProgressIndicator from '../PDFProgressIndicator';
+import { useAIAssistant } from '../../utils/AIAssistantContext';
+import { sendQuickPrompt } from '../../utils/quickPromptHandler';
 
 const ReadReceipt = ({ isRead }) => (
     <div className={`relative w-5 h-5 ml-1 inline-block ${isRead ? 'text-blue-400' : 'text-slate-400'}`}>
@@ -38,6 +40,51 @@ const apiFetch = async (endpoint, options = {}) => {
 
 export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions, isClientView = false, isEditable = false }) {
     const { userRole } = useAuth();
+    
+    const { registerContext, ...aiAssistantContext } = useAIAssistant();
+    
+    // Get project ID from task data for context registration
+    const projectId = task?.fields?.['Project ID (from project_id)']?.[0] || 
+                     task?.fields?.project_id?.[0] || 
+                     task?.fields?.['project_id']?.[0];
+    
+    // State to store task quick prompt responses
+    const [taskQuickPromptResponses, setTaskQuickPromptResponses] = useState({});
+    const [loadingTaskPrompts, setLoadingTaskPrompts] = useState({});
+
+    // Handler for task-level quick prompt buttons
+    const handleTaskQuickPrompt = async (promptText) => {
+        const taskProjectId = projectId || 
+                            task?.fields?.['Project ID (from project_id)']?.[0] || 
+                            task?.fields?.project_id?.[0] || 
+                            task?.fields?.['project_id']?.[0];
+        
+        if (!taskProjectId) {
+            console.error('Project ID not found for task quick prompt');
+            return;
+        }
+        
+        // Set loading state for this specific prompt
+        setLoadingTaskPrompts(prev => ({ ...prev, [promptText]: true }));
+        
+        try {
+            const response = await sendQuickPrompt(promptText, taskProjectId, task?.id, aiAssistantContext, userRole);
+            
+            // Store the response for inline display
+            setTaskQuickPromptResponses(prev => ({ ...prev, [promptText]: response }));
+        } catch (error) {
+            setTaskQuickPromptResponses(prev => ({ 
+                ...prev, 
+                [promptText]: `Error: ${error.message}. Please try again.` 
+            }));
+        } finally {
+            setLoadingTaskPrompts(prev => ({ ...prev, [promptText]: false }));
+        }
+        
+        // Don't automatically open the AI chat modal - let the user open it manually if they want
+        // The response is already displayed inline where they asked the question
+    };
+    
     const [isLoading, setIsLoading] = useState(false);
     const [editedTask, setEditedTask] = useState({});
     const [error, setError] = useState(null);
@@ -400,12 +447,100 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                     // Let RichTextEditor handle content type detection and parsing
                     if (descriptionContent) {
                         descriptionRef.current = descriptionContent;
+                        
+                        // Convert description to plain text for AI context
+                        let descriptionText = '';
+                        try {
+                            if (typeof descriptionContent === 'string') {
+                                // Try to parse as Lexical JSON and convert to text
+                                const parsed = JSON.parse(descriptionContent);
+                                if (parsed.root && parsed.root.children) {
+                                    descriptionText = parsed.root.children
+                                        .map(paragraph => 
+                                            (paragraph.children || [])
+                                                .map(child => child.text || '')
+                                                .join('')
+                                        )
+                                        .join('\n');
+                                } else {
+                                    descriptionText = descriptionContent;
+                                }
+                            } else {
+                                descriptionText = fromLexical(JSON.stringify(descriptionContent));
+                            }
+                        } catch (e) {
+                            // If parsing fails, use as-is or try fromLexical
+                            descriptionText = fromLexical(typeof descriptionContent === 'string' ? descriptionContent : JSON.stringify(descriptionContent));
+                        }
+                        
+                        // Register task context with description text for AI
+                        const taskWithDescription = {
+                            ...task,
+                            fields: {
+                                ...task.fields,
+                                description_text: descriptionText // Add plain text description
+                            }
+                        };
+                        registerContext({
+                            currentTask: task.id,
+                            taskData: taskWithDescription,
+                            currentProject: projectId
+                        });
                     } else {
                         descriptionRef.current = task.fields.description || '';
+                        // Try to convert description to text if it exists
+                        let descriptionText = '';
+                        if (task.fields.description) {
+                            try {
+                                descriptionText = fromLexical(typeof task.fields.description === 'string' ? task.fields.description : JSON.stringify(task.fields.description));
+                            } catch (e) {
+                                descriptionText = typeof task.fields.description === 'string' ? task.fields.description : '';
+                            }
+                        }
+                        // Register task context even without description content
+                        const taskWithDescription = {
+                            ...task,
+                            fields: {
+                                ...task.fields,
+                                description_text: descriptionText
+                            }
+                        };
+                        registerContext({
+                            currentTask: task.id,
+                            taskData: taskWithDescription,
+                            currentProject: projectId
+                        });
                     }
                     setDescriptionKey(prev => prev + 1); // Force re-render
                 } else {
                     descriptionRef.current = toLexical(task.fields.description || '');
+                    // Register task context for tasks without IDs
+                    if (task.fields.description) {
+                        let descriptionText = '';
+                        try {
+                            descriptionText = fromLexical(typeof task.fields.description === 'string' ? task.fields.description : JSON.stringify(task.fields.description));
+                        } catch (e) {
+                            descriptionText = typeof task.fields.description === 'string' ? task.fields.description : '';
+                        }
+                        const taskWithDescription = {
+                            ...task,
+                            fields: {
+                                ...task.fields,
+                                description_text: descriptionText
+                            }
+                        };
+                        registerContext({
+                            currentTask: task.id,
+                            taskData: taskWithDescription,
+                            currentProject: projectId
+                        });
+                    } else {
+                        registerContext({
+                            currentTask: task.id,
+                            taskData: task,
+                            currentProject: projectId
+                        });
+                    }
                     setDescriptionKey(prev => prev + 1); // Force re-render
                 }
                 
@@ -422,8 +557,7 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             fetchChatMessages();
             fetchApprovals();
         }
-    }, [task?.id, refetchCounter]);
-
+    }, [task?.id, refetchCounter, registerContext, projectId]);
 
     useEffect(() => {
         if (messages.length > 0 && socketRef.current && task) {
@@ -460,6 +594,14 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
 
             // Get the element that triggered the event
             const target = event.target;
+
+            // Check if the click is inside the AI assistant modal
+            // The AI assistant modal should have a data attribute or class to identify it
+            const aiAssistantElement = target.closest('[data-ai-assistant]');
+            if (aiAssistantElement) {
+                // Don't close the task card if clicking inside the AI assistant
+                return;
+            }
 
             // Check if the click occurred outside the modal content (the task card itself)
             // AND the click was not on the "edit description" button
@@ -959,8 +1101,39 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                 });
             }
 
-            // Save description as attachment
-            await saveContent('tasks', task.id, 'description', descriptionRef.current);
+            // Save description as attachment (only if task.id exists and descriptionRef has content)
+            if (task?.id && descriptionRef.current) {
+                try {
+                    await saveContent('tasks', task.id, 'description', descriptionRef.current);
+                } catch (error) {
+                    console.error('Failed to save description content:', error);
+                    // Continue with task update even if description save fails
+                }
+            } else if (task?.id && !descriptionRef.current) {
+                // If task has no description, initialize with empty Lexical content
+                try {
+                    const emptyLexicalContent = JSON.stringify({
+                        root: {
+                            children: [{
+                                children: [],
+                                direction: null,
+                                format: '',
+                                indent: 0,
+                                type: 'paragraph',
+                                version: 1
+                            }],
+                            direction: null,
+                            format: '',
+                            indent: 0,
+                            type: 'root',
+                            version: 1
+                        }
+                    });
+                    await saveContent('tasks', task.id, 'description', emptyLexicalContent);
+                } catch (error) {
+                    console.error('Failed to initialize description content:', error);
+                }
+            }
 
             // Whitelist approach: only construct an object with fields that are meant to be editable.
             // This prevents sending back read-only fields like lookups or formulas which can cause API errors.
@@ -1357,6 +1530,65 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
                                             </svg>
                                             Add Approval
                                         </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Quick Help Section - Only visible in client view */}
+                            {isClientView && (
+                                <div className="p-4 rounded-lg border border-blue-200 shadow-sm bg-gradient-to-br from-blue-50 to-indigo-50">
+                                    <div className="mb-3">
+                                        <h3 className="text-sm md:text-base font-semibold text-blue-900 mb-2">💡 Questions About This Task?</h3>
+                                        <p className="text-xs md:text-sm text-blue-700 mb-3">Click any question below to get instant guidance:</p>
+                                    </div>
+                                    <div className="space-y-2">
+                                        {/* Question 1 */}
+                                        <div className="space-y-2">
+                                            <button
+                                                onClick={() => handleTaskQuickPrompt('What is the purpose of this task?')}
+                                                disabled={loadingTaskPrompts['What is the purpose of this task?']}
+                                                className="px-3 py-2 text-xs md:text-sm font-medium bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50 hover:border-blue-400 transition-all duration-200 shadow-sm text-blue-900 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {loadingTaskPrompts['What is the purpose of this task?'] ? 'Loading...' : 'What is the purpose?'}
+                                            </button>
+                                            {taskQuickPromptResponses['What is the purpose of this task?'] && (
+                                                <div className="ml-0 p-3 bg-white rounded-lg border border-blue-200 shadow-sm">
+                                                    <div className="text-xs md:text-sm text-blue-900 whitespace-pre-wrap">{taskQuickPromptResponses['What is the purpose of this task?']}</div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Question 2 */}
+                                        <div className="space-y-2">
+                                            <button
+                                                onClick={() => handleTaskQuickPrompt('How do I complete this task?')}
+                                                disabled={loadingTaskPrompts['How do I complete this task?']}
+                                                className="px-3 py-2 text-xs md:text-sm font-medium bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50 hover:border-blue-400 transition-all duration-200 shadow-sm text-blue-900 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {loadingTaskPrompts['How do I complete this task?'] ? 'Loading...' : 'How do I complete it?'}
+                                            </button>
+                                            {taskQuickPromptResponses['How do I complete this task?'] && (
+                                                <div className="ml-0 p-3 bg-white rounded-lg border border-blue-200 shadow-sm">
+                                                    <div className="text-xs md:text-sm text-blue-900 whitespace-pre-wrap">{taskQuickPromptResponses['How do I complete this task?']}</div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Question 3 */}
+                                        <div className="space-y-2">
+                                            <button
+                                                onClick={() => handleTaskQuickPrompt('What happens after I complete this task?')}
+                                                disabled={loadingTaskPrompts['What happens after I complete this task?']}
+                                                className="px-3 py-2 text-xs md:text-sm font-medium bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50 hover:border-blue-400 transition-all duration-200 shadow-sm text-blue-900 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {loadingTaskPrompts['What happens after I complete this task?'] ? 'Loading...' : 'What happens next?'}
+                                            </button>
+                                            {taskQuickPromptResponses['What happens after I complete this task?'] && (
+                                                <div className="ml-0 p-3 bg-white rounded-lg border border-blue-200 shadow-sm">
+                                                    <div className="text-xs md:text-sm text-blue-900 whitespace-pre-wrap">{taskQuickPromptResponses['What happens after I complete this task?']}</div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             )}

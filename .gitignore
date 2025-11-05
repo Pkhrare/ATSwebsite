@@ -27,3 +27,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?src/components/apiCall/ApiCaller.jsx
+
+aiEnhancedHandler.js
+aiSystemPrompt.js
+ENV_SETUP.md
+AI_FIELD_VALIDATIONS.md
+src/components/apiCall/ApiCaller.jsx

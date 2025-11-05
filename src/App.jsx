@@ -23,50 +23,60 @@ import EnrollmentIntroPage from './Pages/ProjectPageForms/EnrollmentIntroPage';
 import PolicyProcedureIntroPage from './Pages/ProjectPageForms/PolicyProcedureIntroPage';
 import PostSubmissionPage from './Pages/PostSubmissionPage';
 import QuickIntroPage from './Pages/ProjectPageForms/QuickIntroPage';
+import { AIAssistantProvider } from './utils/AIAssistantContext';
+import AIAssistant from './components/aiAssistant/AIAssistant';
+
 function App() {
   const { currentUser } = useAuth();
 
   return (
     <BrowserRouter>
-      <Routes>
-        {/* The new landing page is the entry point */}
-        <Route path="/" element={<Landing />} />
-        
-        {/* Public routes for login */}
-        <Route path='/consultant-login' element={
-          currentUser ? <Navigate to="/dashboard" replace /> : <ConsultantLogin />
-        } />
-        <Route path='/client-login' element={<ClientLogin />} />
-        <Route path='/project-deactivated' element={<ProjectDeactivated />} />
-        <Route path='/client/project/:projectId' element={<ClientCard />} />
-        <Route path="/combined-license-form" element={<CombinedLicenseIntroPage />} />
-        <Route path="/enrollment-form" element={<EnrollmentIntroPage />} />
-        <Route path="/policy-procedure-form" element={<PolicyProcedureIntroPage />} />
-        <Route path="/quick-intro-form" element={<QuickIntroPage />} />
-        <Route path="/submission-success" element={<PostSubmissionPage />} />
-        
-        {/* Client-specific info pages (sidebar only, no navbar) */}
-        <Route path='/client/info/:pageId' element={<ClientInfoPageView />} />
-        
-        {/* Protected routes wrapped by the persistent Layout component */}
-        <Route 
-          element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-          }
-        >
-          <Route path='/dashboard' element={<Home />} />
-          <Route path='/projects' element={<Projects />} />
-          <Route path='/templates' element={<Templates />} />
-          <Route path='/json-editor' element={<JsonRichTextEditor />} />
-          <Route path='/info/:pageId' element={<InfoPageView />} />
-          <Route path='/info/edit/:pageId' element={<InfoPageEdit />} />
-        </Route>
-        
-        {/* Redirect any unknown/root paths for authenticated users to the dashboard */}
-        <Route path='*' element={currentUser ? <Navigate to="/dashboard" replace /> : <Navigate to="/" replace />} />
-      </Routes>
+      <AIAssistantProvider>
+        <Routes>
+          {/* The new landing page is the entry point */}
+          <Route path="/" element={<Landing />} />
+          
+          {/* Public routes for login */}
+          <Route path='/consultant-login' element={
+            currentUser ? <Navigate to="/dashboard" replace /> : <ConsultantLogin />
+          } />
+          <Route path='/client-login' element={<ClientLogin />} />
+          <Route path='/project-deactivated' element={<ProjectDeactivated />} />
+          <Route path='/client/project/:projectId' element={
+            <>
+              <ClientCard />
+              <AIAssistant />
+            </>
+          } />
+          <Route path="/combined-license-form" element={<CombinedLicenseIntroPage />} />
+          <Route path="/enrollment-form" element={<EnrollmentIntroPage />} />
+          <Route path="/policy-procedure-form" element={<PolicyProcedureIntroPage />} />
+          <Route path="/quick-intro-form" element={<QuickIntroPage />} />
+          <Route path="/submission-success" element={<PostSubmissionPage />} />
+          
+          {/* Client-specific info pages (sidebar only, no navbar) */}
+          <Route path='/client/info/:pageId' element={<ClientInfoPageView />} />
+          
+          {/* Protected routes wrapped by the persistent Layout component */}
+          <Route 
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          >
+            <Route path='/dashboard' element={<Home />} />
+            <Route path='/projects' element={<Projects />} />
+            <Route path='/templates' element={<Templates />} />
+            <Route path='/json-editor' element={<JsonRichTextEditor />} />
+            <Route path='/info/:pageId' element={<InfoPageView />} />
+            <Route path='/info/edit/:pageId' element={<InfoPageEdit />} />
+          </Route>
+          
+          {/* Redirect any unknown/root paths for authenticated users to the dashboard */}
+          <Route path='*' element={currentUser ? <Navigate to="/dashboard" replace /> : <Navigate to="/" replace />} />
+        </Routes>
+      </AIAssistantProvider>
     </BrowserRouter>
   );
 }

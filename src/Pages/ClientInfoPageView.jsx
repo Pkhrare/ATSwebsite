@@ -5,6 +5,8 @@ import RichTextEditor from '../components/richText/RichTextEditor';
 import InfoSidebar from '../components/layout/InfoSidebar';
 import { loadContent } from '../utils/contentUtils';
 import { InfoPageProvider } from '../utils/InfoPageContext';
+import { useAIAssistant } from '../utils/AIAssistantContext';
+import { fromLexical } from '../utils/lexicalUtils';
 
 const BackIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -18,6 +20,7 @@ const ClientInfoPageView = () => {
     const [page, setPage] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { registerContext } = useAIAssistant();
     
     // Get the project ID from sessionStorage to enable back navigation
     const projectId = sessionStorage.getItem('currentProjectId');
@@ -33,9 +36,36 @@ const ClientInfoPageView = () => {
                 // Load content from attachment with fallback to old content field
                 const content = await loadContent('informational_pages', pageId, 'pageContent');
                 
-                setPage({
+                const pageData = {
                     ...data,
                     content: content // This will be the content from attachment or fallback
+                };
+                setPage(pageData);
+                
+                // Convert content to plain text for AI context
+                let contentText = '';
+                try {
+                    if (content) {
+                        if (typeof content === 'string') {
+                            contentText = fromLexical(content);
+                        } else {
+                            contentText = fromLexical(JSON.stringify(content));
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error converting page content to text:', error);
+                    contentText = '';
+                }
+                
+                // Register context with AI assistant
+                registerContext({
+                    currentInfoPage: pageId,
+                    infoPageData: {
+                        id: pageId,
+                        title: data.title,
+                        icon: data.icon,
+                        content: contentText
+                    }
                 });
             } catch (err) {
                 setError('Failed to load the page content.');
@@ -46,7 +76,7 @@ const ClientInfoPageView = () => {
         };
 
         fetchPage();
-    }, [pageId]);
+    }, [pageId, registerContext]);
 
     if (isLoading) {
         return (

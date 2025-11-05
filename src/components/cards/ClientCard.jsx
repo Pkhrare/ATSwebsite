@@ -18,19 +18,14 @@ import { loadContent } from '../../utils/contentUtils';
 import { InfoPageProvider } from '../../utils/InfoPageContext';
 import { colorClasses } from '../../utils/colorUtils';
 import io from 'socket.io-client';
-import AIDropdown from '../ai/AIDropdown';
-import AITypingIndicator from '../ai/AITypingIndicator';
-import AIMessage from '../ai/AIMessage';
 import { 
-    isAIMessage, 
     isConsultantMessage, 
     isClientMessage, 
-    getMessageStyling, 
-    shouldTriggerAI, 
-    validateAIRequest, 
-    createAIRequestPayload,
-    debounce 
+    getMessageStyling
 } from '../../utils/aiUtils';
+import { useProjectContext } from '../../hooks/useScreenContext';
+import { sendQuickPrompt } from '../../utils/quickPromptHandler';
+import { useAIAssistant } from '../../utils/AIAssistantContext';
 
 
 // Helper function to fetch from the backend API
@@ -148,11 +143,6 @@ export default function ClientCard() {
     
     // Plain text state for project chat (already have newProjectMessage above)
 
-    // AI-related states
-    const [isAIMode, setIsAIMode] = useState(false);
-    const [isAITyping, setIsAITyping] = useState(false);
-    const [aiRequestInProgress, setAiRequestInProgress] = useState(false);
-
     // Task-related states
     const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
     const [isLoadingTasks, setIsLoadingTasks] = useState(true);
@@ -221,6 +211,40 @@ export default function ClientCard() {
         };
             fetchProject();
     }, [projectId]);
+    
+    // Register project context for AI assistant (after projectData is loaded)
+    useProjectContext(projectId, projectData);
+
+    // Get AI assistant context and auth for quick prompts
+    const aiAssistantContext = useAIAssistant();
+    const { userRole } = useAuth();
+
+    // State to store quick prompt responses
+    const [quickPromptResponses, setQuickPromptResponses] = useState({});
+    const [loadingPrompts, setLoadingPrompts] = useState({});
+
+    // Handler for quick prompt buttons
+    const handleQuickPrompt = async (promptText) => {
+        // Set loading state for this specific prompt
+        setLoadingPrompts(prev => ({ ...prev, [promptText]: true }));
+        
+        try {
+            const response = await sendQuickPrompt(promptText, projectId, null, aiAssistantContext, userRole);
+            
+            // Store the response for inline display
+            setQuickPromptResponses(prev => ({ ...prev, [promptText]: response }));
+        } catch (error) {
+            setQuickPromptResponses(prev => ({ 
+                ...prev, 
+                [promptText]: `Error: ${error.message}. Please try again.` 
+            }));
+        } finally {
+            setLoadingPrompts(prev => ({ ...prev, [promptText]: false }));
+        }
+        
+        // Don't automatically open the AI chat modal - let the user open it manually if they want
+        // The response is already displayed inline where they asked the question
+    };
 
     const fetchTasksForProject = useCallback(async () => {
         if (!projectData?.id) return;
@@ -396,41 +420,6 @@ export default function ClientCard() {
             console.error("Error sending project message:", error);
         });
 
-        // AI-related socket events
-        projectSocketRef.current.on('waiverlyn:typing', (data) => {
-            setIsAITyping(data.isTyping);
-        });
-
-        projectSocketRef.current.on('waiverlyn:response', (data) => {
-            console.log('Received Waiverlyn response:', data);
-            setAiRequestInProgress(false);
-            setIsAITyping(false);
-            
-            // Sanitize AI response to ensure raw Lexical JSON (strip code fences, etc.)
-            if (data?.message?.fields?.message_text && typeof data.message.fields.message_text === 'string') {
-                try {
-                    const { sanitizeLexicalJsonString } = require('../../utils/aiUtils');
-                    data.message.fields.message_text = sanitizeLexicalJsonString(data.message.fields.message_text);
-                } catch (e) {
-                    console.warn('Failed to sanitize AI response, using as-is', e);
-                }
-            }
-
-            // Add the AI response to the messages
-            if (data.message) {
-                setProjectMessages(prevMessages => [...prevMessages, data.message]);
-            }
-        });
-
-        projectSocketRef.current.on('waiverlyn:error', (data) => {
-            console.error('Waiverlyn error:', data);
-            setAiRequestInProgress(false);
-            setIsAITyping(false);
-            
-            // Show error message to user
-            alert(`AI Error: ${data.error}`);
-        });
-
         // ===================================
         // REAL-TIME UPDATE LISTENERS
         // ===================================
@@ -558,26 +547,6 @@ export default function ClientCard() {
         }
     }, [projectMessages]);
 
-    // Debounced AI request handler
-    const debouncedAIRequest = useCallback(
-        debounce(async (projectId, message, sender) => {
-            if (!projectSocketRef.current) return;
-            
-            const validation = validateAIRequest(projectId, message, sender);
-            if (!validation.isValid) {
-                alert(`AI Request Error: ${validation.error}`);
-                return;
-            }
-
-            setAiRequestInProgress(true);
-            const payload = createAIRequestPayload(projectId, message, sender);
-            
-            console.log('Sending AI request:', payload);
-            projectSocketRef.current.emit('waiverlyn:request', payload);
-        }, 2000), // 2 second debounce
-        [projectSocketRef]
-    );
-
     const handleSendProjectMessage = async () => {
         // Get message content from plain text input
         const messageContent = newProjectMessage.trim();
@@ -642,11 +611,6 @@ export default function ClientCard() {
             
             console.log('Sending project message with data:', messageData);
             projectSocketRef.current.emit('sendProjectMessage', messageData);
-            
-            // Trigger AI response if in AI mode and conditions are met
-            if (isAIMode && shouldTriggerAI(messageContent, true) && !aiRequestInProgress) {
-                debouncedAIRequest(projectData.id, messageContent, senderName);
-            }
             
             // Clear the input
             setNewProjectMessage('');
@@ -838,6 +802,63 @@ export default function ClientCard() {
                                     </div>
                                 </section>
 
+                                {/* Quick Help Section - Only visible in client view */}
+                                <section className="p-3 md:p-5 rounded-xl border border-blue-200 shadow-sm bg-gradient-to-br from-blue-50 to-indigo-50">
+                                    <div className="mb-3">
+                                        <h3 className="text-base md:text-lg font-semibold text-blue-900 mb-2">💡 Need Help Getting Started?</h3>
+                                        <p className="text-sm text-blue-700 mb-3">Click any question below to get instant guidance from our AI assistant:</p>
+                                    </div>
+                                    <div className="space-y-3">
+                                        {/* Question 1 */}
+                                        <div className="space-y-2">
+                                            <button
+                                                onClick={() => handleQuickPrompt('How do I start?')}
+                                                disabled={loadingPrompts['How do I start?']}
+                                                className="px-4 py-2.5 text-sm font-medium bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50 hover:border-blue-400 transition-all duration-200 shadow-sm text-blue-900 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {loadingPrompts['How do I start?'] ? 'Loading...' : 'How do I start?'}
+                                            </button>
+                                            {quickPromptResponses['How do I start?'] && (
+                                                <div className="ml-0 p-3 bg-white rounded-lg border border-blue-200 shadow-sm">
+                                                    <div className="text-sm text-blue-900 whitespace-pre-wrap">{quickPromptResponses['How do I start?']}</div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Question 2 */}
+                                        <div className="space-y-2">
+                                            <button
+                                                onClick={() => handleQuickPrompt('Why should I complete these tasks?')}
+                                                disabled={loadingPrompts['Why should I complete these tasks?']}
+                                                className="px-4 py-2.5 text-sm font-medium bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50 hover:border-blue-400 transition-all duration-200 shadow-sm text-blue-900 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {loadingPrompts['Why should I complete these tasks?'] ? 'Loading...' : 'Why should I complete these tasks?'}
+                                            </button>
+                                            {quickPromptResponses['Why should I complete these tasks?'] && (
+                                                <div className="ml-0 p-3 bg-white rounded-lg border border-blue-200 shadow-sm">
+                                                    <div className="text-sm text-blue-900 whitespace-pre-wrap">{quickPromptResponses['Why should I complete these tasks?']}</div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Question 3 */}
+                                        <div className="space-y-2">
+                                            <button
+                                                onClick={() => handleQuickPrompt('How does this get me closer to completing my application packet?')}
+                                                disabled={loadingPrompts['How does this get me closer to completing my application packet?']}
+                                                className="px-4 py-2.5 text-sm font-medium bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-50 hover:border-blue-400 transition-all duration-200 shadow-sm text-blue-900 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                                            >
+                                                {loadingPrompts['How does this get me closer to completing my application packet?'] ? 'Loading...' : 'How does this help my application packet?'}
+                                            </button>
+                                            {quickPromptResponses['How does this get me closer to completing my application packet?'] && (
+                                                <div className="ml-0 p-3 bg-white rounded-lg border border-blue-200 shadow-sm">
+                                                    <div className="text-sm text-blue-900 whitespace-pre-wrap">{quickPromptResponses['How does this get me closer to completing my application packet?']}</div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </section>
+
                                 {/* Notes Section */}
                                 <section className={`${getSectionColor('Notes')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-2">
@@ -875,7 +896,7 @@ export default function ClientCard() {
                                                                 <li
                                                                     key={task.id}
                                                                     onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                                    className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer min-h-[60px] flex items-center`}
+                                                                    className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-md border-2 border-slate-400 hover:border-slate-500 transition-all duration-200 cursor-pointer min-h-[60px] flex items-center`}
                                                                 >
                                                                     <div className="flex justify-between items-center w-full">
                                                                         <h5 className="font-medium text-sm text-slate-800 flex-1 pr-2">{task.fields.task_title}</h5>
@@ -892,7 +913,7 @@ export default function ClientCard() {
                                                                         </div>
                                                                     </div>
                                                                     <div className="flex justify-end items-center mt-2">
-                                                                        <span className="text-xs text-slate-500">Due: {formatDate(task.fields.due_date)}</span>
+                                                                        
                                                 </div>
                                             </li>
                                         ))}
@@ -907,7 +928,7 @@ export default function ClientCard() {
                                                     <li
                                                         key={task.id}
                                                         onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
-                                                        className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-sm border-2 border-slate-200 hover:border-slate-300 transition-all duration-200 cursor-pointer min-h-[60px] flex items-center`}
+                                                        className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-md border-2 border-slate-400 hover:border-slate-500 transition-all duration-200 cursor-pointer min-h-[60px] flex items-center`}
                                                     >
                                                         <div className="flex justify-between items-center w-full">
                                                             <h5 className="font-medium text-sm text-slate-800 flex-1 pr-2">{task.fields.task_title}</h5>
@@ -1089,31 +1110,11 @@ export default function ClientCard() {
                             <section className={`${getSectionColor('General Discussion')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
                                     <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('General Discussion')}`}>💬 General Discussion</h2>
-                                    <AIDropdown 
-                                        isAIMode={isAIMode}
-                                        onToggle={setIsAIMode}
-                                        disabled={isUploadingProjectChatFile || aiRequestInProgress}
-                                    />
                                 </div>
                                 <div ref={projectChatContainerRef} className="h-96 overflow-y-auto custom-scrollbar border-2 border-slate-200 rounded-xl p-4 space-y-4 mb-4 bg-gradient-to-b from-slate-50 to-white shadow-inner">
-                                    {isAIMode && (
-                                        <div className="flex items-center justify-center py-2">
-                                            <div className="flex items-center gap-2 px-3 py-1.5 bg-purple-50 border border-purple-200 rounded-lg">
-                                                <svg className="w-3 h-3 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                                                </svg>
-                                                <span className="text-xs font-medium text-purple-700">AI responses use redacted project context</span>
-                                            </div>
-                                        </div>
-                                    )}
                                     {projectMessages.map((msg) => {
-                                        const isAI = isAIMessage(msg);
                                         const isConsultant = isConsultantMessage(msg);
                                         const isClient = isClientMessage(msg, projectData.fields['Project Name']);
-                                        
-                                        if (isAI) {
-                                            return <AIMessage key={msg.id} message={msg} />;
-                                        }
                                         
                                         const styling = getMessageStyling(msg, 'client', projectData.fields['Project Name']);
                                         return (
@@ -1181,9 +1182,6 @@ export default function ClientCard() {
                                             </div>
                                         );
                                     })}
-                                    
-                                    {/* AI Typing Indicator */}
-                                    <AITypingIndicator isTyping={isAITyping} />
                                 </div>
                                 <div className="space-y-3">
                                 {projectChatAttachment && (
@@ -1212,10 +1210,8 @@ export default function ClientCard() {
                                             <textarea
                                         value={newProjectMessage} 
                                         onChange={(e) => setNewProjectMessage(e.target.value)} 
-                                                placeholder={isAIMode ? "Ask Waiverlyn about your project..." : "Type a message..."}
-                                                className={`w-full p-3 border-2 rounded-xl bg-white text-black transition-all duration-200 resize-none ${
-                                                    isAIMode ? 'border-purple-200' : 'border-slate-200'
-                                                } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                                                placeholder="Type a message..."
+                                                className="w-full p-3 border-2 rounded-xl bg-white text-black transition-all duration-200 resize-none border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                                 rows={3}
                                                 onKeyDown={(e) => {
                                                     if (e.key === 'Enter' && !e.shiftKey) {
@@ -1224,11 +1220,6 @@ export default function ClientCard() {
                                                     }
                                                 }}
                                             />
-                                            {isAIMode && (
-                                                <div className="absolute right-3 top-3">
-                                                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                                                </div>
-                                            )}
                                         </div>
                                     <input 
                                         type="file" 
@@ -1259,23 +1250,16 @@ export default function ClientCard() {
                                         onClick={handleSendProjectMessage} 
                                         type="button" 
                                             className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                                                isUploadingProjectChatFile || aiRequestInProgress
+                                                isUploadingProjectChatFile
                                                     ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
-                                                    : isAIMode
-                                                        ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl transform hover:scale-105'
-                                                        : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:scale-105'
+                                                    : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:scale-105'
                                             }`}
-                                            disabled={isUploadingProjectChatFile || aiRequestInProgress}
+                                            disabled={isUploadingProjectChatFile}
                                         >
                                             {isUploadingProjectChatFile ? (
                                                 <div className="flex items-center gap-2">
                                                     <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                                                     <span>Sending...</span>
-                                                </div>
-                                            ) : aiRequestInProgress ? (
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                                                    <span>AI Processing...</span>
                                                 </div>
                                             ) : (
                                                 <div className="flex items-center gap-2">

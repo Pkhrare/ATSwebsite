@@ -6,6 +6,8 @@ import { useAuth } from '../utils/AuthContext';
 import { loadContent } from '../utils/contentUtils';
 import { useInfoPages } from '../utils/InfoPageContext';
 import { IconRenderer } from '../components/forms/IconPicker';
+import { useAIAssistant } from '../utils/AIAssistantContext';
+import { fromLexical } from '../utils/lexicalUtils';
 
 const EditIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -28,6 +30,7 @@ const InfoPageView = () => {
     const [error, setError] = useState(null);
     const { userRole } = useAuth();
     const { fetchInfoPages } = useInfoPages();
+    const { registerContext } = useAIAssistant();
     
     useEffect(() => {
         const fetchPage = async () => {
@@ -37,7 +40,34 @@ const InfoPageView = () => {
             try {
                 const data = await ApiCaller(`/info-pages/${pageId}`);
                 const content = await loadContent('informational_pages', pageId, 'pageContent');
-                setPage({ ...data, content });
+                const pageData = { ...data, content };
+                setPage(pageData);
+                
+                // Convert content to plain text for AI context
+                let contentText = '';
+                try {
+                    if (content) {
+                        if (typeof content === 'string') {
+                            contentText = fromLexical(content);
+                        } else {
+                            contentText = fromLexical(JSON.stringify(content));
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error converting page content to text:', error);
+                    contentText = '';
+                }
+                
+                // Register context with AI assistant
+                registerContext({
+                    currentInfoPage: pageId,
+                    infoPageData: {
+                        id: pageId,
+                        title: data.title,
+                        icon: data.icon,
+                        content: contentText
+                    }
+                });
             } catch (err) {
                 setError('Failed to load the page content.');
                 console.error(err);
@@ -46,7 +76,7 @@ const InfoPageView = () => {
             }
         };
         fetchPage();
-    }, [pageId]);
+    }, [pageId, registerContext]);
 
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete this page? This action cannot be undone.')) {

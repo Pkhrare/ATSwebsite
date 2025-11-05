@@ -80,10 +80,19 @@ export const AuthProvider = ({ children }) => {
                     localStorage.setItem('userRole', 'consultant');
                 }
             } else {
-                // If user is null (logged out), clear the role
-                console.log("User logged out, clearing role");
-                setUserRole(null);
-                localStorage.removeItem('userRole');
+                // If user is null, check if we have a client session
+                // Clients don't authenticate with Firebase, so we need to preserve their role
+                const storedRole = localStorage.getItem('userRole');
+                if (storedRole === 'client') {
+                    // Preserve client role even without Firebase user
+                    console.log("No Firebase user, but preserving client session");
+                    setUserRole('client');
+                } else {
+                    // Only clear role if it's not a client session
+                    console.log("User logged out, clearing role");
+                    setUserRole(null);
+                    localStorage.removeItem('userRole');
+                }
             }
             setLoading(false);
         });

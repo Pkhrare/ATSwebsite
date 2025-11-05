@@ -5,6 +5,7 @@ import Sidebar from './Sidebar'; // Import the new Sidebar
 import InfoSidebar from './InfoSidebar';
 import { colorClasses } from '../../utils/colorUtils';
 import { InfoPageProvider } from '../../utils/InfoPageContext';
+import AIAssistant from '../aiAssistant/AIAssistant';
 
 const Layout = () => {
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -26,6 +27,7 @@ const Layout = () => {
                         <Outlet />
                     </div>
                 </div>
+                <AIAssistant />
             </div>
         </InfoPageProvider>
     );

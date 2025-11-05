@@ -16,6 +16,8 @@ import {
 import CodeEditorModal from './CodeEditorModal';
 import ConfirmationDialog from './ConfirmationDialog';
 import CodeRenderer from './CodeRenderer';
+import AITextEditModal from '../aiAssistant/AITextEditModal';
+import { toLexical } from '../../utils/lexicalUtils';
 import {
     INSERT_UNORDERED_LIST_COMMAND,
     INSERT_ORDERED_LIST_COMMAND,
@@ -138,9 +140,21 @@ function ToolbarPlugin({
   setRichTextBackup = () => {},
   setConfirmationAction = () => {},
   setIsConfirmationOpen = () => {},
-  showCodeEditButton = true
+  showCodeEditButton = true,
+  onAIEdit = null,
+  sourceTable = null,
+  sourceRecordId = null
 }) {
   const [editor] = useLexicalComposerContext();
+  
+  // Debug: Log AI edit button visibility
+  useEffect(() => {
+    if (onAIEdit && sourceTable && sourceRecordId) {
+      console.log('AI Edit button should be visible:', { sourceTable, sourceRecordId, hasOnAIEdit: !!onAIEdit });
+    } else {
+      console.log('AI Edit button NOT visible:', { sourceTable, sourceRecordId, hasOnAIEdit: !!onAIEdit });
+    }
+  }, [onAIEdit, sourceTable, sourceRecordId]);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
@@ -535,6 +549,31 @@ function ToolbarPlugin({
               </button>
             </>
           )}
+          
+          {onAIEdit && sourceTable && sourceRecordId && (
+            <>
+              <div className="w-px h-6 bg-slate-300 mx-1"></div>
+              
+              <button
+                  type="button"
+                  onClick={() => {
+                    const editorState = editor.getEditorState();
+                    const jsonString = JSON.stringify(editorState.toJSON());
+                    onAIEdit(jsonString);
+                  }}
+                  className="px-3 py-1 rounded-md text-sm font-medium bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 shadow-sm"
+                  aria-label="AI Edit Text"
+                  title="AI Edit Text (Uses project and record context)"
+              >
+                  <span className="inline-flex items-center gap-1.5">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                      <span className="font-medium">AI Edit</span>
+                  </span>
+              </button>
+            </>
+          )}
       </div>
   );
 }
@@ -909,6 +948,8 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
     const [isCodeMode, setIsCodeMode] = useState(false);
     const [codeContent, setCodeContent] = useState('');
     const [richTextBackup, setRichTextBackup] = useState(null);
+    const [isAITextEditModalOpen, setIsAITextEditModalOpen] = useState(false);
+    const [currentTextForEdit, setCurrentTextForEdit] = useState(null);
 
     // Add mobile table styles
     useEffect(() => {
@@ -1199,6 +1240,73 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
         setIsCodeEditorOpen(true);
     };
 
+    // Handler for AI text edit
+    const handleAIEdit = (currentLexicalContent) => {
+        setCurrentTextForEdit(currentLexicalContent);
+        setIsAITextEditModalOpen(true);
+    };
+
+    // Handler for saving AI-edited text
+    const handleAISave = async (editedText) => {
+        // Convert edited text to Lexical format if it's plain text
+        let lexicalContent;
+        try {
+            // Try to parse as JSON first
+            JSON.parse(editedText);
+            lexicalContent = editedText;
+        } catch (e) {
+            // If not JSON, convert plain text to Lexical
+            lexicalContent = toLexical(editedText);
+        }
+
+        // Update the editor directly using parseEditorState (like InitialContentPlugin does)
+        if (editorRef?.current) {
+            try {
+                // Parse the Lexical JSON outside of update()
+                let parsedJson;
+                if (typeof lexicalContent === 'string') {
+                    parsedJson = JSON.parse(lexicalContent);
+                } else {
+                    parsedJson = lexicalContent;
+                }
+
+                // Handle editorState wrapper if present
+                if (parsedJson && parsedJson.editorState && parsedJson.editorState.root) {
+                    parsedJson = parsedJson.editorState;
+                }
+
+                // Validate structure
+                if (parsedJson && parsedJson.root) {
+                    // Use parseEditorState to properly set the state (call outside update)
+                    const parsedState = editorRef.current.parseEditorState(parsedJson);
+                    editorRef.current.setEditorState(parsedState);
+                } else {
+                    // Fallback: convert plain text to Lexical
+                    const fallbackLexical = toLexical(editedText);
+                    const fallbackParsed = JSON.parse(fallbackLexical);
+                    const parsedState = editorRef.current.parseEditorState(fallbackParsed);
+                    editorRef.current.setEditorState(parsedState);
+                }
+            } catch (parseError) {
+                // If parsing fails, treat as plain text and convert to Lexical
+                console.warn('Could not parse AI-edited text as Lexical JSON, converting from plain text:', parseError);
+                try {
+                    const fallbackLexical = toLexical(editedText);
+                    const fallbackParsed = JSON.parse(fallbackLexical);
+                    const parsedState = editorRef.current.parseEditorState(fallbackParsed);
+                    editorRef.current.setEditorState(parsedState);
+                } catch (fallbackError) {
+                    console.error('Error in fallback Lexical conversion:', fallbackError);
+                }
+            }
+        }
+
+        // Update via onChange - this will trigger the parent component to update
+        if (onChange) {
+            onChange(lexicalContent);
+        }
+    };
+
     return (
         <div className={`relative ${!hideContainer ? 'border border-slate-300 rounded-md' : ''} ${!isEditable && !hideContainer ? 'bg-slate-50/50' : hideContainer ? '' : 'bg-white'}`}>
             <LexicalComposer initialConfig={initialConfig}>
@@ -1208,6 +1316,9 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                     setConfirmationAction={setConfirmationAction}
                     setIsConfirmationOpen={setIsConfirmationOpen}
                     showCodeEditButton={showCodeEditButton}
+                    onAIEdit={handleAIEdit}
+                    sourceTable={sourceTable}
+                    sourceRecordId={sourceRecordId}
                 />}
                 <div className="relative">
                     <RichTextPlugin
@@ -1268,6 +1379,22 @@ function RichTextEditor({ isEditable, initialContent, onChange, editorRef, sourc
                 title="Switch to Code Editor?"
                 message="Switching to code editor will convert your content to HTML/CSS/JS. Your rich text formatting may be lost. Are you sure you want to continue?"
             />
+            
+            {/* AI Text Edit Modal */}
+            {sourceTable && sourceRecordId && (
+                <AITextEditModal
+                    isOpen={isAITextEditModalOpen}
+                    onClose={() => {
+                        setIsAITextEditModalOpen(false);
+                        setCurrentTextForEdit(null);
+                    }}
+                    onSave={handleAISave}
+                    sourceTable={sourceTable}
+                    sourceRecordId={sourceRecordId}
+                    fieldName="description"
+                    currentText={currentTextForEdit}
+                />
+            )}
         </div>
     );
 }

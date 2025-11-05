@@ -1,0 +1,72 @@
+/* AI Assistant Styles */
+.ai-assistant-container {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-assistant-dragging {
+    cursor: grabbing !important;
+    user-select: none;
+}
+
+.ai-assistant-resizing {
+    cursor: se-resize !important;
+}
+
+/* Smooth animations for expand/collapse */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.ai-assistant-expanded {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Floating icon pulse animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+    }
+}
+
+.ai-assistant-icon {
+    animation: pulse 2s infinite;
+}
+
+/* Message animations */
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ai-message {
+    animation: messageSlide 0.3s ease-out;
+}
+
+/* Resize handle styling */
+.ai-resize-handle {
+    background: linear-gradient(135deg, transparent 0%, transparent 40%, #cbd5e1 40%, #cbd5e1 45%, transparent 45%, transparent 55%, #cbd5e1 55%, #cbd5e1 60%, transparent 60%);
+    transition: background 0.2s;
+}
+
+.ai-resize-handle:hover {
+    background: linear-gradient(135deg, transparent 0%, transparent 40%, #fbbf24 40%, #fbbf24 45%, transparent 45%, transparent 55%, #fbbf24 55%, #fbbf24 60%, transparent 60%);
+}
+
