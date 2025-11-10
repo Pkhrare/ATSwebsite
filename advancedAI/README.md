@@ -63,3 +63,4 @@ The two AI systems are completely isolated:
 5. Client AI cannot execute actions even if requested
 6. Consultant AI has full action capabilities
 
+

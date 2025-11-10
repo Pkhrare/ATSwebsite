@@ -26,6 +26,8 @@ import {
 import { useProjectContext } from '../../hooks/useScreenContext';
 import { sendQuickPrompt } from '../../utils/quickPromptHandler';
 import { useAIAssistant } from '../../utils/AIAssistantContext';
+import ClientOnboardingTour from '../tour/ClientOnboardingTour';
+import WelcomeTourModal from '../tour/WelcomeTourModal';
 
 
 // Helper function to fetch from the backend API
@@ -148,6 +150,12 @@ export default function ClientCard() {
     const [isLoadingTasks, setIsLoadingTasks] = useState(true);
     const [selectedTask, setSelectedTask] = useState(null);
     const [isTaskCardVisible, setIsTaskCardVisible] = useState(false);
+
+    // Tour-related states
+    const [isTourRunning, setIsTourRunning] = useState(false);
+    const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+    const [tourStepIndex, setTourStepIndex] = useState(0);
+    const [hasCheckedTourStatus, setHasCheckedTourStatus] = useState(false);
 
     const fetchProjectMessages = useCallback(async () => {
         if (!projectData?.fields['Project ID']) return;
@@ -350,8 +358,20 @@ export default function ClientCard() {
             fetchActions();
             fetchAndProcessActivities();
             fetchProjectMessages();
+            
+            // Check tour completion status on first load
+            if (!hasCheckedTourStatus) {
+                const tourCompleted = projectData.fields?.onboarding_tour_completed || false;
+                if (!tourCompleted) {
+                    // Wait a bit for page to load, then show welcome modal
+                    setTimeout(() => {
+                        setShowWelcomeModal(true);
+                    }, 500);
+                }
+                setHasCheckedTourStatus(true);
+            }
         }
-    }, [projectData, fetchTasksForProject, fetchActions, fetchAndProcessActivities, fetchProjectMessages]);
+    }, [projectData, fetchTasksForProject, fetchActions, fetchAndProcessActivities, fetchProjectMessages, hasCheckedTourStatus]);
 
     useEffect(() => {
         // Project-level Socket.IO connection
@@ -719,6 +739,87 @@ export default function ClientCard() {
         return Array.from(options).filter(Boolean);
     }, [projectData]);
 
+    // Tour handlers
+    const handleStartTour = () => {
+        setShowWelcomeModal(false);
+        setTourStepIndex(0);
+        setIsTourRunning(true);
+    };
+
+    const handleSkipTour = async () => {
+        setShowWelcomeModal(false);
+        // Mark tour as completed when skipped
+        await markTourAsCompleted();
+    };
+
+    const handleTourComplete = async () => {
+        setIsTourRunning(false);
+        await markTourAsCompleted();
+    };
+
+    const handleTourSkip = async () => {
+        setIsTourRunning(false);
+        await markTourAsCompleted();
+    };
+
+    const handleRestartTour = () => {
+        setTourStepIndex(0);
+        setIsTourRunning(true);
+    };
+
+    const markTourAsCompleted = async () => {
+        if (!projectData?.id) return;
+        try {
+            await ApiCaller(`/records/projects/${projectData.id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    fields: {
+                        onboarding_tour_completed: true
+                    }
+                })
+            });
+            // Update local state
+            setProjectData(prev => ({
+                ...prev,
+                fields: {
+                    ...prev.fields,
+                    onboarding_tour_completed: true
+                }
+            }));
+        } catch (error) {
+            console.error('Failed to mark tour as completed:', error);
+        }
+    };
+
+    // Check if there's a "Get Started" task or onboarding tasks
+    const hasGetStartedTask = useMemo(() => {
+        if (!taskData || !taskData.groups || !taskData.ungroupedTasks) return false;
+        try {
+            const allTasks = [...(taskData.groups || []).flatMap(g => g.tasks || []), ...(taskData.ungroupedTasks || [])];
+            return allTasks.some(task => 
+                task?.fields?.task_title?.toLowerCase().includes('get started') ||
+                task?.fields?.task_title?.toLowerCase().includes('get-started')
+            );
+        } catch (error) {
+            console.error('Error checking for Get Started task:', error);
+            return false;
+        }
+    }, [taskData]);
+
+    const hasOnboardingTasks = useMemo(() => {
+        if (!taskData || !taskData.groups || !taskData.ungroupedTasks) return false;
+        try {
+            const allTasks = [...(taskData.groups || []).flatMap(g => g.tasks || []), ...(taskData.ungroupedTasks || [])];
+            return allTasks.some(task => 
+                task?.fields?.task_title?.toLowerCase().includes('onboarding') ||
+                task?.fields?.group_name?.toLowerCase().includes('onboarding')
+            );
+        } catch (error) {
+            console.error('Error checking for onboarding tasks:', error);
+            return false;
+        }
+    }, [taskData]);
+
 
     if (pageIsLoading) return <div className="flex justify-center items-center h-screen"><p>Loading Project...</p></div>;
     if (error) return <div className="flex justify-center items-center h-screen"><p className="text-red-500">{error}</p></div>;
@@ -744,7 +845,15 @@ export default function ClientCard() {
                         <p className="text-xs text-slate-500 font-mono">ID: {projectData.fields['Project ID']}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                        {/* Empty div to maintain layout balance */}
+                        {projectData.fields?.onboarding_tour_completed && (
+                            <button
+                                onClick={handleRestartTour}
+                                className="px-3 py-1.5 text-xs md:text-sm font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-sm hover:shadow-md"
+                                title="Take Tour"
+                            >
+                                Take Tour
+                            </button>
+                        )}
                     </div>
                 </header>
 
@@ -758,7 +867,7 @@ export default function ClientCard() {
 
                             <div className="lg:col-span-3 space-y-4 md:space-y-6">
                                 {/* Project Details Section */}
-                                <section className={`${getSectionColor('Project Details')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section data-tour="project-details" className={`${getSectionColor('Project Details')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
                                         <h2 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Project Details')}`}>Project Details</h2>
                                     </div>
@@ -803,7 +912,7 @@ export default function ClientCard() {
                                 </section>
 
                                 {/* Quick Help Section - Only visible in client view */}
-                                <section className="p-3 md:p-5 rounded-xl border border-blue-200 shadow-sm bg-gradient-to-br from-blue-50 to-indigo-50">
+                                <section data-tour="quick-help" className="p-3 md:p-5 rounded-xl border border-blue-200 shadow-sm bg-gradient-to-br from-blue-50 to-indigo-50">
                                     <div className="mb-3">
                                         <h3 className="text-base md:text-lg font-semibold text-blue-900 mb-2">💡 Need Help Getting Started?</h3>
                                         <p className="text-sm text-blue-700 mb-3">Click any question below to get instant guidance from our AI assistant:</p>
@@ -877,7 +986,7 @@ export default function ClientCard() {
                                 <AboutUsSection getSectionColor={getSectionColor} />
 
                                 {/* Tasks Section */}
-                                <section className={`${getSectionColor('Tasks')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                                <section data-tour="tasks-section" className={`${getSectionColor('Tasks')} p-3 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                     <div className="flex justify-between items-center mb-4">
                                         <h3 className={`text-base md:text-lg font-semibold text-slate-700 px-2 md:px-3 py-1.5 md:py-2 rounded-lg ${getSectionColor('Tasks')}`}>Tasks</h3>
                                     </div>
@@ -895,6 +1004,7 @@ export default function ClientCard() {
                                                             {group.tasks.map((task, taskIndex) => (
                                                                 <li
                                                                     key={task.id}
+                                                                    data-tour={taskIndex === 0 ? "task-example" : undefined}
                                                                     onClick={() => { setSelectedTask(task); setIsTaskCardVisible(true); }}
                                                                     className={`p-3 ${getSectionColor('Tasks')} rounded-lg shadow-md border-2 border-slate-400 hover:border-slate-500 transition-all duration-200 cursor-pointer min-h-[60px] flex items-center`}
                                                                 >
@@ -1107,7 +1217,7 @@ export default function ClientCard() {
                             </section>
 
                             {/* General Discussion Section */}
-                            <section className={`${getSectionColor('General Discussion')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
+                            <section data-tour="general-discussion" className={`${getSectionColor('General Discussion')} p-4 md:p-5 rounded-xl border border-slate-200 shadow-sm`}>
                                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 gap-2">
                                     <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('General Discussion')}`}>💬 General Discussion</h2>
                                 </div>
@@ -1396,6 +1506,26 @@ export default function ClientCard() {
                     isEditable={selectedTask?.fields?.assigned_to === projectData?.fields['Project Name']}
                 />
             )}
+
+            {/* Welcome Tour Modal */}
+            {showWelcomeModal && (
+                <WelcomeTourModal
+                    onStartTour={handleStartTour}
+                    onSkipTour={handleSkipTour}
+                    isFirstTime={!projectData.fields?.onboarding_tour_completed}
+                />
+            )}
+
+            {/* Onboarding Tour */}
+            <ClientOnboardingTour
+                isRunning={isTourRunning}
+                onComplete={handleTourComplete}
+                onSkip={handleTourSkip}
+                hasGetStartedTask={hasGetStartedTask}
+                hasOnboardingTasks={hasOnboardingTasks}
+                currentStepIndex={tourStepIndex}
+                onStepChange={setTourStepIndex}
+            />
             
             {/* Activities Modal */}
             {isActivitiesModalVisible && (

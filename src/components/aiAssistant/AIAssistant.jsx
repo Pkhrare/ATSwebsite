@@ -558,6 +558,7 @@ const AIAssistant = () => {
         return (
             <div
                 data-ai-assistant="true"
+                data-tour="ai-assistant"
                 className="fixed bottom-6 right-6 z-[9999] cursor-pointer ai-assistant-icon"
                 onClick={(e) => {
                     e.stopPropagation();
@@ -576,6 +577,7 @@ const AIAssistant = () => {
     return (
         <div
             data-ai-assistant="true"
+            data-tour="ai-assistant"
             ref={containerRef}
             className={`fixed z-[10000] bg-white border-2 border-black shadow-2xl rounded-lg flex flex-col ai-assistant-container ai-assistant-expanded ${
                 isDragging ? 'ai-assistant-dragging' : ''

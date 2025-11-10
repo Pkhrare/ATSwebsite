@@ -100,6 +100,7 @@ function Projects() {
       'task_groups',
       'projectGeneralChat',
       'project_internal_notes',
+      "onboarding_tour_completed"
     ]);
     const filteredColumns = allColumns.filter(column => !unwantedColumns.has(column));
 
