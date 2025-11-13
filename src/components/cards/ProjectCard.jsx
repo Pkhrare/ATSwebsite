@@ -19,12 +19,21 @@ import { loadContent, saveContent } from '../../utils/contentUtils';
 import InfoSidebar from '../layout/InfoSidebar';
 import { colorClasses } from '../../utils/colorUtils';
 import io from 'socket.io-client';
+import AIDropdown from '../ai/AIDropdown';
+import AITypingIndicator from '../ai/AITypingIndicator';
+import AIMessage from '../ai/AIMessage';
 import { 
+    isAIMessage, 
     isConsultantMessage, 
     isClientMessage, 
-    getMessageStyling
+    getMessageStyling, 
+    shouldTriggerAI, 
+    validateAIRequest, 
+    createAIRequestPayload,
+    debounce 
 } from '../../utils/aiUtils';
 import { useProjectContext } from '../../hooks/useScreenContext';
+import { generateWeeklyUpdate } from '../../utils/weeklyUpdateGenerator';
 
 
 // Helper function to fetch from the backend API
@@ -152,6 +161,7 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
     const [notesContent, setNotesContent] = useState(null); // For the editor CONTENT
     const [isEditingDetails, setIsEditingDetails] = useState(false);
     const [isActivitiesModalVisible, setIsActivitiesModalVisible] = useState(false);
+    const [isGeneratingWeeklyUpdate, setIsGeneratingWeeklyUpdate] = useState(false);
     const isDeactivated = projectData.fields['Operation'] === 'Deactivated';
 
     // Generate colors for task group titles
@@ -213,6 +223,11 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
     const [previewImage, setPreviewImage] = useState(null);
     const projectSocketRef = useRef(null);
     const projectChatContainerRef = useRef(null);
+
+    // AI-related states
+    const [isAIMode, setIsAIMode] = useState(false);
+    const [isAITyping, setIsAITyping] = useState(false);
+    const [aiRequestInProgress, setAiRequestInProgress] = useState(false);
 
     // Task-related states
     const [taskData, setTaskData] = useState({ groups: [], ungroupedTasks: [] });
@@ -510,6 +525,41 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
 
         projectSocketRef.current.on('sendProjectMessageError', (error) => {
             console.error("Error sending project message:", error);
+        });
+
+        // AI-related socket events
+        projectSocketRef.current.on('waiverlyn:typing', (data) => {
+            setIsAITyping(data.isTyping);
+        });
+
+        projectSocketRef.current.on('waiverlyn:response', (data) => {
+            console.log('Received Waiverlyn response:', data);
+            setAiRequestInProgress(false);
+            setIsAITyping(false);
+            
+            // Sanitize AI response to ensure raw Lexical JSON (strip code fences, etc.)
+            if (data?.message?.fields?.message_text && typeof data.message.fields.message_text === 'string') {
+                try {
+                    const { sanitizeLexicalJsonString } = require('../../utils/aiUtils');
+                    data.message.fields.message_text = sanitizeLexicalJsonString(data.message.fields.message_text);
+                } catch (e) {
+                    console.warn('Failed to sanitize AI response, using as-is', e);
+                }
+            }
+
+            // Add the AI response to the messages
+            if (data.message) {
+                setProjectMessages(prevMessages => [...prevMessages, data.message]);
+            }
+        });
+
+        projectSocketRef.current.on('waiverlyn:error', (data) => {
+            console.error('Waiverlyn error:', data);
+            setAiRequestInProgress(false);
+            setIsAITyping(false);
+            
+            // Show error message to user
+            alert(`AI Error: ${data.error}`);
         });
 
         // ===================================
@@ -1297,6 +1347,22 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
         }
     };
 
+    // Generate Weekly Update PDF
+    const handleGenerateWeeklyUpdate = async () => {
+        setIsGeneratingWeeklyUpdate(true);
+        try {
+            await generateWeeklyUpdate(projectData, (progressMessage) => {
+                console.log(progressMessage);
+                // You could add a toast notification here if desired
+            });
+        } catch (error) {
+            console.error('Error generating weekly update:', error);
+            alert(error.message || 'Failed to generate weekly update. Please try again.');
+        } finally {
+            setIsGeneratingWeeklyUpdate(false);
+        }
+    };
+
     const handleGroupAdded = (newGroup) => {
         // Refresh the tasks to show the new group
         fetchTasksForProject();
@@ -1552,6 +1618,26 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
         }
     };
 
+    // Debounced AI request handler
+    const debouncedAIRequest = useCallback(
+        debounce(async (projectId, message, sender) => {
+            if (!projectSocketRef.current) return;
+            
+            const validation = validateAIRequest(projectId, message, sender);
+            if (!validation.isValid) {
+                alert(`AI Request Error: ${validation.error}`);
+                return;
+            }
+
+            setAiRequestInProgress(true);
+            const payload = createAIRequestPayload(projectId, message, sender);
+            
+            console.log('Sending AI request:', payload);
+            projectSocketRef.current.emit('waiverlyn:request', payload);
+        }, 2000), // 2 second debounce
+        [projectSocketRef]
+    );
+
     const handleSendProjectMessage = async () => {
         // Get message content from plain text input
         const messageContent = newProjectMessage.trim();
@@ -1623,6 +1709,11 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
             
             console.log('Sending project message with data:', messageData);
             projectSocketRef.current.emit('sendProjectMessage', messageData);
+            
+            // Trigger AI response if in AI mode and conditions are met
+            if (isAIMode && shouldTriggerAI(messageContent, true) && !aiRequestInProgress) {
+                debouncedAIRequest(projectData.id, messageContent, senderName);
+            }
             
             // Clear the input
             setNewProjectMessage('');
@@ -2431,13 +2522,33 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                         <section className={`${getSectionColor('General Discussion')} p-5 rounded-xl shadow-sm border border-slate-200`}>
                             <div className="flex justify-between items-center mb-3">
                                 <h2 className={`text-lg font-semibold text-slate-700 px-3 py-2 rounded-lg ${getSectionColor('General Discussion')}`}>💬 General Discussion</h2>
+                                <AIDropdown 
+                                    isAIMode={isAIMode}
+                                    onToggle={setIsAIMode}
+                                    disabled={isUploadingProjectChatFile || aiRequestInProgress}
+                                />
                             </div>
                             <div ref={projectChatContainerRef} className="h-96 overflow-y-auto custom-scrollbar border-2 border-slate-200 rounded-xl p-4 space-y-4 mb-4 bg-gradient-to-b from-slate-50 to-white shadow-inner">
+                                {isAIMode && (
+                                    <div className="flex items-center justify-center py-2">
+                                        <div className="flex items-center gap-2 px-3 py-1.5 bg-purple-50 border border-purple-200 rounded-lg">
+                                            <svg className="w-3 h-3 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                                            </svg>
+                                            <span className="text-xs font-medium text-purple-700">AI responses use redacted project context</span>
+                                        </div>
+                                    </div>
+                                )}
                                 {projectMessages.map((msg) => {
+                                    const isAI = isAIMessage(msg);
                                     const isConsultant = isConsultantMessage(msg);
                                     const isClient = isClientMessage(msg, projectData.fields['Project Name']);
                                     
-                                    const styling = getMessageStyling(msg, userRole, projectData.fields['Project Name']);
+                                    if (isAI) {
+                                        return <AIMessage key={msg.id} message={msg} />;
+                                    }
+                                    
+                                        const styling = getMessageStyling(msg, userRole, projectData.fields['Project Name']);
                                     return (
                                             <div key={msg.id} className={`flex ${styling.alignment}`}>
                                                 <div className="relative max-w-md">
@@ -2503,6 +2614,9 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                             </div>
                                     );
                                 })}
+                                
+                                {/* AI Typing Indicator */}
+                                <AITypingIndicator isTyping={isAITyping} />
                             </div>
                             <div className="space-y-3">
                                 {projectChatAttachment && (
@@ -2531,8 +2645,10 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                         <textarea
                                         value={newProjectMessage} 
                                         onChange={(e) => setNewProjectMessage(e.target.value)} 
-                                            placeholder="Type a message..."
-                                            className="w-full p-3 border-2 rounded-xl bg-white text-black transition-all duration-200 resize-none border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                            placeholder={isAIMode ? "Ask Waiverlyn about your project..." : "Type a message..."}
+                                            className={`w-full p-3 border-2 rounded-xl bg-white text-black transition-all duration-200 resize-none ${
+                                                isAIMode ? 'border-purple-200' : 'border-slate-200'
+                                            } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                                             rows={3}
                                             onKeyDown={(e) => {
                                                 if (e.key === 'Enter' && !e.shiftKey) {
@@ -2541,6 +2657,11 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                                 }
                                             }}
                                         />
+                                        {isAIMode && (
+                                            <div className="absolute right-3 top-3">
+                                                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                                            </div>
+                                        )}
                                     </div>
                                     <input 
                                         type="file" 
@@ -2571,16 +2692,23 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                         onClick={handleSendProjectMessage} 
                                         type="button" 
                                         className={`px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                                            isUploadingProjectChatFile
+                                            isUploadingProjectChatFile || aiRequestInProgress
                                                 ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
-                                                : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:scale-105'
+                                                : isAIMode
+                                                    ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl transform hover:scale-105'
+                                                    : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:scale-105'
                                         }`}
-                                        disabled={isUploadingProjectChatFile}
+                                        disabled={isUploadingProjectChatFile || aiRequestInProgress}
                                     >
                                         {isUploadingProjectChatFile ? (
                                             <div className="flex items-center gap-2">
                                                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                                                 <span>Sending...</span>
+                                            </div>
+                                        ) : aiRequestInProgress ? (
+                                            <div className="flex items-center gap-2">
+                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                                <span>AI Processing...</span>
                                             </div>
                                         ) : (
                                             <div className="flex items-center gap-2">
@@ -2789,6 +2917,37 @@ export default function Card({ data, onClose, onProjectUpdate, onProjectDelete, 
                                 )}
                             </div>
                         </section>
+
+                        {/* Generate Weekly Update Section */}
+                        {userRole === 'consultant' && (
+                            <section className="p-5 rounded-xl shadow-sm border border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+                                <div className="text-center">
+                                    <h3 className="text-base md:text-lg font-semibold text-blue-900 mb-3">📊 Weekly Update Report</h3>
+                                    <p className="text-sm text-blue-700 mb-4">
+                                        Generate a comprehensive PDF report summarizing all project changes from the last 7 days, with AI-powered summaries.
+                                    </p>
+                                    <button
+                                        onClick={handleGenerateWeeklyUpdate}
+                                        disabled={isGeneratingWeeklyUpdate}
+                                        className={`w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
+                                    >
+                                        {isGeneratingWeeklyUpdate ? (
+                                            <>
+                                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                                <span>Generating Report...</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                <span>Generate Weekly Update</span>
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            </section>
+                        )}
 
                     </div>
                 </div>

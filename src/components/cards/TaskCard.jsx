@@ -342,6 +342,12 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
             // Clear the retry interval
             clearInterval(joinRoomInterval);
             
+            // Clear all pending form update timeouts to prevent memory leaks
+            Object.values(formUpdateTimeouts.current).forEach(timeout => {
+                if (timeout) clearTimeout(timeout);
+            });
+            formUpdateTimeouts.current = {};
+            
             if (task?.id) {
                 socketRef.current.emit('leaveTaskRoom', task.id);
             }
@@ -955,23 +961,39 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         }
     };
 
+    // Ref to store debounce timeouts for each form submission
+    const formUpdateTimeouts = useRef({});
+
     const handleFormSubmissionChange = (submissionId, value) => {
         if (!canEdit) return; // <-- Prevent changes if not editable
+        
+        // 1. Immediately update local state (optimistic update)
         setFormSubmissions(prev =>
             prev.map(submission =>
                 submission.id === submissionId ? { ...submission, fields: { ...submission.fields, value } } : submission
             )
         );
         
-        // Emit real-time update for form submission changes
-        if (socketRef.current) {
-            socketRef.current.emit('formUpdated', {
-                taskId: task.id,
-                submissionId: submissionId,
-                value: value,
-                userId: 'unknown'
-            });
+        // 2. Debounce the Socket.IO emit to avoid rate limiting
+        // Clear any existing timeout for this submission
+        if (formUpdateTimeouts.current[submissionId]) {
+            clearTimeout(formUpdateTimeouts.current[submissionId]);
         }
+        
+        // Set a new timeout to emit after 500ms of no changes
+        formUpdateTimeouts.current[submissionId] = setTimeout(() => {
+            if (socketRef.current) {
+                console.log(`Emitting formUpdated for submission ${submissionId} after debounce`);
+                socketRef.current.emit('formUpdated', {
+                    taskId: task.id,
+                    submissionId: submissionId,
+                    value: value,
+                    userId: 'unknown'
+                });
+            }
+            // Clean up the timeout reference
+            delete formUpdateTimeouts.current[submissionId];
+        }, 500); // Wait 500ms after last keystroke
     };
 
     const handleApprovalAdded = (newApproval) => {
@@ -1055,6 +1077,12 @@ export default function TaskCard({ task, onClose, onTaskUpdate, assigneeOptions,
         setIsLoading(true);
         setError(null);
         setSuccessMessage(null);
+
+        // Flush any pending debounced form updates before saving
+        Object.values(formUpdateTimeouts.current).forEach(timeout => {
+            if (timeout) clearTimeout(timeout);
+        });
+        formUpdateTimeouts.current = {};
 
         try {
             // Update checklist items

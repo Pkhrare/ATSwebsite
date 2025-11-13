@@ -23,6 +23,8 @@ const FormComponent = () => {
     const [wantsToSchedule, setWantsToSchedule] = useState(''); // Local state, not sent to backend
     const [openAccordions, setOpenAccordions] = useState({}); // Track which accordions are open
     const [validationAttempted, setValidationAttempted] = useState(false); // Track if user tried to proceed
+    const [existingClientError, setExistingClientError] = useState(false); // Track if email belongs to existing client
+    const [isCheckingEmail, setIsCheckingEmail] = useState(false); // Loading state for email check
     const [formData, setFormData] = useState({
         programService: '',
         yourEmail: '',
@@ -46,6 +48,11 @@ const FormComponent = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        
+        // Clear existing client error when email is modified
+        if (name === 'yourEmail' || name === 'confirmEmail') {
+            setExistingClientError(false);
+        }
     };
 
     const handleCheckboxChange = (option) => {
@@ -101,15 +108,41 @@ const FormComponent = () => {
         }
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
         setValidationAttempted(true);
-        if (validateStep(currentStep)) {
-            setValidationAttempted(false); // Reset when valid
-            if (currentStep < totalSteps) {
-                setCurrentStep(currentStep + 1);
-            }
-        } else {
+        
+        if (!validateStep(currentStep)) {
             alert('Please fill in all required fields before proceeding.');
+            return;
+        }
+        
+        // Check for existing client when leaving Step 5 (contact information)
+        if (currentStep === 5) {
+            setIsCheckingEmail(true);
+            try {
+                const collaborators = await ApiCaller('/collaborators');
+                
+                // Check if the email exists in the collaborators list
+                const existingCollaborator = collaborators.find(
+                    collab => collab.fields.collaborator_email?.toLowerCase() === formData.yourEmail.toLowerCase()
+                );
+                
+                if (existingCollaborator) {
+                    setExistingClientError(true);
+                    setIsCheckingEmail(false);
+                    return; // Stop progression
+                }
+            } catch (error) {
+                console.error('Error checking existing client:', error);
+                // If the check fails, allow them to proceed (fail open)
+                // You could also choose to block them with an error message
+            }
+            setIsCheckingEmail(false);
+        }
+        
+        setValidationAttempted(false); // Reset when valid
+        if (currentStep < totalSteps) {
+            setCurrentStep(currentStep + 1);
         }
     };
 
@@ -215,7 +248,7 @@ const FormComponent = () => {
 
             // Prepare Project Data
             const projectData = {
-                'Project Name': `${formData.fullName}`,
+                'Project Name': formData.fullName ? formData.fullName.trim() : '',
                 'Client Email': formData.yourEmail,
                 'States': formData.stateOfProgram,
                 'Assigned Consultant': 'Amara M Kamara',
@@ -955,6 +988,48 @@ const FormComponent = () => {
                                 <label htmlFor="confirmEmail" className="block text-sm font-medium text-gray-300 mb-1">CONFIRM YOUR EMAIL <span className="text-red-500">*</span></label>
                                     <input type="email" name="confirmEmail" id="confirmEmail" value={formData.confirmEmail} onChange={handleInputChange} className="block w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm text-white" required />
                             </div>
+
+                                {/* Existing Client Error Message */}
+                                {existingClientError && (
+                                    <div className="mt-4 p-4 bg-yellow-100 border-l-4 border-yellow-500 rounded-md">
+                                        <div className="flex">
+                                            <div className="flex-shrink-0">
+                                                <svg className="h-5 w-5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                                </svg>
+                                            </div>
+                                            <div className="ml-3">
+                                                <h3 className="text-sm font-semibold text-yellow-800">
+                                                    You Already Have a Project With Us
+                                                </h3>
+                                                <div className="mt-2 text-sm text-yellow-700">
+                                                    <p className="mb-2">
+                                                        It looks like you already have an active project with Waiver Consulting Group. 
+                                                    </p>
+                                                    <p className="mb-2">
+                                                        To schedule a meeting or discuss your project, please:
+                                                    </p>
+                                                    <ul className="list-disc list-inside space-y-1 ml-2">
+                                                        <li>Contact your assigned consultant directly, or</li>
+                                                        <li>
+                                                            <a 
+                                                                href="https://www.waivergroup.com/videoappointment" 
+                                                                target="_blank" 
+                                                                rel="noopener noreferrer"
+                                                                className="font-semibold text-yellow-900 underline hover:text-yellow-600"
+                                                            >
+                                                                Schedule a paid consultation here
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <p className="mt-3 text-xs text-yellow-600">
+                                                        If you believe this is an error, please correct your email address above and try again.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         )}
 
@@ -1057,9 +1132,14 @@ const FormComponent = () => {
                                 <button
                                     type="button"
                                     onClick={handleNext}
-                                    className="px-6 py-3 bg-yellow-400 text-gray-800 rounded-md font-bold hover:bg-yellow-500 transition-colors"
+                                    disabled={isCheckingEmail}
+                                    className={`px-6 py-3 rounded-md font-bold transition-colors ${
+                                        isCheckingEmail
+                                            ? 'bg-yellow-200 text-gray-600 cursor-not-allowed'
+                                            : 'bg-yellow-400 text-gray-800 hover:bg-yellow-500'
+                                    }`}
                                 >
-                                    Next
+                                    {isCheckingEmail ? 'Checking...' : 'Next'}
                                 </button>
                             ) : (
                                 <button

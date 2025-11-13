@@ -1489,6 +1489,24 @@ export default function ClientCard() {
                                 </div>
                             </section>
 
+                            {/* Take Tour Section */}
+                            {projectData.fields?.onboarding_tour_completed && (
+                                <section className="p-4 md:p-5 rounded-xl border border-blue-200 shadow-sm bg-gradient-to-br from-blue-50 to-indigo-50">
+                                    <div className="text-center">
+                                        <h3 className="text-base md:text-lg font-semibold text-blue-900 mb-3">Need a Reminder?</h3>
+                                        <p className="text-sm text-blue-700 mb-4">
+                                            Take the guided tour again to refresh your memory on how to navigate the portal.
+                                        </p>
+                                        <button
+                                            onClick={handleRestartTour}
+                                            className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+                                        >
+                                            Take Tour
+                                        </button>
+                                    </div>
+                                </section>
+                            )}
+
                         </div>
                     </div>
                 </main>

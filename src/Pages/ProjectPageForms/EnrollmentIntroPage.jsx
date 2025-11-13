@@ -19,6 +19,8 @@ const FormComponent = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [existingClientError, setExistingClientError] = useState(false); // Track if email belongs to existing client
+    const [isCheckingEmail, setIsCheckingEmail] = useState(false); // Loading state for email check
     const [formData, setFormData] = useState({
         agencyName: '',
         email: '',
@@ -45,6 +47,11 @@ const FormComponent = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        
+        // Clear existing client error when email is modified
+        if (name === 'email') {
+            setExistingClientError(false);
+        }
     };
 
     const handleMultiSelectChange = (name, value) => {
@@ -61,6 +68,28 @@ const FormComponent = () => {
 
     const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
+        
+        // --- Step 0: Check for existing client FIRST ---
+        setIsCheckingEmail(true);
+        try {
+            const collaborators = await ApiCaller('/collaborators');
+            
+            // Check if the email exists in the collaborators list
+            const existingCollaborator = collaborators.find(
+                collab => collab.fields.collaborator_email?.toLowerCase() === formData.email.toLowerCase()
+            );
+            
+            if (existingCollaborator) {
+                setExistingClientError(true);
+                setIsCheckingEmail(false);
+                return; // Stop submission
+            }
+        } catch (error) {
+            console.error('Error checking existing client:', error);
+            // If the check fails, allow them to proceed (fail open)
+        }
+        setIsCheckingEmail(false);
+        
         setIsSubmitting(true);
 
         // --- Step 1: Basic Form Validation ---
@@ -145,7 +174,7 @@ const FormComponent = () => {
 
             // --- Step 5: Prepare Project Data ---
             const projectData = {
-                'Project Name': `${formData.fullName}`,
+                'Project Name': formData.fullName ? formData.fullName.trim() : '',
                 'Client Email': formData.email,
                 'States': formData.statesOfOperation[0],
                 'Assigned Consultant': 'Amara M Kamara',
@@ -1021,13 +1050,55 @@ const FormComponent = () => {
                                 </div>
                             </div>
 
+                            {/* Existing Client Error Message - Shown above submit button */}
+                            {existingClientError && (
+                                <div className="p-4 bg-yellow-100 border-l-4 border-yellow-500 rounded-md">
+                                    <div className="flex">
+                                        <div className="flex-shrink-0">
+                                            <svg className="h-5 w-5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <div className="ml-3">
+                                            <h3 className="text-sm font-semibold text-yellow-800">
+                                                You Already Have a Project With Us
+                                            </h3>
+                                            <div className="mt-2 text-sm text-yellow-700">
+                                                <p className="mb-2">
+                                                    It looks like you already have an active project with Waiver Consulting Group. 
+                                                </p>
+                                                <p className="mb-2">
+                                                    To schedule a meeting or discuss your project, please:
+                                                </p>
+                                                <ul className="list-disc list-inside space-y-1 ml-2">
+                                                    <li>Contact your assigned consultant directly, or</li>
+                                                    <li>
+                                                        <a 
+                                                            href="https://www.waivergroup.com/videoappointment" 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer"
+                                                            className="font-semibold text-yellow-900 underline hover:text-yellow-600"
+                                                        >
+                                                            Schedule a paid consultation here
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <p className="mt-3 text-xs text-yellow-600">
+                                                    If you believe this is an error, please correct your email address above and try again.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
                             <div className="flex justify-center pt-4">
                                 <button
                                     type="submit"
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || isCheckingEmail}
                                     className="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-lg font-bold rounded-md text-gray-800 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 focus:ring-offset-gray-800 disabled:bg-yellow-200 disabled:cursor-not-allowed"
                                 >
-                                    {isSubmitting ? 'Submitting...' : 'Submit Form'}
+                                    {isCheckingEmail ? 'Checking...' : isSubmitting ? 'Submitting...' : 'Submit Form'}
                                 </button>
                             </div>
                         </form>
